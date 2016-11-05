@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MetroMembershipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MetroMembershipEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActionAdmins" EntityType="MetroMembershipModel.ActionAdmin" />
+    <EntitySet Name="AdminConfigDatas" EntityType="MetroMembershipModel.AdminConfigData" />
+    <EntitySet Name="Channels" EntityType="MetroMembershipModel.Channel" />
+    <EntitySet Name="GroupMembers" EntityType="MetroMembershipModel.GroupMember" />
+    <EntitySet Name="GroupPermissions" EntityType="MetroMembershipModel.GroupPermission" />
+    <EntitySet Name="LogActionAdmins" EntityType="MetroMembershipModel.LogActionAdmin" />
+    <EntitySet Name="MemberAdmins" EntityType="MetroMembershipModel.MemberAdmin" />
+    <EntitySet Name="MemberPermissions" EntityType="MetroMembershipModel.MemberPermission" />
+    <EntitySet Name="PageFunctions" EntityType="MetroMembershipModel.PageFunction" />
+    <EntitySet Name="TempTables" EntityType="MetroMembershipModel.TempTable" />
+    <AssociationSet Name="FK_GroupPermission_GroupMember" Association="MetroMembershipModel.FK_GroupPermission_GroupMember">
+      <End Role="GroupMember" EntitySet="GroupMembers" />
+      <End Role="GroupPermission" EntitySet="GroupPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberShip_GroupMember" Association="MetroMembershipModel.FK_MemberShip_GroupMember">
+      <End Role="GroupMember" EntitySet="GroupMembers" />
+      <End Role="MemberAdmin" EntitySet="MemberAdmins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupPermission_Page" Association="MetroMembershipModel.FK_GroupPermission_Page">
+      <End Role="PageFunction" EntitySet="PageFunctions" />
+      <End Role="GroupPermission" EntitySet="GroupPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberPermission_MemberShip" Association="MetroMembershipModel.FK_MemberPermission_MemberShip">
+      <End Role="MemberAdmin" EntitySet="MemberAdmins" />
+      <End Role="MemberPermission" EntitySet="MemberPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberPermission_Page" Association="MetroMembershipModel.FK_MemberPermission_Page">
+      <End Role="PageFunction" EntitySet="PageFunctions" />
+      <End Role="MemberPermission" EntitySet="MemberPermissions" />
+    </AssociationSet>
+    <FunctionImport Name="Ins_ActionAdmin_GetAll" ReturnType="Collection(MetroMembershipModel.Ins_ActionAdmin_GetAll_Result)" />
+    <FunctionImport Name="Ins_AdminConfigData_getConfigByAdminID" ReturnType="Collection(MetroMembershipModel.Ins_AdminConfigData_getConfigByAdminID_Result)">
+      <Parameter Name="adminID" Mode="In" Type="Int32" />
+      <Parameter Name="keyID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_AdminConfigData_insertConfigData">
+      <Parameter Name="adminID" Mode="In" Type="Int32" />
+      <Parameter Name="keyID" Mode="In" Type="Int32" />
+      <Parameter Name="config" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_Channel_GetListChannelByParentId" ReturnType="Collection(MetroMembershipModel.Ins_Channel_GetListChannelByParentId_Result)">
+      <Parameter Name="channelId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_GroupMember_AddAdminGroupManager" ReturnType="Collection(Int32)">
+      <Parameter Name="GroupName" Mode="In" Type="String" />
+      <Parameter Name="Visible" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_GroupMember_AdminGroupManagerGetInfoByID" ReturnType="Collection(MetroMembershipModel.Ins_GroupMember_AdminGroupManagerGetInfoByID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_GroupMember_GetAllGroupMemberAdmin" ReturnType="Collection(MetroMembershipModel.Ins_GroupMember_GetAllGroupMemberAdmin_Result)" />
+    <FunctionImport Name="Ins_GroupMember_GetListGroup" ReturnType="Collection(MetroMembershipModel.Ins_GroupMember_GetListGroup_Result)">
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDirection" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_GroupMember_UpdateAdminGroupManager" ReturnType="Collection(Int32)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="GroupName" Mode="In" Type="String" />
+      <Parameter Name="Visible" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_GroupPermission_CloneGroup">
+      <Parameter Name="GroupID" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_GroupPermission_UpdateAndInsertGroupPermission">
+      <Parameter Name="PageID" Mode="In" Type="Int32" />
+      <Parameter Name="GroupID" Mode="In" Type="Int32" />
+      <Parameter Name="Rules" Mode="In" Type="Int32" />
+      <Parameter Name="Check" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_GroupPermission_UpdateAndInsertUserPermission">
+      <Parameter Name="PageID" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Rules" Mode="In" Type="Int32" />
+      <Parameter Name="Check" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogActionAdmin_GetByAdminName" ReturnType="Collection(MetroMembershipModel.Ins_LogActionAdmin_GetByAdminName_Result)">
+      <Parameter Name="AdminName" Mode="In" Type="String" />
+      <Parameter Name="ActionId" Mode="In" Type="Int32" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+      <Parameter Name="IsDescending" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogActionAdmin_InsertLog" ReturnType="Collection(Int32)">
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+      <Parameter Name="ActionId" Mode="In" Type="Int32" />
+      <Parameter Name="ActionName" Mode="In" Type="String" />
+      <Parameter Name="ObjectId" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="BeforeConfig" Mode="In" Type="String" />
+      <Parameter Name="IpAddress" Mode="In" Type="String" />
+      <Parameter Name="UserAgent" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_checkLogin" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_checkLogin_Result)">
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="tokenID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_getInfoMemberAdmin" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_getInfoMemberAdmin_Result)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_getListMember" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_getListMember_Result)">
+      <Parameter Name="keySearch" Mode="In" Type="String" />
+      <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_GetListMemberByGroupID" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_GetListMemberByGroupID_Result)">
+      <Parameter Name="GroupID" Mode="In" Type="Int32" />
+      <Parameter Name="Visible" Mode="In" Type="Int32" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDirection" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_GetListMemberByPermisstionUser" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_GetListMemberByPermisstionUser_Result)">
+      <Parameter Name="PageId" Mode="In" Type="Int32" />
+      <Parameter Name="Rules" Mode="In" Type="Int32" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDirection" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_GetListUser" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_GetListUser_Result)">
+      <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDirection" Mode="In" Type="Int32" />
+      <Parameter Name="StartRow" Mode="In" Type="Int32" />
+      <Parameter Name="EndRow" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_GetListUserAdmin" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_GetListUserAdmin_Result)" />
+    <FunctionImport Name="Ins_MemberAdmin_GetPermission" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_SaveMemberAdmin" ReturnType="Collection(Int32)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="nickName" Mode="In" Type="String" />
+      <Parameter Name="fullName" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="passwordSalt" Mode="In" Type="String" />
+      <Parameter Name="isLock" Mode="In" Type="Boolean" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_updateTokenExp">
+      <Parameter Name="tokenExp" Mode="In" Type="DateTime" />
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="token" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_updateTokenUser">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="NewTokenID" Mode="In" Type="String" />
+      <Parameter Name="NewTokenExp" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberPermission_checkPermissionPage" ReturnType="Collection(Int32)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="strUrl" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberPermission_CloneUser">
+      <Parameter Name="UserIDClone" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberPermission_getPagePermission" ReturnType="Collection(MetroMembershipModel.Ins_MemberPermission_getPagePermission_Result)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="appId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberPermission_GetPermissionByUser" ReturnType="Collection(MetroMembershipModel.Ins_MemberPermission_GetPermissionByUser_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberPermission_getPermissionUserByUserId" ReturnType="Collection(MetroMembershipModel.Ins_MemberPermission_getPermissionUserByUserId_Result)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberPermission_InsertPermissionMember" ReturnType="Collection(Int32)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="listPage" Mode="In" Type="String" />
+      <Parameter Name="defaultPage" Mode="In" Type="Boolean" />
+      <Parameter Name="rule" Mode="In" Type="Int32" />
+      <Parameter Name="Delimiter" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MemberPermission_UpdateRuleUser" ReturnType="Collection(Int32)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="pageId" Mode="In" Type="Int32" />
+      <Parameter Name="rule" Mode="In" Type="Int32" />
+      <Parameter Name="default" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_PageFunction_GetPageFunctionById" ReturnType="Collection(MetroMembershipModel.Ins_PageFunction_GetPageFunctionById_Result)">
+      <Parameter Name="ActionId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_PageFunction_InsertPage" ReturnType="Collection(MetroMembershipModel.Ins_PageFunction_InsertPage_Result)">
+      <Parameter Name="parentId" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Int32" />
+      <Parameter Name="link" Mode="In" Type="String" />
+      <Parameter Name="linkUse" Mode="In" Type="String" />
+      <Parameter Name="FuncPage" Mode="In" Type="Int32" />
+      <Parameter Name="isEnable" Mode="In" Type="Boolean" />
+      <Parameter Name="isTarget" Mode="In" Type="Boolean" />
+      <Parameter Name="pageType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_PageFunction_ListMenu" ReturnType="Collection(MetroMembershipModel.Ins_PageFunction_ListMenu_Result)">
+      <Parameter Name="GroupID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_PageFunction_ListMenuPageForGroup" ReturnType="Collection(MetroMembershipModel.Ins_PageFunction_ListMenuPageForGroup_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_PageFunction_ListMenuUser" ReturnType="Collection(MetroMembershipModel.Ins_PageFunction_ListMenuUser_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_Permission_Delete">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="PageID" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_SplitToIntTable" IsComposable="true" ReturnType="Collection(Int32)">
+      <Parameter Name="String" Mode="In" Type="String" />
+      <Parameter Name="Delimiter" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogActionAdmin_GetLockedLogByTime">
+      <Parameter Name="FromTime" Mode="In" Type="DateTime" />
+      <Parameter Name="ToTime" Mode="In" Type="DateTime" />
+      <Parameter Name="ActionID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="ActionAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ActionTypeId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AdminConfigData">
+    <Key>
+      <PropertyRef Name="KeyID" />
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="KeyID" Type="Int32" Nullable="false" />
+    <Property Name="AdminID" Type="Int32" Nullable="false" />
+    <Property Name="KeyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KeyConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Channel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ChannelName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="IsLock" Type="Boolean" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="GroupMember">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Datecreated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GroupPermissions" Relationship="MetroMembershipModel.FK_GroupPermission_GroupMember" FromRole="GroupMember" ToRole="GroupPermission" />
+    <NavigationProperty Name="MemberAdmins" Relationship="MetroMembershipModel.FK_MemberShip_GroupMember" FromRole="GroupMember" ToRole="MemberAdmin" />
+  </EntityType>
+  <EntityType Name="GroupPermission">
+    <Key>
+      <PropertyRef Name="PageID" />
+      <PropertyRef Name="GroupID" />
+    </Key>
+    <Property Name="PageID" Type="Int32" Nullable="false" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="Rules" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GroupMember" Relationship="MetroMembershipModel.FK_GroupPermission_GroupMember" FromRole="GroupPermission" ToRole="GroupMember" />
+    <NavigationProperty Name="PageFunction" Relationship="MetroMembershipModel.FK_GroupPermission_Page" FromRole="GroupPermission" ToRole="PageFunction" />
+  </EntityType>
+  <EntityType Name="LogActionAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="ActionId" Type="Int32" />
+    <Property Name="ActionName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ObjectId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BeforeConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IpAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserAgent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MemberAdmin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NickName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsLockedOut" Type="Boolean" />
+    <Property Name="CreateDated" Type="DateTime" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <Property Name="LastPasswordChangeDated" Type="DateTime" Precision="3" />
+    <Property Name="LastLogoutDate" Type="DateTime" Precision="3" />
+    <Property Name="FailedPasswordAttempCount" Type="Int32" />
+    <Property Name="GroupID" Type="Int32" />
+    <Property Name="LastIPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastAgent" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TokenID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TokenExp" Type="DateTime" Precision="3" />
+    <Property Name="ChannelId" Type="Int32" />
+    <NavigationProperty Name="GroupMember" Relationship="MetroMembershipModel.FK_MemberShip_GroupMember" FromRole="MemberAdmin" ToRole="GroupMember" />
+    <NavigationProperty Name="MemberPermissions" Relationship="MetroMembershipModel.FK_MemberPermission_MemberShip" FromRole="MemberAdmin" ToRole="MemberPermission" />
+  </EntityType>
+  <EntityType Name="MemberPermission">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="PageID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="PageID" Type="Int32" Nullable="false" />
+    <Property Name="DefaultPage" Type="Boolean" />
+    <Property Name="Rules" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MemberAdmin" Relationship="MetroMembershipModel.FK_MemberPermission_MemberShip" FromRole="MemberPermission" ToRole="MemberAdmin" />
+    <NavigationProperty Name="PageFunction" Relationship="MetroMembershipModel.FK_MemberPermission_Page" FromRole="MemberPermission" ToRole="PageFunction" />
+  </EntityType>
+  <EntityType Name="PageFunction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="PageReferID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Link" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="LinkUse" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FunctionPage" Type="Int32" />
+    <Property Name="PageType" Type="Int32" />
+    <Property Name="IsEnable" Type="Boolean" />
+    <Property Name="IsTargetBlank" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="SortNum" Type="Int32" />
+    <Property Name="AppID" Type="Int32" />
+    <NavigationProperty Name="GroupPermissions" Relationship="MetroMembershipModel.FK_GroupPermission_Page" FromRole="PageFunction" ToRole="GroupPermission" />
+    <NavigationProperty Name="MemberPermissions" Relationship="MetroMembershipModel.FK_MemberPermission_Page" FromRole="PageFunction" ToRole="MemberPermission" />
+  </EntityType>
+  <EntityType Name="TempTable">
+    <Key>
+      <PropertyRef Name="PageID" />
+    </Key>
+    <Property Name="PageID" Type="Int32" Nullable="false" />
+    <Property Name="DefaultPage" Type="Boolean" />
+    <Property Name="Rules" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_GroupPermission_GroupMember">
+    <End Type="MetroMembershipModel.GroupMember" Role="GroupMember" Multiplicity="1" />
+    <End Type="MetroMembershipModel.GroupPermission" Role="GroupPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupMember">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupPermission">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberShip_GroupMember">
+    <End Type="MetroMembershipModel.GroupMember" Role="GroupMember" Multiplicity="0..1" />
+    <End Type="MetroMembershipModel.MemberAdmin" Role="MemberAdmin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupMember">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MemberAdmin">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupPermission_Page">
+    <End Type="MetroMembershipModel.PageFunction" Role="PageFunction" Multiplicity="1" />
+    <End Type="MetroMembershipModel.GroupPermission" Role="GroupPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PageFunction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupPermission">
+        <PropertyRef Name="PageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberPermission_MemberShip">
+    <End Type="MetroMembershipModel.MemberAdmin" Role="MemberAdmin" Multiplicity="1" />
+    <End Type="MetroMembershipModel.MemberPermission" Role="MemberPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberAdmin">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MemberPermission">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberPermission_Page">
+    <End Type="MetroMembershipModel.PageFunction" Role="PageFunction" Multiplicity="1" />
+    <End Type="MetroMembershipModel.MemberPermission" Role="MemberPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PageFunction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MemberPermission">
+        <PropertyRef Name="PageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Ins_ActionAdmin_GetAll_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ActionTypeId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="Ins_AdminConfigData_getConfigByAdminID_Result">
+    <Property Type="Int32" Name="KeyID" Nullable="false" />
+    <Property Type="Int32" Name="AdminID" Nullable="false" />
+    <Property Type="String" Name="KeyConfig" Nullable="true" />
+    <Property Type="String" Name="Note" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="Ins_Channel_GetListChannelByParentId_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ChannelName" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ParentId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_GroupMember_AdminGroupManagerGetInfoByID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="Visible" Nullable="true" />
+    <Property Type="DateTime" Name="Datecreated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Ins_GroupMember_GetAllGroupMemberAdmin_Result">
+    <Property Type="DateTime" Name="Datecreated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Boolean" Name="Visible" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_GroupMember_GetListGroup_Result">
+    <Property Type="Int64" Name="STT1" Nullable="true" />
+    <Property Type="Int32" Name="STT" Nullable="true" />
+    <Property Type="Int32" Name="CountMember" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="Visible" Nullable="true" />
+    <Property Type="DateTime" Name="Datecreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="TotalRow" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_LogActionAdmin_GetByAdminName_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="true" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ActionId" Nullable="true" />
+    <Property Type="String" Name="ActionName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ObjectId" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="BeforeConfig" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="IpAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="UserAgent" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberAdmin_checkLogin_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="PasswordSalt" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="TokenID" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="TokenExp" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberAdmin_getInfoMemberAdmin_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ChannelId" Nullable="true" />
+    <Property Type="String" Name="NickName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Avatar" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="PasswordSalt" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="LastPasswordChangeDated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="LastLogoutDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="FailedPasswordAttempCount" Nullable="true" />
+    <Property Type="Int32" Name="GroupID" Nullable="true" />
+    <Property Type="String" Name="LastIPAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastAgent" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="TokenID" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="TokenExp" Nullable="true" Precision="23" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Link" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="LinkUse" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="NamePage" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberAdmin_getListMember_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="totalCount" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NickName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Avatar" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="CreateDated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberAdmin_GetListMemberByGroupID_Result">
+    <Property Type="Int64" Name="STT" Nullable="true" />
+    <Property Type="Int32" Name="STT1" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+    <Property Type="Int32" Name="GroupID" Nullable="true" />
+    <Property Type="String" Name="NickName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Avatar" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="TotalRow" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberAdmin_GetListMemberByPermisstionUser_Result">
+    <Property Type="Int64" Name="STT" Nullable="true" />
+    <Property Type="Int32" Name="STT1" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+    <Property Type="Int32" Name="GroupID" Nullable="true" />
+    <Property Type="String" Name="NickName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Avatar" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Rules" Nullable="true" />
+    <Property Type="Int32" Name="TotalRow" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberAdmin_GetListUser_Result">
+    <Property Type="Int32" Name="STT" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="String" Name="NickName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Avatar" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+    <Property Type="DateTime" Name="Datecreated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="GroupID" Nullable="true" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TotalRow" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberAdmin_GetListUserAdmin_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NickName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Avatar" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="GroupID" Nullable="false" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberPermission_getPagePermission_Result">
+    <Property Type="String" Name="LinkUse" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="Link" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="512" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberPermission_GetPermissionByUser_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Link" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="SortNum" Nullable="true" />
+    <Property Type="Int32" Name="PageReferID" Nullable="false" />
+    <Property Type="Int32" Name="PageType" Nullable="true" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+    <Property Type="Boolean" Name="IsTargetBlank" Nullable="true" />
+    <Property Type="Int32" Name="AppID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberPermission_getPermissionUserByUserId_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="PageID" Nullable="false" />
+    <Property Type="Boolean" Name="DefaultPage" Nullable="true" />
+    <Property Type="Int32" Name="Rules" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+    <Property Type="Int32" Name="PageReferID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Link" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="LinkUse" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="FunctionPage" Nullable="true" />
+    <Property Type="Int32" Name="PageType" Nullable="true" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="true" />
+    <Property Type="Boolean" Name="IsTargetBlank" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="UpdatedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+    <Property Type="Int32" Name="SortNum" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_PageFunction_GetPageFunctionById_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ActionTypeId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="Ins_PageFunction_InsertPage_Result">
+    <Property Type="Int32" Name="result" Nullable="true" />
+    <Property Type="Int32" Name="pageID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_PageFunction_ListMenu_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Link" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="true" />
+    <Property Type="Int32" Name="HLevel" Nullable="true" />
+    <Property Type="Int32" Name="Sort" Nullable="true" />
+    <Property Type="Int32" Name="Rules" Nullable="true" />
+    <Property Type="Int32" Name="FunctionPage" Nullable="true" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="FunctionPageType" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_PageFunction_ListMenuPageForGroup_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Link" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="true" />
+    <Property Type="Int32" Name="HLevel" Nullable="true" />
+    <Property Type="Int32" Name="Sort" Nullable="true" />
+    <Property Type="Int32" Name="Rules" Nullable="true" />
+    <Property Type="Int32" Name="FunctionPage" Nullable="true" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="FunctionPageType" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_PageFunction_ListMenuUser_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Link" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="true" />
+    <Property Type="Int32" Name="HLevel" Nullable="true" />
+    <Property Type="Int32" Name="Sort" Nullable="true" />
+    <Property Type="Int32" Name="Rules" Nullable="true" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="500" />
+  </ComplexType>
+</Schema>

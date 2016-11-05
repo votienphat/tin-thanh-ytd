@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SystemManagementModelStoreContainer" CdmEntityContainer="MetroSystemManagementEntities">
+    <FunctionImportMapping FunctionImportName="Ins_Report_StatisticRevenue_Get" FunctionName="SystemManagementModel.Store.Ins_Report_StatisticRevenue_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_Report_StatisticRevenue_Get_Result">
+          <ScalarProperty Name="DateStatistic" ColumnName="DateStatistic" />
+          <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportGameCCUs">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportGameCCU">
+        <MappingFragment StoreEntitySet="ReportGameCCU">
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ACU" ColumnName="ACU" />
+          <ScalarProperty Name="PCU" ColumnName="PCU" />
+          <ScalarProperty Name="CCU" ColumnName="CCU" />
+          <ScalarProperty Name="GameName" ColumnName="GameName" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportGoldDaily_ReportCoinManagerByDate" FunctionName="SystemManagementModel.Store.Ins_ReportGoldDaily_ReportCoinManagerByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportGoldDaily_ReportCoinManagerByDate_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="IdReason" ColumnName="IdReason" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ValueCoin" ColumnName="ValueCoin" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="TypeInsert" ColumnName="TypeInsert" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportBalanceDetails">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportBalanceDetail">
+        <MappingFragment StoreEntitySet="ReportBalanceDetail">
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="CountTrans" ColumnName="CountTrans" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="ReasonType" ColumnName="ReasonType" />
+          <ScalarProperty Name="ReasonName" ColumnName="ReasonName" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportBalances">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportBalance">
+        <MappingFragment StoreEntitySet="ReportBalance">
+          <ScalarProperty Name="CofferGold" ColumnName="CofferGold" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CurrentDeviation" ColumnName="CurrentDeviation" />
+          <ScalarProperty Name="WalletGold" ColumnName="WalletGold" />
+          <ScalarProperty Name="TotalLastDeviation" ColumnName="TotalLastDeviation" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="Deviation" ColumnName="Deviation" />
+          <ScalarProperty Name="TotalGoldDecrease" ColumnName="TotalGoldDecrease" />
+          <ScalarProperty Name="TotalGoldIncrease" ColumnName="TotalGoldIncrease" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="TotalLastGold" ColumnName="TotalLastGold" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Report_StatisticRevenue">
+      <EntityTypeMapping TypeName="SystemManagementModel.Report_StatisticRevenue">
+        <MappingFragment StoreEntitySet="Report_StatisticRevenue">
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="CountUser" ColumnName="CountUser" />
+          <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="WeekNumber" ColumnName="WeekNumber" />
+          <ScalarProperty Name="DateStatistic" ColumnName="DateStatistic" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportNPU_GetReportByDate" FunctionName="SystemManagementModel.Store.Ins_ReportNPU_GetReportByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportNPU_GetReportByDate_Result">
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="PlatFormId" ColumnName="PlatFormId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="NameValue" ColumnName="NameValue" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="INS_ReportPlayTurn_GetReportByDate" FunctionName="SystemManagementModel.Store.INS_ReportPlayTurn_GetReportByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.INS_ReportPlayTurn_GetReportByDate_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NumberPlayTurn" ColumnName="NumberPlayTurn" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportPlayTurns">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportPlayTurn">
+        <MappingFragment StoreEntitySet="ReportPlayTurn">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="NumberPlayTurn" ColumnName="NumberPlayTurn" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportLoseWinSystem_GetReport" FunctionName="SystemManagementModel.Store.Ins_ReportLoseWinSystem_GetReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportLoseWinSystem_GetReport_Result">
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="NameValue" ColumnName="NameValue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportLoseWins">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportLoseWin">
+        <MappingFragment StoreEntitySet="ReportLoseWin">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="IsWin" ColumnName="IsWin" />
+          <ScalarProperty Name="GoldBalance" ColumnName="GoldBalance" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportLoseWinSystems">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportLoseWinSystem">
+        <MappingFragment StoreEntitySet="ReportLoseWinSystem">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="IsWin" ColumnName="IsWin" />
+          <ScalarProperty Name="GoldBalance" ColumnName="GoldBalance" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportLoseWin_Search" FunctionName="SystemManagementModel.Store.Ins_ReportLoseWin_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportLoseWin_Search_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportFishDead_Search" FunctionName="SystemManagementModel.Store.Ins_ReportFishDead_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportFishDead_Search_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="FishID" ColumnName="FishID" />
+          <ScalarProperty Name="FishName" ColumnName="FishName" />
+          <ScalarProperty Name="TotalFish" ColumnName="TotalFish" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportFishDead_SearchByUser" FunctionName="SystemManagementModel.Store.Ins_ReportFishDead_SearchByUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportFishDead_SearchByUser_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="FishID" ColumnName="FishID" />
+          <ScalarProperty Name="FishName" ColumnName="FishName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="TotalFish" ColumnName="TotalFish" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportFishDeads">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportFishDead">
+        <MappingFragment StoreEntitySet="ReportFishDead">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="NumberDead" ColumnName="NumberDead" />
+          <ScalarProperty Name="FishName" ColumnName="FishName" />
+          <ScalarProperty Name="FishID" ColumnName="FishID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportArpus">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportArpu">
+        <MappingFragment StoreEntitySet="ReportArpu">
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="AverageAmount" ColumnName="AverageAmount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="TotalUser" ColumnName="TotalUser" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportPUs">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportPU">
+        <MappingFragment StoreEntitySet="ReportPU">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="TotalUser" ColumnName="TotalUser" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="GroupCampaignId" ColumnName="GroupCampaignId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NRUs">
+      <EntityTypeMapping TypeName="SystemManagementModel.NRU">
+        <MappingFragment StoreEntitySet="NRU">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportItemGame_GetReport" FunctionName="SystemManagementModel.Store.Ins_ReportItemGame_GetReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportItemGame_GetReport_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UsedQuantity" ColumnName="UsedQuantity" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportGoldDaily_GetData" FunctionName="SystemManagementModel.Store.Ins_ReportGoldDaily_GetData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportGoldDaily_GetData_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ValueCoin" ColumnName="ValueCoin" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="ReasonType" ColumnName="ReasonType" />
+          <ScalarProperty Name="CofferGold" ColumnName="CofferGold" />
+          <ScalarProperty Name="WalletGold" ColumnName="WalletGold" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportListHitFish">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportListHitFish">
+        <MappingFragment StoreEntitySet="ReportListHitFish">
+          <ScalarProperty Name="FishName" ColumnName="FishName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FishId" ColumnName="FishId" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="INS_ReportBalanceDetailLog_GetByDate" FunctionName="SystemManagementModel.Store.INS_ReportBalanceDetailLog_GetByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.INS_ReportBalanceDetailLog_GetByDate_Result">
+          <ScalarProperty Name="ReasonName" ColumnName="ReasonName" />
+          <ScalarProperty Name="ReasonType" ColumnName="ReasonType" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="INS_ReportBalanceDetailLog_ParseTable" FunctionName="SystemManagementModel.Store.INS_ReportBalanceDetailLog_ParseTable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.INS_ReportBalanceDetailLog_ParseTable_Result">
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="GoldDangKy" ColumnName="GoldDangKy" />
+          <ScalarProperty Name="GoldDangNhap" ColumnName="GoldDangNhap" />
+          <ScalarProperty Name="ChoiGameLienTuc" ColumnName="ChoiGameLienTuc" />
+          <ScalarProperty Name="HoanThanhNhiemVu" ColumnName="HoanThanhNhiemVu" />
+          <ScalarProperty Name="ChoiGame" ColumnName="ChoiGame" />
+          <ScalarProperty Name="XuLyTrietTieu" ColumnName="XuLyTrietTieu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportBalanceGold_GetReportByDate" FunctionName="SystemManagementModel.Store.Ins_ReportBalanceGold_GetReportByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportBalanceGold_GetReportByDate_Result">
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="TotalLastGold" ColumnName="TotalLastGold" />
+          <ScalarProperty Name="TotalGoldDecrease" ColumnName="TotalGoldDecrease" />
+          <ScalarProperty Name="TotalGoldIncrease" ColumnName="TotalGoldIncrease" />
+          <ScalarProperty Name="Deviation" ColumnName="Deviation" />
+          <ScalarProperty Name="TotalLastDeviation" ColumnName="TotalLastDeviation" />
+          <ScalarProperty Name="WalletGold" ColumnName="WalletGold" />
+          <ScalarProperty Name="CurrentDeviation" ColumnName="CurrentDeviation" />
+          <ScalarProperty Name="NameValue" ColumnName="NameValue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="INS_Report_E1606_UserShootFish_Get" FunctionName="SystemManagementModel.Store.INS_Report_E1606_UserShootFish_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.INS_Report_E1606_UserShootFish_Get_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_Report_SystemStatistics_GetInfoByReasonId" FunctionName="SystemManagementModel.Store.Ins_Report_SystemStatistics_GetInfoByReasonId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_Report_SystemStatistics_GetInfoByReasonId_Result">
+          <ScalarProperty Name="STT1" ColumnName="STT1" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="ReasonName" ColumnName="ReasonName" />
+          <ScalarProperty Name="ReasonType" ColumnName="ReasonType" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="CountTrans" ColumnName="CountTrans" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="TotalRow" ColumnName="TotalRow" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_Report_StatisticRevenue_GetStatisticRevenue" FunctionName="SystemManagementModel.Store.Ins_Report_StatisticRevenue_GetStatisticRevenue">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_Report_StatisticRevenue_GetStatisticRevenue_Result">
+          <ScalarProperty Name="DateStatistic" ColumnName="DateStatistic" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="TotalRevenue" ColumnName="TotalRevenue" />
+          <ScalarProperty Name="TotalCountUser" ColumnName="TotalCountUser" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportGameCCU_Get" FunctionName="SystemManagementModel.Store.Ins_ReportGameCCU_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportGameCCU_Get_Result">
+          <ScalarProperty Name="CCU" ColumnName="CCU" />
+          <ScalarProperty Name="PCU" ColumnName="PCU" />
+          <ScalarProperty Name="ACU" ColumnName="ACU" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="INS_ReportListHitFish_GetListHitFish" FunctionName="SystemManagementModel.Store.INS_ReportListHitFish_GetListHitFish">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.INS_ReportListHitFish_GetListHitFish_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="FishId" ColumnName="FishId" />
+          <ScalarProperty Name="FishName" ColumnName="FishName" />
+          <ScalarProperty Name="TotalFish" ColumnName="TotalFish" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportNPUs">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportNPU">
+        <MappingFragment StoreEntitySet="ReportNPU">
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PlatFormId" ColumnName="PlatFormId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportExchangeCard_Get" FunctionName="SystemManagementModel.Store.Ins_ReportExchangeCard_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportExchangeCard_Get_Result">
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="CardAmount" ColumnName="CardAmount" />
+          <ScalarProperty Name="GoldExchange" ColumnName="GoldExchange" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+          <ScalarProperty Name="Telco" ColumnName="Telco" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportNRU_Get" FunctionName="SystemManagementModel.Store.Ins_ReportNRU_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportNRU_Get_Result">
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportNPU_GetReport" FunctionName="SystemManagementModel.Store.Ins_ReportNPU_GetReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportNPU_GetReport_Result">
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="PlatFormId" ColumnName="PlatFormId" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportAUDetail_GetDataForAllOfThem" FunctionName="SystemManagementModel.Store.Ins_ReportAUDetail_GetDataForAllOfThem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportAUDetail_GetDataForAllOfThem_Result">
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportAUFinals">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportAUFinal">
+        <MappingFragment StoreEntitySet="ReportAUFinal">
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="FilterBy" ColumnName="FilterBy" />
+          <ScalarProperty Name="SubOfFilterBy" ColumnName="SubOfFilterBy" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportAUFinal_GetData" FunctionName="SystemManagementModel.Store.Ins_ReportAUFinal_GetData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportAUFinal_GetData_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="SubOfFilterBy" ColumnName="SubOfFilterBy" />
+          <ScalarProperty Name="FilterBy" ColumnName="FilterBy" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportAUs">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportAU">
+        <MappingFragment StoreEntitySet="ReportAU">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+          <ScalarProperty Name="VersionGame" ColumnName="VersionGame" />
+          <ScalarProperty Name="OpenProviderId" ColumnName="OpenProviderId" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportARPU_GetReport" FunctionName="SystemManagementModel.Store.Ins_ReportARPU_GetReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportARPU_GetReport_Result">
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="TotalUser" ColumnName="TotalUser" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="AverageAmount" ColumnName="AverageAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportPU_GetReportByDate" FunctionName="SystemManagementModel.Store.Ins_ReportPU_GetReportByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportPU_GetReportByDate_Result">
+          <ScalarProperty Name="TotalUser" ColumnName="TotalUser" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Report_NewDevice">
+      <EntityTypeMapping TypeName="SystemManagementModel.Report_NewDevice">
+        <MappingFragment StoreEntitySet="Report_NewDevice">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_Report_NewDevice_GetData" FunctionName="SystemManagementModel.Store.Ins_Report_NewDevice_GetData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_Report_NewDevice_GetData_Result">
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ReportADs">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportAD">
+        <MappingFragment StoreEntitySet="ReportAD">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+          <ScalarProperty Name="VersionGame" ColumnName="VersionGame" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportADDetails">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportADDetail">
+        <MappingFragment StoreEntitySet="ReportADDetail">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+          <ScalarProperty Name="VersionGame" ColumnName="VersionGame" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportADFinals">
+      <EntityTypeMapping TypeName="SystemManagementModel.ReportADFinal">
+        <MappingFragment StoreEntitySet="ReportADFinal">
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="FilterBy" ColumnName="FilterBy" />
+          <ScalarProperty Name="SubOfFilterBy" ColumnName="SubOfFilterBy" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportADFinal_GetData" FunctionName="SystemManagementModel.Store.Ins_ReportADFinal_GetData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportADFinal_GetData_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="SubOfFilterBy" ColumnName="SubOfFilterBy" />
+          <ScalarProperty Name="FilterBy" ColumnName="FilterBy" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ReportAU_Get" FunctionName="SystemManagementModel.Store.Ins_ReportAU_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_ReportAU_Get_Result">
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="OpenProviderId" ColumnName="OpenProviderId" />
+          <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+          <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_HistoryTop100LevelUser_GetData" FunctionName="SystemManagementModel.Store.Ins_HistoryTop100LevelUser_GetData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_HistoryTop100LevelUser_GetData_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="LevelUser" ColumnName="LevelUser" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="HistoryTop100LevelUser">
+      <EntityTypeMapping TypeName="SystemManagementModel.HistoryTop100LevelUser">
+        <MappingFragment StoreEntitySet="HistoryTop100LevelUser">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_GetTopLevelUser" FunctionName="SystemManagementModel.Store.Ins_GetTopLevelUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SystemManagementModel.Ins_GetTopLevelUser_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LevelUser" ColumnName="LevelUser" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,287 @@
+D:\Projects\BanCa\Inside\InsideBanCa\bin\MyConfig\MyConfig.config
+D:\Projects\BanCa\Inside\InsideBanCa\bin\InsideBanCa.dll.config
+D:\Projects\BanCa\Inside\InsideBanCa\bin\InsideBanCa.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\InsideBanCa.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Antlr3.Runtime.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\BusinessObject.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Castle.Core.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\DataAccess.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\EntitiesObject.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\GemBox.Spreadsheet.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\log4net.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Logger.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\MyConfig.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\MyUtility.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Newtonsoft.Json.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Net.Http.Formatting.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Helpers.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Http.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Http.WebHost.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Mvc.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Optimization.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Razor.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Deployment.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Razor.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\WebGrease.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\WebUtility.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\EntityFramework.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\BusinessObject.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\DataAccess.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\EntitiesObject.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Logger.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\MyUtility.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\WebUtility.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\MyConfig.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Antlr3.Runtime.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Castle.Core.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\log4net.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\Newtonsoft.Json.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Net.Http.Formatting.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Helpers.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Http.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Http.WebHost.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Mvc.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Optimization.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.Razor.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Deployment.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Razor.xml
+D:\Projects\BanCa\Inside\InsideBanCa\bin\EntityFramework.xml
+D:\Projects\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.csprojResolveAssemblyReference.cache
+D:\Projects\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.dll
+D:\Projects\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.pdb
+D:\Projects\BanCa\Inside\InsideBanCa\bin\EntityFramework.SqlServer.dll
+D:\Projects\BanCa\Inside\InsideBanCa\bin\EntityFramework.SqlServer.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\MyConfig\MyConfig.config
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\InsideBanCa.dll.config
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\InsideBanCa.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\InsideBanCa.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Antlr3.Runtime.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\BusinessObject.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Castle.Core.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\DataAccess.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\EntitiesObject.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\EntityFramework.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\EntityFramework.SqlServer.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\GemBox.Spreadsheet.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\HqCardckStockApi.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\log4net.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Logger.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Microsoft.Web.Infrastructure.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\MyConfig.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\MyUtility.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Newtonsoft.Json.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Net.Http.Formatting.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Helpers.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Http.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Http.WebHost.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Mvc.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Optimization.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Razor.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Deployment.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Razor.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\WebGrease.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\WebUtility.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\HqCardckStockApi.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\BusinessObject.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\DataAccess.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\EntitiesObject.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Logger.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\MyUtility.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\WebUtility.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\MyConfig.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Antlr3.Runtime.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Castle.Core.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\EntityFramework.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\EntityFramework.SqlServer.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\log4net.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Newtonsoft.Json.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Net.Http.Formatting.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Helpers.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Http.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Http.WebHost.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Mvc.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Optimization.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.Razor.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Deployment.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Razor.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.csprojResolveAssemblyReference.cache
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Security.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Owin.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Security.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.pdb
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.xml
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\NPOI.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\CKFinder.dll
+D:\WEB\P111Web\BanCa\Inside\InsideBanCa\bin\CKFinder.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.csprojResolveAssemblyReference.cache
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\MyConfig\MyConfig.config
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\InsideBanCa.dll.config
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\InsideBanCa.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\InsideBanCa.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Antlr3.Runtime.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\BusinessObject.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Castle.Core.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\CKFinder.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\DataAccess.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\EntitiesObject.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\EntityFramework.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\EntityFramework.SqlServer.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\GemBox.Spreadsheet.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\log4net.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Logger.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Security.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\MyConfig.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\MyMemCache.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\MyUtility.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Newtonsoft.Json.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\NPOI.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Owin.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\StackExchange.Redis.StrongName.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Net.Http.Formatting.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Helpers.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Http.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Http.WebHost.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Mvc.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Optimization.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Razor.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Razor.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\WebGrease.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\WebUtility.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\BusinessObject.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\DataAccess.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\EntitiesObject.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Logger.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\MyUtility.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\WebUtility.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\MyConfig.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Antlr3.Runtime.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Castle.Core.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\CKFinder.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\EntityFramework.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\EntityFramework.SqlServer.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\log4net.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Security.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\MyMemCache.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\Newtonsoft.Json.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\StackExchange.Redis.StrongName.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\StackExchange.Redis.StrongName.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Net.Http.Formatting.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Helpers.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Http.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Http.WebHost.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Mvc.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Optimization.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.Razor.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Razor.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\MyConfig\MyConfig.config
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\InsideBanCa.dll.config
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\InsideBanCa.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\InsideBanCa.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Antlr3.Runtime.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\BusinessObject.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Castle.Core.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\CKFinder.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\DataAccess.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\EntitiesObject.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\EntityFramework.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\EntityFramework.SqlServer.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\GemBox.Spreadsheet.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\log4net.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Logger.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Security.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\MyConfig.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\MyMemCache.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\MyUtility.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Newtonsoft.Json.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\NPOI.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Owin.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\StackExchange.Redis.StrongName.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Net.Http.Formatting.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Helpers.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Http.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Http.WebHost.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Mvc.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Optimization.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Razor.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Razor.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\WebGrease.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\WebUtility.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\BusinessObject.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\DataAccess.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\EntitiesObject.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Logger.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\MyUtility.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\WebUtility.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\MyConfig.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Antlr3.Runtime.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Castle.Core.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Castle.Windsor.Lifestyles.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\CKFinder.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\EntityFramework.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\EntityFramework.SqlServer.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\log4net.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Microsoft.Owin.Security.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\MyMemCache.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\Newtonsoft.Json.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\StackExchange.Redis.StrongName.pdb
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\StackExchange.Redis.StrongName.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Net.Http.Formatting.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Helpers.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Http.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Http.WebHost.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Mvc.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Optimization.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.Razor.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\bin\System.Web.WebPages.Razor.xml
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.csprojResolveAssemblyReference.cache
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.dll
+C:\Users\ALO\Desktop\Admin\BanCa\Inside\InsideBanCa\obj\Debug\InsideBanCa.pdb

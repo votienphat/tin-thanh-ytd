@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EventManagementModelStoreContainer" CdmEntityContainer="EventManagementEntities">
+    <EntitySetMapping Name="PopupPromotions">
+      <EntityTypeMapping TypeName="EventManagementModel.PopupPromotion">
+        <MappingFragment StoreEntitySet="PopupPromotion">
+          <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+          <ScalarProperty Name="AssociationList" ColumnName="AssociationList" />
+          <ScalarProperty Name="UserList" ColumnName="UserList" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_EventPromotion_MapArticle" FunctionName="EventManagementModel.Store.Ins_EventPromotion_MapArticle" />
+    <FunctionImportMapping FunctionImportName="Out_EventPromotion_GetInfo" FunctionName="EventManagementModel.Store.Out_EventPromotion_GetInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Out_EventPromotion_GetInfo_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginDisplayTime" ColumnName="BeginDisplayTime" />
+          <ScalarProperty Name="EndDisplayTime" ColumnName="EndDisplayTime" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="RunOn" ColumnName="RunOn" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_EventPromotion_GetAllPromotion" FunctionName="EventManagementModel.Store.Ins_EventPromotion_GetAllPromotion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_EventPromotion_GetAllPromotion_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginDisplayTime" ColumnName="BeginDisplayTime" />
+          <ScalarProperty Name="EndDisplayTime" ColumnName="EndDisplayTime" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ConfigData" ColumnName="ConfigData" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="EventPromotions">
+      <EntityTypeMapping TypeName="EventManagementModel.EventPromotion">
+        <MappingFragment StoreEntitySet="EventPromotion">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="RunOn" ColumnName="RunOn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ConfigData" ColumnName="ConfigData" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EndDisplayTime" ColumnName="EndDisplayTime" />
+          <ScalarProperty Name="BeginDisplayTime" ColumnName="BeginDisplayTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="E1605_AwardMakeFriend">
+      <EntityTypeMapping TypeName="EventManagementModel.E1605_AwardMakeFriend">
+        <MappingFragment StoreEntitySet="E1605_AwardMakeFriend">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="GoldAward" ColumnName="GoldAward" />
+          <ScalarProperty Name="UserFriendID" ColumnName="UserFriendID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_E1605_AwardMakeFriend_GetList" FunctionName="EventManagementModel.Store.Ins_E1605_AwardMakeFriend_GetList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_E1605_AwardMakeFriend_GetList_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UserFriendID" ColumnName="UserFriendID" />
+          <ScalarProperty Name="GoldAward" ColumnName="GoldAward" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="FriendDisplayName" ColumnName="FriendDisplayName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_E1601_GiftGoldLoginConfig_UpdateConfig" FunctionName="EventManagementModel.Store.Ins_E1601_GiftGoldLoginConfig_UpdateConfig" />
+    <FunctionImportMapping FunctionImportName="Ins_EventPromotion_GetEventById" FunctionName="EventManagementModel.Store.Ins_EventPromotion_GetEventById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_EventPromotion_GetEventById_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginDisplayTime" ColumnName="BeginDisplayTime" />
+          <ScalarProperty Name="EndDisplayTime" ColumnName="EndDisplayTime" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ConfigData" ColumnName="ConfigData" />
+          <ScalarProperty Name="RunOn" ColumnName="RunOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_EventPromotion_UpdateConfigHourOnline" FunctionName="EventManagementModel.Store.Ins_EventPromotion_UpdateConfigHourOnline" />
+    <FunctionImportMapping FunctionImportName="Ins_EventPromotion_UpdateConfigNhiemVu" FunctionName="EventManagementModel.Store.Ins_EventPromotion_UpdateConfigNhiemVu" />
+    <FunctionImportMapping FunctionImportName="Ins_EventPromotion_UpdateConfigDay" FunctionName="EventManagementModel.Store.Ins_EventPromotion_UpdateConfigDay" />
+    <FunctionImportMapping FunctionImportName="Ins_FishCollection_Acchive" FunctionName="EventManagementModel.Store.Ins_FishCollection_Acchive">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_FishCollection_Acchive_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="QuantityCollection" ColumnName="QuantityCollection" />
+          <ScalarProperty Name="MissionType" ColumnName="MissionType" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="TotalFish" ColumnName="TotalFish" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_FishCollection_GetTop" FunctionName="EventManagementModel.Store.Ins_FishCollection_GetTop">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_FishCollection_GetTop_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="QuantityCollection" ColumnName="QuantityCollection" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="E1608_GiftGoldRegister">
+      <EntityTypeMapping TypeName="EventManagementModel.E1608_GiftGoldRegister">
+        <MappingFragment StoreEntitySet="E1608_GiftGoldRegister">
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="LimitIP" ColumnName="LimitIP" />
+          <ScalarProperty Name="LimitIPFb" ColumnName="LimitIPFb" />
+          <ScalarProperty Name="LimitDevice" ColumnName="LimitDevice" />
+          <ScalarProperty Name="LimitDeviceFb" ColumnName="LimitDeviceFb" />
+          <ScalarProperty Name="ValueGold" ColumnName="ValueGold" />
+          <ScalarProperty Name="ValueGoldFb" ColumnName="ValueGoldFb" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_E1608_GiftGoldRegister_UpdateGiftGoldRegister" FunctionName="EventManagementModel.Store.Ins_E1608_GiftGoldRegister_UpdateGiftGoldRegister" />
+    <FunctionImportMapping FunctionImportName="Ins_EventPromotion_UpdateEventById" FunctionName="EventManagementModel.Store.Ins_EventPromotion_UpdateEventById" />
+    <FunctionImportMapping FunctionImportName="Ins_ConfigFallGiftBox_DeleteConfig" FunctionName="EventManagementModel.Store.Ins_ConfigFallGiftBox_DeleteConfig" />
+    <EntitySetMapping Name="ConfigFallGiftBoxes">
+      <EntityTypeMapping TypeName="EventManagementModel.ConfigFallGiftBox">
+        <MappingFragment StoreEntitySet="ConfigFallGiftBox">
+          <ScalarProperty Name="MaxOnDevice" ColumnName="MaxOnDevice" />
+          <ScalarProperty Name="MaxOnIP" ColumnName="MaxOnIP" />
+          <ScalarProperty Name="MinValueOf" ColumnName="MinValueOf" />
+          <ScalarProperty Name="MaxValueOf" ColumnName="MaxValueOf" />
+          <ScalarProperty Name="MaxOnUser" ColumnName="MaxOnUser" />
+          <ScalarProperty Name="MaxFall" ColumnName="MaxFall" />
+          <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+          <ScalarProperty Name="TimeBegin" ColumnName="TimeBegin" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ConfigFallGiftBox_AddNewConfig" FunctionName="EventManagementModel.Store.Ins_ConfigFallGiftBox_AddNewConfig" />
+    <FunctionImportMapping FunctionImportName="Ins_ConfigFallGiftBox_GetFullData" FunctionName="EventManagementModel.Store.Ins_ConfigFallGiftBox_GetFullData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_ConfigFallGiftBox_GetFullData_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="TimeBegin" ColumnName="TimeBegin" />
+          <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+          <ScalarProperty Name="MaxFall" ColumnName="MaxFall" />
+          <ScalarProperty Name="MaxOnUser" ColumnName="MaxOnUser" />
+          <ScalarProperty Name="MaxValueOf" ColumnName="MaxValueOf" />
+          <ScalarProperty Name="MinValueOf" ColumnName="MinValueOf" />
+          <ScalarProperty Name="MaxOnIP" ColumnName="MaxOnIP" />
+          <ScalarProperty Name="MaxOnDevice" ColumnName="MaxOnDevice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_ConfigFallGiftBox_UpdateConfig" FunctionName="EventManagementModel.Store.Ins_ConfigFallGiftBox_UpdateConfig" />
+    <FunctionImportMapping FunctionImportName="Ins_ConfigFallGiftBox_SetDataForInsertGiftDrop" FunctionName="EventManagementModel.Store.Ins_ConfigFallGiftBox_SetDataForInsertGiftDrop" />
+    <EntitySetMapping Name="E1609_ConfigLuckyEveryday">
+      <EntityTypeMapping TypeName="EventManagementModel.E1609_ConfigLuckyEveryday">
+        <MappingFragment StoreEntitySet="E1609_ConfigLuckyEveryday">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Quanlity" ColumnName="Quanlity" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Present" ColumnName="Present" />
+          <ScalarProperty Name="PeriodOfTime" ColumnName="PeriodOfTime" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_E1609_ConfigLuckyEveryday_UpdateConfig" FunctionName="EventManagementModel.Store.Ins_E1609_ConfigLuckyEveryday_UpdateConfig" />
+    <FunctionImportMapping FunctionImportName="Ins_E1609_ConfigLuckyEveryday_GetFullData" FunctionName="EventManagementModel.Store.Ins_E1609_ConfigLuckyEveryday_GetFullData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_E1609_ConfigLuckyEveryday_GetFullData_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="PeriodOfTime" ColumnName="PeriodOfTime" />
+          <ScalarProperty Name="TimeFrom" ColumnName="TimeFrom" />
+          <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+          <ScalarProperty Name="Present" ColumnName="Present" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Quanlity" ColumnName="Quanlity" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_E1609_LogConfigLuckyEveryday_WriteLog" FunctionName="EventManagementModel.Store.Ins_E1609_LogConfigLuckyEveryday_WriteLog" />
+    <FunctionImportMapping FunctionImportName="Ins_E1611_EventTopBanCa_InsertCaDuaTop" FunctionName="EventManagementModel.Store.Ins_E1611_EventTopBanCa_InsertCaDuaTop" />
+    <FunctionImportMapping FunctionImportName="Ins_E1611_EventTopBanCa_GetData" FunctionName="EventManagementModel.Store.Ins_E1611_EventTopBanCa_GetData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_E1611_EventTopBanCa_GetData_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FishID" ColumnName="FishID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Out_E1604_TopAttackBoss_GetDataTop" FunctionName="EventManagementModel.Store.Out_E1604_TopAttackBoss_GetDataTop">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Out_E1604_TopAttackBoss_GetDataTop_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="ValueUser" ColumnName="ValueUser" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_E1609_PeriodTimeLuckyEverday_Get" FunctionName="EventManagementModel.Store.Ins_E1609_PeriodTimeLuckyEverday_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_E1609_PeriodTimeLuckyEverday_Get_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TimeFrom" ColumnName="TimeFrom" />
+          <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_TopFishDead" FunctionName="EventManagementModel.Store.Ins_TopFishDead">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_TopFishDead_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_E1609_LuckyEverday_Get" FunctionName="EventManagementModel.Store.Ins_E1609_LuckyEverday_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_E1609_LuckyEverday_Get_Result">
+          <ScalarProperty Name="STT1" ColumnName="STT1" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+          <ScalarProperty Name="Present" ColumnName="Present" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="PeriodOfTimeValue" ColumnName="PeriodOfTimeValue" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="PubUserID" ColumnName="PubUserID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IsRecieveGold" ColumnName="IsRecieveGold" />
+          <ScalarProperty Name="ChargeDate" ColumnName="ChargeDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_TopAttactBoss_RedisGetTopData" FunctionName="EventManagementModel.Store.Ins_TopAttactBoss_RedisGetTopData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.Ins_TopAttactBoss_RedisGetTopData_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="ValueUser" ColumnName="ValueUser" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

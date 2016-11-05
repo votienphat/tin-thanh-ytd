@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EventManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ConfigFallGiftBox">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="TimeBegin" Type="int" />
+    <Property Name="TimeEnd" Type="int" />
+    <Property Name="MaxFall" Type="int" />
+    <Property Name="MaxOnUser" Type="int" />
+    <Property Name="MaxValueOf" Type="int" />
+    <Property Name="MinValueOf" Type="int" />
+    <Property Name="MaxOnIP" Type="int" />
+    <Property Name="MaxOnDevice" Type="int" />
+  </EntityType>
+  <EntityType Name="E1605_AwardMakeFriend">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="UserFriendID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserFriendID" Type="int" Nullable="false" />
+    <Property Name="GoldAward" Type="money" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="E1608_GiftGoldRegister">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ValueGoldFb" Type="money" />
+    <Property Name="ValueGold" Type="money" />
+    <Property Name="LimitDeviceFb" Type="int" />
+    <Property Name="LimitDevice" Type="int" />
+    <Property Name="LimitIPFb" Type="int" />
+    <Property Name="LimitIP" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="E1609_ConfigLuckyEveryday">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventId" Type="int" />
+    <Property Name="PeriodOfTime" Type="int" />
+    <Property Name="Present" Type="nvarchar" MaxLength="50" />
+    <Property Name="Value" Type="money" />
+    <Property Name="Quanlity" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EventPromotion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="EventId" Type="int" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" />
+    <Property Name="BeginTime" Type="datetime" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="BeginDisplayTime" Type="datetime" />
+    <Property Name="EndDisplayTime" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="ConfigData" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Status" Type="int" />
+    <Property Name="RunOn" Type="int" />
+    <Property Name="IsDelete" Type="int" />
+  </EntityType>
+  <EntityType Name="PopupPromotion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Target" Type="varchar" MaxLength="50" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="PublishDate" Type="datetime" Nullable="false" />
+    <Property Name="UserList" Type="varchar" MaxLength="4000" />
+    <Property Name="AssociationList" Type="varchar" MaxLength="4000" />
+    <Property Name="OrderIndex" Type="int" />
+  </EntityType>
+  <Function Name="Ins_ConfigFallGiftBox_AddNewConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EventId" Type="int" Mode="In" />
+    <Parameter Name="TimeBegin" Type="int" Mode="In" />
+    <Parameter Name="TimeEnd" Type="int" Mode="In" />
+    <Parameter Name="MaxFall" Type="int" Mode="In" />
+    <Parameter Name="MaxOnUser" Type="int" Mode="In" />
+    <Parameter Name="MaxValueOf" Type="int" Mode="In" />
+    <Parameter Name="MinValueOf" Type="int" Mode="In" />
+    <Parameter Name="MaxOnIP" Type="int" Mode="In" />
+    <Parameter Name="MaxOnDevice" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ConfigFallGiftBox_DeleteConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ConfigId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ConfigFallGiftBox_GetFullData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ins_ConfigFallGiftBox_SetDataForInsertGiftDrop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ins_ConfigFallGiftBox_UpdateConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ConfigId" Type="int" Mode="In" />
+    <Parameter Name="EventId" Type="int" Mode="In" />
+    <Parameter Name="TimeBegin" Type="int" Mode="In" />
+    <Parameter Name="TimeEnd" Type="int" Mode="In" />
+    <Parameter Name="MaxFall" Type="int" Mode="In" />
+    <Parameter Name="MaxOnUser" Type="int" Mode="In" />
+    <Parameter Name="MaxValueOf" Type="int" Mode="In" />
+    <Parameter Name="MinValueOf" Type="int" Mode="In" />
+    <Parameter Name="MaxOnIP" Type="int" Mode="In" />
+    <Parameter Name="MaxOnDevice" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_E1601_GiftGoldLoginConfig_UpdateConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="enable" Type="bit" Mode="In" />
+    <Parameter Name="goldminimun" Type="money" Mode="In" />
+    <Parameter Name="typepromotion" Type="int" Mode="In" />
+    <Parameter Name="isCheckProtect" Type="bit" Mode="In" />
+    <Parameter Name="numberIpAddress" Type="int" Mode="In" />
+    <Parameter Name="numberDevice" Type="int" Mode="In" />
+    <Parameter Name="isCheckedGold" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_E1605_AwardMakeFriend_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Search" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateBegin" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_E1608_GiftGoldRegister_UpdateGiftGoldRegister" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ValueGoldFb" Type="money" Mode="In" />
+    <Parameter Name="ValueGold" Type="money" Mode="In" />
+    <Parameter Name="LimitDeviceFb" Type="int" Mode="In" />
+    <Parameter Name="LimitDevice" Type="int" Mode="In" />
+    <Parameter Name="LimitIPFb" Type="int" Mode="In" />
+    <Parameter Name="LimitIP" Type="int" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_E1609_ConfigLuckyEveryday_GetFullData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ins_E1609_ConfigLuckyEveryday_UpdateConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ConfigId" Type="int" Mode="In" />
+    <Parameter Name="Present" Type="nvarchar" Mode="In" />
+    <Parameter Name="Value" Type="money" Mode="In" />
+    <Parameter Name="Quanlity" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_E1609_LogConfigLuckyEveryday_WriteLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EventId" Type="int" Mode="In" />
+    <Parameter Name="EventDate" Type="date" Mode="In" />
+    <Parameter Name="PeriodOfTime" Type="int" Mode="In" />
+    <Parameter Name="PeriodOfTimeValue" Type="nvarchar" Mode="In" />
+    <Parameter Name="Present" Type="nvarchar" Mode="In" />
+    <Parameter Name="Value" Type="money" Mode="In" />
+    <Parameter Name="Quanlity" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_E1609_LuckyEverday_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateFrom" Type="date" Mode="In" />
+    <Parameter Name="DateTo" Type="date" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="OrderDirection" Type="int" Mode="In" />
+    <Parameter Name="PeriodOfTime" Type="int" Mode="In" />
+    <Parameter Name="IsRecieveGold" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_E1609_PeriodTimeLuckyEverday_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ins_E1611_EventTopBanCa_GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ins_E1611_EventTopBanCa_InsertCaDuaTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FishId" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Seperate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Ins_EventPromotion_GetAllPromotion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idDelete" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_EventPromotion_GetEventById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EventId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_EventPromotion_MapArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="PublicDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_EventPromotion_UpdateConfigDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="addcore" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_EventPromotion_UpdateConfigHourOnline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="onlinetime" Type="int" Mode="In" />
+    <Parameter Name="onlinetimemoney" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_EventPromotion_UpdateConfigNhiemVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="missiontimer" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_EventPromotion_UpdateEventById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="eventId" Type="int" Mode="In" />
+    <Parameter Name="beginDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+    <Parameter Name="isEnable" Type="bit" Mode="In" />
+    <Parameter Name="dateBeginShow" Type="datetime" Mode="In" />
+    <Parameter Name="dateEndShow" Type="datetime" Mode="In" />
+    <Parameter Name="config" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="nameShowWeb" Type="nvarchar" Mode="In" />
+    <Parameter Name="RunOn" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_FishCollection_Acchive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="top" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_FishCollection_GetTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="top" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_TopAttactBoss_RedisGetTopData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="DateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="Top" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_TopFishDead" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_E1604_TopAttackBoss_GetDataTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="top" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Out_EventPromotion_GetInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="EventManagementModelStoreContainer">
+    <EntitySet Name="ConfigFallGiftBox" EntityType="Self.ConfigFallGiftBox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="E1605_AwardMakeFriend" EntityType="Self.E1605_AwardMakeFriend" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="E1608_GiftGoldRegister" EntityType="Self.E1608_GiftGoldRegister" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="E1609_ConfigLuckyEveryday" EntityType="Self.E1609_ConfigLuckyEveryday" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventPromotion" EntityType="Self.EventPromotion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PopupPromotion" EntityType="Self.PopupPromotion" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

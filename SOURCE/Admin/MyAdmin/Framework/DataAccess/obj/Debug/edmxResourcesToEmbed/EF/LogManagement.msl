@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LogManagementModelStoreContainer" CdmEntityContainer="LogManagementEntities">
+    <EntitySetMapping Name="LoginLogs">
+      <EntityTypeMapping TypeName="LogManagementModel.LoginLog">
+        <MappingFragment StoreEntitySet="LoginLog">
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+          <ScalarProperty Name="HardwareID" ColumnName="HardwareID" />
+          <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="TokenExpiredTime" ColumnName="TokenExpiredTime" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="OpenUserID" ColumnName="OpenUserID" />
+          <ScalarProperty Name="OpenProviderID" ColumnName="OpenProviderID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegisterLogs">
+      <EntityTypeMapping TypeName="LogManagementModel.RegisterLog">
+        <MappingFragment StoreEntitySet="RegisterLog">
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="HardwareID" ColumnName="HardwareID" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="OpenUserID" ColumnName="OpenUserID" />
+          <ScalarProperty Name="OpenProfiderID" ColumnName="OpenProfiderID" />
+          <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Out_LoginLog_GetForSign" FunctionName="LogManagementModel.Store.Out_LoginLog_GetForSign">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogManagementModel.Out_LoginLog_GetForSign_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="OpenProviderID" ColumnName="OpenProviderID" />
+          <ScalarProperty Name="OpenUserID" ColumnName="OpenUserID" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+          <ScalarProperty Name="HardwareID" ColumnName="HardwareID" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="TokenExpiredTime" ColumnName="TokenExpiredTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CoinLogs">
+      <EntityTypeMapping TypeName="LogManagementModel.CoinLog">
+        <MappingFragment StoreEntitySet="CoinLog">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ValueCoin" ColumnName="ValueCoin" />
+          <ScalarProperty Name="CurrenCoin" ColumnName="CurrenCoin" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Out_PaymentLog_InsertData" FunctionName="LogManagementModel.Store.Out_PaymentLog_InsertData" />
+    <FunctionImportMapping FunctionImportName="Out_PaymentLog_UpdateData" FunctionName="LogManagementModel.Store.Out_PaymentLog_UpdateData" />
+    <EntitySetMapping Name="PaymentLogs">
+      <EntityTypeMapping TypeName="LogManagementModel.PaymentLog">
+        <MappingFragment StoreEntitySet="PaymentLog">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="HardwareID" ColumnName="HardwareID" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Out_PaymentLog_GetHistoryPagingByUserId" FunctionName="LogManagementModel.Store.Out_PaymentLog_GetHistoryPagingByUserId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogManagementModel.Out_PaymentLog_GetHistoryPagingByUserId_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="LogManagementModel.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationPermissions">
+      <EntityTypeMapping TypeName="LogManagementModel.NotificationPermission">
+        <MappingFragment StoreEntitySet="NotificationPermission">
+          <ScalarProperty Name="NotificationReasonID" ColumnName="NotificationReasonID" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationReasons">
+      <EntityTypeMapping TypeName="LogManagementModel.NotificationReason">
+        <MappingFragment StoreEntitySet="NotificationReason">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="NotificationReason1" ColumnName="NotificationReason" />
+          <ScalarProperty Name="NotificationReasonID" ColumnName="NotificationReasonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ins_Notification_GetNotificationByTime" FunctionName="LogManagementModel.Store.Ins_Notification_GetNotificationByTime" />
+    <FunctionImportMapping FunctionImportName="Ins_NotificationReason_GetNotificationReasonByAdminID" FunctionName="LogManagementModel.Store.Ins_NotificationReason_GetNotificationReasonByAdminID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogManagementModel.Ins_NotificationReason_GetNotificationReasonByAdminID_Result">
+          <ScalarProperty Name="NotificationReasonID" ColumnName="NotificationReasonID" />
+          <ScalarProperty Name="NotificationReason" ColumnName="NotificationReason" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="LevelGameLogs">
+      <EntityTypeMapping TypeName="LogManagementModel.LevelGameLog">
+        <MappingFragment StoreEntitySet="LevelGameLog">
+          <ScalarProperty Name="OpenProviderId" ColumnName="OpenProviderId" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Out_TopKillBoss_GetTop" FunctionName="LogManagementModel.Store.Out_TopKillBoss_GetTop">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogManagementModel.Out_TopKillBoss_GetTop_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="GoldWin" ColumnName="GoldWin" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="RichGameLogs">
+      <EntityTypeMapping TypeName="LogManagementModel.RichGameLog">
+        <MappingFragment StoreEntitySet="RichGameLog">
+          <ScalarProperty Name="OpenProviderId" ColumnName="OpenProviderId" />
+          <ScalarProperty Name="EmotionPath" ColumnName="EmotionPath" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Coin" ColumnName="Coin" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Out_RichGameLog_GetData" FunctionName="LogManagementModel.Store.Out_RichGameLog_GetData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogManagementModel.Out_RichGameLog_GetData_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Coin" ColumnName="Coin" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="EmotionPath" ColumnName="EmotionPath" />
+          <ScalarProperty Name="GameName" ColumnName="GameName" />
+          <ScalarProperty Name="UserIdLogin" ColumnName="UserIdLogin" />
+          <ScalarProperty Name="IsFriend" ColumnName="IsFriend" />
+          <ScalarProperty Name="OpenProviderId" ColumnName="OpenProviderId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Out_LevelGameLog_GetLevelGame" FunctionName="LogManagementModel.Store.Out_LevelGameLog_GetLevelGame">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogManagementModel.Out_LevelGameLog_GetLevelGame_Result">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="EmotionPath" ColumnName="EmotionPath" />
+          <ScalarProperty Name="GameName" ColumnName="GameName" />
+          <ScalarProperty Name="UserIdLogin" ColumnName="UserIdLogin" />
+          <ScalarProperty Name="OpenProviderId" ColumnName="OpenProviderId" />
+          <ScalarProperty Name="IsFriend" ColumnName="IsFriend" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_Notification_AddNotification" FunctionName="LogManagementModel.Store.Ins_Notification_AddNotification" />
+    <FunctionImportMapping FunctionImportName="Ins_NotificationReason_GetNotificationReasonByID" FunctionName="LogManagementModel.Store.Ins_NotificationReason_GetNotificationReasonByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogManagementModel.Ins_NotificationReason_GetNotificationReasonByID_Result">
+          <ScalarProperty Name="NotificationReasonID" ColumnName="NotificationReasonID" />
+          <ScalarProperty Name="NotificationReason" ColumnName="NotificationReason" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

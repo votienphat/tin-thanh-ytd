@@ -1,0 +1,920 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PubUserID" Type="int" />
+    <Property Name="Username" Type="nvarchar" MaxLength="100" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmotionPath" Type="nvarchar" MaxLength="500" />
+    <Property Name="PasswordSalt" Type="varchar" MaxLength="500" />
+    <Property Name="Password" Type="varchar" MaxLength="500" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastLogin" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Token" Type="varchar" MaxLength="500" />
+    <Property Name="TokenExpiredTime" Type="datetime" />
+    <Property Name="OpenProviderId" Type="int" />
+    <Property Name="OpenUserId" Type="varchar" MaxLength="50" />
+    <Property Name="PlatformId" Type="int" />
+    <Property Name="HardwareId" Type="nvarchar" MaxLength="100" />
+    <Property Name="CampaignId" Type="int" />
+    <Property Name="ChannelId" Type="int" />
+    <Property Name="VersionGame" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+    </Key>
+    <Property Name="ArticleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssociationID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="TextID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Abstract" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Body" Type="ntext" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="ViewCount" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="CommentCount" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="AdminStatus" Type="int" />
+    <Property Name="ImageLink" Type="nvarchar" MaxLength="200" />
+    <Property Name="ImageHome" Type="varchar" MaxLength="250" />
+    <Property Name="IsCommented" Type="bit" Nullable="false" />
+    <Property Name="DomainID" Type="int" Nullable="false" />
+    <Property Name="HotStatus" Type="int" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="DisplayTarget" Type="int" />
+    <Property Name="HotOrNew" Type="int" />
+    <Property Name="AdminID" Type="int" />
+    <Property Name="PublicDate" Type="datetime" />
+    <Property Name="HotExpire" Type="datetime" />
+    <Property Name="NewExpire" Type="datetime" />
+    <Property Name="GroupID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="CardStock">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProviderId" Type="int" />
+    <Property Name="CardType" Type="int" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="CardSeri" Type="varchar" MaxLength="50" />
+    <Property Name="CardPin" Type="varchar" MaxLength="512" />
+    <Property Name="IsUse" Type="bit" />
+    <Property Name="TransImportId" Type="bigint" />
+    <Property Name="TransExportId" Type="bigint" />
+    <Property Name="UserIdUsed" Type="int" />
+    <Property Name="DateExport" Type="datetime" />
+    <Property Name="DateImport" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="CardTypeName" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ExchangeConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExchangeType" Type="int" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="Gold" Type="money" />
+    <Property Name="CardType" Type="int" />
+    <Property Name="Telco" Type="varchar" MaxLength="10" />
+    <Property Name="IsEnable" Type="bit" />
+    <Property Name="ImageLink" Type="nvarchar" MaxLength="500" />
+    <Property Name="ActiveImageLink" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Farmer">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IsFamer" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FriendRelationship">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserFriendID" Type="int" />
+    <Property Name="OpenProviderID" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Relationship" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateUpdated" Type="datetime" />
+    <Property Name="InviteType" Type="int" />
+  </EntityType>
+  <EntityType Name="ItemGame">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TypeItem" Type="int" Nullable="false" />
+    <Property Name="StatusItem" Type="int" Nullable="false" />
+    <Property Name="ParentItemID" Type="int" Nullable="false" />
+    <Property Name="QuantitySplit" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="ImagePath" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="IsUseBoxGift" Type="bit" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+    <Property Name="MoneyItems" Type="money" Nullable="false" />
+    <Property Name="TimeEffect" Type="int" Nullable="false" />
+    <Property Name="SubNumber" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="MaxPriceMarket" Type="money" />
+    <Property Name="MinPriceMarket" Type="money" />
+    <Property Name="PricePromotion" Type="money" />
+    <Property Name="PriceRemove" Type="money" />
+    <Property Name="TimePromotion" Type="int" />
+    <Property Name="CardType" Type="int" />
+  </EntityType>
+  <EntityType Name="ItemGameUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="IsSplit" Type="bit" />
+    <Property Name="LocationAward" Type="int" />
+    <Property Name="DayCreated" Type="date" />
+    <Property Name="DateUpdated" Type="datetime" />
+    <Property Name="ValueItem" Type="int" />
+  </EntityType>
+  <EntityType Name="Kiot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KiotName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TypeKiot" Type="int" />
+    <Property Name="ValueKiot" Type="money" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateUpdated" Type="datetime" />
+    <Property Name="NumberIndex" Type="int" />
+    <Property Name="IsDisable" Type="int" />
+  </EntityType>
+  <EntityType Name="KiotPromotion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="KiotID" Type="int" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="PricePromotion" Type="money" />
+    <Property Name="BeginPromotion" Type="datetime" />
+    <Property Name="EndPromotion" Type="datetime" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="KiotUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KiotID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Priority" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LogCardOpenGiftBox">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="TranId" Type="varchar" MaxLength="1000" />
+    <Property Name="ItemGameUserId" Type="int" />
+    <Property Name="Serial" Type="varchar" MaxLength="20" />
+    <Property Name="PinCode" Type="varchar" MaxLength="20" />
+    <Property Name="CardType" Type="int" />
+    <Property Name="CardAmount" Type="int" />
+    <Property Name="TransDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Result" Type="int" />
+    <Property Name="PartnerMessage" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="LogCardTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Serial" Type="varchar" MaxLength="20" />
+    <Property Name="PinCard" Type="varchar" MaxLength="20" />
+    <Property Name="CardType" Type="int" />
+    <Property Name="CardAmount" Type="int" />
+    <Property Name="TransDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Result" Type="int" />
+    <Property Name="PartnerID" Type="int" />
+    <Property Name="PartnerTransID" Type="varchar" MaxLength="100" />
+    <Property Name="PartnerMessage" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+    <Property Name="PlatformId" Type="int" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="100" />
+    <Property Name="ChannelID" Type="int" />
+  </EntityType>
+  <EntityType Name="LogCreditTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AgentPPID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="CurrentCoin" Type="money" />
+    <Property Name="CoinTrans" Type="money" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="txn_id" Type="varchar" MaxLength="100" />
+    <Property Name="Token" Type="nvarchar" MaxLength="4000" />
+    <Property Name="CardType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="ReceiveGoldDate" Type="datetime" />
+    <Property Name="TransactionType" Type="int" />
+    <Property Name="ChannelID" Type="int" />
+  </EntityType>
+  <EntityType Name="LogExchange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransExportId" Type="varchar" MaxLength="64" />
+    <Property Name="Coin" Type="money" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2048" />
+    <Property Name="Status" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="LogType" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+    <Property Name="PlatformID" Type="int" />
+    <Property Name="HardwareID" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LogTransactionGold">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CurrentValue" Type="money" />
+    <Property Name="ChangeValue" Type="money" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="LogTypeId" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="IdHistory" Type="int" />
+    <Property Name="ClientTarget" Type="int" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MyConfig">
+    <Key>
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="ntext" />
+    <Property Name="Group" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="OfflineMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SenderId" Type="int" />
+    <Property Name="ReceiverId" Type="int" />
+    <Property Name="MessageContent" Type="ntext" />
+    <Property Name="MessageType" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="IsRead" Type="bit" />
+    <Property Name="ReadDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="20" />
+    <Property Name="PlatformId" Type="int" />
+    <Property Name="HardwareId" Type="varchar" MaxLength="100" />
+    <Property Name="IsSystem" Type="bit" />
+    <Property Name="ParentId" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentType" Type="int" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Gold" Type="money" />
+    <Property Name="CardType" Type="int" />
+    <Property Name="Telco" Type="varchar" MaxLength="10" />
+    <Property Name="IsEnable" Type="bit" />
+    <Property Name="PacketName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Gender" Type="bit" />
+    <Property Name="CMND" Type="varchar" MaxLength="20" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Ranking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="RankingDetail">
+    <Key>
+      <PropertyRef Name="RankingCode" />
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="RankingCode" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DateReport" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="200" />
+    <Property Name="OrderNo" Type="int" />
+    <Property Name="Value" Type="money" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="WalletType" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="WalletType" Type="int" Nullable="false" />
+    <Property Name="Coin" Type="money" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Password" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="WalletStar">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Coin" Type="money" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <Function Name="Out_Account_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="api">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Api_A_Gold_UpdateForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="int" Mode="In" />
+    <Parameter Name="Gold" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Api_LogCreditTrans_InsertDepositInApp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="TransID" Type="varchar" Mode="In" />
+    <Parameter Name="CurrentCoin" Type="money" Mode="In" />
+    <Parameter Name="CoinTrans" Type="money" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Token" Type="nvarchar" Mode="In" />
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="CardTypeString" Type="nvarchar" Mode="In" />
+    <Parameter Name="CardAmount" Type="money" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_Account_GetNameByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ApprovaExchangeCard_GetDataUserExchange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="keyWord" Type="nvarchar" Mode="In" />
+    <Parameter Name="staus" Type="int" Mode="In" />
+    <Parameter Name="cardType" Type="int" Mode="In" />
+    <Parameter Name="cardAmount" Type="money" Mode="In" />
+    <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="pageNumber" Type="int" Mode="In" />
+    <Parameter Name="pageSize" Type="int" Mode="In" />
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="OrderDirection" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+    <Parameter Name="TotalGoldExchange" Type="money" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_CardStock_CheckExists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_CardStock_LogExport_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CardAmount" Type="int" Mode="In" />
+    <Parameter Name="Quantity" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+    <Parameter Name="ClientTarget" Type="varchar" Mode="In" />
+    <Parameter Name="ClientIp" Type="varchar" Mode="In" />
+    <Parameter Name="ClientAgent" Type="varchar" Mode="In" />
+    <Parameter Name="ReasonId" Type="int" Mode="In" />
+    <Parameter Name="ReasonName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CardSerial" Type="varchar" Mode="InOut" />
+    <Parameter Name="CardPin" Type="varchar" Mode="InOut" />
+    <Parameter Name="CardType" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_CardStock_LogExport_Add_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TransExportId" Type="varchar" Mode="In" />
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="CardAmount" Type="int" Mode="In" />
+    <Parameter Name="CardSerial" Type="varchar" Mode="In" />
+    <Parameter Name="CardPin" Type="varchar" Mode="In" />
+    <Parameter Name="Quantity" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+    <Parameter Name="ClientTarget" Type="varchar" Mode="In" />
+    <Parameter Name="ClientIp" Type="varchar" Mode="In" />
+    <Parameter Name="ClientAgent" Type="varchar" Mode="In" />
+    <Parameter Name="ReasonId" Type="int" Mode="In" />
+    <Parameter Name="ReasonName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CardTypeName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Ins_Game_KickOrUpdateGold" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="WsPacket" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MyConfig_GetConfigByKey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="key" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Out_Account_AddAvatar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="EmotionPath" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Out_Account_GetCoin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Account_GetLinkAvatar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Account_GetUsersOnline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Account_GetUsersOnline_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Article_GetArticleDetailsForClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TextID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Out_Article_GetDisplayOnGame" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="top" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Article_GetDisplayOnGameById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Article_SearchByCate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CateId" Type="int" Mode="In" />
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="PageLength" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_ATPPlayerRecord_GetTimePlayToday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Call_DBGame_GetServer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="flatformAND" Type="bit" Mode="In" />
+    <Parameter Name="flatformIOS" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Out_ExchangeCard_Cancel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LogId" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+    <Parameter Name="WalletNow" Type="money" Mode="InOut" />
+  </Function>
+  <Function Name="Out_ExchangeCard_GetHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_ExchangeConfig_GetByType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExchangeType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Farmer_CheckIsFarmer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationShip_AutoMakeFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="ListOpenUserId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Delimiter" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationship_CheckIsFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="UserFriendId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationship_GetFriendInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="friendId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationship_GetListFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationship_GetTopLevelFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Top" Type="int" Mode="In" />
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_FriendRelationship_GetTopRickFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Top" Type="int" Mode="In" />
+    <Parameter Name="Position" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_FriendRelationship_GiftGoldForFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="userFriendId" Type="int" Mode="In" />
+    <Parameter Name="goldGift" Type="money" Mode="In" />
+    <Parameter Name="times" Type="int" Mode="In" />
+    <Parameter Name="reasonIdSend" Type="int" Mode="In" />
+    <Parameter Name="reasonIdReceive" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationship_MakeFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserFriendID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationship_MakeFriend_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserFriendID" Type="int" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_FriendRelationship_RemoveFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="friendId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationship_SaveInviteExistsOpenProviderId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="UserFriendID" Type="int" Mode="In" />
+    <Parameter Name="ListOpenProviderID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Delimiter" Type="nchar" Mode="In" />
+    <Parameter Name="Relationship" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_FriendRelationship_SaveInviteFriendRegisted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="UserFriendID" Type="int" Mode="In" />
+    <Parameter Name="ListOpenProviderID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Delimiter" Type="nchar" Mode="In" />
+    <Parameter Name="Relationship" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Game_CheckIsPlayGame" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_ItemGame_GetItemGameList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Out_ItemGame_ProcessOpenGiftBox" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+    <Parameter Name="exchange1" Type="float" Mode="In" />
+    <Parameter Name="exchange2" Type="float" Mode="In" />
+    <Parameter Name="doanhThu" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Out_ItemGame_ProcessOpenGiftBoxTypeCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="param1" Type="float" Mode="In" />
+    <Parameter Name="param2" Type="float" Mode="In" />
+    <Parameter Name="x" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Out_ItemGame_ProcessOpenGiftBoxTypeCard_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="param1" Type="float" Mode="In" />
+    <Parameter Name="param2" Type="float" Mode="In" />
+    <Parameter Name="x" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Out_ItemGame_ProcessOpenGiftBoxTypeCard_V3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_ItemGameUser_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Kiot_BuyItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="SalerID" Type="int" Mode="In" />
+    <Parameter Name="KiotID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="TaxValue" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Out_Kiot_BuyKiot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="KiotID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Kiot_GetAllItemUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Kiot_GetAllKiot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Out_Kiot_GetAllKiot_V3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Kiot_GetItemSold" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Kiot_GetKiotUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Kiot_GetRandomItemOfFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="TopHasPromotion" Type="int" Mode="In" />
+    <Parameter Name="TopNoPromotion" Type="int" Mode="In" />
+    <Parameter Name="NotInKiotUserID" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Out_Kiot_RemoveItemGameUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="KiotID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="ReasonID" Type="int" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_Kiot_SaveItemGameUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="KiotID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="Quantity" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="money" Mode="In" />
+    <Parameter Name="PricePromotion" Type="money" Mode="In" />
+    <Parameter Name="ReasonID" Type="int" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_Kiot_UpdatePromotion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="KiotID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="ReasonID" Type="int" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_LogCardOpenGiftBox_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="TransID" Type="int" Mode="In" />
+    <Parameter Name="ItemGameUserId" Type="int" Mode="In" />
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="CardAmount" Type="int" Mode="In" />
+    <Parameter Name="TransDate" Type="datetime" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="In" />
+    <Parameter Name="PartnerMessage" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Out_LogCardOpenGiftBox_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="TransId" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Serial" Type="varchar" Mode="In" />
+    <Parameter Name="Pincode" Type="varchar" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="In" />
+    <Parameter Name="PartnerMessage" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Out_LogCardTrans_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Serial" Type="varchar" Mode="In" />
+    <Parameter Name="PinCard" Type="varchar" Mode="In" />
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="IPAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PlatformID" Type="int" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_LogCardTrans_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="transID" Type="int" Mode="In" />
+    <Parameter Name="PartnerTransID" Type="varchar" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="In" />
+    <Parameter Name="CardAmount" Type="int" Mode="In" />
+    <Parameter Name="PartnerID" Type="int" Mode="In" />
+    <Parameter Name="PartnerMessage" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Out_LogCreditTrans_updateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="token" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="amount" Type="money" Mode="In" />
+    <Parameter Name="CurrentCoin" Type="money" Mode="In" />
+    <Parameter Name="coinTrans" Type="money" Mode="In" />
+  </Function>
+  <Function Name="Out_LogExchange_GetTotalGoldAndIsExchanged" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="CardAmount" Type="money" Mode="In" />
+    <Parameter Name="TotalAmount" Type="money" Mode="InOut" />
+    <Parameter Name="IsExchangedThisCardAmount" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="Out_LogExchange_GetTotalGoldAndIsExchanged_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="CardAmount" Type="money" Mode="In" />
+  </Function>
+  <Function Name="Out_LogExchangeCard_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="CardName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CardAmount" Type="money" Mode="In" />
+    <Parameter Name="IPAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PlatformID" Type="int" Mode="In" />
+    <Parameter Name="HardwareID" Type="varchar" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="In" />
+    <Parameter Name="IsApproval" Type="bit" Mode="In" />
+    <Parameter Name="LogId" Type="int" Mode="InOut" />
+    <Parameter Name="RoundId" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_LogExchangeCard_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Result" Type="int" Mode="In" />
+    <Parameter Name="Serial" Type="varchar" Mode="In" />
+    <Parameter Name="PinCode" Type="varchar" Mode="In" />
+    <Parameter Name="PartnerId" Type="int" Mode="In" />
+    <Parameter Name="PartnerTransId" Type="varchar" Mode="In" />
+    <Parameter Name="PartnerMessage" Type="nvarchar" Mode="In" />
+    <Parameter Name="serviceResult" Type="bit" Mode="In" />
+    <Parameter Name="LogId" Type="int" Mode="In" />
+    <Parameter Name="GoldTransfer" Type="money" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_MyConfig_GetCardConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Key" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Out_OfflineMessage_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="ListID" Type="varchar" Mode="In" />
+    <Parameter Name="Separetor" Type="nchar" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_OfflineMessage_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="MessageType" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_OfflineMessage_GetDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="MessageId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_OfflineMessage_Send" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SenderId" Type="int" Mode="In" />
+    <Parameter Name="ReceiverId" Type="int" Mode="In" />
+    <Parameter Name="MessageContent" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="MessageType" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="IpAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PlatformId" Type="int" Mode="In" />
+    <Parameter Name="HardwareId" Type="varchar" Mode="In" />
+    <Parameter Name="IsSystem" Type="bit" Mode="In" />
+    <Parameter Name="ParentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_PaymentConfig_GetByAmount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="cardType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_PaymentConfig_GetRateCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Out_PaymentConfig_GetRateGoogleIAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="paymentType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Profile_CheckIsUpdatePhoneNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Profile_GetCMND" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Profile_GetPhoneNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Profile_UpdateCMND" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="CMND" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Out_Profile_UpdatePhoneNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="Phone" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Out_RankingDetail_GetTopChargeCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_RankingDetail_GetTopExChangeCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Wallet_AddOrSubtractGoldUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="adminId" Type="int" Mode="In" />
+    <Parameter Name="GoldTransfer" Type="money" Mode="In" />
+    <Parameter Name="ReasonId" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ActionId" Type="int" Mode="In" />
+    <Parameter Name="IsMobile" Type="bit" Mode="In" />
+    <Parameter Name="LoginType" Type="int" Mode="In" />
+    <Parameter Name="clientTarget" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Wallet_AddOrSubtractStar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="MatchID" Type="int" Mode="In" />
+    <Parameter Name="ReasonId" Type="int" Mode="In" />
+    <Parameter Name="GoldTransfer" Type="money" Mode="In" />
+  </Function>
+  <Function Name="Out_Wallet_DebositOrWithdrawCoffer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="GoldTransfer" Type="decimal" Mode="In" />
+    <Parameter Name="ActionType" Type="int" Mode="In" />
+    <Parameter Name="IPAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PlatformID" Type="int" Mode="In" />
+    <Parameter Name="HardwareID" Type="varchar" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+    <Parameter Name="WalletNow" Type="money" Mode="InOut" />
+    <Parameter Name="CofferNow" Type="money" Mode="InOut" />
+  </Function>
+  <Function Name="Out_Wallet_ExchangeCheckEnoughGold" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="CardAmount" Type="money" Mode="In" />
+  </Function>
+  <Function Name="Out_Wallet_ExchangeCoin_ToCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="PaymentType" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="WalletType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_Wallet_GiftCoinFriend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="FriendId" Type="int" Mode="In" />
+    <Parameter Name="CoinValue" Type="money" Mode="In" />
+    <Parameter Name="AmountPersion" Type="int" Mode="In" />
+    <Parameter Name="DateCreate" Type="datetime" Mode="InOut" />
+  </Function>
+  <Function Name="Out_Wallet_SubtractGoldExchangeCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="GoldTransfer" Type="money" Mode="In" />
+  </Function>
+  <Function Name="Out_Wallet_UpdateCoin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="walletType" Type="int" Mode="In" />
+    <Parameter Name="coin" Type="money" Mode="In" />
+  </Function>
+  <Function Name="Out_WalletStar_ExchangeCheckEnoughGold" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="CardType" Type="int" Mode="In" />
+    <Parameter Name="CardAmount" Type="money" Mode="In" />
+  </Function>
+  <Function Name="Out_WalletStar_UpdateGold" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="GoldTransfer" Type="money" Mode="In" />
+    <Parameter Name="ReasonCoinId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="UserModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardStock" EntityType="Self.CardStock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExchangeConfig" EntityType="Self.ExchangeConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Farmer" EntityType="Self.Farmer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FriendRelationship" EntityType="Self.FriendRelationship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemGame" EntityType="Self.ItemGame" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemGameUser" EntityType="Self.ItemGameUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kiot" EntityType="Self.Kiot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KiotPromotion" EntityType="Self.KiotPromotion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KiotUser" EntityType="Self.KiotUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogCardOpenGiftBox" EntityType="Self.LogCardOpenGiftBox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogCardTrans" EntityType="Self.LogCardTrans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogCreditTrans" EntityType="Self.LogCreditTrans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogExchange" EntityType="Self.LogExchange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogTransactionGold" EntityType="Self.LogTransactionGold" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MyConfig" EntityType="Self.MyConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfflineMessage" EntityType="Self.OfflineMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentConfig" EntityType="Self.PaymentConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ranking" EntityType="Self.Ranking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RankingDetail" EntityType="Self.RankingDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WalletStar" EntityType="Self.WalletStar" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

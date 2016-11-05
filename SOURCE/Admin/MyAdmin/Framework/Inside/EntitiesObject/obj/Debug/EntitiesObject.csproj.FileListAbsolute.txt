@@ -1,0 +1,31 @@
+D:\WEB\P111Web\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+D:\WEB\P111Web\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll
+D:\WEB\P111Web\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.pdb
+D:\WEB\P111Web\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.dll
+D:\WEB\P111Web\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.xml
+D:\WEB\P111Web\BanCa\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.csprojResolveAssemblyReference.cache
+D:\WEB\P111Web\BanCa\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.dll
+D:\WEB\P111Web\BanCa\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.xml
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.pdb
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.dll
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.xml
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.csprojResolveAssemblyReference.cache
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.dll
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.pdb
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.pdb
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.dll
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.xml
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.csprojResolveAssemblyReference.cache
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.dll
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.pdb

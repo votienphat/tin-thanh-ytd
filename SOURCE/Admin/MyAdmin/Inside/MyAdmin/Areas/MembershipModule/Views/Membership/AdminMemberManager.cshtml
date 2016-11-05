@@ -1,0 +1,190 @@
+﻿@model BusinessObject.MembershipModule.Enums.AdminGroupModel
+
+@{
+    Layout = "~/Views/Shared/Metronic/_MainLayout.cshtml";
+    ViewBag.Title = "Danh sách thành viên";
+    ViewBag.PageName = "Page Name";
+    Layout = null;
+}
+<div class="outer">
+    <div class="inner bg-light lter">
+        <!--Begin Datatables-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    @*<header>
+                        <div class="icons">
+                        </div>
+                        <h5>
+                            <span>Danh sách thành viên</span>
+                        </h5>
+                    </header>*@
+                    <div class="form-group">
+                        @*<div class="form-group col-sm-2 nopading-left">
+                            <label class="">Từ khóa</label>
+                            <div>
+                                <input type='text' id='Keyword' class="form-control" placeholder="Nhập MTK để tìm kiếm..." />
+                            </div>
+                        </div>*@
+
+                        <div class="form-group col-sm-3">
+                            <div class="form-group col-sm-8">
+                                <label class="">Đã tham gia</label>
+                                <div>
+                                    @Html.DropDownList("MemberJoin", ViewBag.MemberJoin as SelectList, new { @class = "form-control", style = "width: 150px; float: left;" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <div class="form-group col-sm-8">
+                                <label class="">Trạng thái</label>
+                                <div>
+                                    @Html.DropDownList("Visible", ViewBag.Visible as SelectList, new { @class = "form-control", style = "width: 150px; float: left;" })
+                                </div>
+                            </div>
+                        </div>
+                      @*  <div class="form-group col-sm-3">
+                            <label class="">Trạng thái</label>
+                            <div>
+                                <select id="gameId" class="form-control">
+                                    <option value="0" selected="selected">Tất cả</option>
+                                    @foreach (var item in ViewBag.Game)
+                                    {
+                                        <option value="@item.GameID">@item.VNName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>*@
+                        <div class="form-group col-sm-2">
+                            <label class="">&nbsp;</label>
+                            <div>
+                                <button class="btn btn-primary" id="btnSearch" type="button" onclick="">Tìm</button>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div style="margin-bottom: 10px;">
+                            <button class="btn btn-success" id="btnSearch" type="button" onclick="UpdateStatusMember(false,3);">Thêm vào nhóm</button>
+                            <button class="btn btn-danger" id="btnSearch" type="button" onclick="UpdateStatusMember(false,4);">Xóa khỏi nhóm</button>
+                            <button class="btn btn-primary" id="btnSearch" type="button" onclick="UpdateStatusMember(false,1);">Hiển thị</button>
+                            <button class="btn btn-warning" id="btnSearch" type="button" onclick="UpdateStatusMember(true,1);">Ẩn</button>
+                            <button class="btn btn-success" style="float: right;" id="btnSearch" type="button" onclick="ClonePermisstionGroup();">Clone</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <table id="myTable2" class="table table-bordered table-condensed table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>STT</th>
+                            <th>ID</th>
+                            <th>Tên</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày tạo</th>
+                            <th>Có trong nhóm</th>
+                            <th>Tên nhóm</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var oTable2 = null;
+    var CreateoTable = function () {
+        
+        oTable2 = $('#myTable2')
+            .on('preXhr.dt', function() {
+                ShowLoading();
+            })
+            .on('xhr.dt', function() {
+                HideLoading();
+            })
+            .dataTable({
+                "scrollX": true,
+                "bServerSide": true,
+                "bFilter": false,
+                "sAjaxSource": '@Url.Action("GetListMemberByGroupID", "Membership")',
+                "sServerMethod": "POST",
+                "fnServerParams": function(aoData) {
+                    aoData.push({ name: "GroupId", value: '@Model.ID' });
+                    aoData.push({ name: "MemberJoin", value: $("#MemberJoin").val() });
+                    aoData.push({ name: "Status", value: $("#Visible").val() });
+                    aoData.push({ name: "DateFrom", value: $("#datetimeBegin").val() });
+                    aoData.push({ name: "DateTo", value: $("#datetimeEnd").val() });
+                },
+                "columns": [
+                    { "data": "Option", "sClass": "align-center", "bSortable": false },
+                    { "data": "STT", "sClass": "align-center", "bSortable": false },
+                    { "data": "ID", "sClass": "align-left", "bSortable": false },
+                    { "data": "NickName", "sClass": "align-left"},
+                    { "data": "IsLockedOut", "sClass": "align-center", "bSortable": false },
+                    { "data": "CreateDate", "sClass": "align-center" },
+                    { "data": "CheckGroup", "sClass": "align-center", "bSortable": false },
+                    { "data": "GroupName", "sClass": "align-left", "bSortable": false }
+                ],
+                //"order": [[4, "desc"]],
+                "lengthMenu": [[10, 20, 30, 50, 100], [10, 20, 30, 50, 100]],
+            });
+    };
+
+    //type: 1:trạng thái, 3:thêm vào nhóm, 4: xóa khỏi nhóm
+    var UpdateStatusMember = function (isLockedOut, type) {
+        var length = $("#myTable2 input.cb-status:checked").length;
+        if (length == 0) {
+            showErrorToastr("<span>Chưa có trạng thái nào được chọn</span>");
+            return false;
+        }
+        var ids = "";
+        $("#myTable2 input.cb-status:checked").each(function(i) {
+            ids += "," + $(this).attr("id");
+        });
+
+        $.post('@Url.Action("UpdateStatusMember", "Membership")', { ids: ids, isLockedOut: isLockedOut, GroupId: '@Model.ID', type: type }, function (data) {
+            if (data == true) {
+                showSuccessToastr("<span>Lưu thành công.</span>");
+                oTable2.fnFilter();
+            } else {
+                showErrorToastr("<span>Fail.</span>");
+            }
+        });
+    };
+    
+    //clone quyền của nhóm cho user
+    var ClonePermisstionGroup = function () {
+        var length = $("#myTable2 input.cb-status:checked").length;
+        if (length == 0) {
+            showErrorToastr("<span>Chưa có trạng thái nào được chọn</span>");
+            return false;
+        }
+        var ids = "";
+        $("#myTable2 input.cb-status:checked").each(function (i) {
+            ids += "," + $(this).attr("id");
+        });
+        if (confirm("Bạn có muốn clone quyền nhóm cho user không ?")) {
+            $.post('@Url.Action("ClonePermisstionGroup", "Membership")', { ids: ids, GroupId: '@Model.ID' }, function(data) {
+                if (data == true) {
+                    showSuccessToastr("<span>Clone quyền nhóm cho user thành công.</span>");
+                } else {
+                    showErrorToastr("<span>Clone quyền nhóm cho user không thành công.</span>");
+                }
+            });
+        }
+    };
+    
+    $(document).ready(function () {
+        $("#btnSearch").click(function () {
+            if (oTable2 == null)
+                CreateoTable();
+            else {
+                oTable2.fnFilter();
+            }
+        });
+    });
+</script>

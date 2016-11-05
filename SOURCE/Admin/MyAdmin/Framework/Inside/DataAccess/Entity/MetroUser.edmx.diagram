@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="623ded4585064d11b4c88d30710da0fb" Name="Diagram1" ZoomLevel="90">
+        <EntityTypeShape EntityType="UserModel.CardStockTransaction" Width="1.5" PointX="3.75" PointY="7.75" />
+        <EntityTypeShape EntityType="UserModel.LogExchangeCard" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UserModel.PaymentConfig" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UserModel.Profile" Width="1.5" PointX="7.75" PointY="12.75" />
+        <EntityTypeShape EntityType="UserModel.Article" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UserModel.Category" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UserModel.FastNew" Width="1.5" PointX="2.75" PointY="3.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

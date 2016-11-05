@@ -1,0 +1,6 @@
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\bin\Debug\EntitiesObject.pdb
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\obj\Debug\EntitiesObject.csprojResolveAssemblyReference.cache
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\obj\Debug\EntitiesObject.dll
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\obj\Debug\EntitiesObject.pdb

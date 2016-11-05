@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SystemManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HistoryTop100LevelUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NRU">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="CampaignId" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="DateType" />
+    </Key>
+    <Property Name="ChannelId" Type="int" Nullable="false" />
+    <Property Name="DateReport" Type="date" Nullable="false" />
+    <Property Name="CampaignId" Type="int" Nullable="false" />
+    <Property Name="PlatformId" Type="int" Nullable="false" />
+    <Property Name="DateType" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Report_NewDevice">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="CampaignId" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="DateType" />
+    </Key>
+    <Property Name="ChannelId" Type="int" Nullable="false" />
+    <Property Name="DateReport" Type="date" Nullable="false" />
+    <Property Name="CampaignId" Type="int" Nullable="false" />
+    <Property Name="PlatformId" Type="int" Nullable="false" />
+    <Property Name="DateType" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Report_StatisticRevenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateStatistic" Type="date" />
+    <Property Name="WeekNumber" Type="int" />
+    <Property Name="ChannelId" Type="int" />
+    <Property Name="PlatformId" Type="int" />
+    <Property Name="CampaignId" Type="int" />
+    <Property Name="Revenue" Type="money" />
+    <Property Name="CountUser" Type="int" />
+    <Property Name="LogType" Type="int" />
+  </EntityType>
+  <EntityType Name="ReportAD">
+    <Key>
+      <PropertyRef Name="ChannelID" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="VersionGame" />
+      <PropertyRef Name="TypeDate" />
+      <PropertyRef Name="ReportDate" />
+    </Key>
+    <Property Name="ChannelID" Type="int" Nullable="false" />
+    <Property Name="PlatformId" Type="int" Nullable="false" />
+    <Property Name="VersionGame" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="TypeDate" Type="int" Nullable="false" />
+    <Property Name="ReportDate" Type="date" Nullable="false" />
+    <Property Name="TotalCount" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReportADDetail">
+    <Key>
+      <PropertyRef Name="LoginDate" />
+      <PropertyRef Name="DeviceID" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="VersionGame" />
+      <PropertyRef Name="ChannelID" />
+    </Key>
+    <Property Name="LoginDate" Type="date" Nullable="false" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PlatformId" Type="int" Nullable="false" />
+    <Property Name="VersionGame" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="ChannelID" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReportADFinal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportDate" Type="date" />
+    <Property Name="Total" Type="int" />
+    <Property Name="SubOfFilterBy" Type="int" />
+    <Property Name="FilterBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateType" Type="int" />
+  </EntityType>
+  <EntityType Name="ReportArpu">
+    <Key>
+      <PropertyRef Name="ReportDate" />
+      <PropertyRef Name="DateType" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="ChannelId" />
+    </Key>
+    <Property Name="ReportDate" Type="datetime" Nullable="false" />
+    <Property Name="DateType" Type="int" Nullable="false" />
+    <Property Name="PlatformId" Type="int" Nullable="false" />
+    <Property Name="ChannelId" Type="int" Nullable="false" />
+    <Property Name="TotalUser" Type="int" Nullable="false" />
+    <Property Name="TotalAmount" Type="money" Nullable="false" />
+    <Property Name="AverageAmount" Type="money" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReportAU">
+    <Key>
+      <PropertyRef Name="ChannelID" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="OpenProviderId" />
+      <PropertyRef Name="VersionGame" />
+      <PropertyRef Name="TypeDate" />
+      <PropertyRef Name="ReportDate" />
+    </Key>
+    <Property Name="ChannelID" Type="int" Nullable="false" />
+    <Property Name="PlatformId" Type="int" Nullable="false" />
+    <Property Name="OpenProviderId" Type="int" Nullable="false" />
+    <Property Name="VersionGame" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="TypeDate" Type="int" Nullable="false" />
+    <Property Name="ReportDate" Type="date" Nullable="false" />
+    <Property Name="TotalCount" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReportAUFinal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportDate" Type="date" />
+    <Property Name="Total" Type="int" />
+    <Property Name="SubOfFilterBy" Type="int" />
+    <Property Name="FilterBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateType" Type="int" />
+  </EntityType>
+  <EntityType Name="ReportBalance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TotalLastGold" Type="money" />
+    <Property Name="TotalLastDeviation" Type="money" />
+    <Property Name="TotalGoldIncrease" Type="money" />
+    <Property Name="TotalGoldDecrease" Type="money" />
+    <Property Name="TotalGold" Type="money" />
+    <Property Name="WalletGold" Type="money" />
+    <Property Name="CofferGold" Type="money" />
+    <Property Name="Deviation" Type="money" />
+    <Property Name="CurrentDeviation" Type="money" />
+    <Property Name="RecordDate" Type="date" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReportBalanceDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReasonId" Type="int" />
+    <Property Name="ReasonName" Type="nvarchar" MaxLength="512" />
+    <Property Name="ReasonType" Type="int" />
+    <Property Name="Gold" Type="money" />
+    <Property Name="CountTrans" Type="int" />
+    <Property Name="RecordDate" Type="date" />
+  </EntityType>
+  <EntityType Name="ReportFishDead">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="FishID" Type="int" />
+    <Property Name="FishName" Type="nvarchar" MaxLength="200" />
+    <Property Name="NumberDead" Type="int" />
+    <Property Name="DateReport" Type="date" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReportGameCCU">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="GameName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CCU" Type="int" />
+    <Property Name="PCU" Type="int" />
+    <Property Name="ACU" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ReportDate" Type="datetime" Nullable="false" />
+    <Property Name="TypeDate" Type="int" />
+    <Property Name="RoomType" Type="int" />
+  </EntityType>
+  <EntityType Name="ReportListHitFish">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateReport" Type="datetime" />
+    <Property Name="DateType" Type="int" />
+    <Property Name="FishId" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="FishName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ReportLoseWin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="GoldBalance" Type="money" />
+    <Property Name="IsWin" Type="bit" />
+    <Property Name="DateReport" Type="date" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReportLoseWinSystem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GoldBalance" Type="money" />
+    <Property Name="IsWin" Type="bit" />
+    <Property Name="DateReport" Type="date" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReportNPU">
+    <Key>
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="TypeDate" />
+      <PropertyRef Name="ChannelId" />
+      <PropertyRef Name="CampaignId" />
+      <PropertyRef Name="PlatFormId" />
+    </Key>
+    <Property Name="DateReport" Type="date" Nullable="false" />
+    <Property Name="TypeDate" Type="int" Nullable="false" />
+    <Property Name="ChannelId" Type="int" Nullable="false" />
+    <Property Name="CampaignId" Type="int" Nullable="false" />
+    <Property Name="PlatFormId" Type="int" Nullable="false" />
+    <Property Name="TotalAmount" Type="money" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ReportPlayTurn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumberPlayTurn" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReportPU">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+      <PropertyRef Name="CampaignId" />
+      <PropertyRef Name="GroupCampaignId" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="DateType" />
+    </Key>
+    <Property Name="ChannelId" Type="int" Nullable="false" />
+    <Property Name="CampaignId" Type="int" Nullable="false" />
+    <Property Name="GroupCampaignId" Type="int" Nullable="false" />
+    <Property Name="PlatformId" Type="int" Nullable="false" />
+    <Property Name="DateReport" Type="date" Nullable="false" />
+    <Property Name="DateType" Type="int" Nullable="false" />
+    <Property Name="TotalUser" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <Function Name="Ins_GetTopLevelUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_HistoryTop100LevelUser_GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="int" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="INS_Report_E1606_UserShootFish_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="top" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_Report_NewDevice_GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TypeDate" Type="int" Mode="In" />
+    <Parameter Name="Platform" Type="int" Mode="In" />
+    <Parameter Name="DateBegin" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+    <Parameter Name="ChannelId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_Report_StatisticRevenue_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_Report_StatisticRevenue_GetStatisticRevenue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ChannelId" Type="int" Mode="In" />
+    <Parameter Name="CampaignId" Type="int" Mode="In" />
+    <Parameter Name="PlatformId" Type="int" Mode="In" />
+    <Parameter Name="GroupType" Type="int" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_Report_SystemStatistics_GetInfoByReasonId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ReasonId" Type="int" Mode="In" />
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="OrderDirection" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_ReportADFinal_GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="date" Mode="In" />
+    <Parameter Name="EndDate" Type="date" Mode="In" />
+    <Parameter Name="TypeDate" Type="int" Mode="In" />
+    <Parameter Name="Platform" Type="int" Mode="In" />
+    <Parameter Name="VersionGame" Type="nvarchar" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportARPU_GetReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="groupIndex" Type="int" Mode="In" />
+    <Parameter Name="PlatformId" Type="int" Mode="In" />
+    <Parameter Name="ChannelId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportAU_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateStart" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+    <Parameter Name="TypeDate" Type="int" Mode="In" />
+    <Parameter Name="Platform" Type="int" Mode="In" />
+    <Parameter Name="VersionGame" Type="varchar" Mode="In" />
+    <Parameter Name="OpenProviderId" Type="int" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportAUDetail_GetDataForAllOfThem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateStart" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+    <Parameter Name="Platform" Type="int" Mode="In" />
+    <Parameter Name="VersionGame" Type="varchar" Mode="In" />
+    <Parameter Name="OpenProviderId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportAUFinal_GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="date" Mode="In" />
+    <Parameter Name="EndDate" Type="date" Mode="In" />
+    <Parameter Name="TypeDate" Type="int" Mode="In" />
+    <Parameter Name="Platform" Type="int" Mode="In" />
+    <Parameter Name="VersionGame" Type="nvarchar" Mode="In" />
+    <Parameter Name="OpenProviderId" Type="int" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="INS_ReportBalanceDetailLog_GetByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="ReasonId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="INS_ReportBalanceDetailLog_ParseTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportBalanceGold_GetReportByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dateBegin" Type="date" Mode="In" />
+    <Parameter Name="dateEnd" Type="date" Mode="In" />
+    <Parameter Name="groupIndex" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportExchangeCard_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TypeDate" Type="int" Mode="In" />
+    <Parameter Name="Platform" Type="int" Mode="In" />
+    <Parameter Name="DateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="DateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportFishDead_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTimeFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTimeTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportFishDead_SearchByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SearchUserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTimeFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTimeTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportGameCCU_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="groupIndex" Type="int" Mode="In" />
+    <Parameter Name="roomType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportGoldDaily_GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="useDateBegin" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportGoldDaily_ReportCoinManagerByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="useDateBegin" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportItemGame_GetReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TypeDate" Type="int" Mode="In" />
+    <Parameter Name="DateBegin" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+  </Function>
+  <Function Name="INS_ReportListHitFish_GetListHitFish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="datebegin" Type="date" Mode="In" />
+    <Parameter Name="dateend" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportLoseWin_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Top" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="int" Mode="In" />
+    <Parameter Name="DateTimeFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTimeTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportLoseWinSystem_GetReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dateBegin" Type="date" Mode="In" />
+    <Parameter Name="dateEnd" Type="date" Mode="In" />
+    <Parameter Name="groupIndex" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportNPU_GetReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TypeDate" Type="int" Mode="In" />
+    <Parameter Name="Platform" Type="int" Mode="In" />
+    <Parameter Name="ChannelId" Type="int" Mode="In" />
+    <Parameter Name="DateBegin" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportNPU_GetReportByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="channelId" Type="int" Mode="In" />
+    <Parameter Name="platFormId" Type="int" Mode="In" />
+    <Parameter Name="campaignId" Type="int" Mode="In" />
+    <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+    <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="groupIndex" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportNRU_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TypeDate" Type="int" Mode="In" />
+    <Parameter Name="Platform" Type="int" Mode="In" />
+    <Parameter Name="DateBegin" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+    <Parameter Name="ChannelId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="INS_ReportPlayTurn_GetReportByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="date" Mode="In" />
+    <Parameter Name="DateTo" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Ins_ReportPU_GetReportByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="platFormId" Type="int" Mode="In" />
+    <Parameter Name="campaignId" Type="int" Mode="In" />
+    <Parameter Name="dateBegin" Type="date" Mode="In" />
+    <Parameter Name="dateEnd" Type="date" Mode="In" />
+    <Parameter Name="groupIndex" Type="int" Mode="In" />
+    <Parameter Name="ChannelID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="SystemManagementModelStoreContainer">
+    <EntitySet Name="HistoryTop100LevelUser" EntityType="Self.HistoryTop100LevelUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NRU" EntityType="Self.NRU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Report_NewDevice" EntityType="Self.Report_NewDevice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Report_StatisticRevenue" EntityType="Self.Report_StatisticRevenue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportAD" EntityType="Self.ReportAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportADDetail" EntityType="Self.ReportADDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportADFinal" EntityType="Self.ReportADFinal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportArpu" EntityType="Self.ReportArpu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportAU" EntityType="Self.ReportAU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportAUFinal" EntityType="Self.ReportAUFinal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportBalance" EntityType="Self.ReportBalance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportBalanceDetail" EntityType="Self.ReportBalanceDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportFishDead" EntityType="Self.ReportFishDead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportGameCCU" EntityType="Self.ReportGameCCU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportListHitFish" EntityType="Self.ReportListHitFish" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportLoseWin" EntityType="Self.ReportLoseWin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportLoseWinSystem" EntityType="Self.ReportLoseWinSystem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportNPU" EntityType="Self.ReportNPU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportPlayTurn" EntityType="Self.ReportPlayTurn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportPU" EntityType="Self.ReportPU" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

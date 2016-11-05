@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LogManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CoinLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="ReasonId" Type="int" Nullable="false" />
+    <Property Name="CurrenCoin" Type="money" />
+    <Property Name="ValueCoin" Type="money" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="MatchID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LevelGameLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="OpenProviderId" Type="int" />
+  </EntityType>
+  <EntityType Name="LoginLog">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="LoginDate" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="LoginDate" Type="datetime" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="100" />
+    <Property Name="OpenProviderID" Type="int" />
+    <Property Name="OpenUserID" Type="varchar" MaxLength="50" />
+    <Property Name="Token" Type="varchar" MaxLength="500" />
+    <Property Name="TokenExpiredTime" Type="datetime" />
+    <Property Name="IMEI" Type="varchar" MaxLength="50" />
+    <Property Name="PlatformID" Type="int" />
+    <Property Name="HardwareID" Type="varchar" MaxLength="100" />
+    <Property Name="AppVersion" Type="varchar" MaxLength="10" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Link" Type="varchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="AdminID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LogManagement.dbo.NotificationPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NotificationPermission">
+    <Key>
+      <PropertyRef Name="AdminID" />
+      <PropertyRef Name="NotificationReasonID" />
+    </Key>
+    <Property Name="AdminID" Type="int" Nullable="false" />
+    <Property Name="NotificationReasonID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LogManagement.dbo.NotificationReason' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NotificationReason">
+    <Key>
+      <PropertyRef Name="NotificationReasonID" />
+      <PropertyRef Name="NotificationReason" />
+      <PropertyRef Name="Link" />
+    </Key>
+    <Property Name="NotificationReasonID" Type="int" Nullable="false" />
+    <Property Name="NotificationReason" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Link" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PaymentLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="PaymentType" Type="int" />
+    <Property Name="PlatformID" Type="int" />
+    <Property Name="IMEI" Type="varchar" MaxLength="50" />
+    <Property Name="HardwareID" Type="varchar" MaxLength="100" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="20" />
+    <Property Name="Status" Type="int" />
+    <Property Name="ObjectID" Type="int" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="ItemType" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RegisterLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Username" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="PlatformID" Type="int" />
+    <Property Name="OpenProfiderID" Type="int" />
+    <Property Name="OpenUserID" Type="varchar" MaxLength="50" />
+    <Property Name="IMEI" Type="varchar" MaxLength="50" />
+    <Property Name="HardwareID" Type="varchar" MaxLength="100" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="20" />
+    <Property Name="AppVersion" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="RichGameLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Coin" Type="money" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmotionPath" Type="nvarchar" MaxLength="500" />
+    <Property Name="OpenProviderId" Type="int" />
+  </EntityType>
+  <Function Name="Ins_Notification_AddNotification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NotificationReasonID" Type="int" Mode="In" />
+    <Parameter Name="Link" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_Notification_GetNotificationByTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromTime" Type="datetime" Mode="In" />
+    <Parameter Name="ToTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_NotificationReason_GetNotificationReasonByAdminID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AdminID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_NotificationReason_GetNotificationReasonByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_LevelGameLog_GetLevelGame" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="top" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_LoginLog_GetForSign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HardwareID" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AppVersion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Out_PaymentLog_GetHistoryPagingByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Out_PaymentLog_InsertData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="paymentType" Type="int" Mode="In" />
+    <Parameter Name="PlatformID" Type="int" Mode="In" />
+    <Parameter Name="imei" Type="varchar" Mode="In" />
+    <Parameter Name="hardwareId" Type="varchar" Mode="In" />
+    <Parameter Name="ipAddress" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="objId" Type="int" Mode="In" />
+    <Parameter Name="amount" Type="money" Mode="In" />
+    <Parameter Name="itemType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_PaymentLog_UpdateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_RichGameLog_GetData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="top" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Out_TopKillBoss_GetTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="top" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="LogManagementModelStoreContainer">
+    <EntitySet Name="CoinLog" EntityType="Self.CoinLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LevelGameLog" EntityType="Self.LevelGameLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginLog" EntityType="Self.LoginLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentLog" EntityType="Self.PaymentLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegisterLog" EntityType="Self.RegisterLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RichGameLog" EntityType="Self.RichGameLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotificationPermission" EntityType="Self.NotificationPermission" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NotificationPermission].[AdminID] AS [AdminID], 
+    [NotificationPermission].[NotificationReasonID] AS [NotificationReasonID]
+    FROM [dbo].[NotificationPermission] AS [NotificationPermission]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NotificationReason" EntityType="Self.NotificationReason" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NotificationReason].[NotificationReasonID] AS [NotificationReasonID], 
+    [NotificationReason].[NotificationReason] AS [NotificationReason], 
+    [NotificationReason].[Link] AS [Link], 
+    [NotificationReason].[Description] AS [Description]
+    FROM [dbo].[NotificationReason] AS [NotificationReason]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

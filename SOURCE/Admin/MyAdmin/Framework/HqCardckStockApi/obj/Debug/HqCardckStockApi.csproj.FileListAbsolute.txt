@@ -1,0 +1,22 @@
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\bin\Debug\HqCardckStockApi.dll
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\bin\Debug\HqCardckStockApi.pdb
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\bin\Debug\log4net.dll
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\bin\Debug\Logger.dll
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\bin\Debug\MyUtility.dll
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\bin\Debug\Logger.pdb
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\bin\Debug\MyUtility.pdb
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\bin\Debug\log4net.xml
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\obj\Debug\HqCardckStockApi.csprojResolveAssemblyReference.cache
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\obj\Debug\HqCardckStockApi.dll
+D:\WEB\P111Web\BanCa\Framework\HqCardckStockApi\obj\Debug\HqCardckStockApi.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\bin\Debug\HqCardckStockApi.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\bin\Debug\HqCardckStockApi.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\bin\Debug\log4net.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\bin\Debug\Logger.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\bin\Debug\MyUtility.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\bin\Debug\Logger.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\bin\Debug\MyUtility.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\bin\Debug\log4net.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\obj\Debug\HqCardckStockApi.csprojResolveAssemblyReference.cache
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\obj\Debug\HqCardckStockApi.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\HqCardckStockApi\obj\Debug\HqCardckStockApi.pdb

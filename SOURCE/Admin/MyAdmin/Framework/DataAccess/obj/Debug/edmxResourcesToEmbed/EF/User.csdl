@@ -1,0 +1,1354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="UserEntities" p1:LazyLoadingEnabled="false">
+    <EntitySet Name="Accounts" EntityType="UserModel.Account" />
+    <EntitySet Name="Profiles" EntityType="UserModel.Profile" />
+    <EntitySet Name="PaymentConfigs" EntityType="UserModel.PaymentConfig" />
+    <FunctionImport Name="Out_MyConfig_GetCardConfig" ReturnType="Collection(UserModel.Out_MyConfig_GetCardConfig_Result)">
+      <Parameter Name="Key" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Account_GetByID" ReturnType="Collection(UserModel.Out_Account_GetByID_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="MyConfigs" EntityType="UserModel.MyConfig" />
+    <FunctionImport Name="Out_PaymentConfig_GetByAmount" ReturnType="Collection(UserModel.Out_PaymentConfig_GetByAmount_Result)">
+      <Parameter Name="amount" Mode="In" Type="Decimal" />
+      <Parameter Name="cardType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Wallet_UpdateCoin" ReturnType="Collection(Decimal)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="walletType" Mode="In" Type="Int32" />
+      <Parameter Name="coin" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_ExchangeCoin_ToCard" ReturnType="Collection(UserModel.Out_ExchangeCoin_ToCard_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentType" Mode="In" Type="Int32" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="WalletType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LogTransactionGolds" EntityType="UserModel.LogTransactionGold" />
+    <FunctionImport Name="Out_Account_GetCoin" ReturnType="Collection(Decimal)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ExchangeConfigs" EntityType="UserModel.ExchangeConfig" />
+    <FunctionImport Name="Out_ExchangeConfig_GetByType" ReturnType="Collection(UserModel.Out_ExchangeConfig_GetByType_Result)">
+      <Parameter Name="ExchangeType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Wallet_AddOrSubtractGoldUser" ReturnType="Collection(Int32)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="adminId" Mode="In" Type="Int32" />
+      <Parameter Name="GoldTransfer" Mode="In" Type="Decimal" />
+      <Parameter Name="ReasonId" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="ActionId" Mode="In" Type="Int32" />
+      <Parameter Name="IsMobile" Mode="In" Type="Boolean" />
+      <Parameter Name="LoginType" Mode="In" Type="Int32" />
+      <Parameter Name="clientTarget" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Wallet_DebositOrWithdrawCoffer" ReturnType="Collection(Decimal)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="GoldTransfer" Mode="In" Type="Decimal" />
+      <Parameter Name="ActionType" Mode="In" Type="Int32" />
+      <Parameter Name="IPAddress" Mode="In" Type="String" />
+      <Parameter Name="PlatformID" Mode="In" Type="Int32" />
+      <Parameter Name="HardwareID" Mode="In" Type="String" />
+      <Parameter Name="Result" Mode="InOut" Type="Int32" />
+      <Parameter Name="WalletNow" Mode="InOut" Type="Decimal" />
+      <Parameter Name="CofferNow" Mode="InOut" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_ExchangeCard_Cancel" ReturnType="Collection(Decimal)">
+      <Parameter Name="LogId" Mode="In" Type="Int32" />
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="Result" Mode="InOut" Type="Int32" />
+      <Parameter Name="WalletNow" Mode="InOut" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Account_AddAvatar">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="EmotionPath" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Rankings" EntityType="UserModel.Ranking" />
+    <EntitySet Name="OfflineMessages" EntityType="UserModel.OfflineMessage" />
+    <FunctionImport Name="Out_OfflineMessage_Delete" ReturnType="Collection(Int32)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="ListID" Mode="In" Type="String" />
+      <Parameter Name="Separetor" Mode="In" Type="String" />
+      <Parameter Name="Result" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_OfflineMessage_Get" ReturnType="Collection(UserModel.Out_OfflineMessage_Get_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="MessageType" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_OfflineMessage_GetDetails" ReturnType="Collection(UserModel.Out_OfflineMessage_GetDetails_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="MessageId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="RankingDetails" EntityType="UserModel.RankingDetail" />
+    <FunctionImport Name="Out_RankingDetail_GetTopChargeCard" ReturnType="Collection(UserModel.Out_RankingDetail_GetTopChargeCard_Result)">
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_PaymentConfig_GetRateCard" ReturnType="Collection(UserModel.Out_PaymentConfig_GetRateCard_Result)" />
+    <EntitySet Name="LogCardTrans" EntityType="UserModel.LogCardTran" />
+    <FunctionImport Name="Out_LogCardTrans_Update" ReturnType="Collection(Int32)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="transID" Mode="In" Type="Int32" />
+      <Parameter Name="PartnerTransID" Mode="In" Type="String" />
+      <Parameter Name="Result" Mode="In" Type="Int32" />
+      <Parameter Name="CardAmount" Mode="In" Type="Int32" />
+      <Parameter Name="PartnerID" Mode="In" Type="Int32" />
+      <Parameter Name="PartnerMessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Out_RankingDetail_GetTopExChangeCard" ReturnType="Collection(UserModel.Out_RankingDetail_GetTopExChangeCard_Result)">
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LogExchanges" EntityType="UserModel.LogExchange" />
+    <FunctionImport Name="Out_LogExchange_GetTotalGoldAndIsExchanged">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="CardAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalAmount" Mode="InOut" Type="Decimal" />
+      <Parameter Name="IsExchangedThisCardAmount" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Wallet_ExchangeCoin_ToCard" ReturnType="Collection(UserModel.Out_Wallet_ExchangeCoin_ToCard_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentType" Mode="In" Type="Int32" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="WalletType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_Notification_AddNotification">
+      <Parameter Name="Link" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="PermissionID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_ExchangeCard_GetHistory" ReturnType="Collection(UserModel.Out_ExchangeCard_GetHistory_Result)">
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Profile_GetCMND" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Profile_GetPhoneNumber" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Profile_UpdateCMND">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="CMND" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Profile_UpdatePhoneNumber">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Account_GetLinkAvatar" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Articles" EntityType="UserModel.Article" />
+    <FunctionImport Name="Out_Article_GetDisplayOnGameById" ReturnType="Collection(UserModel.Out_Article_GetDisplayOnGameById_Result)">
+      <Parameter Name="ArticleID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_OfflineMessage_Send">
+      <Parameter Name="SenderId" Mode="In" Type="Int32" />
+      <Parameter Name="ReceiverId" Mode="In" Type="Int32" />
+      <Parameter Name="MessageContent" Mode="In" Type="String" />
+      <Parameter Name="MessageType" Mode="In" Type="Int32" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="IpAddress" Mode="In" Type="String" />
+      <Parameter Name="PlatformId" Mode="In" Type="Int32" />
+      <Parameter Name="HardwareId" Mode="In" Type="String" />
+      <Parameter Name="IsSystem" Mode="In" Type="Boolean" />
+      <Parameter Name="ParentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ItemGames" EntityType="UserModel.ItemGame" />
+    <EntitySet Name="ItemGameUsers" EntityType="UserModel.ItemGameUser" />
+    <FunctionImport Name="Out_ItemGameUser_GetList" ReturnType="Collection(UserModel.Out_ItemGameUser_GetList_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_ItemGame_GetItemGameList" ReturnType="Collection(UserModel.Out_ItemGame_GetItemGameList_Result)" />
+    <FunctionImport Name="Out_Event_GetTopLevel" ReturnType="Collection(UserModel.Out_Event_GetTopLevel_Result)" />
+    <FunctionImport Name="Out_Article_GetDisplayOnGame" ReturnType="Collection(UserModel.Out_Article_GetDisplayOnGame_Result)">
+      <Parameter Name="top" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_FriendRelationship_GetTotalFriend">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_SaveInvite">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="UserFriendID" Mode="In" Type="Int32" />
+      <Parameter Name="ListOpenProviderID" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Delimiter" Mode="In" Type="String" />
+      <Parameter Name="Relationship" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_GetTotalFriend" ReturnType="Collection(Int32)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Account_GetUsersOnline" ReturnType="Collection(UserModel.Out_Account_GetUsersOnline_Result)">
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_MakeFriend">
+      <Parameter Name="UserFriendID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_SaveInviteFriendRegisted">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="UserFriendID" Mode="In" Type="Int32" />
+      <Parameter Name="ListOpenProviderID" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Delimiter" Mode="In" Type="String" />
+      <Parameter Name="Relationship" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_SaveInviteExistsOpenProviderId">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="UserFriendID" Mode="In" Type="Int32" />
+      <Parameter Name="ListOpenProviderID" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Delimiter" Mode="In" Type="String" />
+      <Parameter Name="Relationship" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Farmers" EntityType="UserModel.Farmer" />
+    <FunctionImport Name="Out_Game_CheckIsPlayGame">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Wallet_ExchangeCheckEnoughGold" ReturnType="Collection(UserModel.Out_Wallet_ExchangeCheckEnoughGold_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="CardAmount" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Wallet_SubtractGoldExchangeCard" ReturnType="Collection(UserModel.Out_Wallet_SubtractGoldExchangeCard_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="GoldTransfer" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Farmer_CheckIsFarmer" ReturnType="Collection(Boolean)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_GetListFriend" ReturnType="Collection(UserModel.Out_FriendRelationship_GetListFriend_Result)">
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_RemoveFriend">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="friendId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_GetFriendInfo" ReturnType="Collection(UserModel.Out_FriendRelationship_GetFriendInfo_Result)">
+      <Parameter Name="friendId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_Account_GetNameByUserId" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="WalletStars" EntityType="UserModel.WalletStar" />
+    <FunctionImport Name="Out_Wallet_AddOrSubtractStar">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="MatchID" Mode="In" Type="Int32" />
+      <Parameter Name="ReasonId" Mode="In" Type="Int32" />
+      <Parameter Name="GoldTransfer" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_WalletStar_ExchangeCheckEnoughGold" ReturnType="Collection(UserModel.Out_WalletStar_ExchangeCheckEnoughGold_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="CardAmount" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_WalletStar_UpdateGold" ReturnType="Collection(Int32)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="GoldTransfer" Mode="In" Type="Decimal" />
+      <Parameter Name="ReasonCoinId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Article_SearchByCate" ReturnType="Collection(UserModel.Out_Article_SearchByCate_Result)">
+      <Parameter Name="CateId" Mode="In" Type="Int32" />
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageLength" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationShip_AutoMakeFriend">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="ListOpenUserId" Mode="In" Type="String" />
+      <Parameter Name="Delimiter" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Article_GetArticleDetailsForClient" ReturnType="Collection(UserModel.Out_Article_GetArticleDetailsForClient_Result)">
+      <Parameter Name="TextID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ApprovaExchangeCard_GetDataUserExchange" ReturnType="Collection(UserModel.Ins_ApprovaExchangeCard_GetDataUserExchange_Result)">
+      <Parameter Name="keyWord" Mode="In" Type="String" />
+      <Parameter Name="staus" Mode="In" Type="Int32" />
+      <Parameter Name="cardType" Mode="In" Type="Int32" />
+      <Parameter Name="cardAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="pageNumber" Mode="In" Type="Int32" />
+      <Parameter Name="pageSize" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDirection" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+      <Parameter Name="TotalGoldExchange" Mode="InOut" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="Kiots" EntityType="UserModel.Kiot" />
+    <EntitySet Name="KiotUsers" EntityType="UserModel.KiotUser" />
+    <FunctionImport Name="Out_Kiot_SaveItemGameUser">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="KiotID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+      <Parameter Name="Quantity" Mode="In" Type="Int32" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="PricePromotion" Mode="In" Type="Decimal" />
+      <Parameter Name="ReasonID" Mode="In" Type="Int32" />
+      <Parameter Name="Result" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Kiot_RemoveItemGameUser">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="KiotID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+      <Parameter Name="ReasonID" Mode="In" Type="Int32" />
+      <Parameter Name="Result" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Kiot_UpdatePromotion">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="KiotID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+      <Parameter Name="ReasonID" Mode="In" Type="Int32" />
+      <Parameter Name="Result" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="FriendRelationships" EntityType="UserModel.FriendRelationship" />
+    <FunctionImport Name="Out_FriendRelationship_MakeFriend_V2">
+      <Parameter Name="UserFriendID" Mode="In" Type="Int32" />
+      <Parameter Name="Result" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_LogExchange_GetTotalGoldAndIsExchanged_v2" ReturnType="Collection(UserModel.Out_LogExchange_GetTotalGoldAndIsExchanged_v2_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="CardAmount" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_ItemGame_ProcessOpenGiftBoxTypeCard" ReturnType="Collection(UserModel.Out_ItemGame_ProcessOpenGiftBoxTypeCard_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="param1" Mode="In" Type="Double" />
+      <Parameter Name="param2" Mode="In" Type="Double" />
+      <Parameter Name="x" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <EntitySet Name="LogCardOpenGiftBoxes" EntityType="UserModel.LogCardOpenGiftBox" />
+    <FunctionImport Name="Out_LogCardOpenGiftBox_Update" ReturnType="Collection(Int32)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="TransId" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Serial" Mode="In" Type="String" />
+      <Parameter Name="Pincode" Mode="In" Type="String" />
+      <Parameter Name="Result" Mode="In" Type="Int32" />
+      <Parameter Name="PartnerMessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Out_LogCardOpenGiftBox_Insert" ReturnType="Collection(Int32)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="TransID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemGameUserId" Mode="In" Type="Int32" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="CardAmount" Mode="In" Type="Int32" />
+      <Parameter Name="TransDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Result" Mode="In" Type="Int32" />
+      <Parameter Name="PartnerMessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_CheckIsFriend" ReturnType="Collection(Int32)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="UserFriendId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_Game_KickOrUpdateGold" ReturnType="Collection(Int32)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="WsPacket" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Kiot_GetItemSold" ReturnType="Collection(UserModel.Out_Kiot_GetItemSold_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Wallet_GiftCoinFriend" ReturnType="Collection(Int32)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="FriendId" Mode="In" Type="Int32" />
+      <Parameter Name="CoinValue" Mode="In" Type="Decimal" />
+      <Parameter Name="AmountPersion" Mode="In" Type="Int32" />
+      <Parameter Name="DateCreate" Mode="InOut" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_GiftGoldForFriend" ReturnType="Collection(Int32)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="userFriendId" Mode="In" Type="Int32" />
+      <Parameter Name="goldGift" Mode="In" Type="Decimal" />
+      <Parameter Name="times" Mode="In" Type="Int32" />
+      <Parameter Name="reasonIdSend" Mode="In" Type="Int32" />
+      <Parameter Name="reasonIdReceive" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="KiotPromotions" EntityType="UserModel.KiotPromotion" />
+    <FunctionImport Name="Out_ItemGame_ProcessOpenGiftBox" ReturnType="Collection(UserModel.Out_ItemGame_ProcessOpenGiftBox_Result)">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+      <Parameter Name="exchange1" Mode="In" Type="Double" />
+      <Parameter Name="exchange2" Mode="In" Type="Double" />
+      <Parameter Name="doanhThu" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Kiot_BuyKiot" ReturnType="Collection(Int32)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="KiotID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_PaymentConfig_GetRateGoogleIAP" ReturnType="Collection(UserModel.Out_PaymentConfig_GetRateGoogleIAP_Result)">
+      <Parameter Name="paymentType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Kiot_GetAllKiot" ReturnType="Collection(UserModel.Out_Kiot_GetAllKiot_Result)" />
+    <EntitySet Name="Wallets" EntityType="UserModel.Wallet" />
+    <FunctionImport Name="Out_Profile_CheckIsUpdatePhoneNumber" ReturnType="Collection(Boolean)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Call_DBGame_GetServer" ReturnType="Collection(UserModel.Out_Call_DBGame_GetServer_Result)">
+      <Parameter Name="flatformAND" Mode="In" Type="Boolean" />
+      <Parameter Name="flatformIOS" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Out_ATPPlayerRecord_GetTimePlayToday" ReturnType="Collection(Int32)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LogCreditTrans" EntityType="UserModel.LogCreditTran" />
+    <FunctionImport Name="Out_Kiot_GetAllItemUser" ReturnType="Collection(UserModel.Out_Kiot_GetAllItemUser_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Kiot_GetAllKiot_V3" ReturnType="Collection(UserModel.Out_Kiot_GetAllKiot_V3_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_LogCreditTrans_updateData">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Int32" />
+      <Parameter Name="token" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Decimal" />
+      <Parameter Name="CurrentCoin" Mode="In" Type="Decimal" />
+      <Parameter Name="coinTrans" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Account_GetUsersOnline_V2" ReturnType="Collection(UserModel.Out_Account_GetUsersOnline_V2_Result)">
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Kiot_GetKiotUser" ReturnType="Collection(UserModel.Out_Kiot_GetKiotUser_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_CardStock_CheckExists" ReturnType="Collection(Int32)">
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="Amount" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_CardStock_LogExport_Add_V2">
+      <Parameter Name="TransExportId" Mode="In" Type="String" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="CardAmount" Mode="In" Type="Int32" />
+      <Parameter Name="CardSerial" Mode="In" Type="String" />
+      <Parameter Name="CardPin" Mode="In" Type="String" />
+      <Parameter Name="Quantity" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+      <Parameter Name="ClientTarget" Mode="In" Type="String" />
+      <Parameter Name="ClientIp" Mode="In" Type="String" />
+      <Parameter Name="ClientAgent" Mode="In" Type="String" />
+      <Parameter Name="ReasonId" Mode="In" Type="Int32" />
+      <Parameter Name="ReasonName" Mode="In" Type="String" />
+      <Parameter Name="CardTypeName" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="CardStocks" EntityType="UserModel.CardStock" />
+    <FunctionImport Name="Out_Kiot_BuyItem" ReturnType="Collection(UserModel.Out_Kiot_BuyItem_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="SalerID" Mode="In" Type="Int32" />
+      <Parameter Name="KiotID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+      <Parameter Name="TaxValue" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Out_Kiot_GetRandomItemOfFriend" ReturnType="Collection(UserModel.Out_Kiot_GetRandomItemOfFriend_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="TopHasPromotion" Mode="In" Type="Int32" />
+      <Parameter Name="TopNoPromotion" Mode="In" Type="Int32" />
+      <Parameter Name="NotInKiotUserID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Out_ItemGame_ProcessOpenGiftBoxTypeCard_V2" ReturnType="Collection(UserModel.Out_ItemGame_ProcessOpenGiftBoxTypeCard_V2_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="param1" Mode="In" Type="Double" />
+      <Parameter Name="param2" Mode="In" Type="Double" />
+      <Parameter Name="x" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_CardStock_LogExport_Add">
+      <Parameter Name="CardAmount" Mode="In" Type="Int32" />
+      <Parameter Name="Quantity" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+      <Parameter Name="ClientTarget" Mode="In" Type="String" />
+      <Parameter Name="ClientIp" Mode="In" Type="String" />
+      <Parameter Name="ClientAgent" Mode="In" Type="String" />
+      <Parameter Name="ReasonId" Mode="In" Type="Int32" />
+      <Parameter Name="ReasonName" Mode="In" Type="String" />
+      <Parameter Name="CardSerial" Mode="InOut" Type="String" />
+      <Parameter Name="CardPin" Mode="InOut" Type="String" />
+      <Parameter Name="CardType" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Api_A_Gold_UpdateForUser">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="Int32" />
+      <Parameter Name="Gold" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Out_ItemGame_ProcessOpenGiftBoxTypeCard_V3" ReturnType="Collection(Int32)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_GetTopLevelFriend" ReturnType="Collection(UserModel.Out_FriendRelationship_GetTopLevelFriend_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Top" Mode="In" Type="Int32" />
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_FriendRelationship_GetTopRickFriend" ReturnType="Collection(UserModel.Out_FriendRelationship_GetTopRickFriend_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Top" Mode="In" Type="Int32" />
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_LogExchangeCard_AddNew">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="CardName" Mode="In" Type="String" />
+      <Parameter Name="CardAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="IPAddress" Mode="In" Type="String" />
+      <Parameter Name="PlatformID" Mode="In" Type="Int32" />
+      <Parameter Name="HardwareID" Mode="In" Type="String" />
+      <Parameter Name="Result" Mode="In" Type="Int32" />
+      <Parameter Name="IsApproval" Mode="In" Type="Boolean" />
+      <Parameter Name="LogId" Mode="InOut" Type="Int32" />
+      <Parameter Name="RoundId" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_LogExchangeCard_Update">
+      <Parameter Name="Result" Mode="In" Type="Int32" />
+      <Parameter Name="Serial" Mode="In" Type="String" />
+      <Parameter Name="PinCode" Mode="In" Type="String" />
+      <Parameter Name="PartnerId" Mode="In" Type="Int32" />
+      <Parameter Name="PartnerTransId" Mode="In" Type="String" />
+      <Parameter Name="PartnerMessage" Mode="In" Type="String" />
+      <Parameter Name="serviceResult" Mode="In" Type="Boolean" />
+      <Parameter Name="LogId" Mode="In" Type="Int32" />
+      <Parameter Name="GoldTransfer" Mode="In" Type="Decimal" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Out_LogCardTrans_Insert" ReturnType="Collection(Int32)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Serial" Mode="In" Type="String" />
+      <Parameter Name="PinCard" Mode="In" Type="String" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="IPAddress" Mode="In" Type="String" />
+      <Parameter Name="PlatformID" Mode="In" Type="Int32" />
+      <Parameter Name="Result" Mode="In" Type="Int32" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Api_LogCreditTrans_InsertDepositInApp" ReturnType="Collection(UserModel.Api_LogCreditTrans_InsertDepositInApp_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="TransID" Mode="In" Type="String" />
+      <Parameter Name="CurrentCoin" Mode="In" Type="Decimal" />
+      <Parameter Name="CoinTrans" Mode="In" Type="Decimal" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Token" Mode="In" Type="String" />
+      <Parameter Name="CardType" Mode="In" Type="Int32" />
+      <Parameter Name="CardTypeString" Mode="In" Type="String" />
+      <Parameter Name="CardAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_MyConfig_GetConfigByKey" ReturnType="Collection(UserModel.Ins_MyConfig_GetConfigByKey_Result)">
+      <Parameter Name="key" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PubUserID" Type="Int32" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmotionPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastLogin" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Token" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TokenExpiredTime" Type="DateTime" Precision="3" />
+    <Property Name="OpenProviderId" Type="Int32" />
+    <Property Name="OpenUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PlatformId" Type="Int32" />
+    <Property Name="HardwareId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CampaignId" Type="Int32" />
+    <Property Name="ChannelId" Type="Int32" />
+    <Property Name="VersionGame" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PaymentConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentType" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Gold" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CardType" Type="Int32" />
+    <Property Name="Telco" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IsEnable" Type="Boolean" />
+    <Property Name="PacketName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="Out_MyConfig_GetCardConfig_Result">
+    <Property Type="String" Name="Key" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Value" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+  <ComplexType Name="Out_Account_GetByID_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="PubUserID" Nullable="true" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="LastLogin" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="Token" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="TokenExpiredTime" Nullable="true" Precision="23" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="MyConfig">
+    <Key>
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="Out_PaymentConfig_GetByAmount_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="PaymentType" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Gold" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="CardType" Nullable="true" />
+    <Property Type="String" Name="Telco" Nullable="true" MaxLength="10" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_ExchangeCoin_ToCard_Result">
+    <Property Type="Int32" Name="Result" Nullable="false" />
+    <Property Type="Decimal" Name="Gold" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="curCoin" Nullable="true" Precision="19" />
+  </ComplexType>
+  <EntityType Name="LogTransactionGold">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CurrentValue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ChangeValue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="LogTypeId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="IdHistory" Type="Int32" />
+    <Property Name="ClientTarget" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ExchangeConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExchangeType" Type="Int32" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Gold" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CardType" Type="Int32" />
+    <Property Name="Telco" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IsEnable" Type="Boolean" />
+    <Property Name="ImageLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ActiveImageLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="Out_ExchangeConfig_GetByType_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="ExchangeType" Nullable="true" />
+    <Property Type="Int32" Name="Amount" Nullable="true" />
+    <Property Type="Decimal" Name="Gold" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="CardType" Nullable="true" />
+    <Property Type="String" Name="Telco" Nullable="true" MaxLength="10" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="true" />
+    <Property Type="String" Name="ImageLink" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ActiveImageLink" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="Ranking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OfflineMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SenderId" Type="Int32" />
+    <Property Name="ReceiverId" Type="Int32" />
+    <Property Name="MessageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MessageType" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsRead" Type="Boolean" />
+    <Property Name="ReadDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="IpAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PlatformId" Type="Int32" />
+    <Property Name="HardwareId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsSystem" Type="Boolean" />
+    <Property Name="ParentId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Out_OfflineMessage_Get_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="MessageId" Nullable="false" />
+    <Property Type="Int32" Name="SenderId" Nullable="true" />
+    <Property Type="String" Name="SenderName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ReceiverId" Nullable="true" />
+    <Property Type="String" Name="ReceiverName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="MessageType" Nullable="true" />
+    <Property Type="String" Name="MessageContent" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="SendDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsRead" Nullable="true" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="ParentId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_OfflineMessage_GetDetails_Result">
+    <Property Type="Int32" Name="MessageId" Nullable="false" />
+    <Property Type="Int32" Name="SenderId" Nullable="true" />
+    <Property Type="String" Name="SenderName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ReceiverId" Nullable="true" />
+    <Property Type="String" Name="ReceiverName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="MessageType" Nullable="true" />
+    <Property Type="String" Name="MessageContent" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="SendDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="ParentId" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="RankingDetail">
+    <Key>
+      <PropertyRef Name="RankingCode" />
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="RankingCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DateReport" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="OrderNo" Type="Int32" />
+    <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Out_RankingDetail_GetTopChargeCard_Result">
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="OrderNo" Nullable="true" />
+    <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Out_PaymentConfig_GetRateCard_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CardType" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Gold" Nullable="true" Precision="19" />
+  </ComplexType>
+  <EntityType Name="LogCardTran">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="Serial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PinCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CardType" Type="Int32" />
+    <Property Name="CardAmount" Type="Int32" />
+    <Property Name="TransDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Result" Type="Int32" />
+    <Property Name="PartnerID" Type="Int32" />
+    <Property Name="PartnerTransID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PartnerMessage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PlatformId" Type="Int32" />
+    <Property Name="DeviceID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ChannelID" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Out_RankingDetail_GetTopExChangeCard_Result">
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="OrderNo" Nullable="true" />
+    <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="19" />
+  </ComplexType>
+  <EntityType Name="LogExchange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransExportId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Coin" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="LogType" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PlatformID" Type="Int32" />
+    <Property Name="HardwareID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="Out_Wallet_ExchangeCoin_ToCard_Result">
+    <Property Type="Int32" Name="Result" Nullable="false" />
+    <Property Type="Decimal" Name="Gold" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="curCoin" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Out_ExchangeCard_GetHistory_Result">
+    <Property Type="Int32" Name="LogId" Nullable="true" />
+    <Property Type="Int32" Name="RowNumber" Nullable="true" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="CardType" Nullable="true" />
+    <Property Type="Int32" Name="CardAmount" Nullable="true" />
+    <Property Type="DateTime" Name="TransDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Result" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+    </Key>
+    <Property Name="ArticleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssociationID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="TextID" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Abstract" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ViewCount" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="CommentCount" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="AdminStatus" Type="Int32" />
+    <Property Name="ImageLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ImageHome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsCommented" Type="Boolean" Nullable="false" />
+    <Property Name="DomainID" Type="Int32" Nullable="false" />
+    <Property Name="HotStatus" Type="Int32" Nullable="false" />
+    <Property Name="ShortDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayTarget" Type="Int32" />
+    <Property Name="HotOrNew" Type="Int32" />
+    <Property Name="AdminID" Type="Int32" />
+    <Property Name="PublicDate" Type="DateTime" Precision="3" />
+    <Property Name="HotExpire" Type="DateTime" Precision="3" />
+    <Property Name="NewExpire" Type="DateTime" Precision="3" />
+    <Property Name="GroupID" Type="Int64" />
+  </EntityType>
+  <ComplexType Name="Out_Article_GetDisplayOnGameById_Result">
+    <Property Type="Int32" Name="ArticleID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" />
+    <Property Type="DateTime" Name="PublicDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="ItemGame">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TypeItem" Type="Int32" Nullable="false" />
+    <Property Name="StatusItem" Type="Int32" Nullable="false" />
+    <Property Name="ParentItemID" Type="Int32" Nullable="false" />
+    <Property Name="QuantitySplit" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MoneyItems" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TimeEffect" Type="Int32" Nullable="false" />
+    <Property Name="SubNumber" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsUseBoxGift" Type="Boolean" />
+    <Property Name="MaxPriceMarket" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MinPriceMarket" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PricePromotion" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PriceRemove" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TimePromotion" Type="Int32" />
+    <Property Name="CardType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ItemGameUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="IsSplit" Type="Boolean" />
+    <Property Name="LocationAward" Type="Int32" />
+    <Property Name="DayCreated" Type="DateTime" Precision="0" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <Property Name="ValueItem" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Out_ItemGameUser_GetList_Result">
+    <Property Type="Int32" Name="ItemID" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="Int32" Name="TypeItem" Nullable="true" />
+    <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="Out_ItemGame_GetItemGameList_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ItemName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="false" MaxLength="256" />
+    <Property Type="Decimal" Name="MoneyItems" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="TimeEffect" Nullable="false" />
+    <Property Type="DateTime" Name="DateUpdated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="Out_Event_GetTopLevel_Result">
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="Int32" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_Article_GetDisplayOnGame_Result">
+    <Property Type="Int32" Name="ArticleID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="PublicDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="HotOrNew" Nullable="true" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Out_Account_GetUsersOnline_Result">
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="FullNameInfo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="WalletMoney" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="Int32" Name="IsFriend" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Farmer">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="IsFamer" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Out_Wallet_ExchangeCheckEnoughGold_Result">
+    <Property Type="Int32" Name="Result" Nullable="true" />
+    <Property Type="Decimal" Name="EssentialGold" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Out_Wallet_SubtractGoldExchangeCard_Result">
+    <Property Type="Decimal" Name="SubtractInNormal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SubtractInCoffer" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Out_FriendRelationship_GetListFriend_Result">
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="Coin" Nullable="true" Precision="19" />
+    <Property Type="String" Name="GameName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserIdLogin" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_FriendRelationship_GetFriendInfo_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="Int64" Name="Experience" Nullable="true" />
+    <Property Type="Decimal" Name="Coin" Nullable="false" Precision="19" />
+  </ComplexType>
+  <EntityType Name="WalletStar">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Coin" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Type" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Out_WalletStar_ExchangeCheckEnoughGold_Result">
+    <Property Type="Int32" Name="Result" Nullable="true" />
+    <Property Type="Decimal" Name="EssentialGold" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Out_Article_SearchByCate_Result">
+    <Property Type="Int32" Name="ArticleID" Nullable="true" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="PublicDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="TextID" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="HotOrNew" Nullable="true" />
+    <Property Type="Int32" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="TotalRow" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_Article_GetArticleDetailsForClient_Result">
+    <Property Type="Int32" Name="ArticleID" Nullable="false" />
+    <Property Type="Int32" Name="AssociationID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="TextID" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="Abstract" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="UpdateDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="ViewCount" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="AdminStatus" Nullable="true" />
+    <Property Type="String" Name="ImageLink" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ImageHome" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="IsCommented" Nullable="false" />
+    <Property Type="Int32" Name="HotStatus" Nullable="false" />
+    <Property Type="String" Name="ShortDescription" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="DisplayTarget" Nullable="true" />
+    <Property Type="Int32" Name="HotOrNew" Nullable="true" />
+    <Property Type="DateTime" Name="PublicDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="HotExpire" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="NewExpire" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ins_ApprovaExchangeCard_GetDataUserExchange_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="TotalRows" Nullable="true" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="Int32" Name="PubUserID" Nullable="true" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Amount" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="AdminOne" Nullable="true" />
+    <Property Type="Int32" Name="AdminTwo" Nullable="true" />
+    <Property Type="DateTime" Name="ApprovalOneDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ApprovalTwoDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="CardType" Nullable="true" />
+    <Property Type="String" Name="CardName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="RoundId" Nullable="true" />
+    <Property Type="Decimal" Name="GoldExchange" Nullable="true" Precision="19" />
+    <Property Type="String" Name="IPAddress" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NickNameAdminOne" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="NickNameAdminTwo" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="IsFamer" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Kiot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KiotName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TypeKiot" Type="Int32" />
+    <Property Name="ValueKiot" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <Property Name="NumberIndex" Type="Int32" />
+    <Property Name="IsDisable" Type="Int32" />
+  </EntityType>
+  <EntityType Name="KiotUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KiotID" Type="Int32" Nullable="false" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="FriendRelationship">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserFriendID" Type="Int32" />
+    <Property Name="OpenProviderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Relationship" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <Property Name="InviteType" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Out_LogExchange_GetTotalGoldAndIsExchanged_v2_Result">
+    <Property Type="Decimal" Name="totalPaymentCard" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalAmountExchange" Nullable="true" Precision="19" />
+    <Property Type="Boolean" Name="IsExchangedThisCardAmount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_ItemGame_ProcessOpenGiftBoxTypeCard_Result">
+    <Property Type="Int32" Name="ItemId" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="MoneyItems" Nullable="true" />
+    <Property Type="Int32" Name="CardType" Nullable="true" />
+    <Property Type="Int32" Name="ItemGameuserId" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="LogCardOpenGiftBox">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="TranId" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="ItemGameUserId" Type="Int32" />
+    <Property Name="Serial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PinCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CardType" Type="Int32" />
+    <Property Name="CardAmount" Type="Int32" />
+    <Property Name="TransDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Result" Type="Int32" />
+    <Property Name="PartnerMessage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="Out_Kiot_GetItemSold_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ItemName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="false" MaxLength="256" />
+    <Property Type="Int32" Name="Priority" Nullable="true" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="KiotID" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="KiotPromotion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="KiotID" Type="Int32" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="PricePromotion" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BeginPromotion" Type="DateTime" Precision="3" />
+    <Property Name="EndPromotion" Type="DateTime" Precision="3" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Out_ItemGame_ProcessOpenGiftBox_Result">
+    <Property Type="Int32" Name="ItemId" Nullable="true" />
+    <Property Type="String" Name="itemName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="imagePath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="moneyItems" Nullable="true" />
+    <Property Type="Int32" Name="cardType" Nullable="true" />
+    <Property Type="Int32" Name="itemGameUserId" Nullable="true" />
+    <Property Type="String" Name="itemNameMG" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Out_PaymentConfig_GetRateGoogleIAP_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Gold" Nullable="true" Precision="19" />
+    <Property Type="String" Name="PacketName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Out_Kiot_GetAllKiot_Result">
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="Int32" Name="ItemId" Nullable="true" />
+    <Property Type="Int32" Name="KiotId" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="WalletType" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="WalletType" Type="Int32" Nullable="false" />
+    <Property Name="Coin" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="Out_Call_DBGame_GetServer_Result">
+    <Property Type="String" Name="IP" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Port" Nullable="true" Precision="18" Scale="0" />
+  </ComplexType>
+  <EntityType Name="LogCreditTran">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentPPID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="CurrentCoin" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CoinTrans" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TransDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="txn_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Token" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="CardType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ReceiveGoldDate" Type="DateTime" Precision="3" />
+    <Property Name="TransactionType" Type="Int32" />
+    <Property Name="ChannelID" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Out_Kiot_GetAllItemUser_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ItemName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="false" MaxLength="256" />
+    <Property Type="Decimal" Name="MaxPriceMarket" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="MinPriceMarket" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="PricePromotion" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="TimePromotion" Nullable="true" />
+    <Property Type="Decimal" Name="PriceRemove" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_Kiot_GetAllKiot_V3_Result">
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="Int32" Name="ItemId" Nullable="true" />
+    <Property Type="Int32" Name="KiotId" Nullable="true" />
+    <Property Type="DateTime" Name="BeginTime" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsPromo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_Account_GetUsersOnline_V2_Result">
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="FullNameInfo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="WalletMoney" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="Int32" Name="IsFriend" Nullable="false" />
+    <Property Type="Int32" Name="OpenProviderId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_Kiot_GetKiotUser_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="KiotName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TypeKiot" Nullable="true" />
+    <Property Type="Decimal" Name="ValueKiot" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="NumberFriend" Nullable="true" />
+    <Property Type="Int32" Name="KiotUserID" Nullable="true" />
+    <Property Type="Int32" Name="ItemID" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="Priority" Nullable="true" />
+    <Property Type="Decimal" Name="PricePromotion" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="TimePromotion" Nullable="true" />
+    <Property Type="Decimal" Name="PriceRemove" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="IsEnable" Nullable="false" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="CardStock">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProviderId" Type="Int32" />
+    <Property Name="CardType" Type="Int32" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="CardSeri" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CardPin" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="IsUse" Type="Boolean" />
+    <Property Name="TransImportId" Type="Int64" />
+    <Property Name="TransExportId" Type="Int64" />
+    <Property Name="UserIdUsed" Type="Int32" />
+    <Property Name="DateExport" Type="DateTime" Precision="3" />
+    <Property Name="DateImport" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="CardTypeName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="Out_Kiot_BuyItem_Result">
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="MoneyOriginal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="MoneySale" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="flg" Nullable="true" />
+    <Property Type="Int32" Name="KiotUserID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_Kiot_GetRandomItemOfFriend_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="Priority" Nullable="true" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="KiotID" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="KiotUserID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_ItemGame_ProcessOpenGiftBoxTypeCard_V2_Result">
+    <Property Type="Int32" Name="ItemId" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="MoneyItems" Nullable="true" />
+    <Property Type="Int32" Name="CardType" Nullable="true" />
+    <Property Type="Int32" Name="ItemGameuserId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Out_FriendRelationship_GetTopLevelFriend_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="OpenProviderId" Nullable="true" />
+    <Property Type="String" Name="GameName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserIdLogin" Nullable="true" />
+    <Property Type="String" Name="OpenUserId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Out_FriendRelationship_GetTopRickFriend_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Decimal" Name="Coin" Nullable="true" Precision="19" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmotionPath" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="OpenProviderId" Nullable="true" />
+    <Property Type="String" Name="GameName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserIdLogin" Nullable="true" />
+    <Property Type="String" Name="OpenUserId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Api_LogCreditTrans_InsertDepositInApp_Result">
+    <Property Type="Int32" Name="CardTranId" Nullable="true" />
+    <Property Type="Int32" Name="ResultTransaction" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_MyConfig_GetConfigByKey_Result">
+    <Property Type="String" Name="Key" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Value" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="Group" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" />
+  </ComplexType>
+</Schema>

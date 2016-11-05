@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAvatarEventImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="associationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileExtension" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAvatarEventImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadAvatarEventImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAssEventImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="associationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileExtension" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAssEventImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadAssEventImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAssociationImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="assName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAssociationImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadAssociationImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAssociationImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAssociationImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateAssociationImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAssEventImageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="associationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAssEventImageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAssEventImageListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteAssEventImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAssEventImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAssEventImageResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAvatarWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAvatarWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAvatarWebResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAvatarUserUp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAvatarUserUpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAvatarUserUpResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadUserEventImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileExtension" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadUserEventImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadUserEventImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAvatarUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Newname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAvatarUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadAvatarUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:TypeImageUploadEnum" />
+            <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="TypeImageUploadEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Avatar" />
+          <s:enumeration value="Article" />
+          <s:enumeration value="Association" />
+          <s:enumeration value="Banner" />
+          <s:enumeration value="Comment" />
+          <s:enumeration value="Another" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UploadImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadImageResult" type="tns:UploadImageResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UploadImageResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsSuccess" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImagePath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteImageResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgentUpAvatarGif">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Newname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgentUpAvatarGifResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgentUpAvatarGifResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgentUploadAvatar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Newname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgentUploadAvatarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgentUploadAvatarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgentUploadAvatarSWF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Newname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgentUploadAvatarSWFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgentUploadAvatarSWFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Newname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAvatarUserInGame">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strjpg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Newname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAvatarUserInGameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadAvatarUserInGameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadBanner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Newname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadBannerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadBannerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadCaptuteScreenInGame">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="byteArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="newName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadCaptuteScreenInGameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadCaptuteScreenInGameResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveJPEG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strjpg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pathFile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveJPEGResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadAvatarEventImageSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadAvatarEventImage" />
+  </wsdl:message>
+  <wsdl:message name="UploadAvatarEventImageSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadAvatarEventImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadAssEventImageSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadAssEventImage" />
+  </wsdl:message>
+  <wsdl:message name="UploadAssEventImageSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadAssEventImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadAssociationImageSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadAssociationImage" />
+  </wsdl:message>
+  <wsdl:message name="UploadAssociationImageSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadAssociationImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAssociationImageSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAssociationImage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAssociationImageSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAssociationImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAssEventImageListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAssEventImageList" />
+  </wsdl:message>
+  <wsdl:message name="GetAssEventImageListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAssEventImageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAssEventImageSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAssEventImage" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAssEventImageSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAssEventImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAvatarWebSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAvatarWeb" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAvatarWebSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAvatarWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAvatarUserUpSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAvatarUserUp" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAvatarUserUpSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAvatarUserUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadUserEventImageSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadUserEventImage" />
+  </wsdl:message>
+  <wsdl:message name="UploadUserEventImageSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadUserEventImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadAvatarUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadAvatarUser" />
+  </wsdl:message>
+  <wsdl:message name="UploadAvatarUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadAvatarUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadImageSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="UploadImageSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteImageSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteImage" />
+  </wsdl:message>
+  <wsdl:message name="DeleteImageSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgentUpAvatarGifSoapIn">
+    <wsdl:part name="parameters" element="tns:AgentUpAvatarGif" />
+  </wsdl:message>
+  <wsdl:message name="AgentUpAvatarGifSoapOut">
+    <wsdl:part name="parameters" element="tns:AgentUpAvatarGifResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgentUploadAvatarSoapIn">
+    <wsdl:part name="parameters" element="tns:AgentUploadAvatar" />
+  </wsdl:message>
+  <wsdl:message name="AgentUploadAvatarSoapOut">
+    <wsdl:part name="parameters" element="tns:AgentUploadAvatarResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgentUploadAvatarSWFSoapIn">
+    <wsdl:part name="parameters" element="tns:AgentUploadAvatarSWF" />
+  </wsdl:message>
+  <wsdl:message name="AgentUploadAvatarSWFSoapOut">
+    <wsdl:part name="parameters" element="tns:AgentUploadAvatarSWFResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadAvatarUserInGameSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadAvatarUserInGame" />
+  </wsdl:message>
+  <wsdl:message name="UploadAvatarUserInGameSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadAvatarUserInGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadBannerSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadBanner" />
+  </wsdl:message>
+  <wsdl:message name="UploadBannerSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadBannerResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadCaptuteScreenInGameSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadCaptuteScreenInGame" />
+  </wsdl:message>
+  <wsdl:message name="UploadCaptuteScreenInGameSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadCaptuteScreenInGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveJPEGSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveJPEG" />
+  </wsdl:message>
+  <wsdl:message name="SaveJPEGSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveJPEGResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UploadFileServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarEventImage">
+      <wsdl:input message="tns:UploadAvatarEventImageSoapIn" />
+      <wsdl:output message="tns:UploadAvatarEventImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAssEventImage">
+      <wsdl:input message="tns:UploadAssEventImageSoapIn" />
+      <wsdl:output message="tns:UploadAssEventImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAssociationImage">
+      <wsdl:input message="tns:UploadAssociationImageSoapIn" />
+      <wsdl:output message="tns:UploadAssociationImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssociationImage">
+      <wsdl:input message="tns:UpdateAssociationImageSoapIn" />
+      <wsdl:output message="tns:UpdateAssociationImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssEventImageList">
+      <wsdl:input message="tns:GetAssEventImageListSoapIn" />
+      <wsdl:output message="tns:GetAssEventImageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssEventImage">
+      <wsdl:input message="tns:DeleteAssEventImageSoapIn" />
+      <wsdl:output message="tns:DeleteAssEventImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAvatarWeb">
+      <wsdl:input message="tns:DeleteAvatarWebSoapIn" />
+      <wsdl:output message="tns:DeleteAvatarWebSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAvatarUserUp">
+      <wsdl:input message="tns:DeleteAvatarUserUpSoapIn" />
+      <wsdl:output message="tns:DeleteAvatarUserUpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadUserEventImage">
+      <wsdl:input message="tns:UploadUserEventImageSoapIn" />
+      <wsdl:output message="tns:UploadUserEventImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarUser">
+      <wsdl:input message="tns:UploadAvatarUserSoapIn" />
+      <wsdl:output message="tns:UploadAvatarUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <wsdl:input message="tns:UploadImageSoapIn" />
+      <wsdl:output message="tns:UploadImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteImage">
+      <wsdl:input message="tns:DeleteImageSoapIn" />
+      <wsdl:output message="tns:DeleteImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgentUpAvatarGif">
+      <wsdl:input message="tns:AgentUpAvatarGifSoapIn" />
+      <wsdl:output message="tns:AgentUpAvatarGifSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgentUploadAvatar">
+      <wsdl:input message="tns:AgentUploadAvatarSoapIn" />
+      <wsdl:output message="tns:AgentUploadAvatarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgentUploadAvatarSWF">
+      <wsdl:input message="tns:AgentUploadAvatarSWFSoapIn" />
+      <wsdl:output message="tns:AgentUploadAvatarSWFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileSoapIn" />
+      <wsdl:output message="tns:UploadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input message="tns:DeleteFileSoapIn" />
+      <wsdl:output message="tns:DeleteFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarUserInGame">
+      <wsdl:input message="tns:UploadAvatarUserInGameSoapIn" />
+      <wsdl:output message="tns:UploadAvatarUserInGameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadBanner">
+      <wsdl:input message="tns:UploadBannerSoapIn" />
+      <wsdl:output message="tns:UploadBannerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadCaptuteScreenInGame">
+      <wsdl:input message="tns:UploadCaptuteScreenInGameSoapIn" />
+      <wsdl:output message="tns:UploadCaptuteScreenInGameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveJPEG">
+      <wsdl:input message="tns:SaveJPEGSoapIn" />
+      <wsdl:output message="tns:SaveJPEGSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UploadFileServiceSoap" type="tns:UploadFileServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarEventImage">
+      <soap:operation soapAction="http://tempuri.org/UploadAvatarEventImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAssEventImage">
+      <soap:operation soapAction="http://tempuri.org/UploadAssEventImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAssociationImage">
+      <soap:operation soapAction="http://tempuri.org/UploadAssociationImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssociationImage">
+      <soap:operation soapAction="http://tempuri.org/UpdateAssociationImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssEventImageList">
+      <soap:operation soapAction="http://tempuri.org/GetAssEventImageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssEventImage">
+      <soap:operation soapAction="http://tempuri.org/DeleteAssEventImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAvatarWeb">
+      <soap:operation soapAction="http://tempuri.org/DeleteAvatarWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAvatarUserUp">
+      <soap:operation soapAction="http://tempuri.org/DeleteAvatarUserUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadUserEventImage">
+      <soap:operation soapAction="http://tempuri.org/UploadUserEventImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarUser">
+      <soap:operation soapAction="http://tempuri.org/UploadAvatarUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <soap:operation soapAction="http://tempuri.org/UploadImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteImage">
+      <soap:operation soapAction="http://tempuri.org/DeleteImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentUpAvatarGif">
+      <soap:operation soapAction="http://tempuri.org/AgentUpAvatarGif" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentUploadAvatar">
+      <soap:operation soapAction="http://tempuri.org/AgentUploadAvatar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentUploadAvatarSWF">
+      <soap:operation soapAction="http://tempuri.org/AgentUploadAvatarSWF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap:operation soapAction="http://tempuri.org/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarUserInGame">
+      <soap:operation soapAction="http://tempuri.org/UploadAvatarUserInGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadBanner">
+      <soap:operation soapAction="http://tempuri.org/UploadBanner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadCaptuteScreenInGame">
+      <soap:operation soapAction="http://tempuri.org/UploadCaptuteScreenInGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveJPEG">
+      <soap:operation soapAction="http://tempuri.org/SaveJPEG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UploadFileServiceSoap12" type="tns:UploadFileServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarEventImage">
+      <soap12:operation soapAction="http://tempuri.org/UploadAvatarEventImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAssEventImage">
+      <soap12:operation soapAction="http://tempuri.org/UploadAssEventImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAssociationImage">
+      <soap12:operation soapAction="http://tempuri.org/UploadAssociationImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssociationImage">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAssociationImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssEventImageList">
+      <soap12:operation soapAction="http://tempuri.org/GetAssEventImageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssEventImage">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAssEventImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAvatarWeb">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAvatarWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAvatarUserUp">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAvatarUserUp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadUserEventImage">
+      <soap12:operation soapAction="http://tempuri.org/UploadUserEventImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarUser">
+      <soap12:operation soapAction="http://tempuri.org/UploadAvatarUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <soap12:operation soapAction="http://tempuri.org/UploadImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteImage">
+      <soap12:operation soapAction="http://tempuri.org/DeleteImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentUpAvatarGif">
+      <soap12:operation soapAction="http://tempuri.org/AgentUpAvatarGif" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentUploadAvatar">
+      <soap12:operation soapAction="http://tempuri.org/AgentUploadAvatar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentUploadAvatarSWF">
+      <soap12:operation soapAction="http://tempuri.org/AgentUploadAvatarSWF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatarUserInGame">
+      <soap12:operation soapAction="http://tempuri.org/UploadAvatarUserInGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadBanner">
+      <soap12:operation soapAction="http://tempuri.org/UploadBanner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadCaptuteScreenInGame">
+      <soap12:operation soapAction="http://tempuri.org/UploadCaptuteScreenInGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveJPEG">
+      <soap12:operation soapAction="http://tempuri.org/SaveJPEG" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UploadFileService">
+    <wsdl:port name="UploadFileServiceSoap" binding="tns:UploadFileServiceSoap">
+      <soap:address location="http://image.p111.us/UploadFileService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UploadFileServiceSoap12" binding="tns:UploadFileServiceSoap12">
+      <soap12:address location="http://image.p111.us/UploadFileService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

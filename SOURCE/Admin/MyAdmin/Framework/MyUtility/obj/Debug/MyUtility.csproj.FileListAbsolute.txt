@@ -1,0 +1,50 @@
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\MyUtility.dll.config
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\MyUtility.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\MyUtility.pdb
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\Newtonsoft.Json.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.Helpers.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.Mvc.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.Razor.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.WebPages.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.WebPages.Razor.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.Helpers.xml
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.Mvc.xml
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.Razor.xml
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.WebPages.xml
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\WEB\P111Web\BanCa\Framework\MyUtility\bin\Debug\System.Web.WebPages.Razor.xml
+D:\WEB\P111Web\BanCa\Framework\MyUtility\obj\Debug\MyUtility.csprojResolveAssemblyReference.cache
+D:\WEB\P111Web\BanCa\Framework\MyUtility\obj\Debug\MyUtility.dll
+D:\WEB\P111Web\BanCa\Framework\MyUtility\obj\Debug\MyUtility.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\bin\Debug\MyUtility.dll.config
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\bin\Debug\MyUtility.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\bin\Debug\MyUtility.pdb
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\bin\Debug\System.Web.Mvc.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\bin\Debug\System.Web.Mvc.xml
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\obj\Debug\MyUtility.csprojResolveAssemblyReference.cache
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\obj\Debug\MyUtility.dll
+C:\Users\ALO\Desktop\New folder (4)\BanCa\Framework\MyUtility\obj\Debug\MyUtility.pdb
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\bin\Debug\MyUtility.dll.config
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\bin\Debug\MyUtility.dll
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\bin\Debug\MyUtility.pdb
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\bin\Debug\System.Web.Mvc.dll
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\bin\Debug\System.Web.Mvc.xml
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\obj\Debug\MyUtility.csprojResolveAssemblyReference.cache
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\obj\Debug\MyUtility.dll
+C:\Users\ALO\Desktop\Admin\MyAdmin\Framework\MyUtility\obj\Debug\MyUtility.pdb
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\bin\Debug\MyUtility.dll.config
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\bin\Debug\MyUtility.dll
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\bin\Debug\MyUtility.pdb
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\bin\Debug\System.Web.Mvc.dll
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\bin\Debug\System.Web.Mvc.xml
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\obj\Debug\MyUtility.csprojResolveAssemblyReference.cache
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\obj\Debug\MyUtility.dll
+C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyUtility\obj\Debug\MyUtility.pdb

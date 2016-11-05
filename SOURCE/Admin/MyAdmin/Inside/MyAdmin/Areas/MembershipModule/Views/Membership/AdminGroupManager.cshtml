@@ -1,0 +1,145 @@
+﻿@using MyAdmin.Helper
+@model MyAdmin.Models.Account.AdminGroupModel
+@{
+    Layout = "~/Views/Shared/Metronic/_MainLayout.cshtml";
+}
+
+<style type="text/css">
+    /* .slideThree */
+    .slideThree {
+        width: 80px;
+        height: 26px;
+        background: #333;
+        margin: 0 auto;
+        position: relative;
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    }
+
+        .slideThree:after {
+            content: 'OFF';
+            color: #000;
+            position: absolute;
+            right: 10px;
+            z-index: 0;
+            font: 12px/26px Arial, sans-serif;
+            font-weight: bold;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+        }
+
+        .slideThree:before {
+            content: 'ON';
+            color: #27ae60;
+            position: absolute;
+            left: 10px;
+            z-index: 0;
+            font: 12px/26px Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .slideThree label {
+            display: block;
+            width: 34px;
+            height: 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            z-index: 1;
+            background: #fcfff4;
+            background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+            background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+            border-radius: 50px;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .slideThree input[type=checkbox] {
+            visibility: hidden;
+        }
+
+            .slideThree input[type=checkbox]:checked + label {
+                left: 43px;
+            }
+
+    /* end .slideThree */
+</style>
+<div class="outer">
+    <div class="inner bg-light lter">
+        <!--Begin Datatables-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <header>
+                        <h5>
+                            <span>Quản lý nhóm Admin</span>
+                        </h5>
+                    </header>
+                    <div class="form-group">
+                        <a title="" onclick="OpenPopup('Quản lý nhóm','Account/PopupAdminGroupManager?ID=0', 800); return false;" href="#"><button class="btn btn-primary col-lg-2">Thêm nhóm</button></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div id="collapse4" class="body">
+                        <br />
+                        <table id="myTable" class="table table-bordered table-condensed table-hover table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th class="text-left">STT</th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Tên Nhóm</th>
+                                    <th class="text-center">Trạng Thái</th>
+                                    <th class="text-center">Số thành viên</th>
+                                    <th class="text-center">Ngày tạo</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.inner -->
+</div>
+<!-- /.outer -->
+<script type="text/javascript">
+    var oTable;
+    $(document).ready(function () {
+        oTable = $('#myTable')
+            .on('preXhr.dt', function () {
+                ShowLoading();
+            })
+            .on('xhr.dt', function () {
+                HideLoading();
+            })
+            .dataTable({
+                "jQueryUI": false,
+                "scrollY": false,
+                "scrollCollapse": true,
+                "bFilter": false,
+                "bSort": false,
+                "scrollX": false,
+                //"bProcessing": true,
+                "bServerSide": true,
+                "sAjaxSource": '@Url.Action("GetListGroup", "Membership")',
+                "sServerMethod": "POST",
+                "fnServerParams": function (aoData) {
+                    aoData.push({ name: "ID", value: '@Model.ID' });
+                    aoData.push({ name: "GroupName", value: '@Model.GroupName' });
+                    aoData.push({ name: "Visible", value: '@Model.Visible' });
+                },
+                "columns": [
+                    { "data": "STT", "sClass": "align-center", "bSortable": false }, //0
+                    { "data": "ID", "sClass": "align-center", "bSortable": false }, //0
+                    { "data": "GroupName", "sClass": "align-left" }, //1
+                    { "data": "Status", "sClass": "align-center", "bSortable": false },//2
+                    { "data": "CountMember", "sClass": "align-center", "bSortable": false },//2
+                    { "data": "CreatedDate", "sClass": "align-left" } //3
+                ],
+                //"order": [[3, "desc"]],
+                "lengthMenu": [[10, 20, 40, 60, 100], [10, 20, 40, 60, 100]]
+            });
+    });
+</script>

@@ -1,0 +1,182 @@
+﻿@model BusinessObject.MembershipModule.Enums.AdminGroupModel
+
+@{
+    
+    Layout = "~/Views/Shared/Metronic/_MainLayout.cshtml";
+    ViewBag.Title = "Quản lý nhóm";
+    ViewBag.PageName = "Page Name";
+    Layout = null;
+}
+
+<div class="outer">
+    <div class="inner bg-light lter">
+
+        <!--Begin Datatables-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <header>
+                        <h5>
+                            <span></span>
+                        </h5>
+                    </header>
+                    <div class="clearfix"></div>
+                    <div role="tabpanel">
+
+                        <!-- Nav tabs -->
+                        <ul id="commenttype" class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active" id="thongtin" value="1"><a href="#tabthongtin" commenttype="0" aria-controls="tabthongtin" role="tab" data-toggle="tab">Thông tin</a></li>
+                            <li role="presentation" id="quyen" value="2"><a href="#tabquyen" commenttype="1" onclick="createChildTable()" aria-controls="tabquyen" role="tab" data-toggle="tab">Quyền</a></li>
+                            <li role="presentation" id="thanhvien" value="3"><a href="#tabthanhvien" commenttype="2" aria-controls="tabthanhvien" role="tab" data-toggle="tab">Thành viên</a></li>
+                        </ul>
+                        <br />
+                        <div class="clearfix"></div>
+                            
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            
+                            @*thông tin*@
+                            <div role="tabpanel active" class="tab-pane active" id="tabthongtin">
+                                <div>
+                                    <div class="clearfix"></div>
+                                    @*thông tin*@
+                                    <div class="form-horizontal" role="form">
+                                        @Html.HiddenFor(m => m.ID)
+        
+                                        @{if(@Model.ID>0)
+                                          {
+                                              <div class="form-group">
+                                                  <label for="" class="col-sm-2 control-label">ID</label>
+                                                  <div class="col-sm-9">
+                                                      <label for="ID" class="form-control">@Model.ID</label>
+                                                      @*@Html.LabelFor(e => e.ID, new {@class = "form-control"})*@
+                                                  </div>
+                                              </div>
+                                          }
+                                        }
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-2 control-label">Tên nhóm</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(e => e.GroupName, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.GroupName, "", new { @class = "red" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-2 control-label">Trạng thái</label>
+                                            <div class="col-sm-1">
+                                                @*@Html.CheckBoxFor(e => e.Visible, new { @class = "form-control" })*@
+                                                <input type="checkbox" name="Visible" id="cbVisible" @(Model.Visible?"checked='checked'":"")>
+                                            </div>
+                                        </div>
+       
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-primary" onclick="UpdateAdminGroupManager();">@(Model.ID>0?"Cập nhật":"Thêm mới")</button>
+                                                <button type="button" class="btn btn-danger" onclick="ClosePopup()">Hủy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                       
+                            
+                            @*bài viết*@
+                            <div role="tabpanel" class="tab-pane" id="tabquyen">
+                                <div>
+                                    @Html.Action("AdminPermissionGroup", "Membership")
+                                </div>
+                            </div>
+
+                            @*thành viên*@
+                            <div role="tabpanel" class="tab-pane" id="tabthanhvien">
+                                <div>
+                                    @Html.Action("AdminMemberManager", "Membership")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+    <!-- /.inner -->
+
+<!-- /.outer -->
+
+<script type="text/javascript">
+        $.validator.unobtrusive.parse("#myform");
+        var oTable;
+        var UpdateAdminGroupManager = function() {
+            if ($('#GroupName').val() == "") {
+                showErrorToastr("Bạn phải nhập tên nhóm!");
+                return false;
+            }
+            var visible = $("#cbVisible").is(":checked");
+            //if (document.getElementById('Visible').checked) {
+            //    visible = true;
+            //    alert(visible);
+            //}
+            //else {
+            //    visible = false;
+            //}
+
+            $.ajax({
+                url: '@Url.Action("UpdateAdminGroupManager", "Membership")',
+                type: "post",
+                data: {
+                    "ID": '@Model.ID',
+                    "GroupName": $('#GroupName').val(),
+                    "Visible": visible,
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    ShowLoading();
+                },
+                success: function(res) {
+                    if (res != null) {
+                        if (res.Success == 0) {
+                            showSuccessToastr(res.Message);
+                            $('#quyen').show();
+                            $("#thongtin").removeClass("active");
+                            $("#tabthongtin").removeClass("active");
+
+                            $("#quyen").addClass("active");
+                            $("#tabquyen").addClass("tab-pane active");
+                            oTable.fnFilter();
+                        } else {
+                            showErrorToastr(res.Message);
+                        }
+                    } else {
+                        showErrorToastr("Lỗi trong quá trình xử lý, xin thử lại sau.");
+                    }
+
+                },
+                error: function() {
+                    showErrorToastr("Lỗi đường truyền, xin thử lại sau.");
+                },
+                complete: function() {
+                    HideLoading();
+                }
+            });
+        };
+
+        $(document).ready(function() {
+            if ('@Model.ID' == 0) {
+                $('#quyen').hide();
+                $('#thanhvien').hide();
+            } else {
+                $('#quyen').show();
+                $('#thanhvien').show();
+            }
+        });
+    </script>
+
+
+
+

@@ -1,0 +1,281 @@
+﻿@*@model MyAdmin.Models.Account.AdminUserModel*@
+@model BusinessObject.MembershipModule.Enums.AdminUserInfoModel
+
+@{
+   // int total = 0;
+   // var listUser = _memberBusiness.MemberAdmin_GetListUser(2, 1, 1, 1000, out total);
+}
+<div class="outer" id="goldfree">
+    <div class="inner bg-light lter">
+        <!--Begin Datatables-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div id="collapse4" class="body">
+                        <div class="clearfix"></div>
+                        <div class="form-group col-sm-4">
+                            @if (Model.UserInfo!=null)
+                            {
+                                <label class="red">Sao chép quyền từ @Model.UserInfo.NickName cho</label>
+                            }
+                            <div>
+                                <select id="ddlCloneuser" class="form-control">
+                                    <option value="-1">--------Chọn user--------</option>
+                                    @{
+                                        foreach (var item in @Model.ListUser)
+                                        {
+                                            if (@Model.AdminUser.ID != @item.ID)
+                                            {
+                                                <option value="@item.ID">@item.NickName</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-sm-4">
+                            <label class="red">&nbsp;</label>
+                            <div>
+                                <button class="btn btn-success" id="btnCloneuser" type="button" onclick="ClonePermisstionUser();">Clone</button>
+                            </div>
+                        </div>
+                        <br />
+                        <table id="myTable1" class="table table-striped table-hover table-bordered dataTable no-footers">
+                            <thead>
+                                <tr class="text-center">
+                                    <th class="text-left">STT</th>
+                                    <th class="text-left">ID</th>
+                                    <th class="text-left">Tên trang</th>
+                                    @*<th class="text-left">Trạng thái</th>*@
+                                    <th class="text-left">View</th>
+                                    <th class="text-left">Edit-View</th>
+                                    <th class="text-left">View-Delete</th>
+                                    <th class="text-left">View-Edit-Delete</th>
+                                    <th class="text-left">Xóa quyền</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.inner -->
+</div>
+    <script type="text/javascript">
+        var ChildTable = null;
+        var createChildTable = function() {
+            setTimeout(
+                function() {
+                    ChildTable.fnFilter();
+                }, 500);
+
+        };
+
+        var AdminGetPermissionUser = function() {
+            $.ajax({
+                url: '@Url.Action("AdminGetPermissionUser", "Membership")',
+                type: "post",
+                data: {
+                    "UserID": '@Model.AdminUser.ID',
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    ShowLoading();
+                },
+                success: function(res) {
+                    var tbl = '';
+                    if (res != null) {
+                        $('#myTable1 tbody').html(res.Data);
+
+                        //cập nhật trạng thái
+                        $('.classStatus input[type="checkbox"]').click(function() {
+                            var id = $(this).val();
+                            var isEnable = $("#classStatus_" + id).is(":checked");
+                            UpdateAdminStatusPageFunction(id, isEnable);
+                        });
+
+                        // tạo quyền cho user
+                        $('.classView input[type="radio"]').click(function() {
+                            var id = $(this).val();
+                            var rules = $(this).attr('rules');
+                            var check = $(this).is(":checked") ? 1 : 0;
+                            UpdateAndInsertUserPermission(id, rules, check);
+                        });
+
+                    } else {
+                        showErrorToastr("Lỗi trong quá trình xử lý, xin thử lại sau.");
+                    }
+
+                    ChildTable = $('#myTable1').dataTable({
+                        "scrollY": "500px",
+                        "scrollCollapse": true,
+                        "bSort": false,
+                        "bFilter": false,
+                        "paging": false
+                    });
+
+                },
+                error: function() {
+                    showErrorToastr("Lỗi đường truyền, xin thử lại sau.");
+                },
+                complete: function() {
+                    HideLoading();
+                }
+            });
+        };
+
+        var UpdateAdminStatusPageFunction = function(id, isEnable) {
+            $.ajax({
+                url: '@Url.Action("UpdateAdminStatusPageFunction", "Membership")',
+                type: "post",
+                data: {
+                    "ID": id,
+                    "IsEnable": isEnable,
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    ShowLoading();
+                },
+                success: function(res) {
+                    if (res != null) {
+                        if (res.Success == 0) {
+                            //showSuccessToastr(res.Message);
+                            //oTable.fnFilter();
+                        } else {
+                            showErrorToastr(res.Message);
+                        }
+                    } else {
+                        showErrorToastr("Lỗi trong quá trình xử lý, xin thử lại sau.");
+                    }
+
+                },
+                error: function() {
+                    showErrorToastr("Lỗi đường truyền, xin thử lại sau.");
+                },
+                complete: function() {
+                    HideLoading();
+                }
+            });
+        };
+
+        var UpdateAndInsertUserPermission = function(id, rules, check) {
+            $.ajax({
+                url: '@Url.Action("UpdateAndInsertUserPermission", "Membership")',
+                type: "post",
+                data: {
+                    "PageID": id,
+                    "UserID": '@Model.AdminUser.ID',
+                    "Rules": rules,
+                    "Check": check,
+                    "NickName": $('#txtNickName').val(),
+
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    ShowLoading();
+                },
+                success: function(res) {
+                    if (res != null) {
+                        if (res.Success == 0) {
+                        } else {
+                            showErrorToastr(res.Message);
+                        }
+                    } else {
+                        showErrorToastr("Lỗi trong quá trình xử lý, xin thử lại sau.");
+                    }
+
+                },
+                error: function() {
+                    showErrorToastr("Lỗi đường truyền, xin thử lại sau.");
+                },
+                complete: function() {
+                    HideLoading();
+                }
+            });
+        };
+
+        var ClonePermisstionUser = function() {
+            if (confirm("Bạn có muốn clone quyền không ?")) {
+                $.ajax({
+                    url: '@Url.Action("ClonePermisstionUser", "Membership")',
+                    type: "post",
+                    data: {
+                        "UserIDClone": '@Model.AdminUser.ID',
+                        "UserID": $('#ddlCloneuser').val(),
+                    },
+                    dataType: 'json',
+                    beforeSend: function() {
+                        ShowLoading();
+                    },
+                    success: function(res) {
+                        if (res != null) {
+                            if (res.Success == 0) {
+                                showSuccessToastr(res.Message);
+                            } else {
+                                showErrorToastr(res.Message);
+                            }
+                        } else {
+                            showErrorToastr("Lỗi trong quá trình xử lý, xin thử lại sau.");
+                        }
+
+                    },
+                    error: function() {
+                        showErrorToastr("Lỗi đường truyền, xin thử lại sau.");
+                    },
+                    complete: function() {
+                        HideLoading();
+                    }
+                });
+            }
+        };
+
+        var MemberPermission_Delete = function(pageId) {
+            if (confirm("Bạn có muốn xóa quyền này không ?")) {
+                $.ajax({
+                    url: '@Url.Action("MemberPermission_Delete", "Membership")',
+                    type: "post",
+                    data: {
+                        "UserId": '@Model.AdminUser.ID',
+                        "PageId": pageId,
+                        "Type": 1,
+                    },
+                    dataType: 'json',
+                    beforeSend: function() {
+                        ShowLoading();
+                    },
+                    success: function(res) {
+                        if (res != null) {
+                            if (res.Success == 0) {
+                                showSuccessToastr(res.Message);
+                                $('.classView').click(function() {
+                                    var pageid = $(this).attr('pageId');
+                                    $('classxoa_' + pageid).hide();
+                                });
+                            } else {
+                                showErrorToastr(res.Message);
+                            }
+                        } else {
+                            showErrorToastr("Lỗi trong quá trình xử lý, xin thử lại sau.");
+                        }
+
+                    },
+                    error: function() {
+                        showErrorToastr("Lỗi đường truyền, xin thử lại sau.");
+                    },
+                    complete: function () {
+                        HideLoading();
+                    }
+                });
+            }
+        };
+
+
+        $(document).ready(function() {
+            AdminGetPermissionUser();
+        });
+
+    </script>

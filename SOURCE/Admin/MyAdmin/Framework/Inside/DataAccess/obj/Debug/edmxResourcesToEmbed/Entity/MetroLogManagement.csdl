@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LogManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LogManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoginLogs" EntityType="LogManagementModel.LoginLog" />
+    <EntitySet Name="NotificationPermissions" EntityType="LogManagementModel.NotificationPermission" />
+    <EntitySet Name="NotificationReasons" EntityType="LogManagementModel.NotificationReason" />
+    <FunctionImport Name="Ins_NotificationReason_GetNotificationReasonByAdminID" ReturnType="Collection(LogManagementModel.Ins_NotificationReason_GetNotificationReasonByAdminID_Result)">
+      <Parameter Name="AdminID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_NotificationReason_GetNotificationReasonByID" ReturnType="Collection(LogManagementModel.Ins_NotificationReason_GetNotificationReasonByID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Notifications" EntityType="LogManagementModel.Notification" />
+    <EntitySet Name="AdminLogTransfers" EntityType="LogManagementModel.AdminLogTransfer" />
+    <EntitySet Name="AdminTranferTypes" EntityType="LogManagementModel.AdminTranferType" />
+    <FunctionImport Name="Ins_BroadCast_CreateBroadcast">
+      <Parameter Name="piority" Mode="In" Type="Int32" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="interval" Mode="In" Type="Int32" />
+      <Parameter Name="startdate" Mode="In" Type="DateTime" />
+      <Parameter Name="enddate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_BroadCast_DeleteBroadcast">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_BroadCast_UpdateBroadcast">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="piority" Mode="In" Type="Int32" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="interval" Mode="In" Type="Int32" />
+      <Parameter Name="startdate" Mode="In" Type="DateTime" />
+      <Parameter Name="enddate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_BroadCast_GetBroadcast_ByID" ReturnType="Collection(LogManagementModel.Ins_BroadCast_GetBroadcast_ByID_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_BroadCast_GetListBroadcast" ReturnType="Collection(LogManagementModel.Ins_BroadCast_GetListBroadcast_Result)" />
+    <EntitySet Name="CoinLogs" EntityType="LogManagementModel.CoinLog" />
+    <FunctionImport Name="Ins_Notification_GetNotificationByTime" ReturnType="Collection(LogManagementModel.Ins_Notification_GetNotificationByTime_Result)">
+      <Parameter Name="FromTime" Mode="In" Type="DateTime" />
+      <Parameter Name="ToTime" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogTopUserRecievedItem_GetTop" ReturnType="Collection(LogManagementModel.Ins_LogTopUserRecievedItem_GetTop_Result)">
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LogTopUserRecievedItems" EntityType="LogManagementModel.LogTopUserRecievedItem" />
+    <EntitySet Name="LogItemGameControls" EntityType="LogManagementModel.LogItemGameControl" />
+    <FunctionImport Name="Ins_LogItemGameControl_Insert">
+      <Parameter Name="ItemId" Mode="In" Type="Int32" />
+      <Parameter Name="Quantity" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogItemGameControl_GetHistoryUpdate" ReturnType="Collection(LogManagementModel.Ins_LogItemGameControl_GetHistoryUpdate_Result)">
+      <Parameter Name="BeginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="TopKillBosses" EntityType="LogManagementModel.TopKillBoss" />
+    <FunctionImport Name="Ins_AdminLogTransfer_GetHistory" ReturnType="Collection(LogManagementModel.Ins_AdminLogTransfer_GetHistory_Result)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="BeginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+      <Parameter Name="ActionId" Mode="In" Type="Int32" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LogAdminCancelApprovals" EntityType="LogManagementModel.LogAdminCancelApproval" />
+    <FunctionImport Name="Ins_LogAdminCancelApproval_Get" ReturnType="Collection(LogManagementModel.Ins_LogAdminCancelApproval_Get_Result)">
+      <Parameter Name="ApprovalId" Mode="In" Type="String" />
+      <Parameter Name="Separetor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogAdminCancelApproval_Insert" ReturnType="Collection(Int32)">
+      <Parameter Name="ApprovalId" Mode="In" Type="Int32" />
+      <Parameter Name="AdminID" Mode="In" Type="Int32" />
+      <Parameter Name="AdminName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_DBGame_A_TPlayGame_Record_GetDataByKeyWord" ReturnType="Collection(LogManagementModel.Ins_DBGame_A_TPlayGame_Record_GetDataByKeyWord_Result)">
+      <Parameter Name="KeyWord" Mode="In" Type="String" />
+      <Parameter Name="Kind" Mode="In" Type="Int32" />
+      <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_DBGame_A_TPlayGame_Record_GetData" ReturnType="Collection(LogManagementModel.Ins_DBGame_A_TPlayGame_Record_GetData_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Kind" Mode="In" Type="Int32" />
+      <Parameter Name="Room" Mode="In" Type="Int32" />
+      <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_A_TPlayGame_Record_DetailByID" ReturnType="Collection(LogManagementModel.Ins_A_TPlayGame_Record_DetailByID_Result)">
+      <Parameter Name="RecordId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_DBGame_A_TRoom_Info_GetData" ReturnType="Collection(LogManagementModel.Ins_DBGame_A_TRoom_Info_GetData_Result)" />
+    <EntitySet Name="LogAdminHoanGolds" EntityType="LogManagementModel.LogAdminHoanGold" />
+    <FunctionImport Name="Ins_LogAdminHoanGold_Insert" ReturnType="Collection(Int32)">
+      <Parameter Name="ApprovalId" Mode="In" Type="Int32" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+      <Parameter Name="AdminName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogMarket_SearchByDate" ReturnType="Collection(LogManagementModel.Ins_LogMarket_SearchByDate_Result)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="IsBuy" Mode="In" Type="Int32" />
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LogFriendRelationships" EntityType="LogManagementModel.LogFriendRelationship" />
+    <EntitySet Name="RegisterLogs" EntityType="LogManagementModel.RegisterLog" />
+    <FunctionImport Name="Ins_RegisterLog_HistoryRecentRegisterChargeCard" ReturnType="Collection(LogManagementModel.Ins_RegisterLog_HistoryRecentRegisterChargeCard_Result)">
+      <Parameter Name="DateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LoginLog_LogIPIMEI" ReturnType="Collection(LogManagementModel.Ins_LoginLog_LogIPIMEI_Result)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="BeginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LoginLog_LogIPIMEI_ByImeiOrIp" ReturnType="Collection(LogManagementModel.Ins_LoginLog_LogIPIMEI_ByImeiOrIp_Result)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="ByType" Mode="In" Type="Int32" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LogGiftCoinFriends" EntityType="LogManagementModel.LogGiftCoinFriend" />
+    <FunctionImport Name="Ins_LogGiftCoinFriend_GetList" ReturnType="Collection(LogManagementModel.Ins_LogGiftCoinFriend_GetList_Result)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="BeginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_CoinLog_Insert">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="IdReason" Mode="In" Type="Int32" />
+      <Parameter Name="ValueCoin" Mode="In" Type="Decimal" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="MatchiD" Mode="In" Type="Int32" />
+      <Parameter Name="IdHistory" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LevelGameLog_GetLevelGame" ReturnType="Collection(LogManagementModel.Ins_LevelGameLog_GetLevelGame_Result)">
+      <Parameter Name="top" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_TopKillBoss_GetTopData" ReturnType="Collection(LogManagementModel.Ins_TopKillBoss_GetTopData_Result)">
+      <Parameter Name="TOP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_CoinLog_Search" ReturnType="Collection(LogManagementModel.Ins_CoinLog_Search_Result)">
+      <Parameter Name="Searchusername" Mode="In" Type="String" />
+      <Parameter Name="DateTimeFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimeTo" Mode="In" Type="DateTime" />
+      <Parameter Name="ReasonId" Mode="In" Type="Int32" />
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDirection" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+      <Parameter Name="TotalGold" Mode="InOut" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogFriendRelationship_GetMakeFriendHistory" ReturnType="Collection(LogManagementModel.Ins_LogFriendRelationship_GetMakeFriendHistory_Result)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="BeginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LogBossMinis" EntityType="LogManagementModel.LogBossMini" />
+    <FunctionImport Name="Ins_LogBossMini_InsertFromRedis">
+      <Parameter Name="ReportDate" Mode="In" Type="DateTime" />
+      <Parameter Name="TotalBoss" Mode="In" Type="Int32" />
+      <Parameter Name="TotalDiedBoss" Mode="In" Type="Int32" />
+      <Parameter Name="TotalLiveBoss" Mode="In" Type="Int32" />
+      <Parameter Name="TotalBlood" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalGoldGive" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalBloodOfDiedBoss" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalGoldGiveOfDiedBoss" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalBloodOfLiveBoss" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalResidualBloodOfLiveBoss" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalTrieutTieu" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalTrieutTieuOfDiedBoss" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalTrieutTieuOfLiveBoss" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogAdminHoanGold_Get" ReturnType="Collection(LogManagementModel.Ins_LogAdminHoanGold_Get_Result)">
+      <Parameter Name="ApprovalId" Mode="In" Type="String" />
+      <Parameter Name="Separetor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LogBossMini_GetData" ReturnType="Collection(LogManagementModel.Ins_LogBossMini_GetData_Result)">
+      <Parameter Name="BeginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_AdminLogTransfer_SuperMarket_GetTransFromAdmin" ReturnType="Collection(LogManagementModel.Ins_AdminLogTransfer_SuperMarket_GetTransFromAdmin_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_LoginLog_GetLoginLog" ReturnType="Collection(LogManagementModel.Ins_LoginLog_GetLoginLog_Result)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="Position" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="LoginLog">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="LoginDate" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="LoginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OpenProviderID" Type="Int32" />
+    <Property Name="OpenUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Token" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TokenExpiredTime" Type="DateTime" Precision="3" />
+    <Property Name="IMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PlatformID" Type="Int32" />
+    <Property Name="HardwareID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AppVersion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IPAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ChannelID" Type="Int32" />
+    <Property Name="VersionDecive" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeviceModel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="NotificationPermission">
+    <Key>
+      <PropertyRef Name="AdminID" />
+      <PropertyRef Name="NotificationReasonID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" />
+    <Property Name="NotificationReasonID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NotificationReason">
+    <Key>
+      <PropertyRef Name="NotificationReasonID" />
+      <PropertyRef Name="NotificationReason1" />
+      <PropertyRef Name="Link" />
+    </Key>
+    <Property Name="NotificationReasonID" Type="Int32" Nullable="false" />
+    <Property Name="NotificationReason1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="Ins_NotificationReason_GetNotificationReasonByAdminID_Result">
+    <Property Type="Int32" Name="NotificationReasonID" Nullable="false" />
+    <Property Type="String" Name="NotificationReason" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Link" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="Ins_NotificationReason_GetNotificationReasonByID_Result">
+    <Property Type="Int32" Name="NotificationReasonID" Nullable="false" />
+    <Property Type="String" Name="NotificationReason" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Link" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdminID" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="AdminLogTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TranferTypeID" Type="Int32" />
+    <Property Name="AdminID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="TransactionID" Type="Int32" />
+    <Property Name="NickNameUser" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NickNameAdmin" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OldValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgentUser" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="ReasonContent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="AdminTranferType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="TranferName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrderNum" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_BroadCast_GetBroadcast_ByID_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="Piority" Nullable="true" />
+    <Property Type="String" Name="Msg" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="Interval" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="NextDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Ins_BroadCast_GetListBroadcast_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="Piority" Nullable="true" />
+    <Property Type="String" Name="Msg" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="Interval" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="NextDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="CoinLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ReasonId" Type="Int32" Nullable="false" />
+    <Property Name="CurrenCoin" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ValueCoin" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="MatchID" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_Notification_GetNotificationByTime_Result">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Link" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="Int32" Name="AdminID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_LogTopUserRecievedItem_GetTop_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="TotalItem" Nullable="true" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="LogTopUserRecievedItem">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="TotalItem" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="LogItemGameControl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_LogItemGameControl_GetHistoryUpdate_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="ItemID" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="TopKillBoss">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="GoldWin" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Order" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Ins_AdminLogTransfer_GetHistory_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="AdminID" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="NickNameUser" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TranferTypeID" Nullable="true" />
+    <Property Type="String" Name="OldValue" Nullable="true" />
+    <Property Type="String" Name="NewValue" Nullable="true" />
+    <Property Type="String" Name="AgentUser" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="IPAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonContent" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="TranferName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="NickName" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <EntityType Name="LogAdminCancelApproval">
+    <Key>
+      <PropertyRef Name="ApprovalId" />
+    </Key>
+    <Property Name="ApprovalId" Type="Int32" Nullable="false" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_LogAdminCancelApproval_Get_Result">
+    <Property Type="Int32" Name="ApprovalId" Nullable="true" />
+    <Property Type="Int32" Name="AdminId" Nullable="true" />
+    <Property Type="String" Name="AdminName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Ins_DBGame_A_TPlayGame_Record_GetDataByKeyWord_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="GameName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="RoomID" Nullable="true" />
+    <Property Type="Int32" Name="TableID" Nullable="true" />
+    <Property Type="Int64" Name="MoneyIn" Nullable="true" />
+    <Property Type="Int64" Name="MoneyOut" Nullable="true" />
+    <Property Type="DateTime" Name="TimeIn" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="TimeOut" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="LevelIn" Nullable="true" />
+    <Property Type="Int32" Name="LevelOut" Nullable="true" />
+    <Property Type="Int64" Name="ExpIn" Nullable="true" />
+    <Property Type="Int64" Name="ExpOut" Nullable="true" />
+    <Property Type="Int32" Name="TotalRow" Nullable="true" />
+    <Property Type="Int32" Name="KindId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_DBGame_A_TPlayGame_Record_GetData_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="KindID" Nullable="false" />
+    <Property Type="Int32" Name="RoomID" Nullable="false" />
+    <Property Type="Int32" Name="TableID" Nullable="false" />
+    <Property Type="Int64" Name="MoneyIn" Nullable="false" />
+    <Property Type="Int64" Name="MoneyOut" Nullable="false" />
+    <Property Type="Int64" Name="MoneyGet" Nullable="false" />
+    <Property Type="DateTime" Name="TimeIn" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="TimeOut" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="LevelIn" Nullable="true" />
+    <Property Type="Int64" Name="ExpIn" Nullable="true" />
+    <Property Type="Int32" Name="LevelOut" Nullable="true" />
+    <Property Type="Int64" Name="ExpOut" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_A_TPlayGame_Record_DetailByID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="TimeCreate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="TimeEnd" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="UserID1" Nullable="false" />
+    <Property Type="String" Name="NameUser1" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Score1" Nullable="false" />
+    <Property Type="Int32" Name="Money1" Nullable="false" />
+    <Property Type="Int64" Name="WalletBefore1" Nullable="false" />
+    <Property Type="Int16" Name="Rank1" Nullable="false" />
+    <Property Type="Int32" Name="UserID2" Nullable="false" />
+    <Property Type="String" Name="NameUser2" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Score2" Nullable="false" />
+    <Property Type="Int32" Name="Money2" Nullable="false" />
+    <Property Type="Int64" Name="WalletBefore2" Nullable="false" />
+    <Property Type="Int16" Name="Rank2" Nullable="false" />
+    <Property Type="Int32" Name="UserID3" Nullable="false" />
+    <Property Type="String" Name="NameUser3" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Score3" Nullable="false" />
+    <Property Type="Int32" Name="Money3" Nullable="false" />
+    <Property Type="Int64" Name="WalletBefore3" Nullable="false" />
+    <Property Type="Int16" Name="Rank3" Nullable="false" />
+    <Property Type="Int32" Name="UserID4" Nullable="false" />
+    <Property Type="String" Name="NameUser4" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Score4" Nullable="false" />
+    <Property Type="Int32" Name="Money4" Nullable="false" />
+    <Property Type="Int64" Name="WalletBefore4" Nullable="false" />
+    <Property Type="Int16" Name="Rank4" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ins_DBGame_A_TRoom_Info_GetData_Result">
+    <Property Type="Int32" Name="KindID" Nullable="false" />
+    <Property Type="String" Name="GameName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="LogAdminHoanGold">
+    <Key>
+      <PropertyRef Name="ApprovalId" />
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="ApprovalId" Type="Int32" Nullable="false" />
+    <Property Name="AdminId" Type="Int32" Nullable="false" />
+    <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_LogMarket_SearchByDate_Result">
+    <Property Type="String" Name="NameBuy" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="UserSale" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Decimal" Name="PriceItem" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="LogFriendRelationship">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="UserFriendID" Type="Int32" />
+    <Property Name="OpenProviderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="InviteType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RegisterLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PlatformID" Type="Int32" />
+    <Property Name="OpenProfiderID" Type="Int32" />
+    <Property Name="OpenUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HardwareID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="IPAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AppVersion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="VersionDecive" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeviceModel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="Ins_RegisterLog_HistoryRecentRegisterChargeCard_Result">
+    <Property Type="Int32" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="Int32" Name="OpenProfiderID" Nullable="true" />
+    <Property Type="DateTime" Name="RegisterDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="LastChargeCardAmount" Nullable="true" />
+    <Property Type="Int32" Name="TotalChargeCardAmount" Nullable="true" />
+    <Property Type="Int32" Name="MaxChargeCardAmount" Nullable="true" />
+    <Property Type="DateTime" Name="LastChargeCardDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Ins_LoginLog_LogIPIMEI_Result">
+    <Property Type="Int32" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="LoginDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="TotalCurrentGold" Nullable="true" Precision="19" />
+    <Property Type="String" Name="IMEI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IPAddress" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Ins_LoginLog_LogIPIMEI_ByImeiOrIp_Result">
+    <Property Type="Int32" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="LoginDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="TotalCurrentGold" Nullable="true" Precision="19" />
+    <Property Type="String" Name="IMEI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IPAddress" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="LogGiftCoinFriend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserFriendId" Type="Int32" Nullable="false" />
+    <Property Name="ReasonId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CoinChange" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="DateCreate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_LogGiftCoinFriend_GetList_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="UserFriendID" Nullable="false" />
+    <Property Type="String" Name="FriendDisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ReasonId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="CoinChange" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_LevelGameLog_GetLevelGame_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Level" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ins_TopKillBoss_GetTopData_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="GoldWin" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="Order" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_CoinLog_Search_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ReasonId" Nullable="false" />
+    <Property Type="Decimal" Name="CurrenCoin" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="ValueCoin" Nullable="true" Precision="19" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="MatchID" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ReasonName" Nullable="true" MaxLength="400" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_LogFriendRelationship_GetMakeFriendHistory_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="UserFriendID" Nullable="true" />
+    <Property Type="String" Name="FriendDisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="InviteType" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="LogBossMini">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalBoss" Type="Int32" />
+    <Property Name="TotalDiedBoss" Type="Int32" />
+    <Property Name="TotalLiveBoss" Type="Int32" />
+    <Property Name="TotalBlood" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalGoldGive" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalBloodOfDiedBoss" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalGoldGiveOfDiedBoss" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalBloodOfLiveBoss" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalResidualBloodOfLiveBoss" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalTrieutTieu" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalTrieutTieuOfDiedBoss" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalTrieutTieuOfLiveBoss" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <ComplexType Name="Ins_LogAdminHoanGold_Get_Result">
+    <Property Type="Int32" Name="ApprovalId" Nullable="true" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="String" Name="AdminName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Ins_LogBossMini_GetData_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="ReportDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="TotalBoss" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiedBoss" Nullable="true" />
+    <Property Type="Int32" Name="TotalLiveBoss" Nullable="true" />
+    <Property Type="Decimal" Name="TotalBlood" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalGoldGive" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalBloodOfDiedBoss" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalGoldGiveOfDiedBoss" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalBloodOfLiveBoss" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalResidualBloodOfLiveBoss" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalTrieutTieu" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalTrieutTieuOfDiedBoss" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalTrieutTieuOfLiveBoss" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Ins_AdminLogTransfer_SuperMarket_GetTransFromAdmin_Result">
+    <Property Type="Int32" Name="IsAdd" Nullable="true" />
+    <Property Type="Int32" Name="TotalIsAdd" Nullable="true" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Ins_LoginLog_GetLoginLog_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="IPAddress" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="HardwareID" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DeviceModel" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="PlatformID" Nullable="true" />
+    <Property Type="String" Name="VersionDecive" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="LoginDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="OpenProviderID" Nullable="true" />
+    <Property Type="String" Name="OpenUserID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IMEI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="AppVersion" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="ChannelID" Nullable="true" />
+    <Property Type="Int32" Name="TotalRow" Nullable="true" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,721 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SystemManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MetroSystemManagementEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Ins_Report_StatisticRevenue_Get" ReturnType="Collection(SystemManagementModel.Ins_Report_StatisticRevenue_Get_Result)">
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="ReportGameCCUs" EntityType="SystemManagementModel.ReportGameCCU" />
+    <FunctionImport Name="Ins_ReportGoldDaily_ReportCoinManagerByDate" ReturnType="Collection(SystemManagementModel.Ins_ReportGoldDaily_ReportCoinManagerByDate_Result)">
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="useDateBegin" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="ReportBalanceDetails" EntityType="SystemManagementModel.ReportBalanceDetail" />
+    <EntitySet Name="ReportBalances" EntityType="SystemManagementModel.ReportBalance" />
+    <FunctionImport Name="Ins_ReportAUDetail_Get" ReturnType="Collection(SystemManagementModel.Ins_ReportAUDetail_Get_Result)">
+      <Parameter Name="DateStart" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="OpenProviderId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Report_StatisticRevenue" EntityType="SystemManagementModel.Report_StatisticRevenue" />
+    <FunctionImport Name="Ins_ReportNPU_GetReportByDate" ReturnType="Collection(SystemManagementModel.Ins_ReportNPU_GetReportByDate_Result)">
+      <Parameter Name="channelId" Mode="In" Type="Int32" />
+      <Parameter Name="platFormId" Mode="In" Type="Int32" />
+      <Parameter Name="campaignId" Mode="In" Type="Int32" />
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="groupIndex" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportNRUDetail_Get" ReturnType="Collection(SystemManagementModel.Ins_ReportNRUDetail_Get_Result)">
+      <Parameter Name="DateStart" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="groupIndex" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="INS_ReportPlayTurn_GetReportByDate" ReturnType="Collection(SystemManagementModel.INS_ReportPlayTurn_GetReportByDate_Result)">
+      <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="ReportPlayTurns" EntityType="SystemManagementModel.ReportPlayTurn" />
+    <FunctionImport Name="Ins_ReportLoseWinSystem_GetReport" ReturnType="Collection(SystemManagementModel.Ins_ReportLoseWinSystem_GetReport_Result)">
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="groupIndex" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ReportLoseWins" EntityType="SystemManagementModel.ReportLoseWin" />
+    <EntitySet Name="ReportLoseWinSystems" EntityType="SystemManagementModel.ReportLoseWinSystem" />
+    <FunctionImport Name="Ins_ReportLoseWin_Search" ReturnType="Collection(SystemManagementModel.Ins_ReportLoseWin_Search_Result)">
+      <Parameter Name="Top" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="Int32" />
+      <Parameter Name="DateTimeFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimeTo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportFishDead_Search" ReturnType="Collection(SystemManagementModel.Ins_ReportFishDead_Search_Result)">
+      <Parameter Name="DateTimeFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimeTo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportFishDead_SearchByUser" ReturnType="Collection(SystemManagementModel.Ins_ReportFishDead_SearchByUser_Result)">
+      <Parameter Name="SearchUserName" Mode="In" Type="String" />
+      <Parameter Name="DateTimeFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimeTo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="ReportFishDeads" EntityType="SystemManagementModel.ReportFishDead" />
+    <EntitySet Name="ReportArpus" EntityType="SystemManagementModel.ReportArpu" />
+    <EntitySet Name="ReportPUs" EntityType="SystemManagementModel.ReportPU" />
+    <EntitySet Name="NRUs" EntityType="SystemManagementModel.NRU" />
+    <FunctionImport Name="Ins_ReportItemGame_GetReport" ReturnType="Collection(SystemManagementModel.Ins_ReportItemGame_GetReport_Result)">
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="DateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportGoldDaily_GetData" ReturnType="Collection(SystemManagementModel.Ins_ReportGoldDaily_GetData_Result)">
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="useDateBegin" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="ReportListHitFish" EntityType="SystemManagementModel.ReportListHitFish" />
+    <FunctionImport Name="INS_ReportBalanceDetailLog_GetByDate" ReturnType="Collection(SystemManagementModel.INS_ReportBalanceDetailLog_GetByDate_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ReasonId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="INS_ReportBalanceDetailLog_ParseTable" ReturnType="Collection(SystemManagementModel.INS_ReportBalanceDetailLog_ParseTable_Result)">
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportBalanceGold_GetReportByDate" ReturnType="Collection(SystemManagementModel.Ins_ReportBalanceGold_GetReportByDate_Result)">
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="groupIndex" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="INS_Report_E1606_UserShootFish_Get" ReturnType="Collection(SystemManagementModel.INS_Report_E1606_UserShootFish_Get_Result)">
+      <Parameter Name="top" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_Report_SystemStatistics_GetInfoByReasonId" ReturnType="Collection(SystemManagementModel.Ins_Report_SystemStatistics_GetInfoByReasonId_Result)">
+      <Parameter Name="ReasonId" Mode="In" Type="Int32" />
+      <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+      <Parameter Name="RowStart" Mode="In" Type="Int32" />
+      <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDirection" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_Report_StatisticRevenue_GetStatisticRevenue" ReturnType="Collection(SystemManagementModel.Ins_Report_StatisticRevenue_GetStatisticRevenue_Result)">
+      <Parameter Name="ChannelId" Mode="In" Type="Int32" />
+      <Parameter Name="CampaignId" Mode="In" Type="Int32" />
+      <Parameter Name="PlatformId" Mode="In" Type="Int32" />
+      <Parameter Name="GroupType" Mode="In" Type="Int32" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportGameCCU_Get" ReturnType="Collection(SystemManagementModel.Ins_ReportGameCCU_Get_Result)">
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="groupIndex" Mode="In" Type="Int32" />
+      <Parameter Name="roomType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="INS_ReportListHitFish_GetListHitFish" ReturnType="Collection(SystemManagementModel.INS_ReportListHitFish_GetListHitFish_Result)">
+      <Parameter Name="datebegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateend" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="ReportNPUs" EntityType="SystemManagementModel.ReportNPU" />
+    <FunctionImport Name="Ins_ReportExchangeCard_Get" ReturnType="Collection(SystemManagementModel.Ins_ReportExchangeCard_Get_Result)">
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="DateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportNRU_Get" ReturnType="Collection(SystemManagementModel.Ins_ReportNRU_Get_Result)">
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="DateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="ChannelId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportNPU_GetReport" ReturnType="Collection(SystemManagementModel.Ins_ReportNPU_GetReport_Result)">
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="ChannelId" Mode="In" Type="Int32" />
+      <Parameter Name="DateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportAUDetail_GetDataForAllOfThem" ReturnType="Collection(SystemManagementModel.Ins_ReportAUDetail_GetDataForAllOfThem_Result)">
+      <Parameter Name="DateStart" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="VersionGame" Mode="In" Type="String" />
+      <Parameter Name="OpenProviderId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ReportAUFinals" EntityType="SystemManagementModel.ReportAUFinal" />
+    <FunctionImport Name="Ins_ReportAUFinal_GetData" ReturnType="Collection(SystemManagementModel.Ins_ReportAUFinal_GetData_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="VersionGame" Mode="In" Type="String" />
+      <Parameter Name="OpenProviderId" Mode="In" Type="Int32" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ReportAUs" EntityType="SystemManagementModel.ReportAU" />
+    <FunctionImport Name="Ins_ReportARPU_GetReport" ReturnType="Collection(SystemManagementModel.Ins_ReportARPU_GetReport_Result)">
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="groupIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PlatformId" Mode="In" Type="Int32" />
+      <Parameter Name="ChannelId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportPU_GetReportByDate" ReturnType="Collection(SystemManagementModel.Ins_ReportPU_GetReportByDate_Result)">
+      <Parameter Name="platFormId" Mode="In" Type="Int32" />
+      <Parameter Name="campaignId" Mode="In" Type="Int32" />
+      <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="groupIndex" Mode="In" Type="Int32" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Report_NewDevice" EntityType="SystemManagementModel.Report_NewDevice" />
+    <FunctionImport Name="Ins_Report_NewDevice_GetData" ReturnType="Collection(SystemManagementModel.Ins_Report_NewDevice_GetData_Result)">
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="DateBegin" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="ChannelId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ReportADs" EntityType="SystemManagementModel.ReportAD" />
+    <EntitySet Name="ReportADDetails" EntityType="SystemManagementModel.ReportADDetail" />
+    <EntitySet Name="ReportADFinals" EntityType="SystemManagementModel.ReportADFinal" />
+    <FunctionImport Name="Ins_ReportADFinal_GetData" ReturnType="Collection(SystemManagementModel.Ins_ReportADFinal_GetData_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="VersionGame" Mode="In" Type="String" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_ReportAU_Get" ReturnType="Collection(SystemManagementModel.Ins_ReportAU_Get_Result)">
+      <Parameter Name="DateStart" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="TypeDate" Mode="In" Type="Int32" />
+      <Parameter Name="Platform" Mode="In" Type="Int32" />
+      <Parameter Name="VersionGame" Mode="In" Type="String" />
+      <Parameter Name="OpenProviderId" Mode="In" Type="Int32" />
+      <Parameter Name="ChannelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ins_HistoryTop100LevelUser_GetData" ReturnType="Collection(SystemManagementModel.Ins_HistoryTop100LevelUser_GetData_Result)">
+      <Parameter Name="Top" Mode="In" Type="Int32" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="HistoryTop100LevelUser" EntityType="SystemManagementModel.HistoryTop100LevelUser" />
+    <FunctionImport Name="Ins_GetTopLevelUser" ReturnType="Collection(SystemManagementModel.Ins_GetTopLevelUser_Result)">
+      <Parameter Name="Top" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Ins_Report_StatisticRevenue_Get_Result">
+    <Property Type="DateTime" Name="DateStatistic" Nullable="true" />
+    <Property Type="Decimal" Name="Revenue" Nullable="true" Precision="19" />
+  </ComplexType>
+  <EntityType Name="ReportGameCCU">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CCU" Type="Int32" />
+    <Property Name="PCU" Type="Int32" />
+    <Property Name="ACU" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TypeDate" Type="Int32" />
+    <Property Name="RoomType" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportGoldDaily_ReportCoinManagerByDate_Result">
+    <Property Type="Int32" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="IdReason" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="ValueCoin" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Int32" Name="TypeInsert" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ReportBalanceDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReasonId" Type="Int32" />
+    <Property Name="ReasonName" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="ReasonType" Type="Int32" />
+    <Property Name="Gold" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CountTrans" Type="Int32" />
+    <Property Name="RecordDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ReportBalance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalLastGold" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalGold" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalGoldIncrease" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalGoldDecrease" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Deviation" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RecordDate" Type="DateTime" Precision="0" />
+    <Property Name="TotalLastDeviation" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="WalletGold" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CurrentDeviation" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="CofferGold" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportAUDetail_Get_Result">
+    <Property Type="DateTime" Name="LoginDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReportType" Nullable="true" />
+    <Property Type="Int32" Name="TotalCount" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Report_StatisticRevenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateStatistic" Type="DateTime" Precision="0" />
+    <Property Name="WeekNumber" Type="Int32" />
+    <Property Name="ChannelId" Type="Int32" />
+    <Property Name="PlatformId" Type="Int32" />
+    <Property Name="CampaignId" Type="Int32" />
+    <Property Name="Revenue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CountUser" Type="Int32" />
+    <Property Name="LogType" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportNPU_GetReportByDate_Result">
+    <Property Type="Int32" Name="ChannelId" Nullable="true" />
+    <Property Type="Int32" Name="PlatFormId" Nullable="true" />
+    <Property Type="Int32" Name="CampaignId" Nullable="true" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="19" />
+    <Property Type="String" Name="NameValue" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="ReportDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportNRUDetail_Get_Result">
+    <Property Type="DateTime" Name="RegisterDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReportType" Nullable="true" />
+    <Property Type="Int32" Name="TotalCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="INS_ReportPlayTurn_GetReportByDate_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="NumberPlayTurn" Nullable="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="ReportPlayTurn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberPlayTurn" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportLoseWinSystem_GetReport_Result">
+    <Property Type="Decimal" Name="TotalGold" Nullable="true" Precision="19" />
+    <Property Type="String" Name="NameValue" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="ReportLoseWin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="GoldBalance" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IsWin" Type="Boolean" />
+    <Property Name="DateReport" Type="DateTime" Precision="0" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ReportLoseWinSystem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoldBalance" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IsWin" Type="Boolean" />
+    <Property Name="DateReport" Type="DateTime" Precision="0" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportLoseWin_Search_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="TotalGold" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportFishDead_Search_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="FishID" Nullable="true" />
+    <Property Type="String" Name="FishName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="TotalFish" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportFishDead_SearchByUser_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="FishID" Nullable="true" />
+    <Property Type="String" Name="FishName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TotalFish" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ReportFishDead">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="FishID" Type="Int32" />
+    <Property Name="FishName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NumberDead" Type="Int32" />
+    <Property Name="DateReport" Type="DateTime" Precision="0" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ReportArpu">
+    <Key>
+      <PropertyRef Name="ReportDate" />
+      <PropertyRef Name="DateType" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="ChannelId" />
+    </Key>
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateType" Type="Int32" Nullable="false" />
+    <Property Name="TotalUser" Type="Int32" Nullable="false" />
+    <Property Name="TotalAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="AverageAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PlatformId" Type="Int32" Nullable="false" />
+    <Property Name="ChannelId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReportPU">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+      <PropertyRef Name="CampaignId" />
+      <PropertyRef Name="GroupCampaignId" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="DateType" />
+    </Key>
+    <Property Name="ChannelId" Type="Int32" Nullable="false" />
+    <Property Name="CampaignId" Type="Int32" Nullable="false" />
+    <Property Name="GroupCampaignId" Type="Int32" Nullable="false" />
+    <Property Name="PlatformId" Type="Int32" Nullable="false" />
+    <Property Name="DateReport" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateType" Type="Int32" Nullable="false" />
+    <Property Name="TotalUser" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="NRU">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="CampaignId" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="DateType" />
+    </Key>
+    <Property Name="ChannelId" Type="Int32" Nullable="false" />
+    <Property Name="DateReport" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CampaignId" Type="Int32" Nullable="false" />
+    <Property Name="PlatformId" Type="Int32" Nullable="false" />
+    <Property Name="DateType" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportItemGame_GetReport_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Int32" Name="UsedQuantity" Nullable="true" />
+    <Property Type="DateTime" Name="DateReport" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportGoldDaily_GetData_Result">
+    <Property Type="Int32" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="ReasonId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="ValueCoin" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Int32" Name="ReasonType" Nullable="true" />
+    <Property Type="Decimal" Name="CofferGold" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="WalletGold" Nullable="true" Precision="19" />
+  </ComplexType>
+  <EntityType Name="ReportListHitFish">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateReport" Type="DateTime" Precision="3" />
+    <Property Name="DateType" Type="Int32" />
+    <Property Name="FishId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="FishName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="INS_ReportBalanceDetailLog_GetByDate_Result">
+    <Property Type="String" Name="ReasonName" Nullable="true" MaxLength="512" />
+    <Property Type="Int32" Name="ReasonType" Nullable="true" />
+    <Property Type="Decimal" Name="Gold" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="UpdateDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="INS_ReportBalanceDetailLog_ParseTable_Result">
+    <Property Type="DateTime" Name="DateReport" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="GoldDangKy" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="GoldDangNhap" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="ChoiGameLienTuc" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="HoanThanhNhiemVu" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="ChoiGame" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="XuLyTrietTieu" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportBalanceGold_GetReportByDate_Result">
+    <Property Type="Decimal" Name="TotalGold" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalLastGold" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalGoldDecrease" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalGoldIncrease" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Deviation" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalLastDeviation" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="WalletGold" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="CurrentDeviation" Nullable="true" Precision="19" />
+    <Property Type="String" Name="NameValue" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="INS_Report_E1606_UserShootFish_Get_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TotalGold" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_Report_SystemStatistics_GetInfoByReasonId_Result">
+    <Property Type="Int32" Name="STT1" Nullable="true" />
+    <Property Type="Int32" Name="ReasonId" Nullable="true" />
+    <Property Type="String" Name="ReasonName" Nullable="true" MaxLength="512" />
+    <Property Type="Int32" Name="ReasonType" Nullable="true" />
+    <Property Type="Decimal" Name="Gold" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="CountTrans" Nullable="true" />
+    <Property Type="DateTime" Name="RecordDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="TotalRow" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_Report_StatisticRevenue_GetStatisticRevenue_Result">
+    <Property Type="DateTime" Name="DateStatistic" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="LogType" Nullable="true" />
+    <Property Type="Decimal" Name="TotalRevenue" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="TotalCountUser" Nullable="true" />
+    <Property Type="Int32" Name="ChannelId" Nullable="false" />
+    <Property Type="Int32" Name="CampaignId" Nullable="false" />
+    <Property Type="Int32" Name="PlatformId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportGameCCU_Get_Result">
+    <Property Type="Int32" Name="CCU" Nullable="true" />
+    <Property Type="Int32" Name="PCU" Nullable="true" />
+    <Property Type="Int32" Name="ACU" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ReportDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="TypeDate" Nullable="true" />
+    <Property Type="Int32" Name="RoomType" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="INS_ReportListHitFish_GetListHitFish_Result">
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+    <Property Type="Int32" Name="FishId" Nullable="true" />
+    <Property Type="String" Name="FishName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="TotalFish" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ReportNPU">
+    <Key>
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="TypeDate" />
+      <PropertyRef Name="ChannelId" />
+      <PropertyRef Name="CampaignId" />
+      <PropertyRef Name="PlatFormId" />
+    </Key>
+    <Property Name="DateReport" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TypeDate" Type="Int32" Nullable="false" />
+    <Property Name="ChannelId" Type="Int32" Nullable="false" />
+    <Property Name="CampaignId" Type="Int32" Nullable="false" />
+    <Property Name="PlatFormId" Type="Int32" Nullable="false" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportExchangeCard_Get_Result">
+    <Property Type="Int32" Name="PlatformId" Nullable="false" />
+    <Property Type="Int32" Name="CardType" Nullable="false" />
+    <Property Type="Int32" Name="TypeDate" Nullable="false" />
+    <Property Type="DateTime" Name="DateReport" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="CardAmount" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="GoldExchange" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="ChannelID" Nullable="true" />
+    <Property Type="String" Name="Telco" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportNRU_Get_Result">
+    <Property Type="Int32" Name="ChannelId" Nullable="false" />
+    <Property Type="Int32" Name="CampaignId" Nullable="false" />
+    <Property Type="Int32" Name="PlatformId" Nullable="false" />
+    <Property Type="Int32" Name="DateType" Nullable="false" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="DateTime" Name="DateReport" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportNPU_GetReport_Result">
+    <Property Type="DateTime" Name="DateReport" Nullable="false" />
+    <Property Type="Int32" Name="TypeDate" Nullable="false" />
+    <Property Type="Int32" Name="ChannelId" Nullable="false" />
+    <Property Type="Int32" Name="CampaignId" Nullable="false" />
+    <Property Type="Int32" Name="PlatFormId" Nullable="false" />
+    <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportAUDetail_GetDataForAllOfThem_Result">
+    <Property Type="DateTime" Name="DateReport" Nullable="true" />
+    <Property Type="Int32" Name="TotalCount" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ReportAUFinal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportDate" Type="DateTime" Precision="0" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="SubOfFilterBy" Type="Int32" />
+    <Property Name="FilterBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateType" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportAUFinal_GetData_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="ReportDate" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="Int32" Name="SubOfFilterBy" Nullable="true" />
+    <Property Type="String" Name="FilterBy" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DateType" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ReportAU">
+    <Key>
+      <PropertyRef Name="ChannelID" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="OpenProviderId" />
+      <PropertyRef Name="VersionGame" />
+      <PropertyRef Name="TypeDate" />
+      <PropertyRef Name="ReportDate" />
+    </Key>
+    <Property Name="ChannelID" Type="Int32" Nullable="false" />
+    <Property Name="PlatformId" Type="Int32" Nullable="false" />
+    <Property Name="OpenProviderId" Type="Int32" Nullable="false" />
+    <Property Name="VersionGame" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="TypeDate" Type="Int32" Nullable="false" />
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalCount" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportARPU_GetReport_Result">
+    <Property Type="DateTime" Name="ReportDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="PlatformId" Nullable="false" />
+    <Property Type="Int32" Name="ChannelId" Nullable="false" />
+    <Property Type="Int32" Name="TotalUser" Nullable="false" />
+    <Property Type="Decimal" Name="TotalAmount" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="AverageAmount" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportPU_GetReportByDate_Result">
+    <Property Type="Int32" Name="TotalUser" Nullable="true" />
+    <Property Type="Int32" Name="ChannelId" Nullable="false" />
+    <Property Type="DateTime" Name="DateReport" Nullable="false" />
+    <Property Type="Int32" Name="PlatformId" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Report_NewDevice">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+      <PropertyRef Name="DateReport" />
+      <PropertyRef Name="CampaignId" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="DateType" />
+    </Key>
+    <Property Name="ChannelId" Type="Int32" Nullable="false" />
+    <Property Name="DateReport" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CampaignId" Type="Int32" Nullable="false" />
+    <Property Name="PlatformId" Type="Int32" Nullable="false" />
+    <Property Name="DateType" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_Report_NewDevice_GetData_Result">
+    <Property Type="Int32" Name="ChannelId" Nullable="false" />
+    <Property Type="Int32" Name="CampaignId" Nullable="false" />
+    <Property Type="Int32" Name="PlatformId" Nullable="false" />
+    <Property Type="Int32" Name="DateType" Nullable="false" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="DateTime" Name="DateReport" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="ReportAD">
+    <Key>
+      <PropertyRef Name="ChannelID" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="VersionGame" />
+      <PropertyRef Name="TypeDate" />
+      <PropertyRef Name="ReportDate" />
+    </Key>
+    <Property Name="ChannelID" Type="Int32" Nullable="false" />
+    <Property Name="PlatformId" Type="Int32" Nullable="false" />
+    <Property Name="VersionGame" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="TypeDate" Type="Int32" Nullable="false" />
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalCount" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ReportADDetail">
+    <Key>
+      <PropertyRef Name="LoginDate" />
+      <PropertyRef Name="DeviceID" />
+      <PropertyRef Name="PlatformId" />
+      <PropertyRef Name="VersionGame" />
+      <PropertyRef Name="ChannelID" />
+    </Key>
+    <Property Name="LoginDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DeviceID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PlatformId" Type="Int32" Nullable="false" />
+    <Property Name="VersionGame" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ChannelID" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ReportADFinal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportDate" Type="DateTime" Precision="0" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="SubOfFilterBy" Type="Int32" />
+    <Property Name="FilterBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateType" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Ins_ReportADFinal_GetData_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="ReportDate" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="Int32" Name="SubOfFilterBy" Nullable="true" />
+    <Property Type="String" Name="FilterBy" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DateType" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ins_ReportAU_Get_Result">
+    <Property Type="DateTime" Name="ReportDate" Nullable="false" />
+    <Property Type="Int32" Name="OpenProviderId" Nullable="false" />
+    <Property Type="Int32" Name="PlatformId" Nullable="false" />
+    <Property Type="Int32" Name="TypeDate" Nullable="false" />
+    <Property Type="Int32" Name="TotalCount" Nullable="true" />
+    <Property Type="Int32" Name="ChannelID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ins_HistoryTop100LevelUser_GetData_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="HistoryTop100LevelUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Level" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Ins_GetTopLevelUser_Result">
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="Int32" Name="LevelUser" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+  </ComplexType>
+</Schema>
