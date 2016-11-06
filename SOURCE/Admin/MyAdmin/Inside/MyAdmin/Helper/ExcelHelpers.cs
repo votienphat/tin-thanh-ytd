@@ -17,8 +17,8 @@ namespace MyAdmin.Helpers
 
         const int START_ROW = 1;
 
-        #region Export Shop
-        public ExcelPackage ExportShopData(List<DataExcel> dataExport, string excelTitle, string[] titles, string cols, int type)
+        #region Export 
+        public ExcelPackage ExportData(List<ExcelExport> dataExport, string excelTitle, string[] titles, string cols)
         {
             ExcelPackage pck = new ExcelPackage();
             ExcelWorksheet ws = null;
@@ -31,7 +31,29 @@ namespace MyAdmin.Helpers
             {
 
                 ws.Cells["A" + row + ":" + "D" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-         
+
+                ws.Cells["A" + row].Value = data.No;
+
+                ws.Cells["B" + row].Value = data.Project;
+
+                ws.Cells["C" + row].Value = data.PoNo;
+
+                ws.Cells["D" + row].Value = data.ItemCategory;
+                ws.Cells["E" + row].Value = data.Diameter;
+                ws.Cells["F" + row].Value = data.Leght;
+                ws.Cells["G" + row].Value = data.Quantity;
+                ws.Cells["H" + row].Value = data.Weight;
+                ws.Cells["I" + row].Value = data.DiameterFist;
+                ws.Cells["J" + row].Value = data.LeghtFist;
+                ws.Cells["K" + row].Value = data.LeghtFistCut;
+                ws.Cells["L" + row].Value = data.QuantityFist ;
+                ws.Cells["M" + row].Value = data.WeightFist;
+
+                ws.Cells["N" + row].Value = data.DiameterSecond;
+                ws.Cells["O" + row].Value = data.LeghtSecond;
+                ws.Cells["P" + row].Value = data.QuantitySecond;
+                ws.Cells["Q" + row].Value = data.WeightSecond;
+                ws.Cells["R" + row].Value = data.ParentRow;
                 row++;
                 roll++;
             }
@@ -62,13 +84,13 @@ namespace MyAdmin.Helpers
                         for (int rowNumber = startRow + 1; rowNumber <= GetLastUsedRow(currentWorksheet); rowNumber++)
                         {
                             var datanew = new ExcelModel();
-                            datanew.No = int.Parse(currentWorksheet.Cells[rowNumber, 1].Value.ToString().TrimStart().TrimEnd());
+                            datanew.No = currentWorksheet.Cells[rowNumber, 1].Value.ToString().TrimStart().TrimEnd();
                             datanew.Project = currentWorksheet.Cells[rowNumber, 2].Value.ToString().TrimStart().TrimEnd();
                             datanew.PoNo = currentWorksheet.Cells[rowNumber, 3].Value.ToString().TrimStart().TrimEnd();
                             datanew.ItemCategory = currentWorksheet.Cells[rowNumber, 4].Value.ToString().TrimStart().TrimEnd();
                             datanew.Diameter = currentWorksheet.Cells[rowNumber, 5].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Leght = int.Parse(currentWorksheet.Cells[rowNumber, 6].Value.ToString().TrimStart().TrimEnd());
-                            datanew.Quantity = int.Parse(currentWorksheet.Cells[rowNumber, 7].Value.ToString().TrimStart().TrimEnd());
+                            datanew.Leght = currentWorksheet.Cells[rowNumber, 6].Value.ToString().TrimStart().TrimEnd();
+                            datanew.Quantity = currentWorksheet.Cells[rowNumber, 7].Value.ToString().TrimStart().TrimEnd();
                             datanew.Weight = currentWorksheet.Cells[rowNumber, 8].Value.ToString().TrimStart().TrimEnd();
                             importResult.ImportDataExcel.Add(datanew);
                         }
