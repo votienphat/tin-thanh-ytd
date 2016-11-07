@@ -96,7 +96,7 @@ namespace MyAdmin.Controllers
             var ImportPath = "~/App_Data/Excel/";
             if (!Directory.Exists(Server.MapPath(ImportPath)))
                 Directory.CreateDirectory(Server.MapPath(ImportPath));
-            var detailName = $"Report_{DateTime.Now.ToString("ddMMyyyy")}.xlsx";
+            var detailName = "Report.xlsx";
             var path = Path.Combine(Server.MapPath(ImportPath), detailName);
             exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter", "Leght", "Qty", "Weight", "Diameter", "Leght", "LeghtFistCut", "Qty", "Weight", "Diameter", "Leght", "Qty", "Weight","Parent" }, "ABCDEFGHIJKLMNOPQR")
                 .SaveAs(new FileInfo(path));
@@ -135,7 +135,7 @@ namespace MyAdmin.Controllers
                                         returnData.LeghtSecond = CurentRow.Leght;
                                         returnData.DiameterSecond = CurentRow.Diameter;
                                         returnData.QuantitySecond = CurentRow.Quantity;
-                                        int indexTon = listdata.FindIndex(x => x.No == item.No);
+                                        int indexTon = listdata.FindIndex(x => x.No == itemTon.No);
                                         listdata[indexTon].LeghtFist = (int.Parse(item.LeghtFist) - int.Parse(CurentRow.Leght)).ToString();
                                         break;
                                     }

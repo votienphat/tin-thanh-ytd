@@ -53,8 +53,6 @@ C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\bin\Debug\MyUtility.dll
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\bin\Debug\MyUtility.pdb
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Newtonsoft.Json.dll
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\bin\Debug\System.Web.Mvc.dll
-C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\bin\Debug\System.Web.Mvc.xml
-C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\bin\Debug\Microsoft.Web.Infrastructure.xml
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\obj\Debug\MyUtility.dll
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyUtility\obj\Debug\MyUtility.pdb

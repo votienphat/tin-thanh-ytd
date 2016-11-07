@@ -130,7 +130,6 @@ C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\MyConfi
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\MyMemCache.dll
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\MyUtility.dll
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\Newtonsoft.Json.dll
-C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\StackExchange.Redis.StrongName.dll
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\MyConfig.pdb
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\Logger.pdb
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\MyMemCache.pdb
@@ -140,8 +139,6 @@ C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\Entitie
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\EntityFramework.xml
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\log4net.xml
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\Newtonsoft.Json.xml
-C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\StackExchange.Redis.StrongName.pdb
-C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\bin\Debug\StackExchange.Redis.StrongName.xml
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\obj\Debug\BusinessObject.csprojResolveAssemblyReference.cache
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\obj\Debug\BusinessObject.dll
 C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\BusinessObject\obj\Debug\BusinessObject.pdb
