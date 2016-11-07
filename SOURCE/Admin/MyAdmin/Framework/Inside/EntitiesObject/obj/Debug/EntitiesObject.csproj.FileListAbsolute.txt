@@ -29,3 +29,10 @@ C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.csprojResolveAssemblyReference.cache
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.dll
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.pdb
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntitiesObject.pdb
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\EntitiesObject\bin\Debug\EntityFramework.xml
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Inside\EntitiesObject\obj\Debug\EntitiesObject.pdb

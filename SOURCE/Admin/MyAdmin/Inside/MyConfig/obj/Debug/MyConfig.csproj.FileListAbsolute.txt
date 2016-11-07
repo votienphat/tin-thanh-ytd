@@ -16,3 +16,7 @@ C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Inside\MyConfig\bin\Debug\MyConfig.d
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Inside\MyConfig\bin\Debug\MyConfig.pdb
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Inside\MyConfig\obj\Debug\MyConfig.dll
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Inside\MyConfig\obj\Debug\MyConfig.pdb
+C:\GitHub\SOURCE\Admin\MyAdmin\Inside\MyConfig\bin\Debug\MyConfig.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Inside\MyConfig\bin\Debug\MyConfig.pdb
+C:\GitHub\SOURCE\Admin\MyAdmin\Inside\MyConfig\obj\Debug\MyConfig.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Inside\MyConfig\obj\Debug\MyConfig.pdb

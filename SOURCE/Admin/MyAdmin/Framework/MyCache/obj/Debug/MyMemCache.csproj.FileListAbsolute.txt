@@ -15,3 +15,7 @@ C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyCache\bin\Debug\MyMemCac
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyCache\bin\Debug\MyMemCache.pdb
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyCache\obj\Debug\MyMemCache.dll
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\MyCache\obj\Debug\MyMemCache.pdb
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyCache\bin\Debug\MyMemCache.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyCache\bin\Debug\MyMemCache.pdb
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyCache\obj\Debug\MyMemCache.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\MyCache\obj\Debug\MyMemCache.pdb

@@ -42,3 +42,14 @@ C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Logger\bin\Debug\log4net.x
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Logger\obj\Debug\Logger.dll
 C:\Users\ALO\Desktop\Desktop1\Admin\MyAdmin\Framework\Logger\obj\Debug\Logger.pdb
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\Logger.dll.config
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\Logger.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\Logger.pdb
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\EntityFramework.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\log4net.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\EntityFramework.xml
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\EntityFramework.SqlServer.xml
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\bin\Debug\log4net.xml
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\obj\Debug\Logger.dll
+C:\GitHub\SOURCE\Admin\MyAdmin\Framework\Logger\obj\Debug\Logger.pdb
