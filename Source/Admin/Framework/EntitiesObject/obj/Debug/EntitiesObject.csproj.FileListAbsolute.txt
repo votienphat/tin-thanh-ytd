@@ -1,0 +1,12 @@
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\bin\Debug\EntitiesObject.pdb
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\obj\Debug\EntitiesObject.csprojResolveAssemblyReference.cache
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\obj\Debug\EntitiesObject.dll
+D:\WEB\P111Web\BanCa\Framework\EntitiesObject\obj\Debug\EntitiesObject.pdb
+J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\obj\Debug\EntitiesObject.dll
+J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\obj\Debug\EntitiesObject.pdb
+J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll
+J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.pdb
+J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\obj\Debug\EntitiesObject.csprojResolveAssemblyReference.cache

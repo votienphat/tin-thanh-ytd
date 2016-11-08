@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MetroMembershipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActionAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="ActionTypeId" Type="int" />
+    <Property Name="Description" Type="ntext" />
+  </EntityType>
+  <EntityType Name="AdminConfigData">
+    <Key>
+      <PropertyRef Name="KeyID" />
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="KeyID" Type="int" Nullable="false" />
+    <Property Name="AdminID" Type="int" Nullable="false" />
+    <Property Name="KeyName" Type="varchar" MaxLength="100" />
+    <Property Name="KeyConfig" Type="nvarchar(max)" />
+    <Property Name="Note" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Channel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ChannelName" Type="nvarchar" MaxLength="250" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="IsLock" Type="bit" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GroupMember">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Visible" Type="bit" />
+    <Property Name="Datecreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GroupPermission">
+    <Key>
+      <PropertyRef Name="PageID" />
+      <PropertyRef Name="GroupID" />
+    </Key>
+    <Property Name="PageID" Type="int" Nullable="false" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="Rules" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LogActionAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="ActionId" Type="int" />
+    <Property Name="ActionName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ObjectId" Type="varchar" MaxLength="200" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="BeforeConfig" Type="ntext" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="100" />
+    <Property Name="UserAgent" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MemberAdmin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NickName" Type="varchar" MaxLength="250" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Avatar" Type="varchar" MaxLength="256" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="Password" Type="nvarchar" MaxLength="250" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="250" />
+    <Property Name="IsLockedOut" Type="bit" />
+    <Property Name="CreateDated" Type="datetime" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="LastPasswordChangeDated" Type="datetime" />
+    <Property Name="LastLogoutDate" Type="datetime" />
+    <Property Name="FailedPasswordAttempCount" Type="int" />
+    <Property Name="GroupID" Type="int" />
+    <Property Name="LastIPAddress" Type="varchar" MaxLength="50" />
+    <Property Name="LastAgent" Type="varchar" MaxLength="250" />
+    <Property Name="TokenID" Type="varchar" MaxLength="250" />
+    <Property Name="TokenExp" Type="datetime" />
+    <Property Name="ChannelId" Type="int" />
+  </EntityType>
+  <EntityType Name="MemberPermission">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="PageID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="PageID" Type="int" Nullable="false" />
+    <Property Name="DefaultPage" Type="bit" />
+    <Property Name="Rules" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PageFunction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="PageReferID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Link" Type="nvarchar" MaxLength="1000" />
+    <Property Name="LinkUse" Type="varchar" MaxLength="1000" />
+    <Property Name="FunctionPage" Type="int" />
+    <Property Name="PageType" Type="int" />
+    <Property Name="IsEnable" Type="bit" />
+    <Property Name="IsTargetBlank" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="SortNum" Type="int" />
+    <Property Name="AppID" Type="int" />
+  </EntityType>
+  <Association Name="FK_GroupPermission_GroupMember">
+    <End Role="GroupMember" Type="Self.GroupMember" Multiplicity="1" />
+    <End Role="GroupPermission" Type="Self.GroupPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupMember">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupPermission">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupPermission_Page">
+    <End Role="PageFunction" Type="Self.PageFunction" Multiplicity="1" />
+    <End Role="GroupPermission" Type="Self.GroupPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PageFunction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupPermission">
+        <PropertyRef Name="PageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberPermission_MemberShip">
+    <End Role="MemberAdmin" Type="Self.MemberAdmin" Multiplicity="1" />
+    <End Role="MemberPermission" Type="Self.MemberPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberAdmin">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MemberPermission">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberPermission_Page">
+    <End Role="PageFunction" Type="Self.PageFunction" Multiplicity="1" />
+    <End Role="MemberPermission" Type="Self.MemberPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PageFunction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MemberPermission">
+        <PropertyRef Name="PageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberShip_GroupMember">
+    <End Role="GroupMember" Type="Self.GroupMember" Multiplicity="0..1" />
+    <End Role="MemberAdmin" Type="Self.MemberAdmin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupMember">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MemberAdmin">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Ins_ActionAdmin_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ins_AdminConfigData_getConfigByAdminID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="adminID" Type="int" Mode="In" />
+    <Parameter Name="keyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_AdminConfigData_insertConfigData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="adminID" Type="int" Mode="In" />
+    <Parameter Name="keyID" Type="int" Mode="In" />
+    <Parameter Name="config" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="note" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Ins_Channel_GetListChannelByParentId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="channelId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_GroupMember_AddAdminGroupManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GroupName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Visible" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_GroupMember_AdminGroupManagerGetInfoByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_GroupMember_GetAllGroupMemberAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ins_GroupMember_GetListGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="OrderDirection" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_GroupMember_UpdateAdminGroupManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="GroupName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Visible" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_GroupPermission_CloneGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GroupID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_GroupPermission_UpdateAndInsertGroupPermission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PageID" Type="int" Mode="In" />
+    <Parameter Name="GroupID" Type="int" Mode="In" />
+    <Parameter Name="Rules" Type="int" Mode="In" />
+    <Parameter Name="Check" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_GroupPermission_UpdateAndInsertUserPermission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PageID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Rules" Type="int" Mode="In" />
+    <Parameter Name="Check" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_LogActionAdmin_GetByAdminName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AdminName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ActionId" Type="int" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="IsDescending" Type="bit" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_LogActionAdmin_GetLockedLogByTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromTime" Type="datetime" Mode="In" />
+    <Parameter Name="ToTime" Type="datetime" Mode="In" />
+    <Parameter Name="ActionID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_LogActionAdmin_InsertLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+    <Parameter Name="ActionId" Type="int" Mode="In" />
+    <Parameter Name="ActionName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ObjectId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BeforeConfig" Type="ntext" Mode="In" />
+    <Parameter Name="IpAddress" Type="varchar" Mode="In" />
+    <Parameter Name="UserAgent" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_checkLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userName" Type="varchar" Mode="In" />
+    <Parameter Name="tokenID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_getInfoMemberAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_getListMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="keySearch" Type="varchar" Mode="In" />
+    <Parameter Name="PageNumber" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_GetListMemberByGroupID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GroupID" Type="int" Mode="In" />
+    <Parameter Name="Visible" Type="int" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="OrderDirection" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_GetListMemberByPermisstionUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PageId" Type="int" Mode="In" />
+    <Parameter Name="Rules" Type="int" Mode="In" />
+    <Parameter Name="RowStart" Type="int" Mode="In" />
+    <Parameter Name="RowEnd" Type="int" Mode="In" />
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="OrderDirection" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_GetListUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="OrderDirection" Type="int" Mode="In" />
+    <Parameter Name="StartRow" Type="int" Mode="In" />
+    <Parameter Name="EndRow" Type="int" Mode="In" />
+    <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_GetListUserAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ins_MemberAdmin_GetPermission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_SaveMemberAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="nickName" Type="varchar" Mode="In" />
+    <Parameter Name="fullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+    <Parameter Name="passwordSalt" Type="nvarchar" Mode="In" />
+    <Parameter Name="isLock" Type="bit" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_updateTokenExp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tokenExp" Type="datetime" Mode="In" />
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="token" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberAdmin_updateTokenUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="NewTokenID" Type="varchar" Mode="In" />
+    <Parameter Name="NewTokenExp" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberPermission_checkPermissionPage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="strUrl" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberPermission_CloneUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserIDClone" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberPermission_getPagePermission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="appId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberPermission_GetPermissionByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberPermission_getPermissionUserByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberPermission_InsertPermissionMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="listPage" Type="varchar" Mode="In" />
+    <Parameter Name="defaultPage" Type="bit" Mode="In" />
+    <Parameter Name="rule" Type="int" Mode="In" />
+    <Parameter Name="Delimiter" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Ins_MemberPermission_UpdateRuleUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="pageId" Type="int" Mode="In" />
+    <Parameter Name="rule" Type="int" Mode="In" />
+    <Parameter Name="default" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Ins_PageFunction_GetPageFunctionById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ActionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_PageFunction_InsertPage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parentId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="link" Type="nvarchar" Mode="In" />
+    <Parameter Name="linkUse" Type="varchar" Mode="In" />
+    <Parameter Name="FuncPage" Type="int" Mode="In" />
+    <Parameter Name="isEnable" Type="bit" Mode="In" />
+    <Parameter Name="isTarget" Type="bit" Mode="In" />
+    <Parameter Name="pageType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_PageFunction_ListMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GroupID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_PageFunction_ListMenuPageForGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_PageFunction_ListMenuUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ins_Permission_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="PageID" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="MetroMembershipModelStoreContainer">
+    <EntitySet Name="ActionAdmin" EntityType="Self.ActionAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminConfigData" EntityType="Self.AdminConfigData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupMember" EntityType="Self.GroupMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupPermission" EntityType="Self.GroupPermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogActionAdmin" EntityType="Self.LogActionAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberAdmin" EntityType="Self.MemberAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberPermission" EntityType="Self.MemberPermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PageFunction" EntityType="Self.PageFunction" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GroupPermission_GroupMember" Association="Self.FK_GroupPermission_GroupMember">
+      <End Role="GroupMember" EntitySet="GroupMember" />
+      <End Role="GroupPermission" EntitySet="GroupPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupPermission_Page" Association="Self.FK_GroupPermission_Page">
+      <End Role="PageFunction" EntitySet="PageFunction" />
+      <End Role="GroupPermission" EntitySet="GroupPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberPermission_MemberShip" Association="Self.FK_MemberPermission_MemberShip">
+      <End Role="MemberAdmin" EntitySet="MemberAdmin" />
+      <End Role="MemberPermission" EntitySet="MemberPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberPermission_Page" Association="Self.FK_MemberPermission_Page">
+      <End Role="PageFunction" EntitySet="PageFunction" />
+      <End Role="MemberPermission" EntitySet="MemberPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberShip_GroupMember" Association="Self.FK_MemberShip_GroupMember">
+      <End Role="GroupMember" EntitySet="GroupMember" />
+      <End Role="MemberAdmin" EntitySet="MemberAdmin" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

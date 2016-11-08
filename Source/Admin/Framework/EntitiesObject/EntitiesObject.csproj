@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70248680-8EA1-42ED-B418-2880CBF774B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EntitiesObject</RootNamespace>
+    <AssemblyName>EntitiesObject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Channel\Danhbaionline\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\IStoredProcedure.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\ActionAdmin.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\AdminConfigData.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Channel.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\GroupMember.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\GroupPermission.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_ActionAdmin_GetAll_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_AdminConfigData_getConfigByAdminID_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_Channel_GetListChannelByParentId_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_GroupMember_AdminGroupManagerGetInfoByID_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_GroupMember_GetAllGroupMemberAdmin_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_GroupMember_GetListGroup_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_LogActionAdmin_GetByAdminName_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_LogActionAdmin_GetLockedLogByTime_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_checkLogin_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_getInfoMemberAdmin_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_GetListMemberByGroupID_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_GetListMemberByPermisstionUser_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_getListMember_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_GetListUserAdmin_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_GetListUser_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberPermission_getPagePermission_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberPermission_GetPermissionByUser_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberPermission_getPermissionUserByUserId_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_GetPageFunctionById_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_InsertPage_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_ListMenuPageForGroup_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_ListMenuUser_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_ListMenu_Result.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\LogActionAdmin.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\MemberAdmin.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\MemberPermission.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\MetroMembership.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\PageFunction.cs" />
+    <Compile Include="Entities\UserEntities\Account.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Api_LogCreditTrans_InsertDepositInApp_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Article.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\CardStock.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\ExchangeConfig.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Farmer.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\FriendRelationship.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Ins_ApprovaExchangeCard_GetDataUserExchange_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Ins_MyConfig_GetConfigByKey_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\ItemGame.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\ItemGameUser.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Kiot.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\KiotPromotion.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\KiotUser.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\LogCardOpenGiftBox.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\LogCardTran.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\LogCreditTran.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\LogExchange.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\LogTransactionGold.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\MyConfig.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\OfflineMessage.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Account_GetByID_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Account_GetUsersOnline_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Account_GetUsersOnline_V2_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Article_GetArticleDetailsForClient_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Article_GetDisplayOnGameById_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Article_GetDisplayOnGame_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Article_SearchByCate_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Call_DBGame_GetServer_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Event_GetTopLevel_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ExchangeCard_GetHistory_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ExchangeCoin_ToCard_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ExchangeConfig_GetByType_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_FriendRelationship_GetFriendInfo_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_FriendRelationship_GetListFriend_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_FriendRelationship_GetTopLevelFriend_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_FriendRelationship_GetTopRickFriend_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ItemGameUser_GetList_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ItemGame_GetItemGameList_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ItemGame_ProcessOpenGiftBoxTypeCard_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ItemGame_ProcessOpenGiftBoxTypeCard_V2_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ItemGame_ProcessOpenGiftBoxTypeCard_V3_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ItemGame_ProcessOpenGiftBoxTypeCard_V4_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_ItemGame_ProcessOpenGiftBox_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Kiot_BuyItem_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Kiot_GetAllItemUser_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Kiot_GetAllKiot_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Kiot_GetAllKiot_V3_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Kiot_GetItemSold_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Kiot_GetKiotUser_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Kiot_GetRandomItemOfFriend_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_LogExchange_GetTotalGoldAndIsExchanged_v2_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_MyConfig_GetCardConfig_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_OfflineMessage_GetDetails_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_OfflineMessage_Get_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_PaymentConfig_Channel_PaymentType_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_PaymentConfig_GetByAmount_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_PaymentConfig_GetRateCard_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_PaymentConfig_GetRateGoogleIAP_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_RankingDetail_GetTopChargeCard_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_RankingDetail_GetTopExChangeCard_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_WalletStar_ExchangeCheckEnoughGold_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Wallet_ExchangeCheckEnoughGold_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Wallet_ExchangeCoin_ToCard_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Out_Wallet_SubtractGoldExchangeCard_Result.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\PaymentConfig.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Profile.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Ranking.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\RankingDetail.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\User.cs">
+      <DependentUpon>User.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Entities\UserEntities\Wallet.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntities\WalletStar.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Message\Enum\OpenProviderEnum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entities\UserEntities\User.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>User.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\MetroMembershipEntities\MetroMembership.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MetroMembership.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
