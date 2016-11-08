@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using OfficeOpenXml;
 
 namespace MyAdmin.Models.DataExcel
 {
@@ -18,6 +19,15 @@ namespace MyAdmin.Models.DataExcel
         public string Leght { get; set; }
         public string Quantity { get; set; }
         public string Weight { get; set; }
+
+        public ExcelRange CellNo { get; set; }
+        public ExcelRange CellProject { get; set; }
+        public ExcelRange CellPoNo { get; set; }
+        public ExcelRange CellItemCategory { get; set; }
+        public ExcelRange CellDiameter { get; set; }
+        public ExcelRange CellLength { get; set; }
+        public ExcelRange CellQuantity { get; set; }
+        public ExcelRange CellWeight { get; set; }
     }
     public class ExcelExport
     {

@@ -13,7 +13,7 @@ namespace MyAdmin.Helpers
 {
     public class ExcelHelpers
     {
-        const string START_HEADER="1";
+        const string START_HEADER = "1";
 
         const int START_ROW = 1;
 
@@ -46,7 +46,7 @@ namespace MyAdmin.Helpers
                 ws.Cells["I" + row].Value = data.DiameterFist;
                 ws.Cells["J" + row].Value = data.LeghtFist;
                 ws.Cells["K" + row].Value = data.LeghtFistCut;
-                ws.Cells["L" + row].Value = data.QuantityFist ;
+                ws.Cells["L" + row].Value = data.QuantityFist;
                 ws.Cells["M" + row].Value = data.WeightFist;
 
                 ws.Cells["N" + row].Value = data.DiameterSecond;
@@ -65,6 +65,7 @@ namespace MyAdmin.Helpers
 
         }
         #endregion
+
         public DataExcel ImportDataExcel(string filePath)
         {
             var existingFile = new FileInfo(filePath);
@@ -81,17 +82,30 @@ namespace MyAdmin.Helpers
                     if (workBook.Worksheets.Count > 0)
                     {
                         ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
-                        for (int rowNumber = startRow + 1; rowNumber <= GetLastUsedRow(currentWorksheet); rowNumber++)
+                        var lastRowIndex = GetLastUsedRow(currentWorksheet);
+                        for (int rowNumber = startRow + 1; rowNumber < lastRowIndex; rowNumber++)
                         {
-                            var datanew = new ExcelModel();
-                            datanew.No = currentWorksheet.Cells[rowNumber, 1].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Project = currentWorksheet.Cells[rowNumber, 2].Value.ToString().TrimStart().TrimEnd();
-                            datanew.PoNo = currentWorksheet.Cells[rowNumber, 3].Value.ToString().TrimStart().TrimEnd();
-                            datanew.ItemCategory = currentWorksheet.Cells[rowNumber, 4].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Diameter = currentWorksheet.Cells[rowNumber, 5].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Leght = currentWorksheet.Cells[rowNumber, 6].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Quantity = currentWorksheet.Cells[rowNumber, 7].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Weight = currentWorksheet.Cells[rowNumber, 8].Value.ToString().TrimStart().TrimEnd();
+
+                            var datanew = new ExcelModel
+                            {
+                                CellNo = currentWorksheet.Cells[rowNumber, 1],
+                                CellProject = currentWorksheet.Cells[rowNumber, 2],
+                                CellPoNo = currentWorksheet.Cells[rowNumber, 3],
+                                CellItemCategory = currentWorksheet.Cells[rowNumber, 4],
+                                CellDiameter = currentWorksheet.Cells[rowNumber, 5],
+                                CellLength = currentWorksheet.Cells[rowNumber, 6],
+                                CellQuantity = currentWorksheet.Cells[rowNumber, 7],
+                                CellWeight = currentWorksheet.Cells[rowNumber, 8]
+                            };
+
+                            datanew.No = datanew.CellNo.Value.ToString().TrimStart().TrimEnd();
+                            datanew.Project = datanew.CellProject.Value.ToString().TrimStart().TrimEnd();
+                            datanew.PoNo = datanew.CellPoNo.Value.ToString().TrimStart().TrimEnd();
+                            datanew.ItemCategory = datanew.CellItemCategory.Value.ToString().TrimStart().TrimEnd();
+                            datanew.Diameter = datanew.CellDiameter.Value.ToString().TrimStart().TrimEnd();
+                            datanew.Leght = datanew.CellLength.Value.ToString().TrimStart().TrimEnd();
+                            datanew.Quantity = datanew.CellQuantity.Value.ToString().TrimStart().TrimEnd();
+                            datanew.Weight = datanew.CellWeight.Value.ToString().TrimStart().TrimEnd();
                             importResult.ImportDataExcel.Add(datanew);
                         }
                     }
@@ -115,7 +129,7 @@ namespace MyAdmin.Helpers
             return row;
         }
 
-        private ExcelWorksheet FormatHeader(ExcelWorksheet ws, string cols,string[] titles)
+        private ExcelWorksheet FormatHeader(ExcelWorksheet ws, string cols, string[] titles)
         {
             int i = 0;
             foreach (var character in cols)
@@ -132,5 +146,42 @@ namespace MyAdmin.Helpers
             }
             return ws;
         }
+
+        public DataExcel ImportDataExcel2(string filePath)
+        {
+            var existingFile = new FileInfo(filePath);
+            int startRow = START_ROW;
+            DataExcel importResult = new DataExcel
+            {
+                ImportDataExcel = new List<ExcelModel>()
+            };
+            using (var package = new ExcelPackage(existingFile))
+            {
+                ExcelWorkbook workBook = package.Workbook;
+                if (workBook != null)
+                {
+                    if (workBook.Worksheets.Count > 0)
+                    {
+                        ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+                        var lastRowIndex = GetLastUsedRow(currentWorksheet);
+                        for (int rowNumber = startRow + 1; rowNumber <= lastRowIndex; rowNumber++)
+                        {
+                            var datanew = new ExcelModel();
+                            datanew.No = currentWorksheet.Cells[rowNumber, 1].Value.ToString().TrimStart().TrimEnd();
+                            datanew.Project = currentWorksheet.Cells[rowNumber, 2].Value.ToString().TrimStart().TrimEnd();
+                            datanew.PoNo = currentWorksheet.Cells[rowNumber, 3].Value.ToString().TrimStart().TrimEnd();
+                            datanew.ItemCategory = currentWorksheet.Cells[rowNumber, 4].Value.ToString().TrimStart().TrimEnd();
+                            datanew.Diameter = currentWorksheet.Cells[rowNumber, 5].Value.ToString().TrimStart().TrimEnd();
+                            datanew.Leght = currentWorksheet.Cells[rowNumber, 6].Value.ToString().TrimStart().TrimEnd();
+                            datanew.Quantity = currentWorksheet.Cells[rowNumber, 7].Value.ToString().TrimStart().TrimEnd();
+                            datanew.Weight = currentWorksheet.Cells[rowNumber, 8].Value.ToString().TrimStart().TrimEnd();
+                            importResult.ImportDataExcel.Add(datanew);
+                        }
+                    }
+                }
+            }
+            return importResult;
+        }
+
     }
 }

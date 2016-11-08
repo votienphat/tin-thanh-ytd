@@ -38,7 +38,8 @@ namespace MyAdmin.Controllers
         }
 
         [AllowAnonymous]
-        public JsonResult ImportExcel(IEnumerable<HttpPostedFileBase> files)
+        [HttpPost]
+        public ActionResult ImportExcel(IEnumerable<HttpPostedFileBase> files)
         {
             DataExcel importResult = null;
             var ImportPath = "~/App_Data/Excel/";
@@ -81,10 +82,10 @@ namespace MyAdmin.Controllers
 
                     listExport.Add(rowExport);
                 }
-                ExportData(listExport);
+
                 if (importResult.ImportDataExcel.Count > 0)
                 {
-                   
+                    return ExportData(listExport);
                     return Json(new { status = true, Data = importResult, message = "", JsonRequestBehavior.AllowGet });
                 }
             }
@@ -104,8 +105,14 @@ namespace MyAdmin.Controllers
             var path = Path.Combine(Server.MapPath(ImportPath), detailName);
             exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter", "Leght", "Qty", "Weight", "Diameter", "Leght", "LeghtFistCut", "Qty", "Weight", "Diameter", "Leght", "Qty", "Weight","Parent" }, "ABCDEFGHIJKLMNOPQR")
                 .SaveAs(new FileInfo(path));
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            string fileName = "Report.xlsx";
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+
             return File(path, System.Net.Mime.MediaTypeNames.Application.Octet, detailName);
         }
+
         public static ExcelCalExport CalcuRow(List<ExcelExport> listdata,List<ExcelModel> Data,string noRow)
         {
             var returnData = new ExcelCalExport();
