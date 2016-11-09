@@ -83,7 +83,7 @@ namespace MyAdmin.Helpers
                     {
                         ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
                         var lastRowIndex = GetLastUsedRow(currentWorksheet);
-                        for (int rowNumber = startRow + 1; rowNumber < lastRowIndex; rowNumber++)
+                        for (int rowNumber = startRow + 1; rowNumber <= lastRowIndex; rowNumber++)
                         {
 
                             var datanew = new ExcelModel

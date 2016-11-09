@@ -53,22 +53,41 @@ namespace MyAdmin.Controllers
                 httpPostedFileBases.First().SaveAs(path);
                 ExcelHelpers excelHelpers = new ExcelHelpers();
                 importResult = excelHelpers.ImportDataExcel(path);
-
+                var listdataOut = new ExcelCalExport();
                 var listExport = new List<ExcelExport>();
                 foreach (var item in importResult.ImportDataExcel.ToList())
                 {
                     var rowExport = new ExcelExport();
-                    var RowCurent = CalcuRow(listExport, importResult.ImportDataExcel, item.No,out List<ExcelCalExport> listdataOut);
-                    if (listdataOut.Any())
+                    var RowCurent = CalcuRow(listExport, importResult.ImportDataExcel, item.No,out listdataOut);
+                    if (listdataOut.QuantityFist != null)
                     {
-                        rowExport.No = listExport.Count + 1;
-                        rowExport.PoNo = item.PoNo;
-                        rowExport.Project = item.Project;
-                        rowExport.ItemCategory = item.ItemCategory;
-                        rowExport.Diameter = item.Diameter;
-                        rowExport.Leght = item.Leght;
-                        rowExport.Quantity = item.QuantityFist;
-                        listExport.Add(rowExport);
+                        var rowExportOut = new ExcelExport();
+                        var RowFor = new ExcelModel();
+                        int maxRow = int.Parse(listExport.Max(x => x.No)) +1;
+                        rowExportOut.No = (maxRow).ToString();
+                        rowExportOut.PoNo = item.PoNo;
+                        rowExportOut.Project = item.Project;
+                        rowExportOut.ItemCategory = item.ItemCategory;
+                        rowExportOut.Diameter = item.Diameter;
+                        rowExportOut.Leght = item.Leght;
+                        rowExportOut.Quantity = listdataOut.QuantityFist;
+                        listExport.Add(rowExportOut);
+
+                        RowFor.No = (maxRow).ToString();
+                        RowFor.Project = item.Project;
+                        RowFor.PoNo = item.PoNo;
+                        RowFor.ItemCategory = item.ItemCategory;
+                        RowFor.Diameter = item.Diameter;
+                        RowFor.Leght = item.Leght;
+                        RowFor.Quantity = listdataOut.QuantityFist;
+                        RowFor.Weight = item.Weight;
+                        importResult.ImportDataExcel.Add(RowFor);
+
+                        rowExport.Quantity = listdataOut.QuantityFist;
+
+                    }
+                    else {
+                        rowExport.Quantity = item.Quantity;
                     }
                     rowExport.No = item.No;
                     rowExport.PoNo = item.PoNo;
@@ -76,7 +95,6 @@ namespace MyAdmin.Controllers
                     rowExport.ItemCategory = item.ItemCategory;
                     rowExport.Diameter = item.Diameter;
                     rowExport.Leght = item.Leght;
-                    rowExport.Quantity = item.Quantity;
                     rowExport.Weight = item.Weight;
                     rowExport.DiameterFist = RowCurent.DiameterFist;
                     rowExport.LeghtFist = RowCurent.LeghtFist;
@@ -124,8 +142,9 @@ namespace MyAdmin.Controllers
             return File(path, System.Net.Mime.MediaTypeNames.Application.Octet, detailName);
         }
 
-        public static ExcelCalExport CalcuRow(List<ExcelExport> listdata, List<ExcelModel> Data, string noRow, out List<ExcelCalExport> listdataOut)
+        public static ExcelCalExport CalcuRow(List<ExcelExport> listdata, List<ExcelModel> Data, string noRow, out ExcelCalExport listdataOut)
         {
+            listdataOut = new ExcelCalExport();
             var returnData = new ExcelCalExport();
             var minTon = listdata.Where(x=>x.LeghtFist != null).OrderBy(x=>x.LeghtFist).ToList();
             var CurentRow = Data.FirstOrDefault(x => x.No == noRow);
@@ -153,23 +172,24 @@ namespace MyAdmin.Controllers
                 // thực hiện tách dòng trong kho
                     foreach (var item in minTon)
                     {
-                        if (int.Parse(item.LeghtFist) > CurentRow.Leght)
+                        if (int.Parse(item.LeghtFist) > int.Parse(CurentRow.Leght))
                         {
                             // kiểm tra số lượng và dòng cần tách
-                            int Quantity = CurentRow.Quantity;
+                            int Quantity = int.Parse(CurentRow.Quantity);
+                            var checkQuantity = 1;
                             for (int i = 1; i <= Quantity; i++)
 			                {
-			                    if(CurentRow.Leght * i > int.Parse(item.LeghtFist))
+			                    if(int.Parse(CurentRow.Leght) * i > int.Parse(item.LeghtFist))
                                 {
-                                    ObjTachDong.QuantityFist = i;
-                                    listdataOut.Add(ObjTachDong);
+                                    listdataOut.QuantityFist = i.ToString();
+                                    checkQuantity = i - 1;
+                                break;
                                 }
 			                }
-
                             returnData.ParentRow = item.No;
                             returnData.LeghtSecond = CurentRow.Leght;
                             returnData.DiameterSecond = CurentRow.Diameter;
-                            returnData.QuantitySecond = CurentRow.Quantity;
+                            returnData.QuantitySecond = checkQuantity.ToString();
                             int index = listdata.FindIndex(x => x.No == item.No);
                             listdata[index].LeghtFist = (int.Parse(item.LeghtFist) - int.Parse(CurentRow.Leght)).ToString();
                             return returnData;
