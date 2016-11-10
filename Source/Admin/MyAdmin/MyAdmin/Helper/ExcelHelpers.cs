@@ -101,7 +101,7 @@ namespace MyAdmin.Helpers
                                 CellQuantity = currentWorksheet.Cells[rowNumber, 7],
                                 CellWeight = currentWorksheet.Cells[rowNumber, 8]
                             };
-
+                            
                             GetModelRequest(newRow);
                             //datanew.No = datanew.CellNo.Value.ToString().TrimStart().TrimEnd();
                             //datanew.Project = datanew.CellProject.Value.ToString().TrimStart().TrimEnd();
