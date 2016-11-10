@@ -55,47 +55,48 @@ namespace MyAdmin.Controllers
                 importResult = excelHelpers.ImportDataExcel(path);
                 var listdataOut = new ExcelCalExport();
                 var listExport = new List<ExcelExport>();
-                foreach (var item in importResult.ImportDataExcel.ToList())
+                var datalist = importResult.ImportDataExcel;
+                for (int i = 0; i < datalist.Count(); i++)
                 {
                     var rowExport = new ExcelExport();
-                    var RowCurent = CalcuRow(listExport, importResult.ImportDataExcel, item.No,out listdataOut);
+                    var RowCurent = CalcuRow(listExport, datalist, datalist[i].No,out listdataOut);
                     if (listdataOut.QuantityFist != null)
                     {
                         var rowExportOut = new ExcelExport();
                         var RowFor = new ExcelModel();
-                        int maxRow = int.Parse(listExport.Max(x => x.No)) +1;
+                        int maxRow = int.Parse(datalist.Max(x => x.No)) +1;
                         rowExportOut.No = (maxRow).ToString();
-                        rowExportOut.PoNo = item.PoNo;
-                        rowExportOut.Project = item.Project;
-                        rowExportOut.ItemCategory = item.ItemCategory;
-                        rowExportOut.Diameter = item.Diameter;
-                        rowExportOut.Leght = item.Leght;
+                        rowExportOut.PoNo = datalist[i].PoNo;
+                        rowExportOut.Project = datalist[i].Project;
+                        rowExportOut.ItemCategory = datalist[i].ItemCategory;
+                        rowExportOut.Diameter = datalist[i].Diameter;
+                        rowExportOut.Leght = datalist[i].Leght;
                         rowExportOut.Quantity = listdataOut.QuantityFist;
                         listExport.Add(rowExportOut);
 
                         RowFor.No = (maxRow).ToString();
-                        RowFor.Project = item.Project;
-                        RowFor.PoNo = item.PoNo;
-                        RowFor.ItemCategory = item.ItemCategory;
-                        RowFor.Diameter = item.Diameter;
-                        RowFor.Leght = item.Leght;
+                        RowFor.Project = datalist[i].Project;
+                        RowFor.PoNo = datalist[i].PoNo;
+                        RowFor.ItemCategory = datalist[i].ItemCategory;
+                        RowFor.Diameter = datalist[i].Diameter;
+                        RowFor.Leght = datalist[i].Leght;
                         RowFor.Quantity = listdataOut.QuantityFist;
-                        RowFor.Weight = item.Weight;
+                        RowFor.Weight = datalist[i].Weight;
                         importResult.ImportDataExcel.Add(RowFor);
 
                         rowExport.Quantity = listdataOut.QuantityFist;
 
                     }
                     else {
-                        rowExport.Quantity = item.Quantity;
+                        rowExport.Quantity = datalist[i].Quantity;
                     }
-                    rowExport.No = item.No;
-                    rowExport.PoNo = item.PoNo;
-                    rowExport.Project = item.Project;
-                    rowExport.ItemCategory = item.ItemCategory;
-                    rowExport.Diameter = item.Diameter;
-                    rowExport.Leght = item.Leght;
-                    rowExport.Weight = item.Weight;
+                    rowExport.No = datalist[i].No;
+                    rowExport.PoNo = datalist[i].PoNo;
+                    rowExport.Project = datalist[i].Project;
+                    rowExport.ItemCategory = datalist[i].ItemCategory;
+                    rowExport.Diameter = datalist[i].Diameter;
+                    rowExport.Leght = datalist[i].Leght;
+                    rowExport.Weight = datalist[i].Weight;
                     rowExport.DiameterFist = RowCurent.DiameterFist;
                     rowExport.LeghtFist = RowCurent.LeghtFist;
                     rowExport.LeghtFistCut = RowCurent.LeghtFistCut;
