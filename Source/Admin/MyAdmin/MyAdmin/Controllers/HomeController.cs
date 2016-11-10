@@ -60,7 +60,7 @@ namespace MyAdmin.Controllers
                 {
                     var rowExport = new ExcelExport();
                     var RowCurent = CalcuRow(listExport, datalist, datalist[i].No, out listdataOut);
-                    if (listdataOut.FirstQuantity != null)
+                    if (listdataOut.FirstQuantity > 0)
                     {
                         var rowExportOut = new ExcelExport();
                         var RowFor = new ExcelModel();
@@ -71,7 +71,7 @@ namespace MyAdmin.Controllers
                         rowExportOut.ItemCategory = datalist[i].ItemCategory;
                         rowExportOut.Diameter = datalist[i].Diameter;
                         rowExportOut.Length = datalist[i].Length;
-                        rowExportOut.Quantity = listdataOut.FirstQuantity;
+                        rowExportOut.Quantity = listdataOut.FirstQuantity.GetValueOrDefault();
                         listExport.Add(rowExportOut);
 
                         RowFor.No = maxRow;
@@ -80,11 +80,11 @@ namespace MyAdmin.Controllers
                         RowFor.ItemCategory = datalist[i].ItemCategory;
                         RowFor.Diameter = datalist[i].Diameter;
                         RowFor.Length = datalist[i].Length;
-                        RowFor.Quantity = listdataOut.FirstQuantity;
+                        RowFor.Quantity = listdataOut.FirstQuantity.GetValueOrDefault();
                         RowFor.Weight = datalist[i].Weight;
                         importResult.ImportDataExcel.Add(RowFor);
 
-                        rowExport.Quantity = listdataOut.FirstQuantity;
+                        rowExport.Quantity = listdataOut.FirstQuantity.GetValueOrDefault();
 
                     }
                     else
@@ -133,7 +133,7 @@ namespace MyAdmin.Controllers
                 Directory.CreateDirectory(Server.MapPath(ImportPath));
             var detailName = "Report.xlsx";
             var path = Path.Combine(Server.MapPath(ImportPath), detailName);
-            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter", "Length", "Qty", "Weight", "Diameter", "Length", "FirstCutLength", "Qty", "Weight", "Diameter", "Length", "Qty", "Weight", "Parent" }, "ABCDEFGHIJKLMNOPQR")
+            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent" }, "ABCDEFGHIJKLMNOPQR")
                 .SaveAs(new FileInfo(path));
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
@@ -145,9 +145,9 @@ namespace MyAdmin.Controllers
         {
             listdataOut = new ExcelCalExport();
             var returnData = new ExcelCalExport();
-            var minTon = listdata.Where(x => x.FirstLength != null).OrderBy(x => x.FirstLength).ToList();
+            var minTon = listdata.Where(x => x.FirstLength > 0).OrderBy(x => x.FirstLength).ToList();
             var CurentRow = Data.FirstOrDefault(x => x.No == noRow);
-            var requireLeght = int.Parse(CurentRow.Quantity) * int.Parse(CurentRow.Length);
+            var requireLeght = CurentRow.Quantity * CurentRow.Length;
             //kiểm tra có dư hay ko nếu không dư thì lấy thanh mặt định
             if (minTon.Any())
             {
@@ -155,14 +155,14 @@ namespace MyAdmin.Controllers
                 {
                     // nếu có kho dư
                     // gán parent cho thanh sữ dụng
-                    if (int.Parse(item.FirstLength) > requireLeght)
+                    if (item.FirstLength > requireLeght)
                     {
-                        returnData.ParentRow = item.PoNo;
+                        returnData.ParentRow = item.No;
                         returnData.SecondLength = CurentRow.Length;
                         returnData.SecondDiameter = CurentRow.Diameter;
                         returnData.SecondQuantity = CurentRow.Quantity;
                         int index = listdata.FindIndex(x => x.No == item.No);
-                        listdata[index].FirstLength = (int.Parse(item.FirstLength) - int.Parse(CurentRow.Length)).ToString();
+                        listdata[index].FirstLength = item.FirstLength - CurentRow.Length;
                         return returnData;
                     }
                 }
@@ -170,33 +170,33 @@ namespace MyAdmin.Controllers
                 // thực hiện tách dòng trong kho
                 foreach (var item in minTon)
                 {
-                    if (int.Parse(item.FirstLength) > int.Parse(CurentRow.Length))
+                    if (item.FirstLength > CurentRow.Length)
                     {
                         // kiểm tra số lượng và dòng cần tách
-                        int Quantity = int.Parse(CurentRow.Quantity);
+                        int Quantity = CurentRow.Quantity;
                         var checkQuantity = 1;
                         for (int i = 1; i <= Quantity; i++)
                         {
-                            if (int.Parse(CurentRow.Length) * i > int.Parse(item.FirstLength))
+                            if (CurentRow.Length * i > item.FirstLength)
                             {
-                                listdataOut.FirstQuantity = i.ToString();
+                                listdataOut.FirstQuantity = i;
                                 checkQuantity = i - 1;
                                 break;
                             }
                         }
-                        returnData.ParentRow = item.PoNo;
+                        returnData.ParentRow = item.No;
                         returnData.SecondLength = CurentRow.Length;
                         returnData.SecondDiameter = CurentRow.Diameter;
-                        returnData.SecondQuantity = checkQuantity.ToString();
+                        returnData.SecondQuantity = checkQuantity;
                         int index = listdata.FindIndex(x => x.No == item.No);
-                        listdata[index].FirstLength = (int.Parse(item.FirstLength) - int.Parse(CurentRow.Length)).ToString();
+                        listdata[index].FirstLength = item.FirstLength - CurentRow.Length;
                         return returnData;
                     }
                 }
                 if (requireLeght < LeghtDefaut)
                 {
-                    returnData.FirstLength = (LeghtDefaut - int.Parse(CurentRow.Length)).ToString();
-                    returnData.FirstCutLength = (LeghtDefaut - int.Parse(CurentRow.Length)).ToString();
+                    returnData.FirstLength = LeghtDefaut - CurentRow.Length;
+                    returnData.FirstCutLength = LeghtDefaut - CurentRow.Length;
                     returnData.FirstDiameter = CurentRow.Diameter;
                     returnData.FirstQuantity = CurentRow.Quantity;
                     return returnData;
@@ -206,8 +206,8 @@ namespace MyAdmin.Controllers
             else
             {
 
-                returnData.FirstLength = (LeghtDefaut - int.Parse(CurentRow.Length)).ToString();
-                returnData.FirstCutLength = (LeghtDefaut - int.Parse(CurentRow.Length)).ToString();
+                returnData.FirstLength = LeghtDefaut - CurentRow.Length;
+                returnData.FirstCutLength = LeghtDefaut - CurentRow.Length;
                 returnData.FirstDiameter = CurentRow.Diameter;
                 returnData.FirstQuantity = CurentRow.Quantity;
                 return returnData;

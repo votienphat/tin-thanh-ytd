@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Data;
-using System.Reflection;
 using Logger;
 using MyAdmin.Models.Home;
 using OfficeOpenXml;
@@ -17,9 +12,9 @@ namespace MyAdmin.Helpers
 {
     public class ExcelHelpers
     {
-        const string START_HEADER = "1";
+        const string START_HEADER = "8";
 
-        const int START_ROW = 1;
+        const int START_ROW = 9;
 
         #region Export 
         public ExcelPackage ExportData(List<ExcelExport> dataExport, string excelTitle, string[] titles, string cols)
@@ -30,18 +25,13 @@ namespace MyAdmin.Helpers
             ws = pck.Workbook.Worksheets.Add("BAOCAO");
             ws = FormatHeader(ws, cols, titles);
 
-            int row = 2, roll = 1;
+            int row = 9, roll = 8;
             foreach (var data in dataExport)
             {
-
-                ws.Cells["A" + row + ":" + "D" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-
+                ws.Cells["A" + row + ":" + "R" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 ws.Cells["A" + row].Value = data.No;
-
                 ws.Cells["B" + row].Value = data.Project;
-
                 ws.Cells["C" + row].Value = data.PoNo;
-
                 ws.Cells["D" + row].Value = data.ItemCategory;
                 ws.Cells["E" + row].Value = data.Diameter;
                 ws.Cells["F" + row].Value = data.Length;
@@ -144,7 +134,7 @@ namespace MyAdmin.Helpers
                 ws.Cells[character + START_HEADER].Style.Fill.PatternType = ExcelFillStyle.Solid;
                 ws.Cells[character + START_HEADER].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                 ws.Cells[character + START_HEADER].Style.Font.Bold = true;
-                ws.Cells[character + START_HEADER].Style.Font.Size = 14;
+                ws.Cells[character + START_HEADER].Style.Font.Size = 10;
                 ws.Cells[character + START_HEADER].AutoFitColumns();
                 ws.Cells[character + START_HEADER].Style.Font.Color.SetColor(Color.Black);
                 i++;

@@ -14,10 +14,10 @@ namespace MyAdmin.Models.Home
         public string Project { get; set; }
         public string PoNo { get; set; }
         public string ItemCategory { get; set; }
-        public string Diameter { get; set; }
-        public string Length { get; set; }
-        public string Quantity { get; set; }
-        public string Weight { get; set; }
+        public int Diameter { get; set; }
+        public long Length { get; set; }
+        public int Quantity { get; set; }
+        public decimal Weight { get; set; }
 
         public ExcelRange CellNo { get; set; }
         public ExcelRange CellProject { get; set; }
@@ -34,35 +34,35 @@ namespace MyAdmin.Models.Home
         public string Project { get; set; }
         public string PoNo { get; set; }
         public string ItemCategory { get; set; }
-        public string Diameter { get; set; }
-        public string Length { get; set; }
-        public string Quantity { get; set; }
-        public string Weight { get; set; }
+        public int Diameter { get; set; }
+        public long Length { get; set; }
+        public int Quantity { get; set; }
+        public decimal Weight { get; set; }
 
-        public string FirstDiameter { get; set; }
-        public string FirstLength { get; set; }
-        public string FirstQuantity { get; set; }
-        public string FirstWeight { get; set; }
-        public string FirstCutLength { get; set; }
-        public string SecondDiameter { get; set; }
-        public string SecondLength { get; set; }
-        public string SecondQuantity { get; set; }
-        public string SecondWeight { get; set; }
-        public string ParentRow { get; set; }
-
+        public int? FirstDiameter { get; set; }
+        public long? FirstLength { get; set; }
+        public int? FirstQuantity { get; set; }
+        public decimal? FirstWeight { get; set; }
+        public long? FirstCutLength { get; set; }
+        public int? SecondDiameter { get; set; }
+        public long? SecondLength { get; set; }
+        public int? SecondQuantity { get; set; }
+        public decimal? SecondWeight { get; set; }
+        public int? ParentRow { get; set; }
+       
     }
     public class ExcelCalExport
     {
-        public string FirstDiameter { get; set; }
-        public string FirstLength { get; set; }
-        public string FirstCutLength { get; set; }
-        public string FirstQuantity { get; set; }
-        public string FirstWeight { get; set; }
-        public string SecondDiameter { get; set; }
-        public string SecondLength { get; set; }
-        public string SecondQuantity { get; set; }
-        public string SecondWeight { get; set; }
-        public string ParentRow { get; set; }
+        public int? FirstDiameter { get; set; }
+        public long? FirstLength { get; set; }
+        public long? FirstCutLength { get; set; }
+        public int? FirstQuantity { get; set; }
+        public decimal? FirstWeight { get; set; }
+        public int? SecondDiameter { get; set; }
+        public long? SecondLength { get; set; }
+        public int? SecondQuantity { get; set; }
+        public decimal? SecondWeight { get; set; }
+        public int? ParentRow { get; set; }
 
     }
 }
