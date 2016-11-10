@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Reflection;
+using Logger;
+using MyAdmin.Models.Home;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using MyAdmin.Models.DataExcel;
 
 namespace MyAdmin.Helpers
 {
@@ -40,19 +44,19 @@ namespace MyAdmin.Helpers
 
                 ws.Cells["D" + row].Value = data.ItemCategory;
                 ws.Cells["E" + row].Value = data.Diameter;
-                ws.Cells["F" + row].Value = data.Leght;
+                ws.Cells["F" + row].Value = data.Length;
                 ws.Cells["G" + row].Value = data.Quantity;
                 ws.Cells["H" + row].Value = data.Weight;
-                ws.Cells["I" + row].Value = data.DiameterFist;
-                ws.Cells["J" + row].Value = data.LeghtFist;
-                ws.Cells["K" + row].Value = data.LeghtFistCut;
-                ws.Cells["L" + row].Value = data.QuantityFist;
-                ws.Cells["M" + row].Value = data.WeightFist;
+                ws.Cells["I" + row].Value = data.FirstDiameter;
+                ws.Cells["J" + row].Value = data.FirstLength;
+                ws.Cells["K" + row].Value = data.FirstCutLength;
+                ws.Cells["L" + row].Value = data.FirstQuantity;
+                ws.Cells["M" + row].Value = data.FirstWeight;
 
-                ws.Cells["N" + row].Value = data.DiameterSecond;
-                ws.Cells["O" + row].Value = data.LeghtSecond;
-                ws.Cells["P" + row].Value = data.QuantitySecond;
-                ws.Cells["Q" + row].Value = data.WeightSecond;
+                ws.Cells["N" + row].Value = data.SecondDiameter;
+                ws.Cells["O" + row].Value = data.SecondLength;
+                ws.Cells["P" + row].Value = data.SecondQuantity;
+                ws.Cells["Q" + row].Value = data.SecondWeight;
                 ws.Cells["R" + row].Value = data.ParentRow;
                 row++;
                 roll++;
@@ -83,10 +87,10 @@ namespace MyAdmin.Helpers
                     {
                         ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
                         var lastRowIndex = GetLastUsedRow(currentWorksheet);
-                        for (int rowNumber = startRow + 1; rowNumber <= lastRowIndex; rowNumber++)
+                        for (int rowNumber = startRow; rowNumber <= lastRowIndex; rowNumber++)
                         {
 
-                            var datanew = new ExcelModel
+                            var newRow = new ExcelModel
                             {
                                 CellNo = currentWorksheet.Cells[rowNumber, 1],
                                 CellProject = currentWorksheet.Cells[rowNumber, 2],
@@ -98,15 +102,16 @@ namespace MyAdmin.Helpers
                                 CellWeight = currentWorksheet.Cells[rowNumber, 8]
                             };
 
-                            datanew.No = datanew.CellNo.Value.ToString().TrimStart().TrimEnd();
-                            datanew.Project = datanew.CellProject.Value.ToString().TrimStart().TrimEnd();
-                            datanew.PoNo = datanew.CellPoNo.Value.ToString().TrimStart().TrimEnd();
-                            datanew.ItemCategory = datanew.CellItemCategory.Value.ToString().TrimStart().TrimEnd();
-                            datanew.Diameter = datanew.CellDiameter.Value.ToString().TrimStart().TrimEnd();
-                            datanew.Leght = datanew.CellLength.Value.ToString().TrimStart().TrimEnd();
-                            datanew.Quantity = datanew.CellQuantity.Value.ToString().TrimStart().TrimEnd();
-                            datanew.Weight = datanew.CellWeight.Value.ToString().TrimStart().TrimEnd();
-                            importResult.ImportDataExcel.Add(datanew);
+                            GetModelRequest(newRow);
+                            //datanew.No = datanew.CellNo.Value.ToString().TrimStart().TrimEnd();
+                            //datanew.Project = datanew.CellProject.Value.ToString().TrimStart().TrimEnd();
+                            //datanew.PoNo = datanew.CellPoNo.Value.ToString().TrimStart().TrimEnd();
+                            //datanew.ItemCategory = datanew.CellItemCategory.Value.ToString().TrimStart().TrimEnd();
+                            //datanew.Diameter = datanew.CellDiameter.Value.ToString().TrimStart().TrimEnd();
+                            //datanew.Length = datanew.CellLength.Value.ToString().TrimStart().TrimEnd();
+                            //datanew.Quantity = datanew.CellQuantity.Value.ToString().TrimStart().TrimEnd();
+                            //datanew.Weight = datanew.CellWeight.Value.ToString().TrimStart().TrimEnd();
+                            importResult.ImportDataExcel.Add(newRow);
                         }
                     }
                 }
@@ -147,41 +152,109 @@ namespace MyAdmin.Helpers
             return ws;
         }
 
-        public DataExcel ImportDataExcel2(string filePath)
+
+        /// <summary>
+        /// <para>Author: TrungTT</para>
+        /// <para>Date: 2015-08-27</para>
+        /// <para>Author: Convert request data sang object tuong ung</para>
+        /// </summary>
+        /// <returns></returns>
+        public static void GetModelRequest(ExcelModel formData)
         {
-            var existingFile = new FileInfo(filePath);
-            int startRow = START_ROW;
-            DataExcel importResult = new DataExcel
+            if (formData == null)
+                return;
+
+            try
             {
-                ImportDataExcel = new List<ExcelModel>()
-            };
-            using (var package = new ExcelPackage(existingFile))
-            {
-                ExcelWorkbook workBook = package.Workbook;
-                if (workBook != null)
+                var type = typeof(ExcelModel);
+                var listProperties = type.GetProperties();
+                if (listProperties.Length > 0)
                 {
-                    if (workBook.Worksheets.Count > 0)
+                    foreach (var prop in listProperties)
                     {
-                        ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
-                        var lastRowIndex = GetLastUsedRow(currentWorksheet);
-                        for (int rowNumber = startRow + 1; rowNumber <= lastRowIndex; rowNumber++)
+                        // Tên mấy cái đối tượng ô tỏng Excel luôn phải bắt đầu bằng từ Cell
+                        var cellType = typeof(ExcelRange);
+                        if (prop.PropertyType == cellType)
                         {
-                            var datanew = new ExcelModel();
-                            datanew.No = currentWorksheet.Cells[rowNumber, 1].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Project = currentWorksheet.Cells[rowNumber, 2].Value.ToString().TrimStart().TrimEnd();
-                            datanew.PoNo = currentWorksheet.Cells[rowNumber, 3].Value.ToString().TrimStart().TrimEnd();
-                            datanew.ItemCategory = currentWorksheet.Cells[rowNumber, 4].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Diameter = currentWorksheet.Cells[rowNumber, 5].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Leght = currentWorksheet.Cells[rowNumber, 6].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Quantity = currentWorksheet.Cells[rowNumber, 7].Value.ToString().TrimStart().TrimEnd();
-                            datanew.Weight = currentWorksheet.Cells[rowNumber, 8].Value.ToString().TrimStart().TrimEnd();
-                            importResult.ImportDataExcel.Add(datanew);
+                            continue;
+                        }
+
+                        // Nếu không tồn tại cell tương ứng thì không lấy dữ liệu
+                        var cellProp = type.GetProperty("Cell" + prop.Name);
+                        if (cellProp == null)
+                        {
+                            continue;
+                        }
+
+                        ExcelRange cellValue = cellProp.GetValue(formData) as ExcelRange;
+                        if (cellValue == null || cellValue.Value == null)
+                        {
+                            continue;
+                        }
+
+                        string value = cellValue.Value.ToString();
+
+                        // Dựa vào từng loại mà gán dữ liệu
+                        if (prop.PropertyType.ToString().Contains("Int32"))
+                        {
+                            int intValue;
+                            if (int.TryParse(value, out intValue))
+                            {
+                                prop.SetValue(formData, intValue);
+                            }
+                        }
+                        else if (prop.PropertyType.ToString().Contains("Int64"))
+                        {
+                            long longValue;
+                            if (long.TryParse(value, out longValue))
+                            {
+                                prop.SetValue(formData, longValue);
+                            }
+                        }
+                        else if (prop.PropertyType.ToString().Contains("Decimal"))
+                        {
+                            decimal decimalValue;
+                            if (decimal.TryParse(value, out decimalValue))
+                            {
+                                prop.SetValue(formData, decimalValue);
+                            }
+                        }
+                        else if (prop.PropertyType.ToString().Contains("Double"))
+                        {
+                            double doubleValue;
+                            if (double.TryParse(value, out doubleValue))
+                            {
+                                prop.SetValue(formData, doubleValue);
+                            }
+                        }
+                        else if (prop.PropertyType.ToString().Contains("DateTime"))
+                        {
+                            DateTime dtValue;
+                            if (DateTime.TryParse(value, out dtValue))
+                            {
+                                prop.SetValue(formData, dtValue);
+                            }
+                        }
+                        else if (prop.PropertyType.ToString().Contains("Boolean"))
+                        {
+                            bool dtValue;
+                            if (Boolean.TryParse(value, out dtValue))
+                            {
+                                prop.SetValue(formData, dtValue);
+                            }
+                        }
+                        else
+                        {
+                            prop.SetValue(formData, value);
                         }
                     }
+
                 }
             }
-            return importResult;
+            catch (Exception ex)
+            {
+                CommonLogger.DefaultLogger.Error("GetModelRequest", ex);
+            }
         }
-
     }
 }

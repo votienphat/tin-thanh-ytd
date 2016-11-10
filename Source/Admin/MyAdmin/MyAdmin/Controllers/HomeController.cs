@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System;
 using MyAdmin.Helpers;
-using MyAdmin.Models.DataExcel;
+using MyAdmin.Models.Home;
 
 namespace MyAdmin.Controllers
 {
@@ -59,35 +59,36 @@ namespace MyAdmin.Controllers
                 for (int i = 0; i < datalist.Count(); i++)
                 {
                     var rowExport = new ExcelExport();
-                    var RowCurent = CalcuRow(listExport, datalist, datalist[i].No,out listdataOut);
-                    if (listdataOut.QuantityFist != null)
+                    var RowCurent = CalcuRow(listExport, datalist, datalist[i].No, out listdataOut);
+                    if (listdataOut.FirstQuantity != null)
                     {
                         var rowExportOut = new ExcelExport();
                         var RowFor = new ExcelModel();
-                        int maxRow = int.Parse(datalist.Max(x => x.No)) +1;
-                        rowExportOut.No = (maxRow).ToString();
+                        int maxRow = datalist.Max(x => x.No) + 1;
+                        rowExportOut.No = maxRow;
                         rowExportOut.PoNo = datalist[i].PoNo;
                         rowExportOut.Project = datalist[i].Project;
                         rowExportOut.ItemCategory = datalist[i].ItemCategory;
                         rowExportOut.Diameter = datalist[i].Diameter;
-                        rowExportOut.Leght = datalist[i].Leght;
-                        rowExportOut.Quantity = listdataOut.QuantityFist;
+                        rowExportOut.Length = datalist[i].Length;
+                        rowExportOut.Quantity = listdataOut.FirstQuantity;
                         listExport.Add(rowExportOut);
 
-                        RowFor.No = (maxRow).ToString();
+                        RowFor.No = maxRow;
                         RowFor.Project = datalist[i].Project;
                         RowFor.PoNo = datalist[i].PoNo;
                         RowFor.ItemCategory = datalist[i].ItemCategory;
                         RowFor.Diameter = datalist[i].Diameter;
-                        RowFor.Leght = datalist[i].Leght;
-                        RowFor.Quantity = listdataOut.QuantityFist;
+                        RowFor.Length = datalist[i].Length;
+                        RowFor.Quantity = listdataOut.FirstQuantity;
                         RowFor.Weight = datalist[i].Weight;
                         importResult.ImportDataExcel.Add(RowFor);
 
-                        rowExport.Quantity = listdataOut.QuantityFist;
+                        rowExport.Quantity = listdataOut.FirstQuantity;
 
                     }
-                    else {
+                    else
+                    {
                         rowExport.Quantity = datalist[i].Quantity;
                     }
                     rowExport.No = datalist[i].No;
@@ -95,18 +96,18 @@ namespace MyAdmin.Controllers
                     rowExport.Project = datalist[i].Project;
                     rowExport.ItemCategory = datalist[i].ItemCategory;
                     rowExport.Diameter = datalist[i].Diameter;
-                    rowExport.Leght = datalist[i].Leght;
+                    rowExport.Length = datalist[i].Length;
                     rowExport.Weight = datalist[i].Weight;
-                    rowExport.DiameterFist = RowCurent.DiameterFist;
-                    rowExport.LeghtFist = RowCurent.LeghtFist;
-                    rowExport.LeghtFistCut = RowCurent.LeghtFistCut;
-                    rowExport.QuantityFist = RowCurent.QuantityFist;
-                    rowExport.WeightFist = RowCurent.WeightFist;
+                    rowExport.FirstDiameter = RowCurent.FirstDiameter;
+                    rowExport.FirstLength = RowCurent.FirstLength;
+                    rowExport.FirstCutLength = RowCurent.FirstCutLength;
+                    rowExport.FirstQuantity = RowCurent.FirstQuantity;
+                    rowExport.FirstWeight = RowCurent.FirstWeight;
 
-                    rowExport.DiameterSecond = RowCurent.DiameterSecond;
-                    rowExport.LeghtSecond = RowCurent.LeghtSecond;
-                    rowExport.QuantitySecond = RowCurent.QuantitySecond;
-                    rowExport.WeightSecond = RowCurent.WeightSecond;
+                    rowExport.SecondDiameter = RowCurent.SecondDiameter;
+                    rowExport.SecondLength = RowCurent.SecondLength;
+                    rowExport.SecondQuantity = RowCurent.SecondQuantity;
+                    rowExport.SecondWeight = RowCurent.SecondWeight;
                     rowExport.ParentRow = RowCurent.ParentRow;
 
 
@@ -116,7 +117,6 @@ namespace MyAdmin.Controllers
                 if (importResult.ImportDataExcel.Count > 0)
                 {
                     return ExportData(listExport);
-                    return Json(new { status = true, Data = importResult, message = "", JsonRequestBehavior.AllowGet });
                 }
             }
             catch (Exception ex)
@@ -133,83 +133,83 @@ namespace MyAdmin.Controllers
                 Directory.CreateDirectory(Server.MapPath(ImportPath));
             var detailName = "Report.xlsx";
             var path = Path.Combine(Server.MapPath(ImportPath), detailName);
-            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter", "Leght", "Qty", "Weight", "Diameter", "Leght", "LeghtFistCut", "Qty", "Weight", "Diameter", "Leght", "Qty", "Weight", "Parent" }, "ABCDEFGHIJKLMNOPQR")
+            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter", "Length", "Qty", "Weight", "Diameter", "Length", "FirstCutLength", "Qty", "Weight", "Diameter", "Length", "Qty", "Weight", "Parent" }, "ABCDEFGHIJKLMNOPQR")
                 .SaveAs(new FileInfo(path));
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
             string fileName = "Report.xlsx";
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
-
-            return File(path, System.Net.Mime.MediaTypeNames.Application.Octet, detailName);
         }
 
-        public static ExcelCalExport CalcuRow(List<ExcelExport> listdata, List<ExcelModel> Data, string noRow, out ExcelCalExport listdataOut)
+        public static ExcelCalExport CalcuRow(List<ExcelExport> listdata, List<ExcelModel> Data, int noRow, out ExcelCalExport listdataOut)
         {
             listdataOut = new ExcelCalExport();
             var returnData = new ExcelCalExport();
-            var minTon = listdata.Where(x=>x.LeghtFist != null).OrderBy(x=>x.LeghtFist).ToList();
+            var minTon = listdata.Where(x => x.FirstLength != null).OrderBy(x => x.FirstLength).ToList();
             var CurentRow = Data.FirstOrDefault(x => x.No == noRow);
-            var requireLeght = int.Parse(CurentRow.Quantity) * int.Parse(CurentRow.Leght);
-            var ObjTachDong  = new ExcelCalExport();
+            var requireLeght = int.Parse(CurentRow.Quantity) * int.Parse(CurentRow.Length);
             //kiểm tra có dư hay ko nếu không dư thì lấy thanh mặt định
-            if(minTon.Any())
+            if (minTon.Any())
+            {
+                foreach (var item in minTon)
                 {
-                    foreach (var item in minTon)
+                    // nếu có kho dư
+                    // gán parent cho thanh sữ dụng
+                    if (int.Parse(item.FirstLength) > requireLeght)
                     {
-                        // nếu có kho dư
-                        // gán parent cho thanh sữ dụng
-                        if (int.Parse(item.LeghtFist) > requireLeght)
-                        {
-                            returnData.ParentRow = item.No;
-                            returnData.LeghtSecond = CurentRow.Leght;
-                            returnData.DiameterSecond = CurentRow.Diameter;
-                            returnData.QuantitySecond = CurentRow.Quantity;
-                            int index = listdata.FindIndex(x => x.No == item.No);
-                            listdata[index].LeghtFist = (int.Parse(item.LeghtFist) - int.Parse(CurentRow.Leght)).ToString();
-                            return returnData;
-                        }
-                    }
-                // uu tiên không tách dòng trc nên for lại 1 lần nua
-                // thực hiện tách dòng trong kho
-                    foreach (var item in minTon)
-                    {
-                        if (int.Parse(item.LeghtFist) > int.Parse(CurentRow.Leght))
-                        {
-                            // kiểm tra số lượng và dòng cần tách
-                            int Quantity = int.Parse(CurentRow.Quantity);
-                            var checkQuantity = 1;
-                            for (int i = 1; i <= Quantity; i++)
-			                {
-			                    if(int.Parse(CurentRow.Leght) * i > int.Parse(item.LeghtFist))
-                                {
-                                    listdataOut.QuantityFist = i.ToString();
-                                    checkQuantity = i - 1;
-                                break;
-                                }
-			                }
-                            returnData.ParentRow = item.No;
-                            returnData.LeghtSecond = CurentRow.Leght;
-                            returnData.DiameterSecond = CurentRow.Diameter;
-                            returnData.QuantitySecond = checkQuantity.ToString();
-                            int index = listdata.FindIndex(x => x.No == item.No);
-                            listdata[index].LeghtFist = (int.Parse(item.LeghtFist) - int.Parse(CurentRow.Leght)).ToString();
-                            return returnData;
-                        }
-                    }
-                    if (requireLeght < LeghtDefaut) {
-                        returnData.LeghtFist = (LeghtDefaut - int.Parse(CurentRow.Leght)).ToString();
-                        returnData.LeghtFistCut = (LeghtDefaut - int.Parse(CurentRow.Leght)).ToString();
-                        returnData.DiameterFist = CurentRow.Diameter;
-                        returnData.QuantityFist = CurentRow.Quantity;
+                        returnData.ParentRow = item.PoNo;
+                        returnData.SecondLength = CurentRow.Length;
+                        returnData.SecondDiameter = CurentRow.Diameter;
+                        returnData.SecondQuantity = CurentRow.Quantity;
+                        int index = listdata.FindIndex(x => x.No == item.No);
+                        listdata[index].FirstLength = (int.Parse(item.FirstLength) - int.Parse(CurentRow.Length)).ToString();
                         return returnData;
                     }
+                }
+                // uu tiên không tách dòng trc nên for lại 1 lần nua
+                // thực hiện tách dòng trong kho
+                foreach (var item in minTon)
+                {
+                    if (int.Parse(item.FirstLength) > int.Parse(CurentRow.Length))
+                    {
+                        // kiểm tra số lượng và dòng cần tách
+                        int Quantity = int.Parse(CurentRow.Quantity);
+                        var checkQuantity = 1;
+                        for (int i = 1; i <= Quantity; i++)
+                        {
+                            if (int.Parse(CurentRow.Length) * i > int.Parse(item.FirstLength))
+                            {
+                                listdataOut.FirstQuantity = i.ToString();
+                                checkQuantity = i - 1;
+                                break;
+                            }
+                        }
+                        returnData.ParentRow = item.PoNo;
+                        returnData.SecondLength = CurentRow.Length;
+                        returnData.SecondDiameter = CurentRow.Diameter;
+                        returnData.SecondQuantity = checkQuantity.ToString();
+                        int index = listdata.FindIndex(x => x.No == item.No);
+                        listdata[index].FirstLength = (int.Parse(item.FirstLength) - int.Parse(CurentRow.Length)).ToString();
+                        return returnData;
+                    }
+                }
+                if (requireLeght < LeghtDefaut)
+                {
+                    returnData.FirstLength = (LeghtDefaut - int.Parse(CurentRow.Length)).ToString();
+                    returnData.FirstCutLength = (LeghtDefaut - int.Parse(CurentRow.Length)).ToString();
+                    returnData.FirstDiameter = CurentRow.Diameter;
+                    returnData.FirstQuantity = CurentRow.Quantity;
+                    return returnData;
+                }
 
-            } else {
+            }
+            else
+            {
 
-                returnData.LeghtFist = (LeghtDefaut - int.Parse(CurentRow.Leght)).ToString();
-                returnData.LeghtFistCut = (LeghtDefaut - int.Parse(CurentRow.Leght)).ToString();
-                returnData.DiameterFist = CurentRow.Diameter;
-                returnData.QuantityFist = CurentRow.Quantity;
+                returnData.FirstLength = (LeghtDefaut - int.Parse(CurentRow.Length)).ToString();
+                returnData.FirstCutLength = (LeghtDefaut - int.Parse(CurentRow.Length)).ToString();
+                returnData.FirstDiameter = CurentRow.Diameter;
+                returnData.FirstQuantity = CurentRow.Quantity;
                 return returnData;
 
             }

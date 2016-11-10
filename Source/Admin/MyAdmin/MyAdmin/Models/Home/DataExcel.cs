@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OfficeOpenXml;
 
-namespace MyAdmin.Models.DataExcel
+namespace MyAdmin.Models.Home
 {
     public class DataExcel
     {
@@ -11,12 +10,12 @@ namespace MyAdmin.Models.DataExcel
   
     public class ExcelModel
     {
-        public string No { get; set; }
+        public int No { get; set; }
         public string Project { get; set; }
         public string PoNo { get; set; }
         public string ItemCategory { get; set; }
         public string Diameter { get; set; }
-        public string Leght { get; set; }
+        public string Length { get; set; }
         public string Quantity { get; set; }
         public string Weight { get; set; }
 
@@ -31,38 +30,38 @@ namespace MyAdmin.Models.DataExcel
     }
     public class ExcelExport
     {
-        public string No { get; set; }
+        public int No { get; set; }
         public string Project { get; set; }
         public string PoNo { get; set; }
         public string ItemCategory { get; set; }
         public string Diameter { get; set; }
-        public string Leght { get; set; }
+        public string Length { get; set; }
         public string Quantity { get; set; }
         public string Weight { get; set; }
 
-        public string DiameterFist { get; set; }
-        public string LeghtFist { get; set; }
-        public string QuantityFist { get; set; }
-        public string WeightFist { get; set; }
-        public string LeghtFistCut { get; set; }
-        public string DiameterSecond { get; set; }
-        public string LeghtSecond { get; set; }
-        public string QuantitySecond { get; set; }
-        public string WeightSecond { get; set; }
+        public string FirstDiameter { get; set; }
+        public string FirstLength { get; set; }
+        public string FirstQuantity { get; set; }
+        public string FirstWeight { get; set; }
+        public string FirstCutLength { get; set; }
+        public string SecondDiameter { get; set; }
+        public string SecondLength { get; set; }
+        public string SecondQuantity { get; set; }
+        public string SecondWeight { get; set; }
         public string ParentRow { get; set; }
 
     }
     public class ExcelCalExport
     {
-        public string DiameterFist { get; set; }
-        public string LeghtFist { get; set; }
-        public string LeghtFistCut { get; set; }
-        public string QuantityFist { get; set; }
-        public string WeightFist { get; set; }
-        public string DiameterSecond { get; set; }
-        public string LeghtSecond { get; set; }
-        public string QuantitySecond { get; set; }
-        public string WeightSecond { get; set; }
+        public string FirstDiameter { get; set; }
+        public string FirstLength { get; set; }
+        public string FirstCutLength { get; set; }
+        public string FirstQuantity { get; set; }
+        public string FirstWeight { get; set; }
+        public string SecondDiameter { get; set; }
+        public string SecondLength { get; set; }
+        public string SecondQuantity { get; set; }
+        public string SecondWeight { get; set; }
         public string ParentRow { get; set; }
 
     }
