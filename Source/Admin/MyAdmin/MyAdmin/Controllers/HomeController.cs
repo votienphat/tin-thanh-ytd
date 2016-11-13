@@ -45,7 +45,7 @@ namespace MyAdmin.Controllers
             var ImportPath = "~/App_Data/Excel/";
             try
             {
-                if (!Directory.Exists(Server.MapPath(ImportPath)))
+                 if (!Directory.Exists(Server.MapPath(ImportPath)))
                     Directory.CreateDirectory(Server.MapPath(ImportPath));
                 var httpPostedFileBases = files as HttpPostedFileBase[] ?? files.ToArray();
                 var path = Path.Combine(Server.MapPath(ImportPath),
@@ -57,7 +57,7 @@ namespace MyAdmin.Controllers
                 var listExport = new List<ExcelExport>();
                 var datalist = importResult.ImportDataExcel;
                 for (int i = 0; i < datalist.Count(); i++)
-                {
+                 {
                     var rowExport = new ExcelExport();
                     var RowCurent = CalcuRow(listExport, datalist, datalist[i].No, out listdataOut);
                     if (listdataOut.FirstQuantity > 0)
@@ -71,7 +71,7 @@ namespace MyAdmin.Controllers
                         rowExportOut.ItemCategory = datalist[i].ItemCategory;
                         rowExportOut.Diameter = datalist[i].Diameter;
                         rowExportOut.Length = datalist[i].Length;
-                        rowExportOut.Quantity = listdataOut.FirstQuantity.GetValueOrDefault();
+                        rowExportOut.Quantity = listdataOut.SecondQuantity.GetValueOrDefault();
                         listExport.Add(rowExportOut);
 
                         RowFor.No = maxRow;
@@ -80,9 +80,9 @@ namespace MyAdmin.Controllers
                         RowFor.ItemCategory = datalist[i].ItemCategory;
                         RowFor.Diameter = datalist[i].Diameter;
                         RowFor.Length = datalist[i].Length;
-                        RowFor.Quantity = listdataOut.FirstQuantity.GetValueOrDefault();
+                        RowFor.Quantity = listdataOut.SecondQuantity.GetValueOrDefault();
                         RowFor.Weight = datalist[i].Weight;
-                        importResult.ImportDataExcel.Add(RowFor);
+                        datalist.Add(RowFor);
 
                         rowExport.Quantity = listdataOut.FirstQuantity.GetValueOrDefault();
 
@@ -155,7 +155,7 @@ namespace MyAdmin.Controllers
                 {
                     // nếu có kho dư
                     // gán parent cho thanh sữ dụng
-                    if (item.FirstLength > requireLeght)
+                    if (item.FirstLength >= requireLeght)
                     {
                         returnData.ParentRow = item.No;
                         returnData.SecondLength = CurentRow.Length;
@@ -170,7 +170,7 @@ namespace MyAdmin.Controllers
                 // thực hiện tách dòng trong kho
                 foreach (var item in minTon)
                 {
-                    if (item.FirstLength > CurentRow.Length)
+                    if (item.FirstLength >= CurentRow.Length)
                     {
                         // kiểm tra số lượng và dòng cần tách
                         int Quantity = CurentRow.Quantity;
@@ -193,7 +193,7 @@ namespace MyAdmin.Controllers
                         return returnData;
                     }
                 }
-                if (requireLeght < LeghtDefaut)
+                if (requireLeght <= LeghtDefaut)
                 {
                     returnData.FirstLength = LeghtDefaut - CurentRow.Length;
                     returnData.FirstCutLength = LeghtDefaut - CurentRow.Length;
@@ -201,6 +201,11 @@ namespace MyAdmin.Controllers
                     returnData.FirstQuantity = CurentRow.Quantity;
                     return returnData;
                 }
+                returnData.FirstLength = LeghtDefaut - CurentRow.Length;
+                returnData.FirstCutLength = LeghtDefaut - CurentRow.Length;
+                returnData.FirstDiameter = CurentRow.Diameter;
+                returnData.FirstQuantity = CurentRow.Quantity;
+                return returnData;
 
             }
             else
