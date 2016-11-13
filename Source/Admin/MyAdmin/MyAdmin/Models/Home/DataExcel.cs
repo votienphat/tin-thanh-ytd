@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 
 namespace MyAdmin.Models.Home
 {
@@ -27,6 +28,15 @@ namespace MyAdmin.Models.Home
         public ExcelRange CellLength { get; set; }
         public ExcelRange CellQuantity { get; set; }
         public ExcelRange CellWeight { get; set; }
+
+        public ExcelNumberFormat FormatNo { get; set; }
+        public ExcelNumberFormat FormatProject { get; set; }
+        public ExcelNumberFormat FormatPoNo { get; set; }
+        public ExcelNumberFormat FormatItemCategory { get; set; }
+        public ExcelNumberFormat FormatDiameter { get; set; }
+        public ExcelNumberFormat FormatLength { get; set; }
+        public ExcelNumberFormat FormatQuantity { get; set; }
+        public ExcelNumberFormat FormatWeight { get; set; }
     }
     public class ExcelExport
     {
@@ -49,7 +59,26 @@ namespace MyAdmin.Models.Home
         public int? SecondQuantity { get; set; }
         public decimal? SecondWeight { get; set; }
         public string ParentRow { get; set; }
-       
+
+        public ExcelNumberFormat FormatNo { get; set; }
+        public ExcelNumberFormat FormatProject { get; set; }
+        public ExcelNumberFormat FormatPoNo { get; set; }
+        public ExcelNumberFormat FormatItemCategory { get; set; }
+        public ExcelNumberFormat FormatDiameter { get; set; }
+        public ExcelNumberFormat FormatLength { get; set; }
+        public ExcelNumberFormat FormatQuantity { get; set; }
+        public ExcelNumberFormat FormatWeight { get; set; }
+
+        public ExcelNumberFormat FormatFirstDiameter { get; set; }
+        public ExcelNumberFormat FormatFirstLength { get; set; }
+        public ExcelNumberFormat FormatFirstQuantity { get; set; }
+        public ExcelNumberFormat FormatFirstWeight { get; set; }
+        public ExcelNumberFormat FormatFirstCutLength { get; set; }
+
+        public ExcelNumberFormat FormatSecondDiameter { get; set; }
+        public ExcelNumberFormat FormatSecondLength { get; set; }
+        public ExcelNumberFormat FormatSecondQuantity { get; set; }
+        public ExcelNumberFormat FormatSecondWeight { get; set; }
     }
     public class ExcelCalExport
     {
@@ -64,5 +93,13 @@ namespace MyAdmin.Models.Home
         public decimal? SecondWeight { get; set; }
         public string ParentRow { get; set; }
 
+        public ExcelNumberFormat FormatNo { get; set; }
+        public ExcelNumberFormat FormatProject { get; set; }
+        public ExcelNumberFormat FormatPoNo { get; set; }
+        public ExcelNumberFormat FormatItemCategory { get; set; }
+        public ExcelNumberFormat FormatDiameter { get; set; }
+        public ExcelNumberFormat FormatLength { get; set; }
+        public ExcelNumberFormat FormatQuantity { get; set; }
+        public ExcelNumberFormat FormatWeight { get; set; }
     }
 }
