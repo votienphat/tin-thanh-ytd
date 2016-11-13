@@ -48,7 +48,7 @@ namespace MyAdmin.Models.Home
         public long? SecondLength { get; set; }
         public int? SecondQuantity { get; set; }
         public decimal? SecondWeight { get; set; }
-        public int? ParentRow { get; set; }
+        public string ParentRow { get; set; }
        
     }
     public class ExcelCalExport
@@ -62,7 +62,7 @@ namespace MyAdmin.Models.Home
         public long? SecondLength { get; set; }
         public int? SecondQuantity { get; set; }
         public decimal? SecondWeight { get; set; }
-        public int? ParentRow { get; set; }
+        public string ParentRow { get; set; }
 
     }
 }

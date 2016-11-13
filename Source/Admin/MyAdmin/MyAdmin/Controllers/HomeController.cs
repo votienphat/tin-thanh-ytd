@@ -39,7 +39,7 @@ namespace MyAdmin.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult ImportExcel(IEnumerable<HttpPostedFileBase> files)
+        public ActionResult ImportExcel(IEnumerable<HttpPostedFileBase> files,int RowData,int Offset)
         {
             DataExcel importResult = null;
             var ImportPath = "~/App_Data/Excel/";
@@ -52,14 +52,14 @@ namespace MyAdmin.Controllers
                 Path.GetFileName(DateTime.Now.ToString("ddMMyy") + "_" + httpPostedFileBases.First().FileName));
                 httpPostedFileBases.First().SaveAs(path);
                 ExcelHelpers excelHelpers = new ExcelHelpers();
-                importResult = excelHelpers.ImportDataExcel(path);
+                importResult = excelHelpers.ImportDataExcel(path, RowData);
                 var listdataOut = new ExcelCalExport();
                 var listExport = new List<ExcelExport>();
                 var datalist = importResult.ImportDataExcel;
                 for (int i = 0; i < datalist.Count(); i++)
                  {
                     var rowExport = new ExcelExport();
-                    var RowCurent = CalcuRow(listExport, datalist, datalist[i].No, out listdataOut);
+                    var RowCurent = CalcuRow(listExport, datalist, datalist[i].No, out listdataOut, Offset);
                     if (listdataOut.FirstQuantity > 0)
                     {
                         var rowExportOut = new ExcelExport();
@@ -116,7 +116,7 @@ namespace MyAdmin.Controllers
 
                 if (importResult.ImportDataExcel.Count > 0)
                 {
-                    return ExportData(listExport);
+                    return ExportData(listExport, RowData);
                 }
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ namespace MyAdmin.Controllers
             }
             return Json(new { status = false, message = "" }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult ExportData(List<ExcelExport> dataExport)
+        public ActionResult ExportData(List<ExcelExport> dataExport,int RowData)
         {
             ExcelHelpers exHelpers = new ExcelHelpers();
             var ImportPath = "~/App_Data/Excel/";
@@ -133,7 +133,7 @@ namespace MyAdmin.Controllers
                 Directory.CreateDirectory(Server.MapPath(ImportPath));
             var detailName = "Report.xlsx";
             var path = Path.Combine(Server.MapPath(ImportPath), detailName);
-            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent" }, "ABCDEFGHIJKLMNOPQR")
+            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent" }, "ABCDEFGHIJKLMNOPQR", RowData)
                 .SaveAs(new FileInfo(path));
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
@@ -141,13 +141,13 @@ namespace MyAdmin.Controllers
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
-        public static ExcelCalExport CalcuRow(List<ExcelExport> listdata, List<ExcelModel> Data, int noRow, out ExcelCalExport listdataOut)
+        public static ExcelCalExport CalcuRow(List<ExcelExport> listdata, List<ExcelModel> Data, int noRow, out ExcelCalExport listdataOut,int Offset)
         {
             listdataOut = new ExcelCalExport();
             var returnData = new ExcelCalExport();
             var minTon = listdata.Where(x => x.FirstLength > 0).OrderBy(x => x.FirstLength).ToList();
             var CurentRow = Data.FirstOrDefault(x => x.No == noRow);
-            var requireLeght = CurentRow.Quantity * CurentRow.Length;
+            var requireLeght = CurentRow.Quantity * (CurentRow.Length + Offset);
             //kiểm tra có dư hay ko nếu không dư thì lấy thanh mặt định
             if (minTon.Any())
             {
@@ -157,12 +157,12 @@ namespace MyAdmin.Controllers
                     // gán parent cho thanh sữ dụng
                     if (item.FirstLength >= requireLeght)
                     {
-                        returnData.ParentRow = item.No;
-                        returnData.SecondLength = CurentRow.Length;
+                        returnData.ParentRow = item.PoNo;
+                        returnData.SecondLength = CurentRow.Length + Offset;
                         returnData.SecondDiameter = CurentRow.Diameter;
                         returnData.SecondQuantity = CurentRow.Quantity;
                         int index = listdata.FindIndex(x => x.No == item.No);
-                        listdata[index].FirstLength = item.FirstLength - CurentRow.Length;
+                        listdata[index].FirstLength = item.FirstLength  - (CurentRow.Length + Offset);
                         return returnData;
                     }
                 }
@@ -170,21 +170,21 @@ namespace MyAdmin.Controllers
                 // thực hiện tách dòng trong kho
                 foreach (var item in minTon)
                 {
-                    if (item.FirstLength >= CurentRow.Length)
+                    if (item.FirstLength >= CurentRow.Length + Offset)
                     {
                         // kiểm tra số lượng và dòng cần tách
                         int Quantity = CurentRow.Quantity;
                         var checkQuantity = 1;
                         for (int i = 1; i <= Quantity; i++)
                         {
-                            if (CurentRow.Length * i > item.FirstLength)
+                            if ((CurentRow.Length + Offset) * i > item.FirstLength)
                             {
                                 listdataOut.FirstQuantity = i;
                                 checkQuantity = i - 1;
                                 break;
                             }
                         }
-                        returnData.ParentRow = item.No;
+                        returnData.ParentRow = item.PoNo;
                         returnData.SecondLength = CurentRow.Length;
                         returnData.SecondDiameter = CurentRow.Diameter;
                         returnData.SecondQuantity = checkQuantity;

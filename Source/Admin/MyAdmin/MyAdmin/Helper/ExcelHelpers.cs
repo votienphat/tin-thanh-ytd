@@ -12,20 +12,16 @@ namespace MyAdmin.Helpers
 {
     public class ExcelHelpers
     {
-        const string START_HEADER = "8";
-
-        const int START_ROW = 9;
-
         #region Export 
-        public ExcelPackage ExportData(List<ExcelExport> dataExport, string excelTitle, string[] titles, string cols)
+        public ExcelPackage ExportData(List<ExcelExport> dataExport, string excelTitle, string[] titles, string cols,int RowData)
         {
             ExcelPackage pck = new ExcelPackage();
             ExcelWorksheet ws = null;
             var datetime = DateTime.Now;
             ws = pck.Workbook.Worksheets.Add("BAOCAO");
-            ws = FormatHeader(ws, cols, titles);
+            ws = FormatHeader(ws, cols, titles, RowData);
 
-            int row = 9, roll = 8;
+            int row = RowData, roll = RowData -1;
             foreach (var data in dataExport)
             {
                 ws.Cells["A" + row + ":" + "R" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
@@ -59,11 +55,10 @@ namespace MyAdmin.Helpers
 
         }
         #endregion
-
-        public DataExcel ImportDataExcel(string filePath)
+        public DataExcel ImportDataExcel(string filePath,int RowData)
         {
             var existingFile = new FileInfo(filePath);
-            int startRow = START_ROW;
+            int startRow = RowData;
             DataExcel importResult = new DataExcel
             {
                 ImportDataExcel = new List<ExcelModel>()
@@ -124,9 +119,10 @@ namespace MyAdmin.Helpers
             return row;
         }
 
-        private ExcelWorksheet FormatHeader(ExcelWorksheet ws, string cols, string[] titles)
+        private ExcelWorksheet FormatHeader(ExcelWorksheet ws, string cols, string[] titles,int RowData)
         {
             int i = 0;
+            string START_HEADER = (RowData - 1).ToString();
             foreach (var character in cols)
             {
                 ws.Cells[character + START_HEADER].Value = titles[i];
