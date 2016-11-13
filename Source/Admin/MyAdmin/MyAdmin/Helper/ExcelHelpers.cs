@@ -21,7 +21,7 @@ namespace MyAdmin.Helpers
             ws = pck.Workbook.Worksheets.Add("BAOCAO");
             ws = FormatHeader(ws, cols, titles, RowData);
 
-            int row = RowData, roll = RowData -1;
+            int row = RowData, roll = RowData -1,indexRow = 1;
             foreach (var data in dataExport)
             {
                 ws.Cells["A" + row + ":" + "R" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
@@ -44,8 +44,10 @@ namespace MyAdmin.Helpers
                 ws.Cells["P" + row].Value = data.SecondQuantity;
                 ws.Cells["Q" + row].Value = data.SecondWeight;
                 ws.Cells["R" + row].Value = data.ParentRow;
+                ws.Cells["S" + row].Value = indexRow;
                 row++;
                 roll++;
+                indexRow++;
             }
             for (int i = 1; i <= cols.Length; i++)
             {

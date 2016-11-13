@@ -54,7 +54,7 @@ namespace MyAdmin.Controllers
                 ExcelHelpers excelHelpers = new ExcelHelpers();
                 importResult = excelHelpers.ImportDataExcel(path, RowData);
                 var listdataOut = new ExcelCalExport();
-                var listExport = new List<ExcelExport>();
+                 var listExport = new List<ExcelExport>();
                 var datalist = importResult.ImportDataExcel;
                 for (int i = 0; i < datalist.Count(); i++)
                  {
@@ -62,33 +62,9 @@ namespace MyAdmin.Controllers
                     var RowCurent = CalcuRow(listExport, datalist, datalist[i].No, out listdataOut, Offset);
                     if (listdataOut.FirstQuantity > 0)
                     {
-                        var rowExportOut = new ExcelExport();
-                        var RowFor = new ExcelModel();
-                        int maxRow = datalist.Max(x => x.No) + 1;
-                        rowExportOut.No = maxRow;
-                        rowExportOut.PoNo = datalist[i].PoNo;
-                        rowExportOut.Project = datalist[i].Project;
-                        rowExportOut.ItemCategory = datalist[i].ItemCategory;
-                        rowExportOut.Diameter = datalist[i].Diameter;
-                        rowExportOut.Length = datalist[i].Length;
-                        rowExportOut.Quantity = listdataOut.SecondQuantity.GetValueOrDefault();
-                        listExport.Add(rowExportOut);
-
-                        RowFor.No = maxRow;
-                        RowFor.Project = datalist[i].Project;
-                        RowFor.PoNo = datalist[i].PoNo;
-                        RowFor.ItemCategory = datalist[i].ItemCategory;
-                        RowFor.Diameter = datalist[i].Diameter;
-                        RowFor.Length = datalist[i].Length;
-                        RowFor.Quantity = listdataOut.SecondQuantity.GetValueOrDefault();
-                        RowFor.Weight = datalist[i].Weight;
-                        datalist.Add(RowFor);
-
-                        rowExport.Quantity = listdataOut.FirstQuantity.GetValueOrDefault();
-
+                        rowExport.Quantity = listdataOut.SecondQuantity.GetValueOrDefault();
                     }
-                    else
-                    {
+                    else {
                         rowExport.Quantity = datalist[i].Quantity;
                     }
                     rowExport.No = datalist[i].No;
@@ -112,6 +88,33 @@ namespace MyAdmin.Controllers
 
 
                     listExport.Add(rowExport);
+                    if (listdataOut.FirstQuantity > 0)
+                    {
+                        //var rowExportOut = new ExcelExport();
+                        var RowFor = new ExcelModel();
+                        int maxRow = datalist.Max(x => x.No) + 1;
+                        //rowExportOut.No = maxRow;
+                        //rowExportOut.PoNo = datalist[i].PoNo;
+                        //rowExportOut.Project = datalist[i].Project;
+                        //rowExportOut.ItemCategory = datalist[i].ItemCategory;
+                        //rowExportOut.Diameter = datalist[i].Diameter;
+                        //rowExportOut.Length = datalist[i].Length;
+                        //rowExportOut.Quantity = listdataOut.SecondQuantity.GetValueOrDefault();
+                        //listExport.Add(rowExportOut);
+
+                        RowFor.No = maxRow;
+                        RowFor.Project = datalist[i].Project;
+                        RowFor.PoNo = datalist[i].PoNo;
+                        RowFor.ItemCategory = datalist[i].ItemCategory;
+                        RowFor.Diameter = datalist[i].Diameter;
+                        RowFor.Length = datalist[i].Length;
+                        RowFor.Quantity = listdataOut.SecondQuantity.GetValueOrDefault();
+                        RowFor.Weight = datalist[i].Weight;
+                        datalist.Add(RowFor);
+
+                        
+
+                    }
                 }
 
                 if (importResult.ImportDataExcel.Count > 0)
@@ -133,7 +136,7 @@ namespace MyAdmin.Controllers
                 Directory.CreateDirectory(Server.MapPath(ImportPath));
             var detailName = "Report.xlsx";
             var path = Path.Combine(Server.MapPath(ImportPath), detailName);
-            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent" }, "ABCDEFGHIJKLMNOPQR", RowData)
+            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent","STT" }, "ABCDEFGHIJKLMNOPQRS", RowData)
                 .SaveAs(new FileInfo(path));
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
@@ -157,7 +160,7 @@ namespace MyAdmin.Controllers
                     // gán parent cho thanh sữ dụng
                     if (item.FirstLength >= requireLeght)
                     {
-                        returnData.ParentRow = item.PoNo;
+                        returnData.ParentRow = item.No.ToString();
                         returnData.SecondLength = CurentRow.Length + Offset;
                         returnData.SecondDiameter = CurentRow.Diameter;
                         returnData.SecondQuantity = CurentRow.Quantity;
@@ -181,10 +184,11 @@ namespace MyAdmin.Controllers
                             {
                                 listdataOut.FirstQuantity = i;
                                 checkQuantity = i - 1;
+                                listdataOut.SecondQuantity = checkQuantity;
                                 break;
                             }
                         }
-                        returnData.ParentRow = item.PoNo;
+                        returnData.ParentRow = item.No.ToString();
                         returnData.SecondLength = CurentRow.Length;
                         returnData.SecondDiameter = CurentRow.Diameter;
                         returnData.SecondQuantity = checkQuantity;
