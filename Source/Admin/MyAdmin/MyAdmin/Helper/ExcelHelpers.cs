@@ -8,54 +8,54 @@ using MyAdmin.Models.Home;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 
-namespace MyAdmin.Helpers
+namespace MyAdmin.Helper
 {
     public class ExcelHelpers
     {
         #region Export 
-        public ExcelPackage ExportData(List<ExcelExport> dataExport, string excelTitle, string[] titles, string cols,int RowData)
+
+        private void CopyData(ExcelRange cell, object value, string format = "General")
+        {
+            cell.Value = value;
+            cell.Style.Numberformat.Format = format;
+        }
+
+        public ExcelPackage ExportData(List<ExcelExport> dataExport, string excelTitle, string[] titles, string cols,int rowData)
         {
             ExcelPackage pck = new ExcelPackage();
             ExcelWorksheet ws = null;
-            var datetime = DateTime.Now;
             ws = pck.Workbook.Worksheets.Add("BAOCAO");
-            ws = FormatHeader(ws, cols, titles, RowData);
+            ws = FormatHeader(ws, cols, titles, rowData);
 
-            int row = RowData, roll = RowData -1,indexRow = 1;
+            int row = rowData, roll = rowData -1;
             foreach (var data in dataExport)
             {
                 ws.Cells["A" + row + ":" + "R" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-                ws.Cells["A" + row].Value = data.No;
-                ws.Cells["B" + row].Value = data.Project;
-                ws.Cells["C" + row].Value = data.PoNo;
-                ws.Cells["D" + row].Value = data.ItemCategory;
-                ws.Cells["E" + row].Value = data.Diameter;
-                ws.Cells["F" + row].Value = data.Length;
-                ws.Cells["G" + row].Value = data.Quantity;
-                ws.Cells["H" + row].Value = data.Weight;
-                ws.Cells["I" + row].Value = data.FirstDiameter;
-                ws.Cells["J" + row].Value = data.FirstLength;
-                ws.Cells["K" + row].Value = data.FirstCutLength;
-                ws.Cells["L" + row].Value = data.FirstQuantity;
-                ws.Cells["M" + row].Value = data.FirstWeight;
 
-                ws.Cells["N" + row].Value = data.SecondDiameter;
-                ws.Cells["O" + row].Value = data.SecondLength;
-                ws.Cells["P" + row].Value = data.SecondQuantity;
-                ws.Cells["Q" + row].Value = data.SecondWeight;
-                ws.Cells["R" + row].Value = data.ParentRow;
-                ws.Cells["S" + row].Value = indexRow;
+                CopyData(ws.Cells["A" + row], data.No, data.FormatNo.Format);
+                CopyData(ws.Cells["B" + row], data.Project, data.FormatProject.Format);
+                CopyData(ws.Cells["C" + row], data.PoNo, data.FormatPoNo.Format);
+                CopyData(ws.Cells["D" + row], data.ItemCategory, data.FormatItemCategory.Format);
+                CopyData(ws.Cells["E" + row], data.Diameter, data.FormatDiameter.Format);
+                CopyData(ws.Cells["F" + row], data.Length, data.FormatLength.Format);
+                CopyData(ws.Cells["G" + row], data.Quantity, data.FormatQuantity.Format);
+                CopyData(ws.Cells["H" + row], data.Weight, data.FormatWeight.Format);
+                CopyData(ws.Cells["I" + row], data.FirstDiameter, data.FormatFirstDiameter.Format);
+                CopyData(ws.Cells["J" + row], data.FirstLength, data.FormatFirstLength.Format);
+                CopyData(ws.Cells["K" + row], data.FirstCutLength, data.FormatFirstCutLength.Format);
+                CopyData(ws.Cells["L" + row], data.FirstQuantity, data.FormatFirstQuantity.Format);
+                CopyData(ws.Cells["M" + row], data.FirstWeight, data.FormatFirstWeight.Format);
+                CopyData(ws.Cells["N" + row], data.SecondDiameter, data.FormatSecondDiameter.Format);
+                CopyData(ws.Cells["O" + row], data.SecondLength, data.FormatSecondLength.Format);
+                CopyData(ws.Cells["P" + row], data.SecondQuantity, data.FormatSecondQuantity.Format);
+                CopyData(ws.Cells["Q" + row], data.SecondWeight, data.FormatSecondWeight.Format);
+                CopyData(ws.Cells["R" + row], data.ParentRow);
                 row++;
                 roll++;
-                indexRow++;
-            }
-            for (int i = 1; i <= cols.Length; i++)
-            {
-                ws.Column(i).AutoFit(0, 50);
             }
             return pck;
-
         }
+
         #endregion
         public DataExcel ImportDataExcel(string filePath,int RowData)
         {
@@ -86,18 +86,19 @@ namespace MyAdmin.Helpers
                                 CellDiameter = currentWorksheet.Cells[rowNumber, 5],
                                 CellLength = currentWorksheet.Cells[rowNumber, 6],
                                 CellQuantity = currentWorksheet.Cells[rowNumber, 7],
-                                CellWeight = currentWorksheet.Cells[rowNumber, 8]
+                                CellWeight = currentWorksheet.Cells[rowNumber, 8],
                             };
+
+                            newRow.FormatNo = newRow.CellNo.Style.Numberformat;
+                            newRow.FormatProject = newRow.CellProject.Style.Numberformat;
+                            newRow.FormatPoNo = newRow.CellPoNo.Style.Numberformat;
+                            newRow.FormatItemCategory = newRow.CellItemCategory.Style.Numberformat;
+                            newRow.FormatDiameter = newRow.CellDiameter.Style.Numberformat;
+                            newRow.FormatLength = newRow.CellLength.Style.Numberformat;
+                            newRow.FormatQuantity = newRow.CellQuantity.Style.Numberformat;
+                            newRow.FormatWeight = newRow.CellWeight.Style.Numberformat;
                             
                             GetModelRequest(newRow);
-                            //datanew.No = datanew.CellNo.Value.ToString().TrimStart().TrimEnd();
-                            //datanew.Project = datanew.CellProject.Value.ToString().TrimStart().TrimEnd();
-                            //datanew.PoNo = datanew.CellPoNo.Value.ToString().TrimStart().TrimEnd();
-                            //datanew.ItemCategory = datanew.CellItemCategory.Value.ToString().TrimStart().TrimEnd();
-                            //datanew.Diameter = datanew.CellDiameter.Value.ToString().TrimStart().TrimEnd();
-                            //datanew.Length = datanew.CellLength.Value.ToString().TrimStart().TrimEnd();
-                            //datanew.Quantity = datanew.CellQuantity.Value.ToString().TrimStart().TrimEnd();
-                            //datanew.Weight = datanew.CellWeight.Value.ToString().TrimStart().TrimEnd();
                             importResult.ImportDataExcel.Add(newRow);
                         }
                     }
