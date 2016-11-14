@@ -62,72 +62,6 @@ namespace MyAdmin.Controllers
                     ExcelCalExport newData;
 
                     var currentRow = CalcuRow(listExport, listImport, listImport[i].No, out newData, Offset);
-
-                    if (newData.FirstQuantity > 0)
-                    {
-                        int maxRow = listImport.Max(x => x.No) + 1;
-                        var rowExportOut = new ExcelExport
-                        {
-                            No = maxRow,
-                            PoNo = listImport[i].PoNo,
-                            Project = listImport[i].Project,
-                            ItemCategory = listImport[i].ItemCategory,
-                            Diameter = listImport[i].Diameter,
-                            Length = listImport[i].Length,
-                            Quantity = newData.SecondQuantity.GetValueOrDefault(),
-
-                            FormatNo = currentRow.FormatNo,
-                            FormatPoNo = currentRow.FormatPoNo,
-                            FormatProject = currentRow.FormatProject,
-                            FormatItemCategory = currentRow.FormatItemCategory,
-                            FormatDiameter = currentRow.FormatDiameter,
-                            FormatLength = currentRow.FormatLength,
-                            FormatQuantity = currentRow.FormatQuantity,
-                            FormatWeight = currentRow.FormatWeight,
-
-                            FormatFirstDiameter = currentRow.FormatDiameter,
-                            FormatFirstLength = currentRow.FormatLength,
-                            FormatFirstQuantity = currentRow.FormatQuantity,
-                            FormatFirstWeight = currentRow.FormatWeight,
-                            FormatFirstCutLength = currentRow.FormatLength,
-
-                            FormatSecondDiameter = currentRow.FormatDiameter,
-                            FormatSecondLength = currentRow.FormatLength,
-                            FormatSecondQuantity = currentRow.FormatQuantity,
-                            FormatSecondWeight = currentRow.FormatWeight
-                        };
-                        listExport.Add(rowExportOut);
-
-                        var rowFor = new ExcelModel
-                        {
-                            No = maxRow,
-                            Project = listImport[i].Project,
-                            PoNo = listImport[i].PoNo,
-                            ItemCategory = listImport[i].ItemCategory,
-                            Diameter = listImport[i].Diameter,
-                            Length = listImport[i].Length,
-                            Quantity = newData.SecondQuantity.GetValueOrDefault(),
-                            Weight = listImport[i].Weight,
-
-                            FormatNo = currentRow.FormatNo,
-                            FormatPoNo = currentRow.FormatPoNo,
-                            FormatProject = currentRow.FormatProject,
-                            FormatItemCategory = currentRow.FormatItemCategory,
-                            FormatDiameter = currentRow.FormatDiameter,
-                            FormatLength = currentRow.FormatLength,
-                            FormatQuantity = currentRow.FormatQuantity,
-                            FormatWeight = currentRow.FormatWeight
-                        };
-                        listImport.Add(rowFor);
-
-                        rowExport.Quantity = newData.FirstQuantity.GetValueOrDefault();
-
-                    }
-                    else
-                    {
-                        rowExport.Quantity = listImport[i].Quantity;
-                    }
-
                     rowExport.No = listImport[i].No;
                     rowExport.PoNo = listImport[i].PoNo;
                     rowExport.Project = listImport[i].Project;
@@ -169,6 +103,71 @@ namespace MyAdmin.Controllers
 
 
                     listExport.Add(rowExport);
+
+                    if (newData.FirstQuantity > 0)
+                    {
+                        int maxRow = listImport.Max(x => x.No) + 1;
+                        //var rowExportOut = new ExcelExport
+                        //{
+                        //    No = maxRow,
+                        //    PoNo = listImport[i].PoNo,
+                        //    Project = listImport[i].Project,
+                        //    ItemCategory = listImport[i].ItemCategory,
+                        //    Diameter = listImport[i].Diameter,
+                        //    Length = listImport[i].Length,
+                        //    Quantity = newData.SecondQuantity.GetValueOrDefault(),
+
+                        //    FormatNo = currentRow.FormatNo,
+                        //    FormatPoNo = currentRow.FormatPoNo,
+                        //    FormatProject = currentRow.FormatProject,
+                        //    FormatItemCategory = currentRow.FormatItemCategory,
+                        //    FormatDiameter = currentRow.FormatDiameter,
+                        //    FormatLength = currentRow.FormatLength,
+                        //    FormatQuantity = currentRow.FormatQuantity,
+                        //    FormatWeight = currentRow.FormatWeight,
+
+                        //    FormatFirstDiameter = currentRow.FormatDiameter,
+                        //    FormatFirstLength = currentRow.FormatLength,
+                        //    FormatFirstQuantity = currentRow.FormatQuantity,
+                        //    FormatFirstWeight = currentRow.FormatWeight,
+                        //    FormatFirstCutLength = currentRow.FormatLength,
+
+                        //    FormatSecondDiameter = currentRow.FormatDiameter,
+                        //    FormatSecondLength = currentRow.FormatLength,
+                        //    FormatSecondQuantity = currentRow.FormatQuantity,
+                        //    FormatSecondWeight = currentRow.FormatWeight
+                        //};
+                        //listExport.Add(rowExportOut);
+
+                        var rowFor = new ExcelModel
+                        {
+                            No = maxRow,
+                            Project = listImport[i].Project,
+                            PoNo = listImport[i].PoNo,
+                            ItemCategory = listImport[i].ItemCategory,
+                            Diameter = listImport[i].Diameter,
+                            Length = listImport[i].Length,
+                            Quantity = newData.SecondQuantity.GetValueOrDefault(),
+                            Weight = listImport[i].Weight,
+
+                            FormatNo = currentRow.FormatNo,
+                            FormatPoNo = currentRow.FormatPoNo,
+                            FormatProject = currentRow.FormatProject,
+                            FormatItemCategory = currentRow.FormatItemCategory,
+                            FormatDiameter = currentRow.FormatDiameter,
+                            FormatLength = currentRow.FormatLength,
+                            FormatQuantity = currentRow.FormatQuantity,
+                            FormatWeight = currentRow.FormatWeight
+                        };
+                        listImport.Add(rowFor);
+
+                        rowExport.Quantity = newData.FirstQuantity.GetValueOrDefault();
+
+                    }
+                    else
+                    {
+                        rowExport.Quantity = listImport[i].Quantity;
+                    }
                 }
 
                 if (importResult.ImportDataExcel.Count > 0)
@@ -190,7 +189,7 @@ namespace MyAdmin.Controllers
                 Directory.CreateDirectory(Server.MapPath(ImportPath));
             var detailName = "Report.xlsx";
             var path = Path.Combine(Server.MapPath(ImportPath), detailName);
-            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent" }, "ABCDEFGHIJKLMNOPQR", RowData)
+            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent","STT" }, "ABCDEFGHIJKLMNOPQRS", RowData)
                 .SaveAs(new FileInfo(path));
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
@@ -250,6 +249,7 @@ namespace MyAdmin.Controllers
                             {
                                 listdataOut.FirstQuantity = i;
                                 checkQuantity = i - 1;
+                                listdataOut.SecondQuantity = checkQuantity;
                                 break;
                             }
                         }

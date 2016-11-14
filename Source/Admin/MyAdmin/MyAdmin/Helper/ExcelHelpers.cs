@@ -27,10 +27,10 @@ namespace MyAdmin.Helper
             ws = pck.Workbook.Worksheets.Add("BAOCAO");
             ws = FormatHeader(ws, cols, titles, rowData);
 
-            int row = rowData, roll = rowData -1;
+            int row = rowData, roll = rowData -1,rowindex = 1;
             foreach (var data in dataExport)
             {
-                ws.Cells["A" + row + ":" + "R" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                ws.Cells["A" + row + ":" + "S" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
                 CopyData(ws.Cells["A" + row], data.No, data.FormatNo.Format);
                 CopyData(ws.Cells["B" + row], data.Project, data.FormatProject.Format);
@@ -50,8 +50,10 @@ namespace MyAdmin.Helper
                 CopyData(ws.Cells["P" + row], data.SecondQuantity, data.FormatSecondQuantity.Format);
                 CopyData(ws.Cells["Q" + row], data.SecondWeight, data.FormatSecondWeight.Format);
                 CopyData(ws.Cells["R" + row], data.ParentRow);
+                CopyData(ws.Cells["S" + row], rowindex);
                 row++;
                 roll++;
+                rowindex++;
             }
             return pck;
         }
