@@ -12,6 +12,46 @@ namespace MyAdmin.Helper
 {
     public class ExcelHelpers
     {
+
+        public ExcelPackage ExportData2(List<ExcelModel> dataExport, string excelTitle, string[] titles, string cols, int rowData)
+        {
+            ExcelPackage pck = new ExcelPackage();
+            ExcelWorksheet ws = null;
+            ws = pck.Workbook.Worksheets.Add("BAOCAO");
+            ws = FormatHeader(ws, cols, titles, rowData);
+
+            int row = rowData, roll = rowData - 1, rowindex = 1;
+            foreach (var data in dataExport)
+            {
+                ws.Cells["A" + row + ":" + "S" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                CopyData(ws.Cells["A" + row], data.No, data.FormatNo.Format);
+                CopyData(ws.Cells["B" + row], data.Project, data.FormatProject.Format);
+                CopyData(ws.Cells["C" + row], data.PoNo, data.FormatPoNo.Format);
+                CopyData(ws.Cells["D" + row], data.ItemCategory, data.FormatItemCategory.Format);
+                CopyData(ws.Cells["E" + row], data.Diameter, data.FormatDiameter.Format);
+                CopyData(ws.Cells["F" + row], data.Length, data.FormatLength.Format);
+                CopyData(ws.Cells["G" + row], data.Quantity, data.FormatQuantity.Format);
+                CopyData(ws.Cells["H" + row], data.Weight, data.FormatWeight.Format);
+                CopyData(ws.Cells["I" + row], data.FirstDiameter, data.FormatDiameter.Format);
+                CopyData(ws.Cells["J" + row], data.FirstLength, data.FormatLength.Format);
+                CopyData(ws.Cells["K" + row], data.FirstCutLength, data.FormatLength.Format);
+                CopyData(ws.Cells["L" + row], data.FirstQuantity, data.FormatQuantity.Format);
+                CopyData(ws.Cells["M" + row], data.FirstWeight, data.FormatWeight.Format);
+                CopyData(ws.Cells["N" + row], data.SecondDiameter, data.FormatDiameter.Format);
+                CopyData(ws.Cells["O" + row], data.SecondLength, data.FormatLength.Format);
+                CopyData(ws.Cells["P" + row], data.SecondQuantity, data.FormatQuantity.Format);
+                CopyData(ws.Cells["Q" + row], data.SecondWeight, data.FormatWeight.Format);
+                CopyData(ws.Cells["R" + row], data.ParentPoNo);
+                CopyData(ws.Cells["S" + row], data.ParentId);
+                row++;
+                roll++;
+                rowindex++;
+            }
+            return pck;
+        }
+
+
         #region Export 
 
         private void CopyData(ExcelRange cell, object value, string format = "General")
@@ -59,10 +99,10 @@ namespace MyAdmin.Helper
         }
 
         #endregion
-        public DataExcel ImportDataExcel(string filePath,int RowData)
+        public DataExcel ImportDataExcel(string filePath,int rowData)
         {
             var existingFile = new FileInfo(filePath);
-            int startRow = RowData;
+            int startRow = rowData;
             DataExcel importResult = new DataExcel
             {
                 ImportDataExcel = new List<ExcelModel>()
@@ -76,6 +116,7 @@ namespace MyAdmin.Helper
                     {
                         ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
                         var lastRowIndex = GetLastUsedRow(currentWorksheet);
+                        var index = 0;
                         for (int rowNumber = startRow; rowNumber <= lastRowIndex; rowNumber++)
                         {
 
@@ -89,6 +130,8 @@ namespace MyAdmin.Helper
                                 CellLength = currentWorksheet.Cells[rowNumber, 6],
                                 CellQuantity = currentWorksheet.Cells[rowNumber, 7],
                                 CellWeight = currentWorksheet.Cells[rowNumber, 8],
+
+                                Id = ++index
                             };
 
                             newRow.FormatNo = newRow.CellNo.Style.Numberformat;

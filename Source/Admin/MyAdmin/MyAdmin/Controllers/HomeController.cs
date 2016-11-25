@@ -7,12 +7,13 @@ using System.Linq;
 using System;
 using MyAdmin.Helper;
 using MyAdmin.Models.Home;
+using MyUtility.Extensions;
 
 namespace MyAdmin.Controllers
 {
     public class HomeController : BaseController
     {
-        public static int LeghtDefaut = 12000;
+        public static int LenghtDefaut = 12000;
         public HomeController()
         {
         }
@@ -33,13 +34,12 @@ namespace MyAdmin.Controllers
         [AllowAnonymous]
         public ActionResult TableData()
         {
-
             return View();
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult ImportExcel(IEnumerable<HttpPostedFileBase> files, int RowData, int Offset)
+        public ActionResult ImportExcel2(IEnumerable<HttpPostedFileBase> files, int rowData, int offset)
         {
             var ImportPath = "~/App_Data/Excel/";
             try
@@ -51,7 +51,7 @@ namespace MyAdmin.Controllers
                 Path.GetFileName(DateTime.Now.ToString("ddMMyy") + "_" + httpPostedFileBases.First().FileName));
                 httpPostedFileBases.First().SaveAs(path);
                 ExcelHelpers excelHelpers = new ExcelHelpers();
-                var importResult = excelHelpers.ImportDataExcel(path, RowData);
+                var importResult = excelHelpers.ImportDataExcel(path, rowData);
 
                 var listExport = new List<ExcelExport>();
                 var listImport = importResult.ImportDataExcel;
@@ -61,7 +61,7 @@ namespace MyAdmin.Controllers
                     var rowExport = new ExcelExport();
                     ExcelCalExport newData;
 
-                    var currentRow = CalcuRow(listExport, listImport, listImport[i].No, out newData, Offset);
+                    var currentRow = CalcuRow(listExport, listImport, listImport[i].No, out newData, offset);
                     rowExport.No = listImport[i].No;
                     rowExport.PoNo = listImport[i].PoNo;
                     rowExport.Project = listImport[i].Project;
@@ -172,7 +172,7 @@ namespace MyAdmin.Controllers
 
                 if (importResult.ImportDataExcel.Count > 0)
                 {
-                    return ExportData(listExport, RowData);
+                    return ExportData(listExport, rowData);
                 }
             }
             catch (Exception ex)
@@ -181,7 +181,7 @@ namespace MyAdmin.Controllers
             }
             return Json(new { status = false, message = "" }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult ExportData(List<ExcelExport> dataExport, int RowData)
+        public ActionResult ExportData(List<ExcelExport> dataExport, int rowData)
         {
             ExcelHelpers exHelpers = new ExcelHelpers();
             var ImportPath = "~/App_Data/Excel/";
@@ -189,7 +189,7 @@ namespace MyAdmin.Controllers
                 Directory.CreateDirectory(Server.MapPath(ImportPath));
             var detailName = "Report.xlsx";
             var path = Path.Combine(Server.MapPath(ImportPath), detailName);
-            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent","STT" }, "ABCDEFGHIJKLMNOPQRS", RowData)
+            exHelpers.ExportData(dataExport, "Danh Sách", new string[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent","STT" }, "ABCDEFGHIJKLMNOPQRS", rowData)
                 .SaveAs(new FileInfo(path));
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
@@ -262,16 +262,16 @@ namespace MyAdmin.Controllers
                         return returnData;
                     }
                 }
-                if (requireLength <= LeghtDefaut)
+                if (requireLength <= LenghtDefaut)
                 {
-                    returnData.FirstLength = LeghtDefaut - currentRow.Length;
-                    returnData.FirstCutLength = LeghtDefaut - currentRow.Length;
+                    returnData.FirstLength = LenghtDefaut - currentRow.Length;
+                    returnData.FirstCutLength = LenghtDefaut - currentRow.Length;
                     returnData.FirstDiameter = currentRow.Diameter;
                     returnData.FirstQuantity = currentRow.Quantity;
                     return returnData;
                 }
-                returnData.FirstLength = LeghtDefaut - currentRow.Length;
-                returnData.FirstCutLength = LeghtDefaut - currentRow.Length;
+                returnData.FirstLength = LenghtDefaut - currentRow.Length;
+                returnData.FirstCutLength = LenghtDefaut - currentRow.Length;
                 returnData.FirstDiameter = currentRow.Diameter;
                 returnData.FirstQuantity = currentRow.Quantity;
                 return returnData;
@@ -280,13 +280,216 @@ namespace MyAdmin.Controllers
             else
             {
 
-                returnData.FirstLength = LeghtDefaut - currentRow.Length;
-                returnData.FirstCutLength = LeghtDefaut - currentRow.Length;
+                returnData.FirstLength = LenghtDefaut - currentRow.Length;
+                returnData.FirstCutLength = LenghtDefaut - currentRow.Length;
                 returnData.FirstDiameter = currentRow.Diameter;
                 returnData.FirstQuantity = currentRow.Quantity;
                 return returnData;
 
             }
         }
+
+        #region New
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult ImportExcel(IEnumerable<HttpPostedFileBase> files, int rowData = 8, int offset = 0, string exclude = "")
+        {
+            var ImportPath = "~/App_Data/Excel/";
+            try
+            {
+                if (!Directory.Exists(Server.MapPath(ImportPath)))
+                    Directory.CreateDirectory(Server.MapPath(ImportPath));
+                var httpPostedFileBases = files as HttpPostedFileBase[] ?? files.ToArray();
+
+                var uploadFileName =
+                    Path.GetFileName(DateTime.Now.ToString("ddMMyy") + "_" + httpPostedFileBases.First().FileName);
+                var downloadFileName = "Export_" + uploadFileName;
+                var path = Path.Combine(Server.MapPath(ImportPath), uploadFileName);
+                httpPostedFileBases.First().SaveAs(path);
+                ExcelHelpers excelHelpers = new ExcelHelpers();
+                var importResult = excelHelpers.ImportDataExcel(path, rowData);
+
+                var listImport = importResult.ImportDataExcel;
+
+                // Lấy danh sách Diameter bỏ qua
+                var tmpExcludeDiameters = exclude.Split(',');
+                var excludeDiameters = new List<int>();
+                foreach (var tmpExcludeDiameter in tmpExcludeDiameters)
+                {
+                    int diameter;
+                    if (int.TryParse(tmpExcludeDiameter.Trim(), out diameter))
+                    {
+                        if (!excludeDiameters.Exists(x=>x == diameter))
+                        {
+                            excludeDiameters.Add(diameter);
+                        }
+                    }
+                }
+
+                int length = listImport.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    var item = listImport[i];
+                    if (excludeDiameters.Exists(x=>x== item.Diameter))
+                    {
+                        continue;
+                    }
+
+                    var count = Calculate(listImport[i], listImport, i, excludeDiameters, offset);
+                    length += count;
+                    i += count;
+
+                    if (item.Id == 56) break;
+                }
+
+                if (listImport.Count > 0)
+                {
+                    return ExportData2(listImport, rowData, downloadFileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = false, message = ex }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { status = false, message = "" }, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Tính toán và trả về số dòng cộng thêm
+        /// </summary>
+        /// <param name="targetRow"></param>
+        /// <param name="importList"></param>
+        /// <param name="targetIndex"></param>
+        /// <param name="excludeDiameters"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
+        private int Calculate(ExcelModel targetRow, List<ExcelModel> importList, int targetIndex, 
+            List<int> excludeDiameters, int offset = 0)
+        {
+            int result = 0;
+
+            if (targetRow == null || targetRow.Quantity <= 0 || offset < 0)
+                return result;
+
+            // Xử lý từng cây
+            ExcelModel sourceRow = null;
+            bool isRecycle = false;
+
+            // Tìm dòng dữ liệu để tái sử dụng
+            int sourceIndex = 0;
+            for (int i = 0; i < targetIndex; i++)
+            {
+                var row = importList[i];
+
+                if (excludeDiameters.Exists(x => x == row.Diameter))
+                {
+                    continue;
+                }
+
+                // Dữ liệu thỏa điều kiện: Chiều dài còn lại phải lớn hơn chiều dài cần sử dụng
+                if (row.Diameter == targetRow.Diameter && row.FirstCutLength >= targetRow.Length + offset)
+                {
+                    // Nếu trước đó đã tìm ra dữ liệu phù hợp nhưng chiều dài nó lại chưa tối ưu
+                    // thì lấy cái có chiều dài tối ưu hơn, tức là nhỏ nhất
+                    if (sourceRow == null || sourceRow.FirstCutLength > row.FirstCutLength)
+                    {
+                        sourceRow = row;
+                        isRecycle = true;
+                        sourceIndex = i;
+                    }
+                }
+
+                // Nếu tới dòng hiện tại thì dừng, không tìm nữa
+                if (row.Id == targetRow.Id)
+                {
+                    break;
+                }
+            }
+
+            if (isRecycle)
+            {
+                // Nếu là tái sử dụng thì lưu bên bộ Second
+
+                // Ở đây có 3 case
+                // Case 1: Quantity của source và quantity target bằng nhau
+                //         Sau khi xử lý là dừng vòng lặp quantity
+                // Case 2: Quantity của source lớn hơn target - Tách cái source ra thành 2 dòng khác nhau
+                //         Sau khi xử lý là dừng vòng lặp quantity
+                // Case 3: Quantity của source nhỏ hơn target - Lấy hết số source và tách target
+                if (sourceRow.Quantity == targetRow.Quantity)
+                {
+                    targetRow.SecondDiameter = targetRow.Diameter;
+                    targetRow.SecondQuantity = targetRow.Quantity;
+                    targetRow.SecondWeight = targetRow.Weight;
+                    targetRow.SecondLength = targetRow.Length;
+                    targetRow.ParentPoNo = sourceRow.PoNo;
+                    targetRow.ParentId = sourceRow.Id;
+
+                    sourceRow.FirstCutLength -= targetRow.Length;
+                }
+                else if (sourceRow.Quantity > targetRow.Quantity)
+                {
+                    targetRow.SecondDiameter = targetRow.Diameter;
+                    targetRow.SecondQuantity = targetRow.Quantity;
+                    targetRow.SecondWeight = targetRow.Weight;
+                    targetRow.SecondLength = targetRow.Length;
+                    targetRow.ParentPoNo = sourceRow.PoNo;
+                    targetRow.ParentId = sourceRow.Id;
+
+                    var newSource = new ExcelModel(sourceRow);
+                    newSource.Quantity = sourceRow.Quantity - targetRow.Quantity;
+                    sourceRow.Quantity = targetRow.Quantity;
+                    sourceRow.FirstCutLength -= targetRow.Length;
+                    importList.Insert(sourceIndex + 1, newSource);
+
+                    result++;
+                }
+                else
+                {
+                    var newTarget = new ExcelModel(targetRow);
+                    newTarget.Quantity = targetRow.Quantity - sourceRow.Quantity;
+                    importList.Insert(targetIndex + 1, newTarget);
+
+                    targetRow.SecondDiameter = targetRow.Diameter;
+                    targetRow.SecondQuantity = targetRow.Quantity;
+                    targetRow.SecondWeight = targetRow.Weight;
+                    targetRow.SecondLength = targetRow.Length;
+                    targetRow.Quantity = sourceRow.Quantity;
+                    targetRow.ParentPoNo = sourceRow.PoNo;
+                    targetRow.ParentId = sourceRow.Id;
+
+                    sourceRow.FirstCutLength -= targetRow.Length;
+                }
+            }
+            else
+            {
+                // Nếu là mới thì lưu bên bộ first
+                targetRow.FirstDiameter = targetRow.Diameter;
+                targetRow.FirstQuantity = targetRow.Quantity;
+                targetRow.FirstWeight = targetRow.Weight;
+                targetRow.FirstLength = targetRow.Length;
+                targetRow.FirstCutLength = LenghtDefaut - targetRow.Length;
+            }
+
+            return result;
+        }
+
+        public ActionResult ExportData2(List<ExcelModel> dataExport, int rowData, string fileName)
+        {
+            ExcelHelpers exHelpers = new ExcelHelpers();
+            var ImportPath = "~/App_Data/Excel/";
+            if (!Directory.Exists(Server.MapPath(ImportPath)))
+                Directory.CreateDirectory(Server.MapPath(ImportPath));
+            var detailName = fileName;
+            var path = Path.Combine(Server.MapPath(ImportPath), detailName);
+            exHelpers.ExportData2(dataExport, "Danh Sách", new[] { "No", "Project", "Po No", "Item Category", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "FirstCutLength m", "Qty nos", "Weight kg", "Diameter mm", "Length m", "Qty nos", "Weight kg", "Parent", "STT" }, "ABCDEFGHIJKLMNOPQRS", rowData)
+                .SaveAs(new FileInfo(path));
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
+        #endregion
     }
 }

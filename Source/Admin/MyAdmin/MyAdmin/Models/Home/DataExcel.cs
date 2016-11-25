@@ -11,6 +11,7 @@ namespace MyAdmin.Models.Home
   
     public class ExcelModel
     {
+        public int Id { get; set; }
         public int No { get; set; }
         public string Project { get; set; }
         public string PoNo { get; set; }
@@ -19,6 +20,19 @@ namespace MyAdmin.Models.Home
         public long Length { get; set; }
         public int Quantity { get; set; }
         public decimal Weight { get; set; }
+
+        public int? FirstDiameter { get; set; }
+        public long? FirstLength { get; set; }
+        public int? FirstQuantity { get; set; }
+        public decimal? FirstWeight { get; set; }
+        public long? FirstCutLength { get; set; }
+        public int? SecondDiameter { get; set; }
+        public long? SecondLength { get; set; }
+        public int? SecondQuantity { get; set; }
+        public decimal? SecondWeight { get; set; }
+        public string ParentPoNo { get; set; }
+        public int? ParentId { get; set; }
+        public bool IsCalculated { get; set; }
 
         public ExcelRange CellNo { get; set; }
         public ExcelRange CellProject { get; set; }
@@ -37,6 +51,55 @@ namespace MyAdmin.Models.Home
         public ExcelNumberFormat FormatLength { get; set; }
         public ExcelNumberFormat FormatQuantity { get; set; }
         public ExcelNumberFormat FormatWeight { get; set; }
+
+        public ExcelModel()
+        {
+            
+        }
+
+        public ExcelModel(ExcelModel source)
+        {
+            Id = source.Id;
+            No = source.No;
+            Project = source.Project;
+            PoNo = source.PoNo;
+            ItemCategory = source.ItemCategory;
+            Diameter = source.Diameter;
+            Length = source.Length;
+            Quantity = source.Quantity;
+            Weight = source.Weight;
+
+            FirstDiameter = source.FirstDiameter;
+            FirstLength = source.FirstLength;
+            FirstQuantity = source.FirstQuantity;
+            FirstWeight = source.FirstWeight;
+            FirstCutLength = source.FirstCutLength;
+            SecondDiameter = source.SecondDiameter;
+            SecondLength = source.SecondLength;
+            SecondQuantity = source.SecondQuantity;
+            SecondWeight = source.SecondWeight;
+            ParentPoNo = source.ParentPoNo;
+            ParentId = source.ParentId;
+            IsCalculated = source.IsCalculated;
+
+            CellNo = source.CellNo;
+            CellProject = source.CellProject;
+            CellPoNo = source.CellPoNo;
+            CellItemCategory = source.CellItemCategory;
+            CellDiameter = source.CellDiameter;
+            CellLength = source.CellLength;
+            CellQuantity = source.CellQuantity;
+            CellWeight = source.CellWeight;
+
+            FormatNo = source.FormatNo;
+            FormatProject = source.FormatProject;
+            FormatPoNo = source.FormatPoNo;
+            FormatItemCategory = source.FormatItemCategory;
+            FormatDiameter = source.FormatDiameter;
+            FormatLength = source.FormatLength;
+            FormatQuantity = source.FormatQuantity;
+            FormatWeight = source.FormatWeight;
+        }
     }
     public class ExcelExport
     {
@@ -59,6 +122,7 @@ namespace MyAdmin.Models.Home
         public int? SecondQuantity { get; set; }
         public decimal? SecondWeight { get; set; }
         public string ParentRow { get; set; }
+        public bool IsCalculated { get; set; }
 
         public ExcelNumberFormat FormatNo { get; set; }
         public ExcelNumberFormat FormatProject { get; set; }
