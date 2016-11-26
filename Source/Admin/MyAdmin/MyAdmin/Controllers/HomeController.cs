@@ -5,6 +5,7 @@ using System.Web;
 using System.IO;
 using System.Linq;
 using System;
+using Logger;
 using MyAdmin.Helper;
 using MyAdmin.Models.Home;
 using MyUtility.Extensions;
@@ -303,7 +304,7 @@ namespace MyAdmin.Controllers
                 var httpPostedFileBases = files as HttpPostedFileBase[] ?? files.ToArray();
 
                 var uploadFileName =
-                    Path.GetFileName(DateTime.Now.ToString("ddMMyy") + "_" + httpPostedFileBases.First().FileName);
+                    Path.GetFileName(DateTime.Now.ToString("ddMMyyhhmm") + "_" + httpPostedFileBases.First().FileName);
                 var downloadFileName = "Export_" + uploadFileName;
                 var path = Path.Combine(Server.MapPath(ImportPath), uploadFileName);
                 httpPostedFileBases.First().SaveAs(path);
@@ -311,7 +312,6 @@ namespace MyAdmin.Controllers
                 var importResult = excelHelpers.ImportDataExcel(path, rowData);
 
                 var listImport = importResult.ImportDataExcel;
-
                 // Lấy danh sách Diameter bỏ qua
                 var tmpExcludeDiameters = exclude.Split(',');
                 var excludeDiameters = new List<int>();
@@ -339,8 +339,6 @@ namespace MyAdmin.Controllers
                     var count = Calculate(listImport[i], listImport, i, excludeDiameters, offset);
                     length += count;
                     i += count;
-
-                    if (item.Id == 56) break;
                 }
 
                 if (listImport.Count > 0)
@@ -350,7 +348,7 @@ namespace MyAdmin.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new { status = false, message = ex }, JsonRequestBehavior.AllowGet);
+                CommonLogger.DefaultLogger.Error("ImportExcel", ex);
             }
             return Json(new { status = false, message = "" }, JsonRequestBehavior.AllowGet);
         }

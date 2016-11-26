@@ -13,7 +13,8 @@ namespace MyAdmin.Helper
     public class ExcelHelpers
     {
 
-        public ExcelPackage ExportData2(List<ExcelModel> dataExport, string excelTitle, string[] titles, string cols, int rowData)
+        public ExcelPackage ExportData2(List<ExcelModel> dataExport, string excelTitle, string[] titles, string cols,
+            int rowData)
         {
             ExcelPackage pck = new ExcelPackage();
             ExcelWorksheet ws = null;
@@ -60,14 +61,15 @@ namespace MyAdmin.Helper
             cell.Style.Numberformat.Format = format;
         }
 
-        public ExcelPackage ExportData(List<ExcelExport> dataExport, string excelTitle, string[] titles, string cols,int rowData)
+        public ExcelPackage ExportData(List<ExcelExport> dataExport, string excelTitle, string[] titles, string cols,
+            int rowData)
         {
             ExcelPackage pck = new ExcelPackage();
             ExcelWorksheet ws = null;
             ws = pck.Workbook.Worksheets.Add("BAOCAO");
             ws = FormatHeader(ws, cols, titles, rowData);
 
-            int row = rowData, roll = rowData -1,rowindex = 1;
+            int row = rowData, roll = rowData - 1, rowindex = 1;
             foreach (var data in dataExport)
             {
                 ws.Cells["A" + row + ":" + "S" + row].Style.Border.BorderAround(ExcelBorderStyle.Thin);
@@ -99,55 +101,64 @@ namespace MyAdmin.Helper
         }
 
         #endregion
-        public DataExcel ImportDataExcel(string filePath,int rowData)
+
+        public DataExcel ImportDataExcel(string filePath, int rowData)
         {
-            var existingFile = new FileInfo(filePath);
-            int startRow = rowData;
             DataExcel importResult = new DataExcel
             {
                 ImportDataExcel = new List<ExcelModel>()
             };
-            using (var package = new ExcelPackage(existingFile))
+            try
             {
-                ExcelWorkbook workBook = package.Workbook;
-                if (workBook != null)
+                var existingFile = new FileInfo(filePath);
+                int startRow = rowData;
+                using (var package = new ExcelPackage(existingFile))
                 {
-                    if (workBook.Worksheets.Count > 0)
+                    ExcelWorkbook workBook = package.Workbook;
+                    if (workBook != null)
                     {
-                        ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
-                        var lastRowIndex = GetLastUsedRow(currentWorksheet);
-                        var index = 0;
-                        for (int rowNumber = startRow; rowNumber <= lastRowIndex; rowNumber++)
+                        if (workBook.Worksheets.Count > 0)
                         {
-
-                            var newRow = new ExcelModel
+                            ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+                            var lastRowIndex = GetLastUsedRow(currentWorksheet);
+                            var index = 0;
+                            for (int rowNumber = startRow; rowNumber <= lastRowIndex; rowNumber++)
                             {
-                                CellNo = currentWorksheet.Cells[rowNumber, 1],
-                                CellProject = currentWorksheet.Cells[rowNumber, 2],
-                                CellPoNo = currentWorksheet.Cells[rowNumber, 3],
-                                CellItemCategory = currentWorksheet.Cells[rowNumber, 4],
-                                CellDiameter = currentWorksheet.Cells[rowNumber, 5],
-                                CellLength = currentWorksheet.Cells[rowNumber, 6],
-                                CellQuantity = currentWorksheet.Cells[rowNumber, 7],
-                                CellWeight = currentWorksheet.Cells[rowNumber, 8],
 
-                                Id = ++index
-                            };
+                                var newRow = new ExcelModel
+                                {
+                                    CellNo = currentWorksheet.Cells[rowNumber, 1],
+                                    CellProject = currentWorksheet.Cells[rowNumber, 2],
+                                    CellPoNo = currentWorksheet.Cells[rowNumber, 3],
+                                    CellItemCategory = currentWorksheet.Cells[rowNumber, 4],
+                                    CellDiameter = currentWorksheet.Cells[rowNumber, 5],
+                                    CellLength = currentWorksheet.Cells[rowNumber, 6],
+                                    CellQuantity = currentWorksheet.Cells[rowNumber, 7],
+                                    CellWeight = currentWorksheet.Cells[rowNumber, 8],
 
-                            newRow.FormatNo = newRow.CellNo.Style.Numberformat;
-                            newRow.FormatProject = newRow.CellProject.Style.Numberformat;
-                            newRow.FormatPoNo = newRow.CellPoNo.Style.Numberformat;
-                            newRow.FormatItemCategory = newRow.CellItemCategory.Style.Numberformat;
-                            newRow.FormatDiameter = newRow.CellDiameter.Style.Numberformat;
-                            newRow.FormatLength = newRow.CellLength.Style.Numberformat;
-                            newRow.FormatQuantity = newRow.CellQuantity.Style.Numberformat;
-                            newRow.FormatWeight = newRow.CellWeight.Style.Numberformat;
-                            
-                            GetModelRequest(newRow);
-                            importResult.ImportDataExcel.Add(newRow);
+                                    Id = ++index
+                                };
+
+                                newRow.FormatNo = newRow.CellNo.Style.Numberformat;
+                                newRow.FormatProject = newRow.CellProject.Style.Numberformat;
+                                newRow.FormatPoNo = newRow.CellPoNo.Style.Numberformat;
+                                newRow.FormatItemCategory = newRow.CellItemCategory.Style.Numberformat;
+                                newRow.FormatDiameter = newRow.CellDiameter.Style.Numberformat;
+                                newRow.FormatLength = newRow.CellLength.Style.Numberformat;
+                                newRow.FormatQuantity = newRow.CellQuantity.Style.Numberformat;
+                                newRow.FormatWeight = newRow.CellWeight.Style.Numberformat;
+
+                                GetModelRequest(newRow);
+                                importResult.ImportDataExcel.Add(newRow);
+                            }
                         }
                     }
                 }
+
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.DefaultLogger.Error("ImportDataExcel", ex);
             }
             return importResult;
         }
@@ -167,7 +178,7 @@ namespace MyAdmin.Helper
             return row;
         }
 
-        private ExcelWorksheet FormatHeader(ExcelWorksheet ws, string cols, string[] titles,int RowData)
+        private ExcelWorksheet FormatHeader(ExcelWorksheet ws, string cols, string[] titles, int RowData)
         {
             int i = 0;
             string START_HEADER = (RowData - 1).ToString();
