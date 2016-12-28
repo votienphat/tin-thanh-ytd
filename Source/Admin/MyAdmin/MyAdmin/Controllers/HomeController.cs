@@ -337,7 +337,7 @@ namespace MyAdmin.Controllers
                     }
 
                     var count = Calculate(listImport[i], listImport, i, excludeDiameters, offset);
-                    length += count;
+                    length = listImport.Count;
                     i += count;
                 }
 
@@ -449,13 +449,13 @@ namespace MyAdmin.Controllers
                     newTarget.Quantity = targetRow.Quantity - sourceRow.Quantity;
                     importList.Insert(targetIndex + 1, newTarget);
 
+                    targetRow.Quantity = sourceRow.Quantity;
+                    targetRow.ParentPoNo = sourceRow.PoNo;
+                    targetRow.ParentId = sourceRow.Id;
                     targetRow.SecondDiameter = targetRow.Diameter;
                     targetRow.SecondQuantity = targetRow.Quantity;
                     targetRow.SecondWeight = targetRow.Weight;
                     targetRow.SecondLength = targetRow.Length;
-                    targetRow.Quantity = sourceRow.Quantity;
-                    targetRow.ParentPoNo = sourceRow.PoNo;
-                    targetRow.ParentId = sourceRow.Id;
 
                     sourceRow.FirstCutLength -= targetRow.Length;
                 }
@@ -466,7 +466,7 @@ namespace MyAdmin.Controllers
                 targetRow.FirstDiameter = targetRow.Diameter;
                 targetRow.FirstQuantity = targetRow.Quantity;
                 targetRow.FirstWeight = targetRow.Weight;
-                targetRow.FirstLength = targetRow.Length;
+                targetRow.FirstLength = LenghtDefaut - targetRow.Length;
                 targetRow.FirstCutLength = LenghtDefaut - targetRow.Length;
             }
 
