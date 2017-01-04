@@ -437,7 +437,9 @@ namespace MyAdmin.Controllers
 
                     var newSource = new ExcelModel(sourceRow);
                     newSource.Quantity = sourceRow.Quantity - targetRow.Quantity;
+                    newSource.FirstQuantity = newSource.Quantity;
                     sourceRow.Quantity = targetRow.Quantity;
+                    sourceRow.FirstQuantity = sourceRow.Quantity;
                     sourceRow.FirstCutLength -= targetRow.Length;
                     importList.Insert(sourceIndex + 1, newSource);
 
