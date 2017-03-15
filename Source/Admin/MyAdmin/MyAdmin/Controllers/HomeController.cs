@@ -422,7 +422,7 @@ namespace MyAdmin.Controllers
                     targetRow.SecondWeight = targetRow.Weight;
                     targetRow.SecondLength = targetRow.Length;
                     targetRow.ParentPoNo = sourceRow.PoNo;
-                    targetRow.ParentId = sourceRow.Id;
+                    targetRow.ParentId = sourceRow.No;
 
                     sourceRow.FirstCutLength -= targetRow.Length;
                 }
@@ -433,7 +433,7 @@ namespace MyAdmin.Controllers
                     targetRow.SecondWeight = targetRow.Weight;
                     targetRow.SecondLength = targetRow.Length;
                     targetRow.ParentPoNo = sourceRow.PoNo;
-                    targetRow.ParentId = sourceRow.Id;
+                    targetRow.ParentId = sourceRow.No;
 
                     var newSource = new ExcelModel(sourceRow);
                     newSource.Quantity = sourceRow.Quantity - targetRow.Quantity;
@@ -453,7 +453,7 @@ namespace MyAdmin.Controllers
 
                     targetRow.Quantity = sourceRow.Quantity;
                     targetRow.ParentPoNo = sourceRow.PoNo;
-                    targetRow.ParentId = sourceRow.Id;
+                    targetRow.ParentId = sourceRow.No;
                     targetRow.SecondDiameter = targetRow.Diameter;
                     targetRow.SecondQuantity = targetRow.Quantity;
                     targetRow.SecondWeight = targetRow.Weight;

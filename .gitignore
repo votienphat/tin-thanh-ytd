@@ -23,3 +23,5 @@ Source/Admin/Framework/EntitiesObject/obj/
 Source/Admin/Framework/Inside/BusinessObject/obj/
 Source/Admin/MyAdmin/MyAdmin/obj/
 Source/Admin/MyAdmin/MyAdmin/App_Data/
+Source/Admin/MyAdmin/MyConfig/bin/
+Source/Admin/MyAdmin/MyConfig/obj/
