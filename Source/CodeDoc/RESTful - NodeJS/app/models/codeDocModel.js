@@ -1,9 +1,10 @@
 'use strict';
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    mongoosastic = require("mongoosastic");
 var Schema = mongoose.Schema;
 
 
-var CodeDocSchema = new Schema({
+var codeDocSchema = new Schema({
     name: {
         type: String,
         Required: 'Kindly enter the name of the task'
@@ -21,4 +22,12 @@ var CodeDocSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('CodeDocs', CodeDocSchema);
+codeDocSchema.plugin(mongoosastic,{
+    host:"localhost",
+    port: 9200,
+    protocol: "http",
+    auth: "username:password"
+//  ,curlDebug: true
+});
+
+module.exports = mongoose.model('CodeDocs', codeDocSchema);
