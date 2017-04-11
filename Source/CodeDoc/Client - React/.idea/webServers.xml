@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b254ada1-caa2-4908-8460-ce25985839fd" name="ClientReact" url="http://localhost:9000">
+        <fileTransfer mountedRoot="J:\Freelance\Project\2016\tin-thanh-ytd\Source\CodeDoc\ClientBuild" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
