@@ -2,6 +2,6 @@
 module.exports = function(app) {
     var codeDoc = require('../controllers/codeDocController');
 
-    app.route('/code/:keyword')
-        .get(codeDoc.Search);
+    app.route('/suggest/:keyword')
+        .get(codeDoc.Suggest);
 };

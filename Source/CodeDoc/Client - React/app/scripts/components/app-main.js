@@ -1,6 +1,10 @@
+var utility = require('../../../custom_modules/utility');
+
 import React, { Component } from 'react';
 import SearchBox from './search';
 import Card from './card';
+
+let mainUrl = 'http://localhost:3000/'
 
 class App extends Component {
   constructor(props) {
@@ -56,29 +60,54 @@ class App extends Component {
     let url = `https://api.themoviedb.org/3/movie/${this.state.movieID}?&api_key=cfe422613b250f702980a3bbf9e90716`
     this.fetchApi(url)
 
-    //========================= BLOODHOUND ==============================//
-    let suggests = new Bloodhound({
-      datumTokenizer: function(datum) {
-        return Bloodhound.tokenizers.whitespace(datum.value);
-      },
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: {
-        url: 'https://api.themoviedb.org/3/search/movie?query=%QUERY&api_key=cfe422613b250f702980a3bbf9e90716',
-        filter: function(movies) {
-          // Map the remote source JSON array to a JavaScript object array
-          return $.map(movies.results, function(movie) {
-            return {
-              value: movie.original_title, // search original title
-              id: movie.id // get ID of movie simultaniously
-            };
-          });
-        } // end filter
-      } // end remote
-    }); // end new Bloodhound
+    ////========================= BLOODHOUND ==============================//
+    //let suggests = new Bloodhound({
+    //  datumTokenizer: function(datum) {
+    //    return Bloodhound.tokenizers.whitespace(datum.value);
+    //  },
+    //  queryTokenizer: Bloodhound.tokenizers.whitespace,
+    //  remote: {
+    //    url: 'https://api.themoviedb.org/3/search/movie?query=%QUERY&api_key=cfe422613b250f702980a3bbf9e90716',
+    //    filter: function(movies) {
+    //      // Map the remote source JSON array to a JavaScript object array
+    //      return $.map(movies.results, function(movie) {
+    //        return {
+    //          value: movie.original_title, // search original title
+    //          id: movie.id // get ID of movie simultaniously
+    //        };
+    //      });
+    //    } // end filter
+    //  } // end remote
+    //}); // end new Bloodhound
+    //
+    //suggests.initialize(); // initialise bloodhound suggestion engine
+    //
+    ////========================= END BLOODHOUND ==============================//
 
-    suggests.initialize(); // initialise bloodhound suggestion engine
+      //========================= BLOODHOUND ==============================//
+      let suggests = new Bloodhound({
+          datumTokenizer: function(datum) {
+              return Bloodhound.tokenizers.whitespace(datum.value);
+          },
+          queryTokenizer: Bloodhound.tokenizers.whitespace,
+          remote: {
+              url: mainUrl + 'suggest/%QUERY',
+              filter: function(suggests) {
+                  // Map the remote source JSON array to a JavaScript object array
+                  return $.map(suggests, function(suggest) {
+                      let keyword = suggest.keyword || '';
+                      return {
+                          value: suggest.title + keyword,
+                          id: suggest.id
+                      };
+                  });
+              } // end filter
+          } // end remote
+      }); // end new Bloodhound
 
-    //========================= END BLOODHOUND ==============================//
+      suggests.initialize(); // initialise bloodhound suggestion engine
+
+      //========================= END BLOODHOUND ==============================//
 
     //========================= TYPEAHEAD ==============================//
     // Instantiate the Typeahead UI
