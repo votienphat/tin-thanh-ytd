@@ -4,34 +4,12 @@ using System.Web.Mvc;
 using System.Text.RegularExpressions;
 using System.Text;
 using System;
-using BussinessObject.Enums;
 using MyConfig;
 
 namespace MyAdmin.Helper
 {
     public static class Common
     {
-        /// <summary>
-        /// Dựa vào thứ tự cột do client gửi lên mà lấy ra mã sắp xếp của báo cáo. Chỉ lấy giá trị đầu
-        /// </summary>
-        /// <param name="directions">Danh sách sắp xếp asc, desc</param>
-        /// <returns></returns>
-        /// <history>
-        /// 09/10/2014 PhatVT: Create new
-        /// </history>
-        public static int GetOrderDirection(List<string> directions)
-        {
-            var order = OrderDirection.Descending;
-            if (directions != null && directions.Any())
-            {
-                var direction = directions.First();
-                order = !string.IsNullOrEmpty(direction) && direction.ToLower().Equals("asc")
-                ? OrderDirection.Ascending
-                : OrderDirection.Descending;
-            }
-            return order;
-        }
-
         public static int GetFristSortColumns(List<int> listCol)
         {
             if (listCol != null && listCol.Count > 0)

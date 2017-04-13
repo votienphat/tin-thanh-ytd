@@ -1,8 +1,0 @@
-D:\WEB\P111Web\Mgame\Framework\Library\SimplePaletteQuantizer\bin\Debug\SimplePaletteQuantizer.dll
-D:\WEB\P111Web\Mgame\Framework\Library\SimplePaletteQuantizer\bin\Debug\SimplePaletteQuantizer.pdb
-D:\WEB\P111Web\Mgame\Framework\Library\SimplePaletteQuantizer\obj\Debug\SimplePaletteQuantizer.csprojResolveAssemblyReference.cache
-D:\WEB\P111Web\Mgame\Framework\Library\SimplePaletteQuantizer\obj\Debug\SimplePaletteQuantizer.MainForm.resources
-D:\WEB\P111Web\Mgame\Framework\Library\SimplePaletteQuantizer\obj\Debug\SimplePaletteQuantizer.Properties.Resources.resources
-D:\WEB\P111Web\Mgame\Framework\Library\SimplePaletteQuantizer\obj\Debug\SimplePaletteQuantizer.csproj.GenerateResource.Cache
-D:\WEB\P111Web\Mgame\Framework\Library\SimplePaletteQuantizer\obj\Debug\SimplePaletteQuantizer.dll
-D:\WEB\P111Web\Mgame\Framework\Library\SimplePaletteQuantizer\obj\Debug\SimplePaletteQuantizer.pdb

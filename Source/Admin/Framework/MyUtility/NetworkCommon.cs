@@ -143,8 +143,6 @@ namespace MyUtility
             }
             return true;
         }
-
-
         public static bool SendMailAttackFile(string from ,string to, string title, string content, System.IO.Stream[] streamFiles, string[] fileName, string[] mimeType)
         {
             var objReturn = false;
@@ -176,7 +174,7 @@ namespace MyUtility
                 smtpClient.Send(mailMessage);
                 objReturn = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 objReturn = false;
             }
@@ -238,7 +236,7 @@ namespace MyUtility
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 loadSuccess = false;
             }
@@ -400,7 +398,7 @@ namespace MyUtility
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 loadSuccess = false;
             }

@@ -24,7 +24,7 @@ namespace MyAdmin.ActionFilter
                     AntiForgery.Validate();
                 }
             }
-            catch (HttpAntiForgeryException e)
+            catch (HttpAntiForgeryException)
             {
                 throw new HttpAntiForgeryException("Anti forgery token not found");
             }

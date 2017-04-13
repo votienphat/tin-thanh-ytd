@@ -6,7 +6,6 @@ using BussinessObject.Helper;
 using BussinessObject.MembershipModule.Contract;
 using BussinessObject.MembershipModule.Models.Response;
 using DataAccess.Contract.Membership;
-using DataAccess.Contract.UserModule;
 using EntitiesObject.Entities.MetroMembershipEntities;
 using MyUtility.Extensions;
 using Newtonsoft.Json;
@@ -19,18 +18,16 @@ namespace BussinessObject.MembershipModule
 
         private readonly IMemberPermissionRepository _memberPermissionRepo;
         private readonly IMemberAdminRepository _memberAdminRepo;
-        private readonly IAccountRepository _accountRepo;
         //private readonly IMemberBusiness _memberBusiness;
 
         #endregion
 
         #region Constructor
 
-        public MemberBusiness(IMemberPermissionRepository memberPermissionRepo, IMemberAdminRepository memberAdminRepo, IAccountRepository accountRepo)
+        public MemberBusiness(IMemberPermissionRepository memberPermissionRepo, IMemberAdminRepository memberAdminRepo)
         {
             _memberPermissionRepo = memberPermissionRepo;
             _memberAdminRepo = memberAdminRepo;
-            _accountRepo = accountRepo;
         }
 
         #endregion

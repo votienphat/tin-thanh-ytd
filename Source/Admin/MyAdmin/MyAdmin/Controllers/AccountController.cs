@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
-using BusinessObject.MembershipModule.Contract;
 using BusinessObject.MembershipModule.Enums;
 using BussinessObject.Enums;
 using BussinessObject.Helper;
@@ -76,7 +75,7 @@ namespace MyAdmin.Controllers
             string url = "/";
             if(HttpContext.Request != null && HttpContext.Request.Url != null && !string.IsNullOrEmpty(HttpContext.Request.Url.GetLeftPart(UriPartial.Authority)))
                 url = HttpContext.Request.Url.GetLeftPart(UriPartial.Authority);
-            SessionManager.RefreshPermissions();
+           // SessionManager.RefreshPermissions();
             return Redirect(url);
         }
 
@@ -94,7 +93,7 @@ namespace MyAdmin.Controllers
         [HeaderAuthorizeFilter(IsCheckPermission = false)]
         public JsonResult RefreshPermissions()
         {
-            SessionManager.RefreshPermissions();
+           // SessionManager.RefreshPermissions();
             return null;
         }
 

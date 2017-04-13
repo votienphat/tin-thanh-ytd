@@ -140,18 +140,6 @@
     <FunctionImportMapping FunctionImportName="Ins_GroupPermission_CloneGroup" FunctionName="MetroMembershipModel.Store.Ins_GroupPermission_CloneGroup" />
     <FunctionImportMapping FunctionImportName="Ins_GroupPermission_UpdateAndInsertGroupPermission" FunctionName="MetroMembershipModel.Store.Ins_GroupPermission_UpdateAndInsertGroupPermission" />
     <FunctionImportMapping FunctionImportName="Ins_GroupPermission_UpdateAndInsertUserPermission" FunctionName="MetroMembershipModel.Store.Ins_GroupPermission_UpdateAndInsertUserPermission" />
-    <FunctionImportMapping FunctionImportName="Ins_MemberAdmin_checkLogin" FunctionName="MetroMembershipModel.Store.Ins_MemberAdmin_checkLogin">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MetroMembershipModel.Ins_MemberAdmin_checkLogin_Result">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
-          <ScalarProperty Name="TokenID" ColumnName="TokenID" />
-          <ScalarProperty Name="TokenExp" ColumnName="TokenExp" />
-          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Ins_MemberAdmin_getInfoMemberAdmin" FunctionName="MetroMembershipModel.Store.Ins_MemberAdmin_getInfoMemberAdmin">
       <ResultMapping>
         <ComplexTypeMapping TypeName="MetroMembershipModel.Ins_MemberAdmin_getInfoMemberAdmin_Result">
@@ -486,6 +474,18 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ActionTypeId" ColumnName="ActionTypeId" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ins_MemberAdmin_checkLogin" FunctionName="MetroMembershipModel.Store.Ins_MemberAdmin_checkLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MetroMembershipModel.Ins_MemberAdmin_checkLogin_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+          <ScalarProperty Name="TokenExp" ColumnName="TokenExp" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

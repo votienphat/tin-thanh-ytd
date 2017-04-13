@@ -16,7 +16,7 @@ namespace MyConfig
         /// <summary>
         /// Có kiểm tra quyền không. Set false để bỏ qua bước kiểm tra
         /// </summary>
-        [ConfigurationProperty("IsCheckPermission", DefaultValue = "true")]
+        [ConfigurationProperty("IsCheckPermission", DefaultValue = "false")]
         public bool IsCheckPermission
         {
             get { return (bool)this["IsCheckPermission"]; }

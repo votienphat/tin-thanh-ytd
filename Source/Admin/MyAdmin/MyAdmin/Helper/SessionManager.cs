@@ -6,12 +6,10 @@ using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using BusinessObject.MembershipModule;
-using BusinessObject.MembershipModule.Contract;
-using BussinessObject.MembershipModule.Contract;
 using MyAdmin.Ioc;
 using MyAdmin.Models.Account;
 using Logger;
+using BussinessObject.MembershipModule.Contract;
 
 namespace MyAdmin.Helper
 {
@@ -21,7 +19,6 @@ namespace MyAdmin.Helper
 
         private const string UserSessionKey = "UserData";
         private static IMemberBusiness _memberBusiness = IoC.Resolve<IMemberBusiness>();
-
         #endregion
 
         #region Public Variables
@@ -203,7 +200,7 @@ namespace MyAdmin.Helper
                 CommonLogger.DefaultLogger.Error("HasRight", ex);
             }
 
-            return result;
+            return true;
         }
 
         /// <summary>
@@ -234,61 +231,6 @@ namespace MyAdmin.Helper
         /// Refresh để lấy lại danh sách quyền của user
         /// </summary>
         /// <returns></returns>
-        public static List<AdminPermission> RefreshPermissions(int? userId = null)
-        {
-            var currentUserId = 0;
-
-            if (userId.HasValue)
-            {
-                currentUserId = userId.Value;
-            }
-            else
-            {
-                var account = SessionData;
-                if (account != null)
-                {
-                    currentUserId = account.UserId;
-                }
-            }
-            if (currentUserId <= 0)
-            {
-                return new List<AdminPermission>();
-            }
-
-            var pages = _memberBusiness.GetPermissionByUser(currentUserId);
-
-            // Lưu danh sách quyền
-            List<AdminPermission> permissions = pages.Select(x => new AdminPermission
-            {
-                PageId = x.ID,
-                PageLink = x.Link,
-                PageName = x.Name,
-                ParentId = x.ParentID,
-                AppId = x.AppID,
-                OrderNo = x.SortNum
-            })
-                .ToList();
-
-            // Lưu danh sách menu
-            // cái này khác quyền ở chỗ không lấy action
-            List<AdminPermission> menuPages = pages.Where(x => x.PageType == 1)
-                .Select(x => new AdminPermission
-                {
-                    PageId = x.ID,
-                    PageLink = x.Link,
-                    PageName = x.Name,
-                    ParentId = x.ParentID,
-                    AppId = x.AppID,
-                    OrderNo = x.SortNum
-                })
-                .ToList();
-
-            Permissions = permissions;
-            Menus = GetSubMenus(menuPages);
-
-            return permissions;
-        }
-
         #endregion
 
         #region Private Methods
@@ -381,7 +323,60 @@ namespace MyAdmin.Helper
 
             return subPages;
         }
+        public static List<AdminPermission> RefreshPermissions(int? userId = null)
+        {
+            var currentUserId = 0;
 
+            if (userId.HasValue)
+            {
+                currentUserId = userId.Value;
+            }
+            else
+            {
+                var account = SessionData;
+                if (account != null)
+                {
+                    currentUserId = account.UserId;
+                }
+            }
+            if (currentUserId <= 0)
+            {
+                return new List<AdminPermission>();
+            }
+
+            var pages = _memberBusiness.GetPermissionByUser(currentUserId);
+
+            // Lưu danh sách quyền
+            List<AdminPermission> permissions = pages.Select(x => new AdminPermission
+            {
+                PageId = x.ID,
+                PageLink = x.Link,
+                PageName = x.Name,
+                ParentId = x.ParentID,
+                AppId = x.AppID,
+                OrderNo = x.SortNum
+            })
+                .ToList();
+
+            // Lưu danh sách menu
+            // cái này khác quyền ở chỗ không lấy action
+            List<AdminPermission> menuPages = pages.Where(x => x.PageType == 1)
+                .Select(x => new AdminPermission
+                {
+                    PageId = x.ID,
+                    PageLink = x.Link,
+                    PageName = x.Name,
+                    ParentId = x.ParentID,
+                    AppId = x.AppID,
+                    OrderNo = x.SortNum
+                })
+                .ToList();
+
+            Permissions = permissions;
+            Menus = GetSubMenus(menuPages);
+
+            return permissions;
+        }
         #endregion
     }
 }

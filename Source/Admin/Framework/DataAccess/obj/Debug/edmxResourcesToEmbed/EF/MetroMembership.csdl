@@ -187,10 +187,6 @@
       <Parameter Name="Rules" Mode="In" Type="Int32" />
       <Parameter Name="Check" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="Ins_MemberAdmin_checkLogin" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_checkLogin_Result)">
-      <Parameter Name="userName" Mode="In" Type="String" />
-      <Parameter Name="tokenID" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="Ins_MemberAdmin_getInfoMemberAdmin" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_getInfoMemberAdmin_Result)">
       <Parameter Name="userId" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -344,6 +340,10 @@
     <FunctionImport Name="Ins_PageFunction_GetPageFunctionById" ReturnType="Collection(MetroMembershipModel.Ins_PageFunction_GetPageFunctionById_Result)">
       <Parameter Name="ActionId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="Ins_MemberAdmin_checkLogin" ReturnType="Collection(MetroMembershipModel.Ins_MemberAdmin_checkLogin_Result)">
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="tokenID" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="AdminConfigData">
     <Key>
@@ -382,14 +382,6 @@
     <Property Type="Boolean" Name="Visible" Nullable="true" />
     <Property Type="DateTime" Name="Datecreated" Nullable="true" Precision="23" />
     <Property Type="Int32" Name="TotalRow" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="Ins_MemberAdmin_checkLogin_Result">
-    <Property Type="Int32" Name="ID" Nullable="true" />
-    <Property Type="String" Name="Password" Nullable="true" MaxLength="250" />
-    <Property Type="String" Name="PasswordSalt" Nullable="true" MaxLength="250" />
-    <Property Type="String" Name="TokenID" Nullable="true" MaxLength="250" />
-    <Property Type="DateTime" Name="TokenExp" Nullable="true" Precision="23" />
-    <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
   </ComplexType>
   <ComplexType Name="Ins_MemberAdmin_getInfoMemberAdmin_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -668,5 +660,13 @@
     <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
     <Property Type="Int32" Name="ActionTypeId" Nullable="true" />
     <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="Ins_MemberAdmin_checkLogin_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="PasswordSalt" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="TokenID" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="TokenExp" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
   </ComplexType>
 </Schema>

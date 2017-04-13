@@ -1,0 +1,42 @@
+﻿@using MyAdmin.Models.ContentData;
+@{
+    ViewBag.Title = "Index";
+}
+@model  CategoryModel
+<div id="savecate">
+    @using (Ajax.BeginForm("SaveData", "Category",
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "savecate"
+        }, new { @class = "form-horizontal form-groups-bordered" }))
+    {
+        @Html.HiddenFor(x => x.Id)
+        <div class="form-group">
+            <label for="field-ta" class="col-sm-2 control-label">Tên Danh Mục</label>
+            <div class="col-sm-5">
+                @Html.TextAreaFor(x => x.Name, new { @class = "form-control autogrow", @placeholder = "nhập tên danh mục." })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field-ta" class="col-sm-2 control-label">Keyword</label>
+            <div class="col-sm-5">
+                @Html.TextAreaFor(x => x.Keyword, new { @class = "form-control autogrow", @placeholder = "nhập keyword." })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field-1" class="col-sm-2 control-label">Chọn ảnh</label>
+            <div class="col-sm-5">
+                @Html.TextBoxFor(m => m.File, new { @type = "file", @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field-1" class="col-sm-2 control-label"></label>
+            <div class="col-sm-5">
+                <button type="submit" class="btn btn-info">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    }
+</div>
+            

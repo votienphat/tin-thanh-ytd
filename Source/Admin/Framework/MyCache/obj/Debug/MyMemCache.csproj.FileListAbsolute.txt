@@ -23,3 +23,7 @@ J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\MyCache\bin\Debug
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\MyCache\bin\Debug\MyMemCache.pdb
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\MyCache\obj\Debug\MyMemCache.dll
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\MyCache\obj\Debug\MyMemCache.pdb
+C:\GitHub\SOURCE\Admin\Framework\MyCache\bin\Debug\MyMemCache.dll
+C:\GitHub\SOURCE\Admin\Framework\MyCache\bin\Debug\MyMemCache.pdb
+C:\GitHub\SOURCE\Admin\Framework\MyCache\obj\Debug\MyMemCache.dll
+C:\GitHub\SOURCE\Admin\Framework\MyCache\obj\Debug\MyMemCache.pdb

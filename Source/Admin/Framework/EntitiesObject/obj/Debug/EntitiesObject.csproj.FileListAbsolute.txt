@@ -10,3 +10,13 @@ J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\bi
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.pdb
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\EntitiesObject\obj\Debug\EntitiesObject.csprojResolveAssemblyReference.cache
+C:\GitHub\SOURCE\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+C:\GitHub\SOURCE\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll
+C:\GitHub\SOURCE\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.pdb
+C:\GitHub\SOURCE\Admin\Framework\EntitiesObject\obj\Debug\EntitiesObject.dll
+C:\GitHub\SOURCE\Admin\Framework\EntitiesObject\obj\Debug\EntitiesObject.pdb
+D:\Source\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll.config
+D:\Source\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.dll
+D:\Source\Admin\Framework\EntitiesObject\bin\Debug\EntitiesObject.pdb
+D:\Source\Admin\Framework\EntitiesObject\obj\Debug\EntitiesObject.dll
+D:\Source\Admin\Framework\EntitiesObject\obj\Debug\EntitiesObject.pdb

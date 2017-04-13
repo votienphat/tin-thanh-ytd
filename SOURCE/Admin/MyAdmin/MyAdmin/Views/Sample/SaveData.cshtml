@@ -1,0 +1,71 @@
+﻿@using MyAdmin.Models.ContentData;
+@{
+    ViewBag.Title = "Index";
+}
+@model  SimpleDataModel
+<div id="savecate">
+    @using (Ajax.BeginForm("SaveData", "Sample",
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "savecate"
+                }, new { @class = "form-horizontal form-groups-bordered" }))
+    {
+        @Html.HiddenFor(x => x.Id)
+        <div class="form-group">
+            <label for="field-ta" class="col-sm-2 control-label">Nội Dung</label>
+            <div class="col-sm-5">
+                @Html.TextAreaFor(x => x.Content, new { @class = "form-control autogrow", @placeholder = "nhập keyword." })
+            </div>
+        </div>
+            <div class="form-group">
+                <label for="field-1" class="col-sm-2 control-label">Chọn Syntax</label>
+                <div class="col-sm-5">
+                    <input name="SyntaxId" id="SyntaxId" class='select2 form-control' type='text' placeholder='Chọn Syntax..' />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="field-1" class="col-sm-2 control-label"></label>
+                <div class="col-sm-5">
+                    <button type="submit" class="btn btn-info">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+    }
+</div>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("Content"), {
+        lineNumbers: true,
+        mode: "text/html",
+        matchBrackets: true,
+        styleActiveLine: true,
+        theme: 'abcdef'
+    });
+    $("#SyntaxId").select2({
+        minimumInputLength: 2,
+        tags: [],
+        ajax: {
+            url: '@Url.Action("Drop_Syntax", "Syntax")',
+            dataType: 'json',
+            type: "GET",
+            quietMillis: 50,
+            data: function (term) {
+                return {
+                    text: term
+                };
+            },
+            results: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            text: item.Name,
+                            id: item.id
+                        }
+                    })
+                };
+            }
+        }
+    });
+</script>
+

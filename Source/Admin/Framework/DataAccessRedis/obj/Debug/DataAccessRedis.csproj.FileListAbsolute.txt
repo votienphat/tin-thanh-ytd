@@ -27,3 +27,4 @@ J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\DataAccessRedis\b
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\DataAccessRedis\obj\Debug\DataAccessRedis.dll
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\DataAccessRedis\obj\Debug\DataAccessRedis.pdb
 J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\DataAccessRedis\obj\Debug\DataAccessRedis.csprojResolveAssemblyReference.cache
+C:\GitHub\SOURCE\Admin\Framework\DataAccessRedis\obj\Debug\DataAccessRedis.csprojResolveAssemblyReference.cache

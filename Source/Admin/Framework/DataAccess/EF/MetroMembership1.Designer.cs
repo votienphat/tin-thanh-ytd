@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'J:\Freelance\Project\2016\tin-thanh-ytd\Source\Admin\Framework\DataAccess\EF\MetroMembership.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Source\Admin\Framework\DataAccess\EF\MetroMembership.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

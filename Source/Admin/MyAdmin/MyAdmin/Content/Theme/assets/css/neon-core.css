@@ -3426,7 +3426,7 @@ body {
 float: left;
 		z-index: 2;
 */
-  display: table-cell;
+  display: block;
   vertical-align: top;
   padding: 20px;
   background: #ffffff;

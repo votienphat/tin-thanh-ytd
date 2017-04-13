@@ -77,7 +77,7 @@ namespace MyAdmin
                 }
                 return (IController)_container.Resolve(controllerType);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -87,6 +87,6 @@ namespace MyAdmin
         {
             _container.Release(controller);
             base.ReleaseController(controller);
-        }
+         }
     }
 }

@@ -40,14 +40,15 @@
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
-      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <HintPath>..\Inside\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Inside\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -87,6 +88,8 @@
     <Compile Include="Enums\ResponseCode.cs" />
     <Compile Include="Helper\BoCommon.cs" />
     <Compile Include="Helper\BoConstant.cs" />
+    <Compile Include="WebModule\Contract\IWebBusiness.cs" />
+    <Compile Include="WebModule\WebBusiness.cs" />
     <Compile Include="MembershipModule\Contract\ILogActionAdminBusiness.cs" />
     <Compile Include="MembershipModule\Contract\IMemberBusiness.cs" />
     <Compile Include="MembershipModule\Contract\IPageBusiness.cs" />
@@ -102,32 +105,19 @@
     <Compile Include="MembershipModule\Models\Request\LogActionAdminRequestModel.cs" />
     <Compile Include="MembershipModule\Models\Response\LoginResponse.cs" />
     <Compile Include="MembershipModule\PageBusiness.cs" />
-    <Compile Include="UserModule\Contract\IMyConfigBusiness.cs" />
-    <Compile Include="UserModule\Enums\CallStoreResponse.cs" />
-    <Compile Include="UserModule\MyConfigBusiness.cs" />
-    <Compile Include="UserModule\Enums\LoginTypeEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="UserModule\Contract\IAccountBusiness.cs" />
-    <Compile Include="UserModule\AccountBusiness.cs" />
-    <Compile Include="UserModule\Enums\LoginCodeEnum.cs" />
-    <Compile Include="UserModule\Enums\OpenProviderIdEnum.cs" />
-    <Compile Include="UserModule\Models\OpenUserInfoModel.cs" />
-    <Compile Include="UserModule\Models\Request\LoginFacebookRequest.cs" />
-    <Compile Include="UserModule\Models\Request\LoginGoogleRequest.cs" />
-    <Compile Include="UserModule\Models\Response\InfoUserModel.cs" />
-    <Compile Include="UserModule\Models\Response\TopLevelFriendsModel.cs" />
-    <Compile Include="UserModule\Models\UserInfo.cs" />
-    <Compile Include="UserModule\Models\Request\LoginRequest.cs" />
-    <Compile Include="UserModule\Models\Response\LoginResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helper\Contract\" />
     <Folder Include="Models\" />
+    <Folder Include="WebModule\Enums\" />
+    <Folder Include="WebModule\Models\Request\" />
+    <Folder Include="WebModule\Models\Response\" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
@@ -145,10 +135,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessRedis\DataAccessRedis.csproj">
-      <Project>{a3bc763c-f638-421d-ba60-7c48eeacd63d}</Project>
-      <Name>DataAccessRedis</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{e825d500-57cc-4d2e-885b-368a6e3cee1e}</Project>
       <Name>DataAccess</Name>

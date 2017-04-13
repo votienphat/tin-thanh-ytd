@@ -11,28 +11,22 @@
                 @using (Html.BeginForm("ImportExcel", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal form-groups-bordered" }))
                 {
                     <div class="form-group">
-                        <label for="files" class="col-sm-3 control-label">Choose File</label>
+                        <label for="field-1" class="col-sm-3 control-label">Chọn File</label>
 
                         <div class="col-sm-5">
                             <input type="file" name="files" id="files" class="form-control" id="field-file" placeholder="Placeholder">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="RowData" class="col-sm-3 control-label">Start Row Index</label>
+                        <label for="field-1" class="col-sm-3 control-label">Dòng Bắt Đầu</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="RowData" name="RowData" value="8" placeholder="excel bắt đầu từ dòng">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Offset" class="col-sm-3 control-label">Offset</label>
+                        <label for="field-1" class="col-sm-3 control-label">Offset</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="Offset" name="Offset" value="0" placeholder="offset">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Exclude" class="col-sm-3 control-label">Exclude Diameters</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="Exclude" name="Exclude" value="12" placeholder="offset">
                         </div>
                     </div>
                     <div class="form-group">
