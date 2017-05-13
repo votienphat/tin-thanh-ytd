@@ -1,0 +1,108 @@
+﻿@using Phystones.Models.ContentData
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Web.cshtml";
+}
+@model SendContact
+<hr class="grid-2 center mq-mobile">
+<h1 id="tagline">Contact Buffalo</h1>
+<h2 class="grid-10 center">Get in touch with us to get the ball rolling</h2>
+<section class="section grid-12 center">
+    <form class="custom-form" action="@Url.Action("SendMess")" method="post">
+        <fieldset>
+            <ul class=" clearfix">
+                <li class="grid-4 alpha form-el">
+                    <div class="text-wrap">
+                        @Html.TextBoxFor(x => x.Name, new { @placeholder = "Name" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div>
+                </li>
+                <li class="grid-4 form-el">
+                    <div class="text-wrap">
+                        @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email address" })
+                        @Html.ValidationMessageFor(x => x.Email)
+                    </div>
+                </li>
+                <li class="grid-4 omega form-el">
+                    <div class="text-wrap">
+                        @Html.TextBoxFor(x => x.Phone, new { @placeholder = "Phone number" })
+                        @Html.ValidationMessageFor(x => x.Phone)
+                    </div>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <div class="grid-12 center margin-top-standard form-el">
+                @Html.TextAreaFor(x => x.Messenger, new { @placeholder = "Description" })
+                @Html.ValidationMessageFor(x => x.Messenger)
+            </div>
+        </fieldset>
+        <fieldset class="clearfix">
+            <button type="submit" class="grid-4 secondary center large margin-top-standard">Submit</button>
+        </fieldset>
+    </form>
+</section>
+
+<section class="section">
+    <ul class="list-icon-items clearfix no-margins">
+        <li class="grid-3 secondary alpha">
+            <a href="cdn-cgi/l/email-protection.html#2a424f4646456a485f43465e4853485f4c4c4b464504494547">
+                <i class="circ large tertiary ss-icon ss-standard">
+                    ✉
+                    <i class="circ pulse"></i>
+                </i>
+                <h4 class="secondary">Email</h4>
+                <p>
+                    <span class="pseudo-link">
+                        <span class="__cf_email__" data-cfemail="422a272e2e2d0220372b2e36203b20372424232e2d6c212d2f">[email&nbsp;protected]</span>
+                    </span>
+                </p>
+            </a>
+        </li>
+        <li class="grid-3 secondary">
+            <i class="circ large tertiary ss-icon ss-standard">
+                📱
+                <i class="circ pulse"></i>
+            </i>
+            <h4 class="secondary">Phone</h4>
+            <p class="secondary">+44 (0)1273 434 060</p>
+        </li>
+        <li class="grid-3 secondary">
+            <a href="planner.html">
+                <i class="circ large tertiary ss-icon ss-standard">
+                    📝
+                    <i class="circ pulse"></i>
+                </i>
+                <h4 class="secondary">Project planner</h4>
+                <p>
+                    <span class="pseudo-link">Launch it</span>
+                </p>
+            </a>
+        </li>
+        <li class="grid-3 secondary">
+            <a href="http://twitter.com/builtbybuffalo">
+                <i class="circ large tertiary ss-icon ss-social">
+                    
+                    <i class="circ pulse"></i>
+                </i>
+                <h4 class="secondary">Twitter</h4>
+                <p>
+                    <span class="pseudo-link">Follow us</span>
+                </p>
+            </a>
+        </li>
+        <li class="grid-3 secondary omega">
+            <a href="skype:builtbybuffalo?call">
+                <i class="circ large tertiary ss-icon ss-social">
+                    
+                    <i class="circ pulse"></i>
+                </i>
+                <h4 class="secondary">Skype</h4>
+                <p>
+                    <span class="pseudo-link">Call us</span>
+                </p>
+            </a>
+        </li>
+    </ul>
+</section>
+

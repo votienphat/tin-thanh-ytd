@@ -1,3 +1,10 @@
+
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 Source/Admin/Framework/BussinessObject/bin/
 Source/Admin/MyAdmin/MyAdmin/bin/
 Source/Admin/Framework/Logger/bin/
@@ -25,3 +32,25 @@ Source/Admin/MyAdmin/MyAdmin/obj/
 Source/Admin/MyAdmin/MyAdmin/App_Data/
 Source/Admin/MyAdmin/MyConfig/bin/
 Source/Admin/MyAdmin/MyConfig/obj/
+Source/SiteCty.rar
+Source/PhystonesWebsite/Framework/BussinessObject/bin/
+Source/PhystonesWebsite/Framework/BussinessObject/obj/
+Source/PhystonesWebsite/Framework/DataAccess/bin/
+Source/PhystonesWebsite/Framework/DataAccess/obj/
+Source/PhystonesWebsite/Framework/DataAccessRedis/obj/
+Source/PhystonesWebsite/Framework/DataAccessRedis/bin/
+Source/PhystonesWebsite/Framework/EntitiesObject/bin/
+Source/PhystonesWebsite/Framework/EntitiesObject/obj/
+Source/PhystonesWebsite/Phystones/Phystones/App_Data/Excel/
+Source/PhystonesWebsite/Phystones/Phystones/Logs/
+Source/PhystonesWebsite/Phystones/Phystones/bin/
+Source/PhystonesWebsite/Phystones/Phystones/obj/
+Source/PhystonesWebsite/Phystones/MyConfig/bin/
+Source/PhystonesWebsite/Phystones/MyConfig/obj/
+Source/PhystonesWebsite/Framework/Logger/bin/
+Source/PhystonesWebsite/Framework/Logger/obj/
+Source/PhystonesWebsite/Framework/MyCache/bin/
+Source/PhystonesWebsite/Framework/MyCache/obj/
+Source/PhystonesWebsite/Framework/MyUtility/bin/
+Source/PhystonesWebsite/Framework/MyUtility/obj/
+Source/PhystonesWebsite/Framework/packages/

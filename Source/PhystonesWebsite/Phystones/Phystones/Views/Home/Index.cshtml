@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Web.cshtml";
+    var i = 1;
+}
+<section class="section interactive" data-interactive>
+    <div class="list-hex-grid list-inline-block clearfix">
+        @foreach (var item in ViewBag.Plain)
+        {
+            <div class="hex grid-3">
+                <a href="@Url.Action("ArticleDetail","Article",new { Id = item.Id })" style="background-image: url(@item.Image);" title="@item.Title">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            if (i % 9 == 0) {
+                @Html.Raw("<br class='mq-wide'/>");
+            }
+            i++;
+        }
+
+    </div>
+</section>
+<section class="section grid-14 center" data-interactive>
+    <hr class="grid-2 center" />
+    <h2>A few stats</h2>
+    <ul class="list-inline-block list-float-none list-small fonts-display clearfix list-mobile-spacing">
+        <li class="chart grid-2" data-infographic data-graph-type="circle" data-percent="40" data-graph-group="index-stats">
+            <p>Current project capacity</p>
+        </li>
+        <li class="chart grid-2" data-infographic data-graph-type="circle" data-percent="80" data-graph-group="index-stats">
+            <p>AVG. Client revenue increase</p>
+        </li>
+        <li class="chart grid-2" data-infographic data-graph-type="circle" data-percent="57" data-graph-group="index-stats">
+            <p>Clients who went on to get funding</p>
+        </li>
+        <li class="chart grid-2" data-infographic data-graph-type="circle" data-percent="83" data-graph-group="index-stats">
+            <p>Repeat customers</p>
+        </li>
+        <li class="chart grid-2" data-infographic data-graph-type="circle" data-percent="90" data-graph-group="index-stats">
+            <p>New business from referrals</p>
+        </li>
+    </ul>
+</section>
+@*<section class="section grid-14 center" itemscope itemtype="">
+    <meta itemprop="name" content="Buffalo" />
+    <hr class="grid-2 center" />
+    <h2>Happy clients</h2>
+    <ul class="list-plain slider slider-regular">
+        @foreach (var item in ViewBag.Slogan)
+        {
+            <li itemsprop="review" itemscope>
+                <blockquote>
+                    @item.ContentBody
+                </blockquote>
+                <cite class="h6" itemprop="provider"><span itemprop="name">@item.Author</span></cite>
+            </li>
+        }
+    </ul>
+</section>*@

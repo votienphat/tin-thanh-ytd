@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ListData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p class="bs-example bs-baseline-top">
+    <button onclick="OpenPopupFull('@Url.Action("SaveData")','Add Syntax')" type="button" class="btn btn-default btn-icon btn-lg">
+        Create
+    </button>
+</p>
+<table class="table table-bordered datatable" id="myTable">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Name</th>
+            <th>Content</th>
+            <th>Keyword</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@section scripts{
+    <script>
+        var oTable;
+        $(document).ready(function () {
+            oTable = $('#myTable')
+               .on('preXhr.dt', function () {
+                   //loading.Show();
+               })
+               .on('xhr.dt', function () {
+                   //loading.Hide();
+               })
+               .DataTable({
+                   "dom": '<"top"l>rt<"bottom"fip><"clear">',
+                   "bFilter": false,
+                   "scrollX": true,
+                   "bProcessing": true,
+                   "bServerSide": true,
+                   "buttons": [
+                               {
+                                   "text": 'My button',
+                                   "action": function (e, dt, node, config) {
+                                       alert('Button activated');
+                                   }
+                               }
+                   ],
+                   "sAjaxSource": '@Url.Action("List")',
+                   "sServerMethod": "POST",
+                   "columns": [
+                       { "data": "RowNumber", "sClass": "align-center", "bSortable": false }, //0
+                       { "data": "Name", "sClass": "align-left" }, //1
+                       { "data": "ContentSyntax", "sClass": "align-left" }, //2
+                       { "data": "KeyWord", "sClass": "align-left" }, //1
+                       { "data": "Description", "sClass": "align-left" }, //2
+                   ],
+                   "order": [[1, "desc"]],
+                   "lengthMenu": [[10, 50, 100], [10, 50, 100]],
+               });
+            oTable.draw();
+        });
+    </script>
+}
+
+

@@ -1,0 +1,48 @@
+﻿<div class="sidebar-menu">
+    <div class="sidebar-menu-inner">
+
+        <header class="logo-env">
+            <div class="logo">
+                <a href="@Url.Action("Index","Home")">
+                    <img src="~/Content/Theme/assets/images/logo@2x.png" width="120" alt="" />
+                </a>
+            </div>
+            <div class="sidebar-collapse">
+                <a href="#" class="sidebar-collapse-icon">
+                    <i class="entypo-menu"></i>
+                </a>
+            </div>
+            <div class="sidebar-mobile-menu visible-xs">
+                <a href="#" class="with-animation">
+                    <i class="entypo-menu"></i>
+                </a>
+            </div>
+        </header>
+        <ul id="main-menu" class="main-menu">
+            <li class="active opened active">
+                <a href="@Url.Action("Index","Admin")">
+                    <i class="entypo-gauge"></i>
+                    <span class="title">Trang chủ</span>
+                </a>
+                <ul>
+                    <li class="active">
+                        <a href="@Url.Action("ListData","Article")">
+                            <span class="title">Quản lý Bài Viết</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("ListData","Portfolio")">
+                            <span class="title">Quản lý Portfolio</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("ListData","Contact")">
+                            <span class="title">Quản lý Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</div>

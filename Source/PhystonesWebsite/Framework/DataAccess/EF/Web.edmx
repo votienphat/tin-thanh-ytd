@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" />
+          <Property Name="Image" Type="nvarchar" MaxLength="512" />
+          <Property Name="ContentBody" Type="nvarchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="TextId" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="CategoryArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="512" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProCompany.dbo.CategoryPortfolio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CategoryPortfolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProCompany.dbo.CategoryWork' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CategoryWork">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="512" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="512" />
+          <Property Name="Phone" Type="nchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="512" />
+          <Property Name="Messenger" Type="nvarchar(max)" />
+          <Property Name="IsRead" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ReadDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Plain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="512" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" />
+          <Property Name="Link" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="Portfolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="About" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="LinkWeb" Type="nvarchar" MaxLength="512" />
+          <Property Name="LinkProfile" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="Slogan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" />
+          <Property Name="ContentBody" Type="nvarchar(max)" />
+          <Property Name="Author" Type="nvarchar" MaxLength="512" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Stats">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" />
+          <Property Name="PercentGood" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" />
+          <Property Name="Image" Type="nvarchar" MaxLength="512" />
+          <Property Name="ContentBody" Type="nvarchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="TextId" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <Function Name="Out_Article_GetByCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Out_Article_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Out_Article_GetByTextId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="textId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Out_Article_GetListData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RowStart" Type="int" Mode="In" />
+          <Parameter Name="RowEnd" Type="int" Mode="In" />
+          <Parameter Name="OrderBy" Type="int" Mode="In" />
+          <Parameter Name="IsDescending" Type="bit" Mode="In" />
+          <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="Out_Article_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="Image" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContentBody" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Out_CategoryArticle_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Out_CategoryWork_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Out_Contact_GetListData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RowStart" Type="int" Mode="In" />
+          <Parameter Name="RowEnd" Type="int" Mode="In" />
+          <Parameter Name="OrderBy" Type="int" Mode="In" />
+          <Parameter Name="IsDescending" Type="bit" Mode="In" />
+          <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="Out_Contact_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Messenger" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Out_Portfolio_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Out_Portfolio_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Out_Portfolio_GetListCategoryPortfolio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Out_Portfolio_GetListData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RowStart" Type="int" Mode="In" />
+          <Parameter Name="RowEnd" Type="int" Mode="In" />
+          <Parameter Name="OrderBy" Type="int" Mode="In" />
+          <Parameter Name="IsDescending" Type="bit" Mode="In" />
+          <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="Out_Portfolio_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Avatar" Type="nvarchar" Mode="In" />
+          <Parameter Name="About" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+          <Parameter Name="LinkWeb" Type="nvarchar" Mode="In" />
+          <Parameter Name="LinkProfile" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Out_Slogan_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Out_Work_GetByCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Out_Work_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Out_Work_GetByTextId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="textId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Out_Work_GetListData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RowStart" Type="int" Mode="In" />
+          <Parameter Name="RowEnd" Type="int" Mode="In" />
+          <Parameter Name="OrderBy" Type="int" Mode="In" />
+          <Parameter Name="IsDescending" Type="bit" Mode="In" />
+          <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="Out_Work_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="Image" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContentBody" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="WebModelStoreContainer">
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryArticle" EntityType="Self.CategoryArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plain" EntityType="Self.Plain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Portfolio" EntityType="Self.Portfolio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slogan" EntityType="Self.Slogan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryPortfolio" EntityType="Self.CategoryPortfolio" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CategoryPortfolio].[Id] AS [Id], 
+    [CategoryPortfolio].[Name] AS [Name]
+    FROM [dbo].[CategoryPortfolio] AS [CategoryPortfolio]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CategoryWork" EntityType="Self.CategoryWork" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CategoryWork].[Id] AS [Id], 
+    [CategoryWork].[Name] AS [Name], 
+    [CategoryWork].[IsActive] AS [IsActive]
+    FROM [dbo].[CategoryWork] AS [CategoryWork]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Work" EntityType="Self.Work" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Work].[Id] AS [Id], 
+    [Work].[Title] AS [Title], 
+    [Work].[Image] AS [Image], 
+    [Work].[ContentBody] AS [ContentBody], 
+    [Work].[CategoryId] AS [CategoryId], 
+    [Work].[IsActive] AS [IsActive], 
+    [Work].[TextId] AS [TextId]
+    FROM [dbo].[Work] AS [Work]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WebEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Out_Article_Save">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+            <Parameter Name="ContentBody" Mode="In" Type="String" />
+            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Contact_Save">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Messenger" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Article_GetListData" ReturnType="Collection(WebModel.Out_Article_GetListData_Result)">
+            <Parameter Name="RowStart" Mode="In" Type="Int32" />
+            <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+            <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+            <Parameter Name="IsDescending" Mode="In" Type="Boolean" />
+            <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Articles" EntityType="WebModel.Article" />
+          <EntitySet Name="CategoryArticles" EntityType="WebModel.CategoryArticle" />
+          <EntitySet Name="Contacts" EntityType="WebModel.Contact" />
+          <EntitySet Name="Plains" EntityType="WebModel.Plain" />
+          <EntitySet Name="Slogans" EntityType="WebModel.Slogan" />
+          <EntitySet Name="Stats" EntityType="WebModel.Stat" />
+          <EntitySet Name="CategoryPortfolios" EntityType="WebModel.CategoryPortfolio" />
+          <FunctionImport Name="Out_Contact_GetListData" ReturnType="Collection(WebModel.Out_Contact_GetListData_Result)">
+            <Parameter Name="RowStart" Mode="In" Type="Int32" />
+            <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+            <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+            <Parameter Name="IsDescending" Mode="In" Type="Boolean" />
+            <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_CategoryArticle_GetList" ReturnType="Collection(WebModel.Out_CategoryArticle_GetList_Result)" />
+          <FunctionImport Name="Out_Article_GetById" ReturnType="Collection(WebModel.Out_Article_GetById_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Slogan_Get" ReturnType="Collection(WebModel.Out_Slogan_Get_Result)" />
+          <FunctionImport Name="Out_Article_GetByTextId" ReturnType="Collection(WebModel.Out_Article_GetByTextId_Result)">
+          <Parameter Name="textId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Portfolio_Save">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Avatar" Mode="In" Type="String" />
+            <Parameter Name="About" Mode="In" Type="String" />
+            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="LinkWeb" Mode="In" Type="String" />
+            <Parameter Name="LinkProfile" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Portfolios" EntityType="WebModel.Portfolio" />
+          <FunctionImport Name="Out_Portfolio_GetById" ReturnType="Collection(WebModel.Out_Portfolio_GetById_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Portfolio_GetList" ReturnType="Collection(WebModel.Out_Portfolio_GetList_Result)" />
+          <FunctionImport Name="Out_Portfolio_GetListData" ReturnType="Collection(WebModel.Out_Portfolio_GetListData_Result)">
+            <Parameter Name="RowStart" Mode="In" Type="Int32" />
+            <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+            <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+            <Parameter Name="IsDescending" Mode="In" Type="Boolean" />
+            <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Portfolio_GetListCategoryPortfolio" ReturnType="Collection(WebModel.Out_Portfolio_GetListCategoryPortfolio_Result)" />
+          <FunctionImport Name="Out_Article_GetByCategoryId" ReturnType="Collection(WebModel.Out_Article_GetByCategoryId_Result)">
+          <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CategoryWorks" EntityType="WebModel.CategoryWork" />
+          <EntitySet Name="Works" EntityType="WebModel.Work" />
+          <FunctionImport Name="Out_Work_GetByCategoryId" ReturnType="Collection(WebModel.Out_Work_GetByCategoryId_Result)">
+          <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Work_GetById" ReturnType="Collection(WebModel.Out_Work_GetById_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Work_GetByTextId" ReturnType="Collection(WebModel.Out_Work_GetByTextId_Result)">
+          <Parameter Name="textId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Work_GetListData" ReturnType="Collection(WebModel.Out_Work_GetListData_Result)">
+            <Parameter Name="RowStart" Mode="In" Type="Int32" />
+            <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+            <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+            <Parameter Name="IsDescending" Mode="In" Type="Boolean" />
+            <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Work_Save">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+            <Parameter Name="ContentBody" Mode="In" Type="String" />
+            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_CategoryWork_GetList" ReturnType="Collection(WebModel.Out_CategoryWork_GetList_Result)" />
+        </EntityContainer>
+        <ComplexType Name="Out_Article_GetListData_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ContentBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="TextId" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CategoryArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Messenger" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsRead" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ReadDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Plain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Slogan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ContentBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Author" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Stat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="PercentGood" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CategoryPortfolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="Out_Contact_GetListData_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Messenger" Nullable="true" />
+          <Property Type="Boolean" Name="IsRead" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ReadDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Out_CategoryArticle_GetList_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="512" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Out_Article_GetById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Out_Slogan_Get_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="String" Name="Author" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <ComplexType Name="Out_Article_GetByTextId_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="TextId" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <EntityType Name="Portfolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Avatar" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="About" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="LinkWeb" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="LinkProfile" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="Out_Portfolio_GetById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Avatar" Nullable="false" MaxLength="512" />
+          <Property Type="String" Name="About" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="LinkWeb" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="LinkProfile" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <ComplexType Name="Out_Portfolio_GetList_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Avatar" Nullable="false" MaxLength="512" />
+          <Property Type="String" Name="About" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <ComplexType Name="Out_Portfolio_GetListData_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Avatar" Nullable="false" MaxLength="512" />
+          <Property Type="String" Name="About" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="LinkWeb" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="LinkProfile" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="CategoryPortfolioName" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <ComplexType Name="Out_Portfolio_GetListCategoryPortfolio_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <ComplexType Name="Out_Article_GetByCategoryId_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="TextId" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <EntityType Name="CategoryWork">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ContentBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="TextId" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="Out_Work_GetByCategoryId_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="TextId" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <ComplexType Name="Out_Work_GetById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Out_Work_GetByTextId_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="TextId" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <ComplexType Name="Out_Work_GetListData_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <ComplexType Name="Out_CategoryWork_GetList_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="512" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebModelStoreContainer" CdmEntityContainer="WebEntities">
+          <FunctionImportMapping FunctionImportName="Out_Article_Save" FunctionName="WebModel.Store.Out_Article_Save" />
+          <FunctionImportMapping FunctionImportName="Out_Contact_Save" FunctionName="WebModel.Store.Out_Contact_Save" />
+          <FunctionImportMapping FunctionImportName="Out_Article_GetListData" FunctionName="WebModel.Store.Out_Article_GetListData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Article_GetListData_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="WebModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryArticles">
+            <EntityTypeMapping TypeName="WebModel.CategoryArticle">
+              <MappingFragment StoreEntitySet="CategoryArticle">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="WebModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="Messenger" ColumnName="Messenger" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plains">
+            <EntityTypeMapping TypeName="WebModel.Plain">
+              <MappingFragment StoreEntitySet="Plain">
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slogans">
+            <EntityTypeMapping TypeName="WebModel.Slogan">
+              <MappingFragment StoreEntitySet="Slogan">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stats">
+            <EntityTypeMapping TypeName="WebModel.Stat">
+              <MappingFragment StoreEntitySet="Stats">
+                <ScalarProperty Name="PercentGood" ColumnName="PercentGood" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryPortfolios">
+            <EntityTypeMapping TypeName="WebModel.CategoryPortfolio">
+              <MappingFragment StoreEntitySet="CategoryPortfolio">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Out_Contact_GetListData" FunctionName="WebModel.Store.Out_Contact_GetListData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Contact_GetListData_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Messenger" ColumnName="Messenger" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_CategoryArticle_GetList" FunctionName="WebModel.Store.Out_CategoryArticle_GetList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_CategoryArticle_GetList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Article_GetById" FunctionName="WebModel.Store.Out_Article_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Article_GetById_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Slogan_Get" FunctionName="WebModel.Store.Out_Slogan_Get">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Slogan_Get_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Article_GetByTextId" FunctionName="WebModel.Store.Out_Article_GetByTextId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Article_GetByTextId_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Portfolio_Save" FunctionName="WebModel.Store.Out_Portfolio_Save" />
+          <EntitySetMapping Name="Portfolios">
+            <EntityTypeMapping TypeName="WebModel.Portfolio">
+              <MappingFragment StoreEntitySet="Portfolio">
+                <ScalarProperty Name="LinkProfile" ColumnName="LinkProfile" />
+                <ScalarProperty Name="LinkWeb" ColumnName="LinkWeb" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Out_Portfolio_GetById" FunctionName="WebModel.Store.Out_Portfolio_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Portfolio_GetById_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="LinkWeb" ColumnName="LinkWeb" />
+                <ScalarProperty Name="LinkProfile" ColumnName="LinkProfile" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Portfolio_GetList" FunctionName="WebModel.Store.Out_Portfolio_GetList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Portfolio_GetList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Portfolio_GetListData" FunctionName="WebModel.Store.Out_Portfolio_GetListData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Portfolio_GetListData_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="LinkWeb" ColumnName="LinkWeb" />
+                <ScalarProperty Name="LinkProfile" ColumnName="LinkProfile" />
+                <ScalarProperty Name="CategoryPortfolioName" ColumnName="CategoryPortfolioName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Portfolio_GetListCategoryPortfolio" FunctionName="WebModel.Store.Out_Portfolio_GetListCategoryPortfolio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Portfolio_GetListCategoryPortfolio_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Article_GetByCategoryId" FunctionName="WebModel.Store.Out_Article_GetByCategoryId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Article_GetByCategoryId_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CategoryWorks">
+            <EntityTypeMapping TypeName="WebModel.CategoryWork">
+              <MappingFragment StoreEntitySet="CategoryWork">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Works">
+            <EntityTypeMapping TypeName="WebModel.Work">
+              <MappingFragment StoreEntitySet="Work">
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Out_Work_GetByCategoryId" FunctionName="WebModel.Store.Out_Work_GetByCategoryId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Work_GetByCategoryId_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Work_GetById" FunctionName="WebModel.Store.Out_Work_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Work_GetById_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Work_GetByTextId" FunctionName="WebModel.Store.Out_Work_GetByTextId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Work_GetByTextId_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Work_GetListData" FunctionName="WebModel.Store.Out_Work_GetListData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Work_GetListData_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Work_Save" FunctionName="WebModel.Store.Out_Work_Save" />
+          <FunctionImportMapping FunctionImportName="Out_CategoryWork_GetList" FunctionName="WebModel.Store.Out_CategoryWork_GetList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_CategoryWork_GetList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

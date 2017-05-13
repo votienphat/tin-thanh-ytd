@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70248680-8EA1-42ED-B418-2880CBF774B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EntitiesObject</RootNamespace>
+    <AssemblyName>EntitiesObject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Channel\Danhbaionline\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\IStoredProcedure.cs" />
+    <Compile Include="Entities\MetroMembershipEntities\ActionAdmin.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\AdminConfigData.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Channel.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\GroupMember.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\GroupPermission.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_ActionAdmin_GetAll_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_AdminConfigData_getConfigByAdminID_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_Channel_GetListChannelByParentId_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_GroupMember_AdminGroupManagerGetInfoByID_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_GroupMember_GetAllGroupMemberAdmin_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_GroupMember_GetListGroup_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_LogActionAdmin_GetByAdminName_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_LogActionAdmin_GetLockedLogByTime_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_checkLogin_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_getInfoMemberAdmin_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_GetListMemberByGroupID_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_GetListMemberByPermisstionUser_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_getListMember_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_GetListUserAdmin_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberAdmin_GetListUser_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberPermission_getPagePermission_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberPermission_GetPermissionByUser_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_MemberPermission_getPermissionUserByUserId_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_GetPageFunctionById_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_InsertPage_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_ListMenuPageForGroup_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_ListMenuUser_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\Ins_PageFunction_ListMenu_Result.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\LogActionAdmin.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\MemberAdmin.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\MemberPermission.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\MetroMembership.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MetroMembershipEntities\PageFunction.cs">
+      <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Article.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\CategoryArticle.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\CategoryPortfolio.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\CategoryWork.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Contact.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Article_GetByCategoryId_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Article_GetById_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Article_GetByTextId_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Article_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_CategoryArticle_GetList_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_CategoryWork_GetList_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Contact_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Portfolio_GetById_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Portfolio_GetListCategoryPortfolio_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Portfolio_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Portfolio_GetList_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Slogan_Get_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Work_GetByCategoryId_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Work_GetById_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Work_GetByTextId_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Work_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Plain.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Portfolio.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Slogan.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Stat.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Web.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Work.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Message\Enum\OpenProviderEnum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\WebEntities\Web.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Web.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\MetroMembershipEntities\MetroMembership.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MetroMembership.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

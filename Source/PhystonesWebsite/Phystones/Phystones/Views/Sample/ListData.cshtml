@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "ListData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p class="bs-example bs-baseline-top">
+    <button onclick="OpenPopupFull('@Url.Action("SaveData")','Add Sample')" type="button" class="btn btn-default btn-icon btn-lg">
+        Create
+    </button>
+</p>
+<table class="table table-bordered datatable" id="myTable">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Content</th>
+            <th>Syntax</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@section scripts{
+    <script>
+        var oTable;
+        $(document).ready(function () {
+            oTable = $('#myTable')
+               .on('preXhr.dt', function () {
+                   //loading.Show();
+               })
+               .on('xhr.dt', function () {
+                   //loading.Hide();
+               })
+               .DataTable({
+                   "dom": '<"top"l>rt<"bottom"fip><"clear">',
+                   "bFilter": false,
+                   "scrollX": true,
+                   "bProcessing": true,
+                   "bServerSide": true,
+                   "buttons": [
+                               {
+                                   "text": 'My button',
+                                   "action": function (e, dt, node, config) {
+                                       alert('Button activated');
+                                   }
+                               }
+                   ],
+                   "sAjaxSource": '@Url.Action("List")',
+                   "sServerMethod": "POST",
+                   "columns": [
+                       { "data": "RowNumber", "sClass": "align-center", "bSortable": false }, //0
+                       { "data": "ContentSample", "sClass": "align-left" }, //1
+                       { "data": "SyntaxId", "sClass": "align-left" }, //2
+                   ],
+                   "order": [[1, "desc"]],
+                   "lengthMenu": [[10, 50, 100], [10, 50, 100]],
+               });
+            oTable.draw();
+        });
+    </script>
+    @*<script>
+            var $table4 = jQuery( "#table-4" );
+            $table4.DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+                ]
+            } );
+            } );
+        </script>*@
+}
+
+

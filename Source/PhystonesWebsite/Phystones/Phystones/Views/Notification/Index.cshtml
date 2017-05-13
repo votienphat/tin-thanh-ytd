@@ -1,0 +1,48 @@
+﻿@using System.Web.Optimization
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Metronic/_MainLayout.cshtml";
+}
+
+<div style="margin-top: 100px;">
+    <!-- This button will trigger the time consuming operation -->
+    <input type="button" id="mybutton"
+           value="Call Server" />
+</div>
+<a href="">Submit</a>
+@Html.ActionLink("Test link", "Insert","Notification")
+@section scripts
+{
+    @*<script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    <script src="~/Scripts/noty/jquery.noty.js"></script>
+    <script src="~/Scripts/noty/layouts/top.js"></script>
+    <script src="~/Scripts/noty/themes/default.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var n;
+            function showOrUpdateSuccessMessage(message,link, timeout) {
+                showInfoToastr(message, "Notification", function click() {
+                    window.location.href = link;
+                });
+            }
+            var realtimeNotifier = $.connection.notificationHub;
+            function init() {
+                //realtimeNotifier.server.getNotificationsByPermission().done(function (listNotification) {
+                //    for (var i = 0; i < listNotification.length; i++) {
+                //        showOrUpdateSuccessMessage(listNotification[i].Description ,listNotification[i].Link, 5);
+                //    }     
+                    
+                //});
+            }
+            realtimeNotifier.client.updateNotification = function (listNotification) {
+                showOrUpdateSuccessMessage(listNotification.Description, listNotification.Link, 5);
+            }
+            $.connection.hub.start().done(init);
+
+        });
+
+    </script>*@
+}
