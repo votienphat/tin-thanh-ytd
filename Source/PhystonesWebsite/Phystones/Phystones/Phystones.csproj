@@ -2552,6 +2552,7 @@
     <Content Include="Content\Theme\web\assets\img\logo-plain%402x.png" />
     <Content Include="Content\Theme\web\assets\img\logo-type%402x.png" />
     <Content Include="Content\Theme\web\assets\img\logo.jpg" />
+    <Content Include="Content\Theme\web\assets\img\logo.png" />
     <Content Include="Content\Theme\web\assets\js\bootstrap.js" />
     <Content Include="Content\Theme\web\assets\js\bootstrap.min.js" />
     <Content Include="Content\Theme\web\assets\js\feed6cb0.js" />
