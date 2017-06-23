@@ -13,16 +13,18 @@ namespace BusinessObject.MembershipModule
         private readonly IContactRepository _contactRepo;
         private readonly ISloganRepository _sloganRepo;
         private readonly IWorkRepository _workRepo;
+        private readonly IConfigRepository _configRepo;
         #endregion
 
         #region Constructor
-        public WebBusiness(IArticleRepository articleRepo, IPortfolioRepository portfolioRepo, IContactRepository contactRepo, ISloganRepository sloganRepo, IWorkRepository workRepo)
+        public WebBusiness(IArticleRepository articleRepo, IPortfolioRepository portfolioRepo, IContactRepository contactRepo, ISloganRepository sloganRepo, IWorkRepository workRepo,IConfigRepository configRepo)
         {
             _articleRepo = articleRepo;
             _portfolioRepo = portfolioRepo;
             _contactRepo = contactRepo;
             _sloganRepo = sloganRepo;
             _workRepo = workRepo;
+            _configRepo = configRepo;
         }
         #endregion
         public int SaveDataContact(string Name, string Phone, string Email, string Messenger)
@@ -104,6 +106,14 @@ namespace BusinessObject.MembershipModule
         public Out_Work_GetByTextId_Result WorkGetByTextId(string textId)
         {
             return _workRepo.WorkGetByTextId(textId);
+        }
+        public Out_Config_GetByKey_Result ConfigGetByKey(string key)
+        {
+            return _configRepo.ConfigGetByKey(key);
+        }
+        public int SaveConfigKey(string key,string value)
+        {
+            return _configRepo.SaveConfigKey(key,value);
         }
     }
 }

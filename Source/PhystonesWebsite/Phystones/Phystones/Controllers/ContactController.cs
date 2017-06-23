@@ -1,15 +1,18 @@
 ﻿using BusinessObject.WebModule.Contract;
 using EntitiesObject.Entities.WebEntities;
-using Phystones.Helper.DataTables;
-using Phystones.Models.ContentData;
 using MyConfig;
+using Newtonsoft.Json;
+using Phystones.Enums;
+using Phystones.Helper.DataTables;
+using Phystones.Models.Config;
+using Phystones.Models.ContentData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Phystones.Controllers
+namespace MyAdmin.Controllers
 {
     public class ContactController : Controller
     {
@@ -25,7 +28,15 @@ namespace Phystones.Controllers
         // GET: Sample
         public ActionResult Index()
         {
-            return View();
+            var model = new ContactConfigModel();
+            var configData = _webBusiness.ConfigGetByKey(ConfigKeyEnum.ContactKey.ToString());
+            if (configData != null)
+            {
+                var json = configData.Value;
+                model = JsonConvert.DeserializeObject<ContactConfigModel>(json);
+                return View(model);
+            }
+            return View(model);
         }
         [HttpPost]
         public ActionResult SendMess(SendContact model)
@@ -97,7 +108,12 @@ namespace Phystones.Controllers
             var list = items.Select(c => new
             {
                 c.Id,
-             
+             CreateDate = c.CreateDate.GetValueOrDefault().ToString("dd/MM/yyyy HH:mm:ss"),
+             c.Email,
+             c.Phone,
+             c.RowNumber,
+             c.Messenger,
+             c.Name,
             }).ToArray();
 
             response.sEcho = dataTablesParam.Draw;

@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using BusinessObject.WebModule.Contract;
 using Phystones.Models.Enum;
 using MyUtility.Extensions;
 using System.Linq;
@@ -12,6 +11,7 @@ using Phystones.Helper.DataTables;
 using System.Collections.Generic;
 using MyConfig;
 using EntitiesObject.Entities.WebEntities;
+using BusinessObject.WebModule.Contract;
 
 namespace Phystones.Controllers
 {
@@ -64,15 +64,19 @@ namespace Phystones.Controllers
         {
             if (ModelState.IsValid)
             {
-                var ext = ImageHelper.GetFileExtension(model.ImgeString);
-                var file = ImageHelper.Base64ToImage(model.ImgeString);
-                var filename = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss").Replace(@"/", string.Empty);
-                filename = filename.Replace(@":", string.Empty);
-                filename = filename.Replace(@" ", string.Empty) + "." + ext;
-                var path = Path.Combine(Server.MapPath("~/Content/Upload/"), filename);
-                file.Save(path);
-                var pathImage = "../Content/Upload/" + filename;
-                var result = _webBusiness.SaveDataArticle(model.Id, model.Title, pathImage, model.ContentBody, model.CategoryId);
+                var pathImage = string.Empty;
+                if (model.ImgeString != null)
+                {
+                    var ext = ImageHelper.GetFileExtension(model.ImgeString);
+                    var file = ImageHelper.Base64ToImage(model.ImgeString);
+                    var filename = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss").Replace(@"/", string.Empty);
+                    filename = filename.Replace(@":", string.Empty);
+                    filename = filename.Replace(@" ", string.Empty) + "." + ext;
+                    var path = Path.Combine(Server.MapPath("~/Content/Upload/"), filename);
+                    file.Save(path);
+                    pathImage = "../Content/Upload/" + filename;
+                }
+                var result = _webBusiness.SaveDataWork(model.Id, model.Title, pathImage, model.ContentBody, model.CategoryId);
                 if (result > 0)
                 {
                     ViewBag.Success = "Success";

@@ -46,14 +46,15 @@ namespace Phystones.Models.ContentData
     public class SendContact
     {
         [Required(ErrorMessage = "Please Enter Name")]
-        public string  Name { get; set; }
+        public string Name { get; set; }
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Please Enter Correct Phone.")]
         [Required(ErrorMessage = "Please Enter Phone")]
         [StringLength(11, ErrorMessage = "The Mobile must contains 10 - 11 characters", MinimumLength = 10)]
-        public string  Phone { get; set; }
+        public string Phone { get; set; }
         [Required(ErrorMessage = "Please Enter Email")]
         [RegularExpression(@"^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$",
         ErrorMessage = "Please Enter Correct Email Address")]
-        public string  Email { get; set; }
+        public string Email { get; set; }
         [Required(ErrorMessage = "Please Enter Messenger")]
         public string Messenger { get; set; }
     }

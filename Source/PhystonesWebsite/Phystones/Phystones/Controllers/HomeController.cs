@@ -4,6 +4,9 @@ using Phystones.Models.Enum;
 using MyUtility.Extensions;
 using System.Linq;
 using Phystones.Models.Article;
+using Phystones.Models.Config;
+using Newtonsoft.Json;
+using Phystones.Enums;
 
 namespace Phystones.Controllers
 {
@@ -22,7 +25,8 @@ namespace Phystones.Controllers
         public ActionResult Index()
         {
             var plain = _webBusiness.GetByCategoryId(CategoryArticleEnum.Plain.Value());
-            var resultplain = plain.Select(x => new ArticleViewModel {
+            var resultplain = plain.Select(x => new ArticleViewModel
+            {
                 Title = x.Title,
                 Image = x.Image,
                 Link = x.TextId,
@@ -32,6 +36,19 @@ namespace Phystones.Controllers
             ViewBag.Plain = resultplain;
             ViewBag.Slogan = slogan;
             return View();
+        }
+        [AllowAnonymous]
+        public ActionResult Footer()
+        {
+            var model = new ContactConfigModel();
+            var configData = _webBusiness.ConfigGetByKey(ConfigKeyEnum.ContactKey.ToString());
+            if (configData != null)
+            {
+                var json = configData.Value;
+                model = JsonConvert.DeserializeObject<ContactConfigModel>(json);
+                return PartialView(model);
+            }
+            return PartialView(model);
         }
     }
 }

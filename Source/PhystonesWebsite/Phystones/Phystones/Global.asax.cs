@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -54,7 +52,6 @@ namespace Phystones
             Bootstrapper.Bootstrap(_container);
             RegisterDependencyResolver();
             InstallDependencies();
-
             // Khởi tạo Cache
             var dateClearCache = DateTime.Now.AddMinutes(MyConfig.MyConfiguration.Cache.Default);
             var ts = dateClearCache - DateTime.Now;

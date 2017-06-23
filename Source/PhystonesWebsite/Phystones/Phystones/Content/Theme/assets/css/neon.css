@@ -23643,3 +23643,6 @@ dd-content,
     right: 0;
   }
 }
+.field-validation-error {
+    color:red;
+}

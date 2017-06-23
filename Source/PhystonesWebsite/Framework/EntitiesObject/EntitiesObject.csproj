@@ -156,6 +156,9 @@
     <Compile Include="Entities\WebEntities\CategoryWork.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\WebEntities\Config.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\WebEntities\Contact.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
@@ -175,6 +178,9 @@
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\WebEntities\Out_CategoryWork_GetList_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebEntities\Out_Config_GetByKey_Result.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\WebEntities\Out_Contact_GetListData_Result.cs">

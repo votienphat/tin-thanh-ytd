@@ -41,6 +41,12 @@ namespace Phystones
               defaults:
                   new { controller = "Portfolio", action = "Content" }
               );
+             routes.MapRoute(
+              name: RouteName.Footer.Text(),
+              url: "FooterHtml",
+              defaults:
+                  new { controller = "Home", action = "Footer" }
+              );
             routes.Add("ArticleDetail", new SeoFriendlyRoute("ArticleDetail/{id}",
                 new RouteValueDictionary(new {controller = "Article", action = "ArticleDetail"}),
                 new MvcRouteHandler()));

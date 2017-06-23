@@ -1,3 +1,41 @@
-﻿
-
-
+﻿@using Phystones.Models.ContentData
+@model SendContact
+@using (Ajax.BeginForm("SendMess", "Contact",
+                            new AjaxOptions
+                            {
+                                HttpMethod = "POST",
+                                UpdateTargetId = "saveContact"
+                            }, new { @class = "form-horizontal form-groups-bordered" }))
+{
+    <fieldset>
+        <ul class=" clearfix">
+            <li class="grid-4 alpha form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.Name, new { @placeholder = "Name" })
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+            </li>
+            <li class="grid-4 form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email address" })
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+            </li>
+            <li class="grid-4 omega form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.Phone, new { @placeholder = "Phone number" })
+                    @Html.ValidationMessageFor(x => x.Phone)
+                </div>
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <div class="grid-12 center margin-top-standard form-el">
+            @Html.TextAreaFor(x => x.Messenger, new { @placeholder = "Description" })
+            @Html.ValidationMessageFor(x => x.Messenger)
+        </div>
+    </fieldset>
+    <fieldset class="clearfix">
+        <button type="submit" class="grid-4 secondary center large margin-top-standard">Submit</button>
+    </fieldset>
+}

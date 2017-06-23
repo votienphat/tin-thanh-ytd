@@ -45,6 +45,13 @@ warning 6002: The table/view 'ProCompany.dbo.CategoryWork' does not have a prima
           <Property Name="Name" Type="nvarchar" MaxLength="512" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="KeyConfig" />
+          </Key>
+          <Property Name="KeyConfig" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="Id" />
@@ -137,6 +144,13 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
         </Function>
         <Function Name="Out_CategoryArticle_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Out_CategoryWork_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Out_Config_GetByKey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KeyConfig" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Out_Config_SaveByKey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Key" Type="nvarchar" Mode="In" />
+          <Parameter Name="Value" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="Out_Contact_GetListData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RowStart" Type="int" Mode="In" />
           <Parameter Name="RowEnd" Type="int" Mode="In" />
@@ -198,6 +212,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
         <EntityContainer Name="WebModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryArticle" EntityType="Self.CategoryArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plain" EntityType="Self.Plain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Portfolio" EntityType="Self.Portfolio" Schema="dbo" store:Type="Tables" />
@@ -326,6 +341,14 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
             <Parameter Name="CategoryId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_CategoryWork_GetList" ReturnType="Collection(WebModel.Out_CategoryWork_GetList_Result)" />
+          <EntitySet Name="Configs" EntityType="WebModel.Config" />
+          <FunctionImport Name="Out_Config_GetByKey" ReturnType="Collection(WebModel.Out_Config_GetByKey_Result)">
+          <Parameter Name="KeyConfig" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Config_SaveByKey">
+            <Parameter Name="Key" Mode="In" Type="String" />
+            <Parameter Name="Value" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Out_Article_GetListData_Result">
           <Property Type="Int64" Name="RowNumber" Nullable="true" />
@@ -555,6 +578,17 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="512" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="KeyConfig" />
+          </Key>
+          <Property Name="KeyConfig" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="Out_Config_GetByKey_Result">
+          <Property Type="String" Name="KeyConfig" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Value" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -867,6 +901,23 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Configs">
+            <EntityTypeMapping TypeName="WebModel.Config">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="KeyConfig" ColumnName="KeyConfig" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Out_Config_GetByKey" FunctionName="WebModel.Store.Out_Config_GetByKey">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Config_GetByKey_Result">
+                <ScalarProperty Name="KeyConfig" ColumnName="KeyConfig" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Config_SaveByKey" FunctionName="WebModel.Store.Out_Config_SaveByKey" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

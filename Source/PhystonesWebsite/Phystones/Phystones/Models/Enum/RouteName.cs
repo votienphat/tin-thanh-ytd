@@ -6,5 +6,6 @@
         WorkDetail,
         ArticleDetail,
         PopupPortfolio,
+        Footer,
     }
 }

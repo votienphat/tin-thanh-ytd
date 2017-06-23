@@ -38,6 +38,7 @@ namespace DataAccess.EF
         public virtual DbSet<Portfolio> Portfolios { get; set; }
         public virtual DbSet<CategoryWork> CategoryWorks { get; set; }
         public virtual DbSet<Work> Works { get; set; }
+        public virtual DbSet<Config> Configs { get; set; }
     
         public virtual int Out_Article_Save(Nullable<int> id, string title, string image, string contentBody, Nullable<int> categoryId)
         {
@@ -313,6 +314,28 @@ namespace DataAccess.EF
         public virtual ObjectResult<Out_CategoryWork_GetList_Result> Out_CategoryWork_GetList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_CategoryWork_GetList_Result>("Out_CategoryWork_GetList");
+        }
+    
+        public virtual ObjectResult<Out_Config_GetByKey_Result> Out_Config_GetByKey(string keyConfig)
+        {
+            var keyConfigParameter = keyConfig != null ?
+                new ObjectParameter("KeyConfig", keyConfig) :
+                new ObjectParameter("KeyConfig", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Config_GetByKey_Result>("Out_Config_GetByKey", keyConfigParameter);
+        }
+    
+        public virtual int Out_Config_SaveByKey(string key, string value)
+        {
+            var keyParameter = key != null ?
+                new ObjectParameter("Key", key) :
+                new ObjectParameter("Key", typeof(string));
+    
+            var valueParameter = value != null ?
+                new ObjectParameter("Value", value) :
+                new ObjectParameter("Value", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Config_SaveByKey", keyParameter, valueParameter);
         }
     }
 }

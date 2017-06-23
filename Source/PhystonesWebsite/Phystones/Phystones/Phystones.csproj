@@ -79,9 +79,8 @@
       <Private>True</Private>
       <HintPath>..\..\Framework\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="MyMemCache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Framework\MyCache\obj\Debug\MyMemCache.dll</HintPath>
+    <Reference Include="MyMemCache">
+      <HintPath>..\..\Framework\MyCache\bin\Debug\MyMemCache.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -2552,7 +2551,6 @@
     <Content Include="Content\Theme\web\assets\img\logo-plain%402x.png" />
     <Content Include="Content\Theme\web\assets\img\logo-type%402x.png" />
     <Content Include="Content\Theme\web\assets\img\logo.jpg" />
-    <Content Include="Content\Theme\web\assets\img\logo.png" />
     <Content Include="Content\Theme\web\assets\js\bootstrap.js" />
     <Content Include="Content\Theme\web\assets\js\bootstrap.min.js" />
     <Content Include="Content\Theme\web\assets\js\feed6cb0.js" />
@@ -3165,6 +3163,10 @@
     <Content Include="Views\Portfolio\Content.cshtml" />
     <Content Include="Views\Portfolio\ListData.cshtml" />
     <Content Include="Views\Portfolio\SaveData.cshtml" />
+    <Content Include="Views\Contact\ListData.cshtml" />
+    <Content Include="Views\Config\Index.cshtml" />
+    <Content Include="Views\Home\Footer.cshtml" />
+    <Content Include="Views\Config\ConfigContact.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Syntax\Index.cshtml" />
@@ -3195,6 +3197,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -3202,12 +3205,8 @@
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Controllers\WorkController.cs" />
-    <Compile Include="Enums\ChangePassTypeEnum.cs" />
-    <Compile Include="Enums\ItemGameUserStatusEnum.cs" />
-    <Compile Include="Enums\NotificationType.cs" />
-    <Compile Include="Enums\PopupPromotionType.cs" />
+    <Compile Include="Enums\ConfigKeyEnum.cs" />
     <Compile Include="Enums\ResponseCode.cs" />
-    <Compile Include="Enums\TransferTypeEnum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3229,6 +3228,7 @@
     <Compile Include="Helper\MyExtention.cs" />
     <Compile Include="Helper\SessionManager.cs" />
     <Compile Include="Helper\SimplePaletteQuantizerHelper.cs" />
+    <Compile Include="Models\Config\ContactConfigModel.cs" />
     <Compile Include="Models\Account\AdminAccount.cs" />
     <Compile Include="Models\Account\AdminMemberInfo.cs" />
     <Compile Include="Models\Account\AdminMenu.cs" />

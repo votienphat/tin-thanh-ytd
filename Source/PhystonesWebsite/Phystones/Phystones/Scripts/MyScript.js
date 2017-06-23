@@ -80,3 +80,16 @@ var OpenPopupPortfolio = function (index) {
             }
         });
 };
+var Footer = function () {
+    $.ajax({
+        url: '/FooterHtml',
+        cache: false,
+    })
+        .done(function (html) {
+            if ($.trim(html).length > 0) {
+                $("#footer").html(html);
+            } else {
+                //Loading.Hide();
+            }
+        });
+};
