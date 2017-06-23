@@ -1,0 +1,23 @@
+/**
+ *
+ * Apply Here your Custom CSS
+ *
+*/
+
+body {
+	
+}
+
+.rooms div[data-tag] {
+        -moz-transition: opacity 350ms ease-in-out;
+    -o-transition: opacity 350ms ease-in-out;
+    -webkit-transition: opacity 350ms ease-in-out;
+    transition: opacity 350ms ease-in-out;
+}
+
+.rooms div[data-tag].not-in-filter {
+    -webkit-opacity: 0.3;
+    -moz-opacity: 0.3;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+}

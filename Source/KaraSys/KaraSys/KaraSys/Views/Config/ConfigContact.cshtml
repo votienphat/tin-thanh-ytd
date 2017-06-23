@@ -1,0 +1,64 @@
+﻿@using KaraSys.Models.Config
+@model ContactConfigModel
+@using (Ajax.BeginForm("ConfigContact", "Config", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "saveConfig"
+}, new { @class = "" }))
+{
+    @Html.HiddenFor(x => x.KeyConfig)
+    <div class="form-group">
+        <label class="control-label">Phone</label>
+        @Html.TextBoxFor(x => x.Phone, new { @placeholder = "Phone", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Phone)
+
+    </div>
+    <div class="form-group">
+        <label class="control-label">Twitter</label>
+        @Html.TextBoxFor(x => x.Twitter, new { @placeholder = "Twitter", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Twitter)
+    </div>
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Email)
+            </div>
+            <div class="form-group">
+                <label class="control-label">Skype</label>
+                @Html.TextBoxFor(x => x.Skype, new { @placeholder = "Skype", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Skype)
+            </div>
+            <div class="form-group">
+                <label class="control-label">HostName</label>
+                @Html.TextBoxFor(x => x.HostName, new { @placeholder = "HostName", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.HostName)
+            </div>
+            <div class="form-group">
+                <label class="control-label">FullHostName</label>
+                @Html.TextBoxFor(x => x.FullHostName, new { @placeholder = "FullHostName", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.FullHostName)
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+}
+@if(ViewBag.Success != null){ 
+    <script>
+        var opts = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        toastr.success("Cập nhật thành công.", "Thông Báo", opts);
+    </script>    
+}
+

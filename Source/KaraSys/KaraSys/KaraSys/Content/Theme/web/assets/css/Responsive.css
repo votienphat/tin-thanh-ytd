@@ -1,0 +1,12 @@
+﻿#modal-footer>div {
+   width:100% !important;
+}
+.modal-open .modal {
+    overflow-y:hidden;
+}
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 1000px;
+        margin: 30px auto;
+    }
+}

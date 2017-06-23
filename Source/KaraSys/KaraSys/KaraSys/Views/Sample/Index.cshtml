@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="~/Content/Theme/assets/Codemirror/lib/codemirror.css" rel="stylesheet" />
+    <link href="~/Content/Theme/assets/Codemirror/lib/docs.css" rel="stylesheet" />
+    <link href="~/Content/Theme/assets/Codemirror/lib/abcdef.css" rel="stylesheet" />
+}
+<hr />
+<h2>Quản Lý Sample</h2>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary" data-collapsed="0">
+            <div class="panel-heading">
+                <div class="panel-options"> <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a> <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a> <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a> <a href="#" data-rel="close"><i class="entypo-cancel"></i></a> </div>
+            </div>
+            <div class="panel-body">
+                @Html.Partial("SaveData")
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/Theme/assets/Codemirror/lib/codemirror.js"></script>
+    <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById("Content"), {
+            lineNumbers: true,
+            mode: "text/html",
+            matchBrackets: true,
+            styleActiveLine: true,
+            theme: 'abcdef'
+        });
+    </script>
+}
+
+

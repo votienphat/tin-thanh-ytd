@@ -1,0 +1,101 @@
+﻿@using EntitiesObject.Entities.KaraSysEntities
+@using EntitiesObject.Message.KaraSys
+@using MyUtility.Extensions
+@model List<Out_Room_GetAll_Result>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var rooms = Model;
+
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        var all_items = $("div[data-tag]"),
+            categories_links = $(".image-categories a");
+
+        categories_links.click(function (ev) {
+            ev.preventDefault();
+
+            var $this = $(this),
+                filter = $this.data('filter');
+
+            categories_links.removeClass('active');
+            $this.addClass('active');
+
+            all_items.addClass('not-in-filter').filter('[data-tag="' + filter + '"]').removeClass('not-in-filter');
+
+            if (filter == 'all' || filter == '*') {
+                all_items.removeClass('not-in-filter');
+                return;
+            }
+        });
+
+        $.ajax({
+            dataType: "json",
+            method: 'POST',
+            url: '@Url.Action("GetAllRooms")',
+            success: showRooms
+        });
+
+        function showRooms(data) {
+            console.log(data);
+            //$("#roomTemplate").tmpl(data)
+            //  .appendTo("#rooms");
+
+
+            $(document).ready(function () {
+                Tempo.prepare('rooms').render(data);
+            });
+        }
+    });
+
+
+</script>
+}
+
+<div class="rooms">
+    <div class="image-categories">
+        <span>Trạng thái phòng</span>
+        <a href="#" class="active" data-filter="all">Tất cả</a>
+        <a href="#" data-filter="@RoomStatusEnum.Available.Value()">Trống</a> /
+        <a href="#" data-filter="@RoomStatusEnum.Incoming.Value()">Đang chờ</a> /
+        <a href="#" data-filter="@RoomStatusEnum.Maintenance.Value()">Bảo trì</a> /
+        <a href="#" data-filter="@RoomStatusEnum.Running.Value()">Đang dùng</a> /
+    </div>
+
+    <div class="row" id="rooms">
+        <div class="col-sm-3" data-template data-tag="{{Status}}">
+
+            <div class="tile-block 
+                 {% if Status == @RoomStatusEnum.Incoming.Value() %}
+                    tile-aqua
+                 {% endif %}
+                 {% if Status == @RoomStatusEnum.Available.Value() %}
+                     tile-blue
+                 {% endif %}
+                 {% if Status == @RoomStatusEnum.Maintenance.Value() %}
+                    tile-gray
+                 {% endif %}
+                 {% if Status == @RoomStatusEnum.Running.Value() %}
+                    tile-green
+                 {% endif %}
+                 ">
+                <div class="tile-header">
+                    <a href="#">
+                        {{Title}}
+                        <span>{{RoomCode}}</span>
+                    </a>
+                </div>
+
+                <div class="tile-content">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

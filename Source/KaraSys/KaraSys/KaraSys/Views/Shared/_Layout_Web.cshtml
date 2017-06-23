@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<!--[if lt IE 7]>
+<html class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 no-js" lang="en">
+   <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie10 lt-ie9 lt-ie8 no-js" lang="en">
+   <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie10 lt-ie9 no-js" lang="en">
+   <![endif]-->
+<!--[if IE 9]>
+<html class="lt-ie10 no-js" lang="en">
+   <![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Theme/web/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Theme/web/assets/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/Theme/web/assets/css/style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Content/Theme/web/assets/js/jquery-3.2.1.min.js"></script>
+    <!--[if lte IE 10]>
+    <link href="~/Content/Theme/web/assets/css/ie.css" type="text/css" rel="stylesheet" media="screen" />
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <script src="~/Content/Theme/web/assets/js/respond.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="~/Content/Theme/web/assets/js/modernizr6cb0.js"></script>
+    <script src="~/Content/Theme/web/assets/js/bootstrap.min.js"></script>
+    <!-- Icons -->
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/Theme/web/assets/css/Responsive.css" rel="stylesheet" />
+    @RenderSection("styles", false)
+</head>
+<body class="">
+    <div id="page-border">
+        <div id="wrap" class="container">
+            @{Html.RenderPartial("_Head_Web");}
+            @RenderBody()
+            @{Html.RenderPartial("_Footer_Web");}
+        </div>
+        <!-- /#wrap -->
+        <!-- Arrow to top -->
+        <a href="#" id="to-top" class="icon-box">
+            <i class="ss-icon ss-standard">&#xF500;</i>
+        </a>
+        <!-- Modal markup -->
+        <div id="modal-overlay"></div>
+        <div id="modal-wrap" class="clearfix">
+            <div class="vertical-center"></div>
+            <div id="modal" class="grid-14 center">
+                <div id="modal-content" class="clearfix">
+                    <div class="grid-14 alpha omega">
+                        <!-- Title -->
+                        <h2></h2>
+                        <!-- Tagline -->
+                        <h3 class="tagline h4"></h3>
+                    </div>
+                    <!-- Body column 1 -->
+                    <div class="grid-7 alpha"></div>
+                    <!-- Body column 2 -->
+                    <div class="grid-7 omega"></div>
+                    <!-- UI Controls -->
+                    <a href="#" id="modal-close" class="ss-icon ss-standard">&#x2421;</a>
+                    <a href="#" id="modal-left">
+                        <i class="ss-icon ss-standard">&#x25C5;</i>
+                    </a>
+                    <a href="#" id="modal-right">
+                        <i class="ss-icon ss-standard">&#x25BB;</i>
+                    </a>
+                </div>
+                <div id="modal-footer" class="clearfix">
+                    <!-- Footer column 1 -->
+                    <div class="grid-7 alpha"></div>
+                    <!-- Footer column 2 -->
+                    <div class="grid-7 omega"></div>
+                </div>
+            </div>
+        </div>
+        <div id="ie6">
+            <p id="ie6-logo"><a href="index.html" class="no-border" title="Built by Buffalo - Web Design Brighton UK">
+                <img src="~/Content/Theme/web/assets/img/logo-ie6.png" alt="Built by Buffalo - Web Design Brighton UK" /></a></p>
+            <h1 id="tagline">We are Buffalo</h1>
+            <h2 class="grid-10 center">
+                Sadly you are using Internet Explorer 6.  This browser is over 10 years old so we can't show you the lovely site that you would get with a modern browser like <a href="https://www.google.com/chrome">Chrome</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://www.mozilla.org/">Firefox</a>. Upgrade and embrace the future of the internet!
+                <br><br>
+                Until you upgrade you will have to take our word for it when we say that over the last few years we've made a reputation for building websites that look great and are easy-to-use.
+                <br><br>
+                Founded in 2006, Buffalo is a small web design & development agency based in Brighton, UK. If you the sound of us, and think we could work together then get in touch with us. Either by phone on +44 (0)1273 434 060 or by email on
+                <a href="cdn-cgi/l/email-protection.html#0169646d6d6e416374686d75637863746767606d6e2f626e6c">
+                    <span class="__cf_email__" data-cfemail="f9919c959596b99b8c90958d9b809b8c9f9f989596d79a9694">[email&#160;protected]</span>
+                </a>
+                .
+            </h2>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Content/Theme/web/assets/js/mootools-core6cb0.js"></script>
+    <script type="text/javascript" src="~/Content/Theme/web/assets/js/mootools-more6cb0.js"></script>
+    <script type="text/javascript" src="~/Content/Theme/web/assets/js/plugins6cb0.js"></script>
+    <script type="text/javascript" src="~/Content/Theme/web/assets/js/main6cb0.js"></script>
+    <script type="text/javascript" src="~/Content/Theme/web/assets/js/raphael6cb0.js"></script>
+    <script type="text/javascript" src="~/Content/Theme/web/assets/js/infographics6cb0.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/MyScript.js"></script>
+    @RenderSection("scripts", false)
+    <script>
+        $(document).ready(function () {
+            Footer();
+        });
+    </script>
+</body>
+</html>
