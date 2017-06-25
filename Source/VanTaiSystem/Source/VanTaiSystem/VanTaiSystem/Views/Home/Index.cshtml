@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document)
+        .ready(function() {
+            var request = $.ajax({
+                url: "/api/van-don",
+                method: "POST",
+                data: JSON.stringify({ name: 'POSearch' }),
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    $("#results").append(data);
+                }
+            });
+
+            $.ajax(request);
+        });
+</script>
+
+<div id="results"></div>
