@@ -10,6 +10,7 @@
  *********************************************************************/
 using System.Configuration;
 using MyConfig.Cache;
+using MyConfig.Content;
 
 namespace MyConfig
 {
@@ -33,24 +34,15 @@ namespace MyConfig
         {
             get { return Instance.ArticleElement; }
         }
-        public static WebSocketElement WebSocket
-        {
-            get { return Instance.WebSocketElement; }
-        }
-
-        public static UrlSocketCollection UrlSocketCollection
-        {
-            get { return Instance.UrlSocketCollection; }
-        }
 
         public static NotificationElement Notification
         {
             get { return Instance.NotificationElement; }
         }
 
-        public static RedisElement Redis
+        public static MailElement Mail
         {
-            get { return Instance.RedisElement; }
+            get { return Instance.MailElement; }
         }
 
         public static CacheElement Cache

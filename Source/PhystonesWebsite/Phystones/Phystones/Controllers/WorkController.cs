@@ -15,7 +15,7 @@ using BusinessObject.WebModule.Contract;
 
 namespace Phystones.Controllers
 {
-    public class WorkController : BaseController
+    public class WorkController : Controller
     {
         #region Variables
 
@@ -24,7 +24,7 @@ namespace Phystones.Controllers
         {
             _webBusiness = webBusiness;
         }
-        [Authorize]
+
         public ActionResult Index()
         {
             var work = _webBusiness.GetByCategoryId(CategoryArticleEnum.Work.Value());
@@ -39,7 +39,7 @@ namespace Phystones.Controllers
             ViewBag.Work = resultwork;
             return View();
         }
-        [Authorize]
+
         public ActionResult SaveData(int Id)
         {
             ViewBag.CateList = _webBusiness.CategoryWorkGetList();
@@ -58,7 +58,7 @@ namespace Phystones.Controllers
 
             return PartialView(model);
         }
-        [Authorize]
+
         [HttpPost]
         public ActionResult SaveData(ArticleModel model)
         {

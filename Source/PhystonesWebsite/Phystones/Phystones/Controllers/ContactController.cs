@@ -1,4 +1,8 @@
-﻿using BusinessObject.WebModule.Contract;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using BusinessObject.WebModule.Contract;
 using EntitiesObject.Entities.WebEntities;
 using MyConfig;
 using Newtonsoft.Json;
@@ -6,13 +10,8 @@ using Phystones.Enums;
 using Phystones.Helper.DataTables;
 using Phystones.Models.Config;
 using Phystones.Models.ContentData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
-namespace MyAdmin.Controllers
+namespace Phystones.Controllers
 {
     public class ContactController : Controller
     {
@@ -41,8 +40,12 @@ namespace MyAdmin.Controllers
         [HttpPost]
         public ActionResult SendMess(SendContact model)
         {
-            if (ModelState.IsValid) {
-                var result = _webBusiness.SaveDataContact(model.Name,model.Phone,model.Email,model.Messenger);
+            if (ModelState.IsValid)
+            {
+                _webBusiness.SaveDataContact(model.Name, model.Phone, model.Email, model.Messenger,
+                    MyConfiguration.Mail.SendingMail, MyConfiguration.Mail.SendingMail2,
+                    MyConfiguration.Mail.SendingMailName, MyConfiguration.Mail.SendingMailTitle,
+                    MyConfiguration.Mail.ReceiveMails, MyConfiguration.Mail.HostMail, MyConfiguration.Mail.Port);
             }
             return PartialView();
         }

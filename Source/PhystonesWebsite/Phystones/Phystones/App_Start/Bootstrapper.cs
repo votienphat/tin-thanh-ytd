@@ -17,7 +17,7 @@ namespace Phystones
         {
             WindsorRegistrar.RegisterAllFromAssemblies("EntitiesObject");
             WindsorRegistrar.RegisterAllFromAssemblies("DataAccess");
-            WindsorRegistrar.RegisterAllFromAssemblies("BussinessObject");
+            WindsorRegistrar.RegisterAllFromAssemblies("BusinessObject");
         }
         
         public static void BootstrapApi(IWindsorContainer container)
@@ -33,7 +33,7 @@ namespace Phystones
                     .WithService.AllInterfaces()
                     .Configure(o => o.LifestylePerWebRequest()));
             container.Register(
-                Classes.FromAssemblyNamed("BussinessObject")
+                Classes.FromAssemblyNamed("BusinessObject")
                     .Pick()
                     .WithService.AllInterfaces()
                     .Configure(o => o.LifestylePerWebRequest()));

@@ -5,7 +5,9 @@ namespace BusinessObject.WebModule.Contract
 {
     public interface IWebBusiness
     {
-        int SaveDataContact(string Name, string Phone, string Email, string Messenger);
+        int SaveDataContact(string name, string phone, string email, string messenger, string fromMail,
+            string fromMail2, string fromMailName, string fromMailTitle, string toMails, string hostMail, int port);
+
         int SaveDataPortfolio(int Id, string Name, string Avatar, string About, int CategoryId, string LinkWeb, string LinkProfile);
         int SaveDataArticle(int Id, string Title, string Image, string ContentBody, int CategoryId);
         List<Out_Contact_GetListData_Result> ListDataContact(int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow);

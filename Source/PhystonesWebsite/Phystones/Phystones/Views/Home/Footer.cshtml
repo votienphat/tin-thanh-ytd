@@ -1,5 +1,4 @@
 ﻿@using Phystones.Models.Config
-@using Phystones.Models.ContentData
 @model ContactConfigModel
 
 <ul class="list-icon-items clearfix">
@@ -17,11 +16,11 @@
         <ul class="list-plain list-regular">
             <li>@Model.Phone</li>
             <li>
-                <a class="has-border">
+                <a class="has-border" href="mailto:@Model.Email">
                     <span class="__cf_email__">@Model.Email</span>
                 </a>
             </li>
-            <li><a href="@Model.Twitter" class="has-border">Follow us on Twitter</a></li>
+            <li><a href="@Model.Twitter" class="has-border">Follow us on Facebook</a></li>
         </ul>
     </li>
     <li class="grid-4 omega subsection">
@@ -39,11 +38,5 @@
     </li>
 </ul>
 <footer class="subsection">
-    <p>
-        Copyright &copy; 2006 - 2017 <a>Built by @Model.HostName </a> Limited. All rights reserved.<br />
-        Registered in England Company No. 06048231 VAT Registration No. 899 6307 54
-    </p>
-    <p>
-        <a href="">Read the boring legal stuff</a>
-    </p>
+    @Model.FooterContent
 </footer>

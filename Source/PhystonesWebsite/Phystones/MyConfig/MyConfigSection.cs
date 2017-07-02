@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using MyConfig.Cache;
+using MyConfig.Content;
 
 namespace MyConfig
 {
@@ -9,11 +10,6 @@ namespace MyConfig
         public DefaultElement DefaultElement
         {
             get { return (DefaultElement)this["Default"]; }
-        }
-        [ConfigurationProperty("WebSocket")]
-        public WebSocketElement WebSocketElement
-        {
-            get { return (WebSocketElement)this["WebSocket"]; }
         }
 
         [ConfigurationProperty("Notification")]
@@ -28,16 +24,10 @@ namespace MyConfig
             get { return (ArticleElement)this["Article"]; }
         }
 
-        [ConfigurationProperty("UrlSocketCollection")]
-        public UrlSocketCollection UrlSocketCollection
+        [ConfigurationProperty("Mail")]
+        public MailElement MailElement
         {
-            get { return (UrlSocketCollection)this["UrlSocketCollection"]; }
-        }
-
-        [ConfigurationProperty("Redis")]
-        public RedisElement RedisElement
-        {
-            get { return (RedisElement)this["Redis"]; }
+            get { return (MailElement)this["Mail"]; }
         }
 
         [ConfigurationProperty("Cache")]

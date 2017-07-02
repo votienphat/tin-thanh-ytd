@@ -1,23 +1,31 @@
-﻿using BusinessObject.WebModule.Contract;
+﻿using System;
+using System.Collections.Generic;
+using BusinessObject.WebModule.Contract;
 using DataAccess.Contract.Web;
 using EntitiesObject.Entities.WebEntities;
-using System.Collections.Generic;
+using Logger;
+using MyUtility;
 
-namespace BusinessObject.MembershipModule
+namespace BusinessObject.WebModule
 {
     public class WebBusiness : IWebBusiness
     {
         #region Varriables
+
         private readonly IArticleRepository _articleRepo;
         private readonly IPortfolioRepository _portfolioRepo;
         private readonly IContactRepository _contactRepo;
         private readonly ISloganRepository _sloganRepo;
         private readonly IWorkRepository _workRepo;
         private readonly IConfigRepository _configRepo;
+
         #endregion
 
         #region Constructor
-        public WebBusiness(IArticleRepository articleRepo, IPortfolioRepository portfolioRepo, IContactRepository contactRepo, ISloganRepository sloganRepo, IWorkRepository workRepo,IConfigRepository configRepo)
+
+        public WebBusiness(IArticleRepository articleRepo, IPortfolioRepository portfolioRepo,
+            IContactRepository contactRepo, ISloganRepository sloganRepo, IWorkRepository workRepo,
+            IConfigRepository configRepo)
         {
             _articleRepo = articleRepo;
             _portfolioRepo = portfolioRepo;
@@ -26,11 +34,37 @@ namespace BusinessObject.MembershipModule
             _workRepo = workRepo;
             _configRepo = configRepo;
         }
+
         #endregion
-        public int SaveDataContact(string Name, string Phone, string Email, string Messenger)
+
+        public int SaveDataContact(string name, string phone, string email, string messenger, string fromMail,
+            string fromMail2, string fromMailName, string fromMailTitle, string toMails, string hostMail, int port)
         {
-            return _contactRepo.SaveData(Name, Phone, Email, Messenger);
+            try
+            {
+                // Gửi mail thông báo
+                var rawPassword = Common.DecryptBase64(fromMail2);
+                var mails = toMails.Split(',');
+
+                foreach (var mail in mails)
+                {
+                    fromMailTitle = string.Format(fromMailTitle, name);
+                    NetworkCommon.SendMail(fromMail, fromMailName, rawPassword, mail, mail, fromMailTitle,
+                        string.Format("Bạn có contact mới từ {0}" +
+                                      "<br/> Email: {1}" + 
+                                      "<br/> Số điện thoại: {2}" +
+                                      "<br/> Nội dung: {3}",
+                                      name, email, phone, messenger), hostMail, port, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.DefaultLogger.Error("SaveDataContact", ex);
+            }
+
+            return _contactRepo.SaveData(name, phone, email, messenger);
         }
+
         public int SaveDataPortfolio(int Id, string Name, string Avatar, string About, int CategoryId, string LinkWeb, string LinkProfile)
         {
             return _portfolioRepo.SaveData(Id, Name, Avatar, About, CategoryId, LinkWeb, LinkProfile);
