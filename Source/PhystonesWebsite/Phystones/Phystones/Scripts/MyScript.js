@@ -25,18 +25,14 @@
     }
 };
 var OpenPopupFull = function (url, title, callbackhidden) {
-    //CloseAllPopup();
-    //Loading.Show();
     $.ajax({
         url: url,
         cache: false
     })
 .done(function (html) {
     if ($.trim(html).length > 0) {
-        //Loading.Hide();
         PopupFull.Show(title, html, callbackhidden);
     } else {
-        //Loading.Hide();
         Popup.Show("Thông Báo", "Vui lòng tải lại trang");
     }
 });
@@ -77,19 +73,6 @@ var OpenPopupPortfolio = function (index) {
                 PopupPortfolio.Show(html);
             } else {
                 Loading.Hide();
-            }
-        });
-};
-var Footer = function () {
-    $.ajax({
-        url: '/FooterHtml',
-        cache: false,
-    })
-        .done(function (html) {
-            if ($.trim(html).length > 0) {
-                $("#footer").html(html);
-            } else {
-                //Loading.Hide();
             }
         });
 };

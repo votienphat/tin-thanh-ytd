@@ -3172,7 +3172,6 @@
     <Content Include="Views\About\SaveData.cshtml" />
     <Content Include="Views\Contact\ListData.cshtml" />
     <Content Include="Views\Config\Index.cshtml" />
-    <Content Include="Views\Home\Footer.cshtml" />
     <Content Include="Views\Config\ConfigContact.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -3191,6 +3190,7 @@
     <Compile Include="ActionFilter\AjaxValidateAntiForgeryTokenAttribute.cs" />
     <Compile Include="ActionFilter\RegisterDatatablesModelBinder.cs" />
     <Compile Include="ActionFilter\HeaderAuthorizeFilter.cs" />
+    <Compile Include="App_Start\MultiLanguageViewEngine.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\Ioc\WindsorWebApiInstaller.cs" />
@@ -3201,9 +3201,20 @@
     <Compile Include="App_Start\Ioc\IoC.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Content\Texts\WebContent.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebContent.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Texts\WebContent.en-us.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebContent.en-us.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\WebBaseController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3217,6 +3228,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\GlobalHelper.cs" />
     <Compile Include="Helper\SeoUrl.cs" />
     <Compile Include="Helper\Common.cs" />
     <Compile Include="Helper\Constants.cs" />
@@ -3312,6 +3324,16 @@
       <Project>{bcfb0f50-3bf8-4309-b0da-9fe00e0741fb}</Project>
       <Name>MyConfig</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Texts\WebContent.en-us.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WebContent.en-us.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content\Texts\WebContent.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WebContent.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -10,7 +10,7 @@ using Phystones.Enums;
 
 namespace Phystones.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : WebBaseController
     {
         #region Variables
 
@@ -21,7 +21,7 @@ namespace Phystones.Controllers
         }
 
         #endregion
-        [AllowAnonymous]
+
         public ActionResult Index()
         {
             var plain = _webBusiness.GetByCategoryId(CategoryArticleEnum.Plain.Value());
@@ -36,19 +36,6 @@ namespace Phystones.Controllers
             ViewBag.Plain = resultplain;
             ViewBag.Slogan = slogan;
             return View();
-        }
-        [AllowAnonymous]
-        public ActionResult Footer()
-        {
-            var model = new ContactConfigModel();
-            var configData = _webBusiness.ConfigGetByKey(ConfigKeyEnum.ContactKey.ToString());
-            if (configData != null)
-            {
-                var json = configData.Value;
-                model = JsonConvert.DeserializeObject<ContactConfigModel>(json);
-                return PartialView(model);
-            }
-            return PartialView(model);
         }
     }
 }

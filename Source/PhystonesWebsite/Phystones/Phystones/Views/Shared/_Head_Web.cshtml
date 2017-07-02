@@ -1,22 +1,23 @@
-﻿<header id="header" class="clearfix section">
+﻿@using Phystones.Content.Texts
+<header id="header" class="clearfix section">
     <nav id="nav" class="center grid-14">
         <div class="fonts-display clearfix">
             <p class="logo mq-mobile-i-block">
-                <a href="index.html" title="Built by Buffalo - Web Design Brighton UK">
+                <a href="index.html" title="Phystones - We Build Solutions">
                     <img src="~/Content/Theme/web/assets/img/logo-plain@2x.png" alt="Phystones - We Build Solutions" />
                 </a>
             </p>
             <br class="mq-mobile" />
-            <p class="text-left alpha"><a href="@Url.Action("Index","Home")">Home</a>
-            <p class="text-left"><a href="@Url.Action("Index","Work")">Work</a>
-            <p class="text-left"><a href="@Url.Action("Index","About")">About</a>
+            <p class="text-left alpha"><a href="@Url.Action("Index","Home")">@WebContent.Home</a>
+            <p class="text-left"><a href="@Url.Action("Index","Work")">@WebContent.Work</a>
+            <p class="text-left"><a href="@Url.Action("Index","About")">@WebContent.About</a>
             <p class="logo mq-wide-i-block mq-mid-i-block mq-small-i-block">
                 <a href="@Url.Action("Index","Home")" title="Phystones - We Build Solutions">
-                    <img class="logo-img" src="~/Content/Theme/web/assets/img/logo.png" alt="Buffalo" />
+                    <img class="logo-img" src="~/Content/Theme/web/assets/img/logo.png" alt="Phystones - We Build Solutions" />
                 </a>
-            <p class="text-right"><a href="@Url.Action("Index","Feed")">Blog</a>
-            <p class="text-right"><a href="@Url.Action("Index","Job")">Jobs</a>
-            <p class="text-right omega"><a href="@Url.Action("Index","Contact")">Contact</a>
+            <p class="text-right"><a href="@Url.Action("Index","Feed")">@WebContent.Blog</a>
+            <p class="text-right"><a href="@Url.Action("Index","Job")">@WebContent.DigitalSignature</a>
+            <p class="text-right omega"><a href="@Url.Action("Index","Contact")">@WebContent.Contact</a>
         </div>
     </nav>
     <!-- /#nav -->

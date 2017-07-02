@@ -49,6 +49,9 @@ namespace Phystones
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new MultiLanguageViewEngine());
+
             Bootstrapper.Bootstrap(_container);
             RegisterDependencyResolver();
             InstallDependencies();
