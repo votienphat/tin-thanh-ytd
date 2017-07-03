@@ -135,6 +135,12 @@
   <data name="Home" xml:space="preserve">
     <value>Trang chủ</value>
   </data>
+  <data name="Mail" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Điện thoại</value>
+  </data>
   <data name="Work" xml:space="preserve">
     <value>Dự án</value>
   </data>

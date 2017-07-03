@@ -115,6 +115,24 @@ namespace Phystones.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mail.
+        /// </summary>
+        public static string Mail {
+            get {
+                return ResourceManager.GetString("Mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điện thoại.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dự án.
         /// </summary>
         public static string Work {

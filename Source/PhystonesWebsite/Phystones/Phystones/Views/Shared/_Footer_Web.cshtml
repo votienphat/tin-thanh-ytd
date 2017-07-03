@@ -17,22 +17,25 @@
 <aside id="footer" class="grid-12 center section">
     <ul class="list-icon-items clearfix">
         <li class="grid-4 alpha subsection">
-            <a href="@Url.Action("Index", "Contact")" title="@WebContent.Contact"><i class="circ secondary ss-icon ss-standard">&#x1F4AC;<i class="circ pulse"></i></i></a>
-            <h3>@WebContent.Contact</h3>
+            <a href="tel:@config.Phone">
+                <i class="circ secondary ss-icon ss-standard">&#x1F4AC;<i class="circ pulse"></i></i>
+            </a>
             <ul class="list-plain list-regular">
-                <li>@config.Phone</li>
+                <li><a class="has-border" href="tel:@config.Phone">@config.Phone</a></li>
             </ul>
         </li>
         <li class="grid-4 subsection">
-            <a href="@Url.Action("Index", "Contact")" title="@WebContent.Contact"><i class="circ secondary ss-icon ss-social-circle ss-facebook"><i class="circ pulse"></i></i></a>
-            <h3>@WebContent.Contact</h3>
+            <a href="@config.Twitter" target="_blank">
+                <i class="circ secondary ss-icon ss-social-circle ss-facebook"><i class="circ pulse"></i></i>
+            </a>
             <ul class="list-plain list-regular">
-                <li><a href="@config.Twitter" class="has-border">@WebContent.FollowOnFacebook</a></li>
+                <li><a href="@config.Twitter" class="has-border" target="_blank">@WebContent.FollowOnFacebook</a></li>
             </ul>
         </li>
         <li class="grid-4 omega subsection">
-            <a href="@Url.Action("Index", "Contact")" title="@WebContent.Contact"><i class="circ secondary ss-icon ss-social-circle ss-mail"><i class="circ pulse"></i></i></a>
-            <h3>@WebContent.Contact</h3>
+            <a href="mailto:@config.Email">
+                <i class="circ secondary ss-icon ss-social-circle ss-mail"><i class="circ pulse"></i></i>
+            </a>
             <ul class="list-plain list-regular">
                 <li>
                     <a class="has-border" href="mailto:@config.Email">

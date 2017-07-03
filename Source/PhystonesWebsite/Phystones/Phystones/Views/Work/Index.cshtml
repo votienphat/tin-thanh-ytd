@@ -13,7 +13,7 @@
     <div class="custom-form interns-form">
         <fieldset>
             <h2>Category</h2>
-            <ul class=" clearfix">
+            <ul class="clearfix">
                 <li class="grid-4 alpha form-el">
                     <label class="custom-radio button active" data-type="radio" for="form_pp_pskills_designer">
                         <input type="radio" checked="checked" name="skills" value="designer" id="form_pp_pskills_designer">
@@ -52,32 +52,32 @@
                 </a>
             </div>
            <div class="modal fade center" id="@("myModal" + item.Id)" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div id="modal-content" class="clearfix">
-                                    <div class="grid-14 alpha omega">
-                                        <h4 class="tagline h4 text-left">
-                                            @item.Title
-                                        </h4>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div id="modal-content" class="clearfix">
+                            <div class="grid-14 alpha omega">
+                                <h4 class="tagline h4 text-left">
+                                    @item.Title
+                                </h4>
+                            </div>
+                            <div class="grid-8 alpha text-left">
+                                @Html.Raw(item.ContentBody)
+                            </div>
+                            <div class="grid-6 omega">
+                                <div class="player-hex list-hex-grid large clearfix text-right">
+                                    <div class="hex grid-4">
+                                        <a href="#" style="background-image: url(@item.Image);">
+                                            <div class="hex-1"></div>
+                                            <div class="hex-2"></div>
+                                        </a>
                                     </div>
-                                    <div class="grid-8 alpha text-left">
-                                       @Html.Raw(item.ContentBody)
-                                    </div>
-                                    <div class="grid-6 omega">
-                                        <div class="player-hex list-hex-grid large clearfix text-right">
-                                            <div class="hex grid-4">
-                                                <a href="#" style="background-image: url(@item.Image);">
-                                                    <div class="hex-1"></div>
-                                                    <div class="hex-2"></div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#" id="modal-close" data-dismiss="modal" class="ss-icon ss-standard">␡</a>
                                 </div>
                             </div>
+                            <a href="#" id="modal-close" data-dismiss="modal" class="ss-icon ss-standard">␡</a>
                         </div>
                     </div>
+                </div>
+            </div>
 
             if (i == 3 || i == 7 || i == 10 || i == 14 || i == 17 || i == 21 || i == 24 || i == 28)
             {
@@ -87,7 +87,7 @@
         }
     </div>
 </section>
-<section class="section">
+@*<section class="section">
     <hr class="grid-2 center">
     <h2>Some people we've worked with</h2>
     <div class="list-hex-grid clearfix mobile-centred-imgs">
@@ -192,4 +192,4 @@
             </a>
         </div>
     </div>
-</section>
+</section>*@
