@@ -19,5 +19,6 @@ namespace EntitiesObject.Entities.WebEntities
         public string ContentBody { get; set; }
         public string Author { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public string Language { get; set; }
     }
 }

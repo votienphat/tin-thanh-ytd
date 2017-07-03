@@ -22,5 +22,6 @@ namespace EntitiesObject.Entities.WebEntities
         public Nullable<bool> IsRead { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> ReadDate { get; set; }
+        public string Language { get; set; }
     }
 }

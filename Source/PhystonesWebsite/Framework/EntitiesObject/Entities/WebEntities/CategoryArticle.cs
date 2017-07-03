@@ -17,5 +17,6 @@ namespace EntitiesObject.Entities.WebEntities
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
+        public string Language { get; set; }
     }
 }

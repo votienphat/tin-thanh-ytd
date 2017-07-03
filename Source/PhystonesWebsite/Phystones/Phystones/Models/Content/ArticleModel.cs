@@ -91,5 +91,6 @@ namespace Phystones.Models.Article
         public int Category { get; set; }
         public int CategoryId { get; set; }
         public int Id { get; set; }
+        public long Index { get; set; }
     }
 }

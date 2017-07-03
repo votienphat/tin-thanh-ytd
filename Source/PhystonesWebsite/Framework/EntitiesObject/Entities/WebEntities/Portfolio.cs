@@ -21,5 +21,6 @@ namespace EntitiesObject.Entities.WebEntities
         public int CategoryId { get; set; }
         public string LinkWeb { get; set; }
         public string LinkProfile { get; set; }
+        public string Language { get; set; }
     }
 }

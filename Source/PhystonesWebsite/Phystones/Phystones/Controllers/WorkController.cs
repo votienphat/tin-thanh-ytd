@@ -27,19 +27,22 @@ namespace Phystones.Controllers
 
         public ActionResult Index()
         {
-            var work = _webBusiness.GetByCategoryId(CategoryArticleEnum.Work.Value());
-            var resultwork = work.Select(x => new ArticleViewModel
+            return View();
+        }
+        public JsonResult DataWork(int Type)
+        {
+            var list = _webBusiness.GetWorkByCategoryId(Type).ToList();
+            var resultwork = list.Select(x => new ArticleViewModel
             {
                 Title = x.Title,
                 Image = x.Image,
                 Link = "#",
                 Id = x.Id,
                 ContentBody = x.ContentBody,
-            }).ToList();
-            ViewBag.Work = resultwork;
-            return View();
+                Index = x.RowNum.GetValueOrDefault()
+            });
+            return new JsonResult() { Data = resultwork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-
         public ActionResult SaveData(int Id)
         {
             ViewBag.CateList = _webBusiness.CategoryWorkGetList();

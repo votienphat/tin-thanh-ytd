@@ -14,19 +14,19 @@
         <fieldset>
             <h2>Category</h2>
             <ul class="clearfix">
-                <li class="grid-4 alpha form-el">
+                <li class="grid-4 alpha form-el" onclick="Worddata(1)">
                     <label class="custom-radio button active" data-type="radio" for="form_pp_pskills_designer">
                         <input type="radio" checked="checked" name="skills" value="designer" id="form_pp_pskills_designer">
                         <span>Designer</span>
                     </label>
                 </li>
-                <li class="grid-4 form-el">
+                <li class="grid-4 form-el" onclick="Worddata(2)">
                     <label class="custom-radio button " data-type="radio" for="form_pp_pskills_dev">
                         <input type="radio" name="skills" value="developer" id="form_pp_pskills_dev">
                         <span>Developer</span>
                     </label>
                 </li>
-                <li class="grid-4 omega form-el">
+                <li class="grid-4 omega form-el" onclick="Worddata(-1)">
                     <label class="custom-radio button " data-type="radio" for="form_pp_pskills_both">
                         <input type="radio" name="skills" value="both" id="form_pp_pskills_both">
                         <span>Both</span>
@@ -37,159 +37,180 @@
     </div>
 </section>
 <section class="section interactive" data-interactive="">
-    <div class="list-hex-grid large clearfix">
-        @foreach (var item in ViewBag.Work)
-        {
-            <div class="hex grid-4 invert " style="opacity: 1;">
-                <a data-toggle="modal" data-target="@("#myModal" + item.Id)" style="background-image: url(@item.Image);" title="@item.Title" class="flex">
-                    <div class="inner" style="opacity: 0;">
-                        <i class="ss-icon ss-standard huge">👀</i>
-                        <h3 class="flex">@item.Title</h3>
-                    </div>
-                    <div class="hex-1"><span class="after" style="opacity: 0;"></span></div>
-                    <div class="hex-2"><span class="after" style="opacity: 0;"></span></div>
-                    <span class="after" style="opacity: 0;"></span>
-                </a>
-            </div>
-           <div class="modal fade center" id="@("myModal" + item.Id)" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div id="modal-content" class="clearfix">
-                            <div class="grid-14 alpha omega">
-                                <h4 class="tagline h4 text-left">
-                                    @item.Title
-                                </h4>
-                            </div>
-                            <div class="grid-8 alpha text-left">
-                                @Html.Raw(item.ContentBody)
-                            </div>
-                            <div class="grid-6 omega">
-                                <div class="player-hex list-hex-grid large clearfix text-right">
-                                    <div class="hex grid-4">
-                                        <a href="#" style="background-image: url(@item.Image);">
-                                            <div class="hex-1"></div>
-                                            <div class="hex-2"></div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" id="modal-close" data-dismiss="modal" class="ss-icon ss-standard">␡</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            if (i == 3 || i == 7 || i == 10 || i == 14 || i == 17 || i == 21 || i == 24 || i == 28)
-            {
-                @Html.Raw("<br>")
-            }
-            i++;
-        }
+    <div class="list-hex-grid large clearfix" id="temwork">
     </div>
 </section>
-@*<section class="section">
-    <hr class="grid-2 center">
-    <h2>Some people we've worked with</h2>
-    <div class="list-hex-grid clearfix mobile-centred-imgs">
-        <div class="hex grid-3 quaternary">
-            <a href="http://geckoboard.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1220351634.png" alt="Geckoboard" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://www.sonymusic.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1026009187.png" alt="Sony BMG" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://att.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1068595818.png" alt="AT&amp;amp;T" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://clearchannelinternational.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1931891745.png" alt="Clear Channel International" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://hbo.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/157006577.png" alt="HBO" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://ilovedust.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1445401117.png" alt="i love dust" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://gettyimages.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1022800601.png" alt="Getty Images" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <br class="mq-mid mq-small">
-        <div class="hex grid-3 quaternary">
-            <a href="http://greenpeace.org/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1105171353.png" alt="Greenpeace" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://www.channel4.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/2141427983.png" alt="Channel 4" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <br class="mq-wide">
-        <div class="hex grid-3 quaternary">
-            <a href="http://feast.istockphoto.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/335980968.png" alt="iStock Feast" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://tedxbrighton.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1618798124.png" alt="TEDxBrighton" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://brightonsource.co.uk/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/2051458395.png" alt="Brighton Source" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://bbdo.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/831688196.png" alt="BBDO" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
-        </div>
-        <div class="hex grid-3 quaternary">
-            <a href="http://www.istockphoto.com/">
-                <img src="../Content/Theme/web/uploads/clients/190_110/1449018326.png" alt="iStock Photo" width="190" height="110">
-                <div class="hex-1"></div>
-                <div class="hex-2"></div>
-            </a>
+@section scripts{
+    <script id="WorkTemplate" type="text/x-jquery-tmpl">
+    <div class="hex grid-4 invert " style="opacity: 1;">
+        <a data-toggle="modal" data-target="#myModal${Id}" style="background-image: url('${Image}');" title="${Title}" class="flex">
+            <div class="inner" style="opacity: 0;">
+                <i class="ss-icon ss-standard huge">👀</i>
+                <h3 class="flex">${Title}</h3>
+            </div>
+            <div class="hex-1"><span class="after" style="opacity: 0;"></span></div>
+            <div class="hex-2"><span class="after" style="opacity: 0;"></span></div>
+            <span class="after" style="opacity: 0;"></span>
+        </a>
+    </div>
+    <div class="modal fade center" id="#myModal${Id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="modal-content" class="clearfix">
+                    <div class="grid-14 alpha omega">
+                        <h4 class="tagline h4 text-left">
+                            ${Title}
+                        </h4>
+                    </div>
+                    <div class="grid-8 alpha text-left">
+                        {{html ContentBody}}
+                    </div>
+                    <div class="grid-6 omega">
+                        <div class="player-hex list-hex-grid large clearfix text-right">
+                            <div class="hex grid-4">
+                                <a href="#" style="background-image: url('${Image}');">
+                                    <div class="hex-1"></div>
+                                    <div class="hex-2"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id="modal-close" data-dismiss="modal" class="ss-icon ss-standard">␡</a>
+                </div>
+            </div>
         </div>
     </div>
-</section>*@
+    {{if Index == 3 || Index == 7 || Index == 10 || Index == 14 || Index == 17 || Index == 21 || Index == 24 || Index == 28}}
+    {{html '<br>'}}
+    {{/if}}
+</script>
+<script type="text/javascript">
+    var Worddata = function (index) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DataWork")',
+            data: { Type: index },
+            dataType: "json",
+            success: function (response) {
+                if (response != null) {
+                            $("#temwork").html("");
+                            $("#WorkTemplate").tmpl(response).appendTo("#temwork");
+                }
+            },
+            complete: function () {
+            }
+        });
+    };
+    $(document).ready(function () {
+        Worddata(-1);
+    });
+</script>
+}
+
+
+@*<section class="section">
+        <hr class="grid-2 center">
+        <h2>Some people we've worked with</h2>
+        <div class="list-hex-grid clearfix mobile-centred-imgs">
+            <div class="hex grid-3 quaternary">
+                <a href="http://geckoboard.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1220351634.png" alt="Geckoboard" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://www.sonymusic.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1026009187.png" alt="Sony BMG" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://att.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1068595818.png" alt="AT&amp;amp;T" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://clearchannelinternational.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1931891745.png" alt="Clear Channel International" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://hbo.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/157006577.png" alt="HBO" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://ilovedust.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1445401117.png" alt="i love dust" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://gettyimages.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1022800601.png" alt="Getty Images" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <br class="mq-mid mq-small">
+            <div class="hex grid-3 quaternary">
+                <a href="http://greenpeace.org/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1105171353.png" alt="Greenpeace" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://www.channel4.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/2141427983.png" alt="Channel 4" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <br class="mq-wide">
+            <div class="hex grid-3 quaternary">
+                <a href="http://feast.istockphoto.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/335980968.png" alt="iStock Feast" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://tedxbrighton.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1618798124.png" alt="TEDxBrighton" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://brightonsource.co.uk/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/2051458395.png" alt="Brighton Source" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://bbdo.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/831688196.png" alt="BBDO" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+            <div class="hex grid-3 quaternary">
+                <a href="http://www.istockphoto.com/">
+                    <img src="../Content/Theme/web/uploads/clients/190_110/1449018326.png" alt="iStock Photo" width="190" height="110">
+                    <div class="hex-1"></div>
+                    <div class="hex-2"></div>
+                </a>
+            </div>
+        </div>
+    </section>*@

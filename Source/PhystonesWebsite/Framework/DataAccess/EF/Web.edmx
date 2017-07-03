@@ -16,6 +16,7 @@
           <Property Name="CategoryId" Type="int" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="TextId" Type="nvarchar" MaxLength="512" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="CategoryArticle">
           <Key>
@@ -24,33 +25,34 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="512" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ProCompany.dbo.CategoryPortfolio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CategoryPortfolio">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="512" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ProCompany.dbo.CategoryWork' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CategoryWork">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="IsActive" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="512" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Config">
           <Key>
             <PropertyRef Name="KeyConfig" />
+            <PropertyRef Name="Language" />
           </Key>
           <Property Name="KeyConfig" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="Language" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Value" Type="ntext" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -64,6 +66,7 @@ warning 6002: The table/view 'ProCompany.dbo.CategoryWork' does not have a prima
           <Property Name="IsRead" Type="bit" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="ReadDate" Type="datetime" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Plain">
           <Key>
@@ -73,6 +76,7 @@ warning 6002: The table/view 'ProCompany.dbo.CategoryWork' does not have a prima
           <Property Name="Image" Type="nvarchar" MaxLength="512" />
           <Property Name="Title" Type="nvarchar" MaxLength="512" />
           <Property Name="Link" Type="nvarchar" MaxLength="512" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Portfolio">
           <Key>
@@ -85,6 +89,7 @@ warning 6002: The table/view 'ProCompany.dbo.CategoryWork' does not have a prima
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="LinkWeb" Type="nvarchar" MaxLength="512" />
           <Property Name="LinkProfile" Type="nvarchar" MaxLength="512" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Slogan">
           <Key>
@@ -95,6 +100,7 @@ warning 6002: The table/view 'ProCompany.dbo.CategoryWork' does not have a prima
           <Property Name="ContentBody" Type="nvarchar(max)" />
           <Property Name="Author" Type="nvarchar" MaxLength="512" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Stats">
           <Key>
@@ -103,13 +109,11 @@ warning 6002: The table/view 'ProCompany.dbo.CategoryWork' does not have a prima
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="512" />
           <Property Name="PercentGood" Type="int" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Work">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="IsActive" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="512" />
@@ -118,6 +122,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Name="CategoryId" Type="int" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="TextId" Type="nvarchar" MaxLength="512" />
+          <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
         <Function Name="Out_Article_GetByCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryId" Type="int" Mode="In" />
@@ -212,36 +217,15 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
         <EntityContainer Name="WebModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryArticle" EntityType="Self.CategoryArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryPortfolio" EntityType="Self.CategoryPortfolio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryWork" EntityType="Self.CategoryWork" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plain" EntityType="Self.Plain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Portfolio" EntityType="Self.Portfolio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slogan" EntityType="Self.Slogan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CategoryPortfolio" EntityType="Self.CategoryPortfolio" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CategoryPortfolio].[Id] AS [Id], 
-    [CategoryPortfolio].[Name] AS [Name]
-    FROM [dbo].[CategoryPortfolio] AS [CategoryPortfolio]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CategoryWork" EntityType="Self.CategoryWork" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CategoryWork].[Id] AS [Id], 
-    [CategoryWork].[Name] AS [Name], 
-    [CategoryWork].[IsActive] AS [IsActive]
-    FROM [dbo].[CategoryWork] AS [CategoryWork]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Work" EntityType="Self.Work" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Work].[Id] AS [Id], 
-    [Work].[Title] AS [Title], 
-    [Work].[Image] AS [Image], 
-    [Work].[ContentBody] AS [ContentBody], 
-    [Work].[CategoryId] AS [CategoryId], 
-    [Work].[IsActive] AS [IsActive], 
-    [Work].[TextId] AS [TextId]
-    FROM [dbo].[Work] AS [Work]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -315,11 +299,6 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <FunctionImport Name="Out_Article_GetByCategoryId" ReturnType="Collection(WebModel.Out_Article_GetByCategoryId_Result)">
           <Parameter Name="CategoryId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="CategoryWorks" EntityType="WebModel.CategoryWork" />
-          <EntitySet Name="Works" EntityType="WebModel.Work" />
-          <FunctionImport Name="Out_Work_GetByCategoryId" ReturnType="Collection(WebModel.Out_Work_GetByCategoryId_Result)">
-          <Parameter Name="CategoryId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="Out_Work_GetById" ReturnType="Collection(WebModel.Out_Work_GetById_Result)">
           <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -349,6 +328,11 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
             <Parameter Name="Key" Mode="In" Type="String" />
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Out_Work_GetByCategoryId" ReturnType="Collection(WebModel.Out_Work_GetByCategoryId_Result)">
+          <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Works" EntityType="WebModel.Work" />
+          <EntitySet Name="CategoryWorks" EntityType="WebModel.CategoryWork" />
         </EntityContainer>
         <ComplexType Name="Out_Article_GetListData_Result">
           <Property Type="Int64" Name="RowNumber" Nullable="true" />
@@ -370,6 +354,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Name="CategoryId" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="TextId" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CategoryArticle">
           <Key>
@@ -378,6 +363,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -391,6 +377,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Name="IsRead" Type="Boolean" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="ReadDate" Type="DateTime" Precision="3" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Plain">
           <Key>
@@ -400,6 +387,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Name="Image" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="Link" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Slogan">
           <Key>
@@ -410,6 +398,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Name="ContentBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Author" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Stat">
           <Key>
@@ -418,6 +407,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="PercentGood" Type="Int32" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CategoryPortfolio">
           <Key>
@@ -425,6 +415,8 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="Out_Contact_GetListData_Result">
           <Property Type="Int64" Name="RowNumber" Nullable="true" />
@@ -475,6 +467,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="LinkWeb" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="LinkProfile" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="Out_Portfolio_GetById_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -518,37 +511,6 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
           <Property Type="String" Name="TextId" Nullable="true" MaxLength="512" />
         </ComplexType>
-        <EntityType Name="CategoryWork">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Work">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-          <Property Name="ContentBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CategoryId" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="TextId" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <ComplexType Name="Out_Work_GetByCategoryId_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
-          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
-          <Property Type="String" Name="ContentBody" Nullable="true" />
-          <Property Type="Int32" Name="CategoryId" Nullable="true" />
-          <Property Type="Boolean" Name="IsActive" Nullable="false" />
-          <Property Type="String" Name="TextId" Nullable="true" MaxLength="512" />
-        </ComplexType>
         <ComplexType Name="Out_Work_GetById_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
@@ -582,14 +544,48 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
         <EntityType Name="Config">
           <Key>
             <PropertyRef Name="KeyConfig" />
+            <PropertyRef Name="Language" />
           </Key>
           <Property Name="KeyConfig" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="Out_Config_GetByKey_Result">
           <Property Type="String" Name="KeyConfig" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="Value" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="Out_Work_GetByCategoryId_Result">
+          <Property Type="Int64" Name="RowNum" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="TextId" Nullable="true" MaxLength="512" />
+        </ComplexType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ContentBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="TextId" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CategoryWork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -614,6 +610,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="WebModel.Article">
               <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="TextId" ColumnName="TextId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
@@ -627,6 +624,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="CategoryArticles">
             <EntityTypeMapping TypeName="WebModel.CategoryArticle">
               <MappingFragment StoreEntitySet="CategoryArticle">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -636,6 +634,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="Contacts">
             <EntityTypeMapping TypeName="WebModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="IsRead" ColumnName="IsRead" />
@@ -650,6 +649,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="Plains">
             <EntityTypeMapping TypeName="WebModel.Plain">
               <MappingFragment StoreEntitySet="Plain">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -660,6 +660,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="Slogans">
             <EntityTypeMapping TypeName="WebModel.Slogan">
               <MappingFragment StoreEntitySet="Slogan">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
@@ -671,6 +672,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="Stats">
             <EntityTypeMapping TypeName="WebModel.Stat">
               <MappingFragment StoreEntitySet="Stats">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="PercentGood" ColumnName="PercentGood" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -680,6 +682,8 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="CategoryPortfolios">
             <EntityTypeMapping TypeName="WebModel.CategoryPortfolio">
               <MappingFragment StoreEntitySet="CategoryPortfolio">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -747,6 +751,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="Portfolios">
             <EntityTypeMapping TypeName="WebModel.Portfolio">
               <MappingFragment StoreEntitySet="Portfolio">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="LinkProfile" ColumnName="LinkProfile" />
                 <ScalarProperty Name="LinkWeb" ColumnName="LinkWeb" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
@@ -819,41 +824,6 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="CategoryWorks">
-            <EntityTypeMapping TypeName="WebModel.CategoryWork">
-              <MappingFragment StoreEntitySet="CategoryWork">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Works">
-            <EntityTypeMapping TypeName="WebModel.Work">
-              <MappingFragment StoreEntitySet="Work">
-                <ScalarProperty Name="TextId" ColumnName="TextId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Out_Work_GetByCategoryId" FunctionName="WebModel.Store.Out_Work_GetByCategoryId">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebModel.Out_Work_GetByCategoryId_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="TextId" ColumnName="TextId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Out_Work_GetById" FunctionName="WebModel.Store.Out_Work_GetById">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebModel.Out_Work_GetById_Result">
@@ -904,6 +874,7 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
           <EntitySetMapping Name="Configs">
             <EntityTypeMapping TypeName="WebModel.Config">
               <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="KeyConfig" ColumnName="KeyConfig" />
               </MappingFragment>
@@ -918,6 +889,44 @@ warning 6002: The table/view 'ProCompany.dbo.Work' does not have a primary key d
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Out_Config_SaveByKey" FunctionName="WebModel.Store.Out_Config_SaveByKey" />
+          <FunctionImportMapping FunctionImportName="Out_Work_GetByCategoryId" FunctionName="WebModel.Store.Out_Work_GetByCategoryId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Work_GetByCategoryId_Result">
+                <ScalarProperty Name="RowNum" ColumnName="RowNum" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Works">
+            <EntityTypeMapping TypeName="WebModel.Work">
+              <MappingFragment StoreEntitySet="Work">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryWorks">
+            <EntityTypeMapping TypeName="WebModel.CategoryWork">
+              <MappingFragment StoreEntitySet="CategoryWork">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -21,5 +21,6 @@ namespace EntitiesObject.Entities.WebEntities
         public Nullable<int> CategoryId { get; set; }
         public bool IsActive { get; set; }
         public string TextId { get; set; }
+        public string Language { get; set; }
     }
 }

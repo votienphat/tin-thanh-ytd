@@ -36,9 +36,9 @@ namespace DataAccess.EF
         public virtual DbSet<Stat> Stats { get; set; }
         public virtual DbSet<CategoryPortfolio> CategoryPortfolios { get; set; }
         public virtual DbSet<Portfolio> Portfolios { get; set; }
-        public virtual DbSet<CategoryWork> CategoryWorks { get; set; }
-        public virtual DbSet<Work> Works { get; set; }
         public virtual DbSet<Config> Configs { get; set; }
+        public virtual DbSet<Work> Works { get; set; }
+        public virtual DbSet<CategoryWork> CategoryWorks { get; set; }
     
         public virtual int Out_Article_Save(Nullable<int> id, string title, string image, string contentBody, Nullable<int> categoryId)
         {
@@ -238,15 +238,6 @@ namespace DataAccess.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetByCategoryId_Result>("Out_Article_GetByCategoryId", categoryIdParameter);
         }
     
-        public virtual ObjectResult<Out_Work_GetByCategoryId_Result> Out_Work_GetByCategoryId(Nullable<int> categoryId)
-        {
-            var categoryIdParameter = categoryId.HasValue ?
-                new ObjectParameter("CategoryId", categoryId) :
-                new ObjectParameter("CategoryId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Work_GetByCategoryId_Result>("Out_Work_GetByCategoryId", categoryIdParameter);
-        }
-    
         public virtual ObjectResult<Out_Work_GetById_Result> Out_Work_GetById(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
@@ -336,6 +327,15 @@ namespace DataAccess.EF
                 new ObjectParameter("Value", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Config_SaveByKey", keyParameter, valueParameter);
+        }
+    
+        public virtual ObjectResult<Out_Work_GetByCategoryId_Result> Out_Work_GetByCategoryId(Nullable<int> categoryId)
+        {
+            var categoryIdParameter = categoryId.HasValue ?
+                new ObjectParameter("CategoryId", categoryId) :
+                new ObjectParameter("CategoryId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Work_GetByCategoryId_Result>("Out_Work_GetByCategoryId", categoryIdParameter);
         }
     }
 }

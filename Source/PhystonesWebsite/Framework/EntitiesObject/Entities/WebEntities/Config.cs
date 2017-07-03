@@ -16,5 +16,6 @@ namespace EntitiesObject.Entities.WebEntities
     {
         public string KeyConfig { get; set; }
         public string Value { get; set; }
+        public string Language { get; set; }
     }
 }

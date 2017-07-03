@@ -17,5 +17,6 @@ namespace EntitiesObject.Entities.WebEntities
         public int Id { get; set; }
         public string Title { get; set; }
         public Nullable<int> PercentGood { get; set; }
+        public string Language { get; set; }
     }
 }
