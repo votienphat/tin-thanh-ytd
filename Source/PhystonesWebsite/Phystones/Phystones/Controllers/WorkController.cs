@@ -27,6 +27,15 @@ namespace Phystones.Controllers
 
         public ActionResult Index()
         {
+            var listCate = _webBusiness.CategoryWorkGetList();
+            var both = new Out_CategoryWork_GetList_Result
+            {
+                Id = -1,
+                Name = "Both",
+                IsActive = true
+            };
+            listCate.Add(both);
+            ViewBag.ListCate = listCate;
             return View();
         }
         public JsonResult DataWork(int Type)

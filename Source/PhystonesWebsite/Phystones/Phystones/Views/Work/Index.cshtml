@@ -13,25 +13,15 @@
     <div class="custom-form interns-form">
         <fieldset>
             <h2>Category</h2>
-            <ul class="clearfix">
-                <li class="grid-4 alpha form-el" onclick="Worddata(1)">
-                    <label class="custom-radio button active" data-type="radio" for="form_pp_pskills_designer">
-                        <input type="radio" checked="checked" name="skills" value="designer" id="form_pp_pskills_designer">
-                        <span>Designer</span>
-                    </label>
-                </li>
-                <li class="grid-4 form-el" onclick="Worddata(2)">
-                    <label class="custom-radio button " data-type="radio" for="form_pp_pskills_dev">
-                        <input type="radio" name="skills" value="developer" id="form_pp_pskills_dev">
-                        <span>Developer</span>
-                    </label>
-                </li>
-                <li class="grid-4 omega form-el" onclick="Worddata(-1)">
-                    <label class="custom-radio button " data-type="radio" for="form_pp_pskills_both">
-                        <input type="radio" name="skills" value="both" id="form_pp_pskills_both">
-                        <span>Both</span>
-                    </label>
-                </li>
+            <ul class="clearfix" id="listcateword">
+                @foreach (var item in ViewBag.ListCate)
+                {
+                    <li class="grid-4 alpha form-el" onclick="Worddata(@item.Id)">
+                        <label class="custom-radio button buttoncate@(item.Id) @(item.Name =="Both" ? "active":"")" data-type="radio" >
+                            <span>@item.Name</span>
+                        </label>
+                    </li>
+                }
             </ul>
         </fieldset>
     </div>
@@ -85,7 +75,7 @@
     {{/if}}
 </script>
 <script type="text/javascript">
-    var Worddata = function (index) {
+    var Worddata = function (index,obj) {
         $.ajax({
             type: "POST",
             url: '@Url.Action("DataWork")',
@@ -93,6 +83,9 @@
             dataType: "json",
             success: function (response) {
                 if (response != null) {
+                    $('#listcateword li .button').removeClass("active");
+                    console.log('.buttoncate' + index);
+                    $('.buttoncate' + index).addClass("active");
                             $("#temwork").html("");
                             $("#WorkTemplate").tmpl(response).appendTo("#temwork");
                 }
