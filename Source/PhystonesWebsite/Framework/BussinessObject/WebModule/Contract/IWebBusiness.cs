@@ -28,7 +28,9 @@ namespace BusinessObject.WebModule.Contract
         List<Out_Work_GetByCategoryId_Result> GetWorkByCategoryId(int CategoryId);
         Out_Work_GetByTextId_Result WorkGetByTextId(string textId);
         Out_Config_GetByKey_Result ConfigGetByKey(string key);
-        
-        int SaveConfigKey(string key,string value);
+        int SaveConfigKey(string key, string value);
+        List<Out_Article_GetArticleBlog_Result> GetArticleBlog(int categoryId, int startIndex, int pageLength,
+          out int total);
+
     }
 }

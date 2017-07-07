@@ -2,6 +2,8 @@
 using System.Globalization;
 using System.Web.Mvc;
 using MyConfig;
+using System.Web;
+using System.Web.Routing;
 
 namespace Phystones.Helper
 {
@@ -23,7 +25,7 @@ namespace Phystones.Helper
                 return date.Value.ToString(format);
             else return _default;
         }
-  
+
         public static DateTime? ToDateTimeParseExact(this string text, DateTime? defaultError, string format = "dd/MM/yyyy HH:mm:ss")
         {
             try
@@ -36,7 +38,7 @@ namespace Phystones.Helper
             }
         }
 
-        public static string FullImagePath(this string path) 
+        public static string FullImagePath(this string path)
         {
             if (!string.IsNullOrEmpty(path) && (path.Contains("http://") || path.Contains("https://")))
             {
@@ -68,11 +70,11 @@ namespace Phystones.Helper
             return number == 0 ? "0" : string.Format("{0:#,#0}", number);
         }
 
-      
 
-       
 
-    
+
+
+
         public static string ToFormatMoney(this decimal? money)
         {
             if (money.HasValue)
@@ -114,7 +116,7 @@ namespace Phystones.Helper
             }
             catch (Exception)
             {
-                return _default; 
+                return _default;
             }
         }
         #region AtTheMomentDate
@@ -143,7 +145,7 @@ namespace Phystones.Helper
         }
 
 
-        
+
         #endregion
 
 
@@ -165,6 +167,15 @@ namespace Phystones.Helper
                 return imgPath;
             }
             return MyConfiguration.Default.ApiFullDomain + imgPath;
+        }
+        public static UrlHelper GetUrlHelper()
+        {
+            var httpContext = new HttpContextWrapper(HttpContext.Current);
+            return new UrlHelper(new RequestContext(httpContext, CurrentRoute(httpContext)));
+        }
+        public static RouteData CurrentRoute(HttpContextWrapper httpContext)
+        {
+            return RouteTable.Routes.GetRouteData(httpContext);
         }
     }
 }

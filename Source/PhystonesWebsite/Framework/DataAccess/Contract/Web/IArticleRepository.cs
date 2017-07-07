@@ -22,5 +22,8 @@ namespace DataAccess.Contract.Web
 
         Out_Article_GetByTextId_Result ArticleGetByTextId(string textId);
 
+         List<Out_Article_GetArticleBlog_Result> GetArticleBlog(int categoryId, int startIndex, int pageLength,
+            out int total);
+
     }
 }

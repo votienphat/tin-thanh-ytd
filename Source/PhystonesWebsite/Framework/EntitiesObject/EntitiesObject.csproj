@@ -162,6 +162,9 @@
     <Compile Include="Entities\WebEntities\Contact.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\WebEntities\Out_Article_GetArticleBlog_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\WebEntities\Out_Article_GetByCategoryId_Result.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>

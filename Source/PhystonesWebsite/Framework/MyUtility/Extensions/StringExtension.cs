@@ -479,6 +479,7 @@ namespace MyUtility.Extensions
         /// <returns></returns>
         public static string CutNick(string stringToCut, int lengthCut, string stringReplace)
         {
+            if(String.IsNullOrEmpty(stringToCut)) return stringToCut;
             var lengthString = stringToCut.Length;
 
             if (lengthString > 0 && lengthString > lengthCut)

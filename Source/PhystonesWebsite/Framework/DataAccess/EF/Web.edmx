@@ -124,6 +124,12 @@
           <Property Name="TextId" Type="nvarchar" MaxLength="512" />
           <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
+        <Function Name="Out_Article_GetArticleBlog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+          <Parameter Name="StartIndex" Type="int" Mode="In" />
+          <Parameter Name="PageLength" Type="int" Mode="In" />
+          <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="Out_Article_GetByCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryId" Type="int" Mode="In" />
         </Function>
@@ -333,6 +339,12 @@
           </FunctionImport>
           <EntitySet Name="Works" EntityType="WebModel.Work" />
           <EntitySet Name="CategoryWorks" EntityType="WebModel.CategoryWork" />
+          <FunctionImport Name="Out_Article_GetArticleBlog" ReturnType="Collection(WebModel.Out_Article_GetArticleBlog_Result)">
+            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageLength" Mode="In" Type="Int32" />
+            <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Out_Article_GetListData_Result">
           <Property Type="Int64" Name="RowNumber" Nullable="true" />
@@ -586,6 +598,17 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="Out_Article_GetArticleBlog_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ContentBody" Nullable="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="TextId" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Language" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="RowNumber" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -927,6 +950,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Out_Article_GetArticleBlog" FunctionName="WebModel.Store.Out_Article_GetArticleBlog">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Article_GetArticleBlog_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -76,3 +76,45 @@ var OpenPopupPortfolio = function (index) {
             }
         });
 };
+var CreatePaging = function (pageIndex, totalItem, itemInPage, countDisplayPage, fnName) {
+    if (pageIndex <= 0 || totalItem <= 0 || itemInPage <= 0) {
+        return "";
+    }
+    if (countDisplayPage == null || countDisplayPage == "" || countDisplayPage == "undefined")
+        countDisplayPage = 5;
+    var totalPage = Math.ceil(totalItem / itemInPage);
+    if (totalPage <= 1)
+        return "";
+    var cdp = Math.floor(countDisplayPage / 2);
+    var startpage = pageIndex - cdp;
+    if (startpage < 1)
+        startpage = 1;
+    var endpage = startpage + cdp * 2;
+    if (endpage > totalPage)
+        endpage = totalPage;
+    var ul = '<ul class="pagination pagination-sm">';
+    if (pageIndex > 1) {
+        var onclickF = "";
+        if (fnName != null && fnName.length > 0)
+            onclickF = fnName + "(" + (pageIndex - 1) + ")";
+        ul += '<li><a onclick="' + onclickF + '" datapage="' + (pageIndex - 1) + '" href="javascript:void(0)" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+    }
+    for (var i = startpage; i <= endpage; i++) {
+        var active = "";
+        if (i == pageIndex)
+            active = "active";
+        var onclick = "";
+        if (fnName != null && fnName.length > 0)
+            onclick = fnName + "(" + i + ")";
+        var li = '<li class="' + active + '"><a  onclick="' + onclick + '" datapage="' + i + '"  href="javascript:void(0)">' + i + '</a></li>';
+        ul += li;
+    }
+    if (pageIndex < totalPage) {
+        var onclickL = "";
+        if (fnName != null && fnName.length > 0)
+            onclickL = fnName + "(" + (pageIndex + 1) + ")";
+        ul += '<li><a onclick="' + onclickL + '" datapage="' + (pageIndex + 1) + '" href="javascript:void(0)" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+    }
+    ul += "</ul>";
+    return ul;
+};

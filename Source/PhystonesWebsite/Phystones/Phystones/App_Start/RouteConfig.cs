@@ -18,6 +18,12 @@ namespace Phystones
             routes.IgnoreRoute("assets/{*pathInfo}");
 
             routes.MapRoute(
+              name: RouteName.ArticleDetail.Text(),
+              url: "article/{textid}.html",
+              defaults:
+                  new { controller = "Article", action = "ArticleDetail", textid = UrlParameter.Optional }
+              );
+            routes.MapRoute(
                name: "LocalizedDefault",
                url: "{lang}/{controller}/{action}",
                defaults: new { controller = "Home", action = "Index", lang = "vi-VN" },

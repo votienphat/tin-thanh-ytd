@@ -51,7 +51,7 @@ namespace BusinessObject.WebModule
                     fromMailTitle = string.Format(fromMailTitle, name);
                     NetworkCommon.SendMail(fromMail, fromMailName, rawPassword, mail, mail, fromMailTitle,
                         string.Format("Bạn có contact mới từ {0}" +
-                                      "<br/> Email: {1}" + 
+                                      "<br/> Email: {1}" +
                                       "<br/> Số điện thoại: {2}" +
                                       "<br/> Nội dung: {3}",
                                       name, email, phone, messenger), hostMail, port, true);
@@ -119,11 +119,11 @@ namespace BusinessObject.WebModule
         }
         public int SaveDataWork(int Id, string Title, string Image, string ContentBody, int CategoryId)
         {
-            return _workRepo.SaveDataWork(Id, Title,Image,ContentBody,CategoryId);
+            return _workRepo.SaveDataWork(Id, Title, Image, ContentBody, CategoryId);
         }
         public List<Out_Work_GetListData_Result> ListDataWork(int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow)
         {
-            return _workRepo.ListDataWork(rowStart,rowEnd,orderBy,isDescending,out totalRow);
+            return _workRepo.ListDataWork(rowStart, rowEnd, orderBy, isDescending, out totalRow);
         }
         public List<Out_CategoryWork_GetList_Result> CategoryWorkGetList()
         {
@@ -145,9 +145,14 @@ namespace BusinessObject.WebModule
         {
             return _configRepo.ConfigGetByKey(key);
         }
-        public int SaveConfigKey(string key,string value)
+        public int SaveConfigKey(string key, string value)
         {
-            return _configRepo.SaveConfigKey(key,value);
+            return _configRepo.SaveConfigKey(key, value);
+        }
+        public List<Out_Article_GetArticleBlog_Result> GetArticleBlog(int categoryId, int startIndex, int pageLength,
+            out int total)
+        {
+            return _articleRepo.GetArticleBlog(categoryId, startIndex, pageLength,out total);
         }
     }
 }

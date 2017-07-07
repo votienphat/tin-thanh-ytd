@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
+using Phystones.Models.Enum;
+using MyUtility.Extensions;
 
 namespace Phystones.Controllers
 {
@@ -126,14 +128,15 @@ namespace Phystones.Controllers
         }
         #endregion
 
-        public ActionResult ArticleDetail(string Id)
+        public ActionResult ArticleDetail(string textid)
         {
             var obj = new Out_Article_GetByTextId_Result();
-            if (!string.IsNullOrEmpty(Id))
+            if (!string.IsNullOrEmpty(textid))
             {
-                obj = _webBusiness.ArticleGetByTextId(Id);
+                obj = _webBusiness.ArticleGetByTextId(textid);
             }
             return View(obj);
         }
+       
     }
 }

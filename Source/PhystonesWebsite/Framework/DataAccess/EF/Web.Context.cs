@@ -337,5 +337,22 @@ namespace DataAccess.EF
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Work_GetByCategoryId_Result>("Out_Work_GetByCategoryId", categoryIdParameter);
         }
+    
+        public virtual ObjectResult<Out_Article_GetArticleBlog_Result> Out_Article_GetArticleBlog(Nullable<int> categoryId, Nullable<int> startIndex, Nullable<int> pageLength, ObjectParameter totalRow)
+        {
+            var categoryIdParameter = categoryId.HasValue ?
+                new ObjectParameter("CategoryId", categoryId) :
+                new ObjectParameter("CategoryId", typeof(int));
+    
+            var startIndexParameter = startIndex.HasValue ?
+                new ObjectParameter("StartIndex", startIndex) :
+                new ObjectParameter("StartIndex", typeof(int));
+    
+            var pageLengthParameter = pageLength.HasValue ?
+                new ObjectParameter("PageLength", pageLength) :
+                new ObjectParameter("PageLength", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetArticleBlog_Result>("Out_Article_GetArticleBlog", categoryIdParameter, startIndexParameter, pageLengthParameter, totalRow);
+        }
     }
 }

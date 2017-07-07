@@ -4,112 +4,48 @@
     Layout = "~/Views/Shared/_Layout_Web.cshtml";
 }
 <h1 id="tagline">Buffalo feed</h1>
-<h2 class="grid-10 center">Tasty morsels from our online chatter</h2>
-<section class="section grid-14 center">
-    <hr class="grid-2 center">
-    <h2>Twitter</h2>
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <blockquote>
-        Super excited to receive these from @@Intrepidcamera in time for spring! <a href="https://t.co/DQNvprbvje">t.co/DQNvprbvje</a>
-    </blockquote>
-    <p class="h6">
-        <a href="https://twitter.com/builtbybuffalo/status/829331570012090368/">2 months ago</a>
-    </p>
-</section>
-<section class="section">
-    <hr class="grid-2 center">
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <ul class="list-blocks instagram">
-        <li class="grid-12">
-            <a href="https://www.instagram.com/p/BQQN1ScBb3C"><img src="../Content/Theme/web/uploads/instagram/BQQN1ScBb3C.jpg"></a>
-        </li>
-    </ul>
-    <span class="meta h6">2 months ago</span>
-</section>
-<section class="section grid-14 center">
-    <hr class="grid-2 center">
-    <h2>Twitter</h2>
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <blockquote>
-        I love how these patches came out <a href="https://t.co/yljxNk7bkP">t.co/yljxNk7bkP</a>
-    </blockquote>
-    <p class="h6">
-        <a href="https://twitter.com/builtbybuffalo/status/799598824952098816/">4 months ago</a>
-    </p>
-</section>
-<section class="section">
-    <hr class="grid-2 center">
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <ul class="list-blocks instagram">
-        <li class="grid-12">
-            <a href="https://www.instagram.com/p/BM8788pDi27"><img src="../Content/Theme/web/uploads/instagram/BM8788pDi27.jpg"></a>
-        </li>
-    </ul>
-    <span class="meta h6">4 months ago</span>
-</section>
-<section class="section">
-    <hr class="grid-2 center">
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <ul class="list-blocks instagram">
-        <li class="grid-12">
-            <a href="https://www.instagram.com/p/BM6LiuOjnQA"><img src="../Content/Theme/web/uploads/instagram/BM6LiuOjnQA.jpg"></a>
-        </li>
-    </ul>
-    <span class="meta h6">4 months ago</span>
-</section>
-<section class="section grid-14 center">
-    <hr class="grid-2 center">
-    <h2>Twitter</h2>
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <blockquote>
-        It’s our 10th birthday! We’re having a celebration at @@DCM_cinema_news’ 30-seater cinema. <a href="https://t.co/Ejm6ogAVZ5">t.co/Ejm6ogAVZ5</a>
-    </blockquote>
-    <p class="h6">
-        <a href="https://twitter.com/builtbybuffalo/status/799207545579520004/">4 months ago</a>
-    </p>
-</section>
-<section class="section">
-    <hr class="grid-2 center">
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <ul class="list-blocks instagram">
-        <li class="grid-12">
-            <a href="https://www.instagram.com/p/BMOXf7hD_6v"><img src="../Content/Theme/web/uploads/instagram/BMOXf7hD_6v.jpg"></a>
-        </li>
-    </ul>
-    <span class="meta h6">5 months ago</span>
-</section>
-<section class="section grid-14 center">
-    <hr class="grid-2 center">
-    <h2>Twitter</h2>
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <blockquote>
-        Spent a little time with PSVR at @@TEDxBrighton and absolutely loved it! <a href="https://t.co/eErYnYtFXD">t.co/eErYnYtFXD</a>
-    </blockquote>
-    <p class="h6">
-        <a href="https://twitter.com/builtbybuffalo/status/792027724202315777/">5 months ago</a>
-    </p>
-</section>
-<section class="section">
-    <hr class="grid-2 center">
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <ul class="list-blocks instagram">
-        <li class="grid-12">
-            <a href="https://www.instagram.com/p/BMHKDk2jTap"><img src="../Content/Theme/web/uploads/instagram/BMHKDk2jTap.jpg"></a>
-        </li>
-    </ul>
-    <span class="meta h6">5 months ago</span>
-</section>
-<section class="section grid-14 center">
-    <hr class="grid-2 center">
-    <h2>Twitter</h2>
-    <i class="ss-icon ss-social heading-icon secondary"></i>
-    <blockquote>
-        Our client @@Intrepidcamera have released the second version of their 4x5 camera and it looks lovely: <a href="https://t.co/KuCvPwW2g0">t.co/KuCvPwW2g0</a>
-    </blockquote>
-    <p class="h6">
-        <a href="https://twitter.com/builtbybuffalo/status/791221055574728708/">5 months ago</a>
-    </p>
-</section>
-<section class="section slim">
-    <a href="#" class="button large tertiary">Show more</a>
-</section>
+<div class="container blogdata" style="margin-top:40px;">
+    <div class="row" id="listbog">
+    </div>
+</div>
+<section class="section grid-14 center" id="page"></section>
+@section scripts{
+    <script id="BlogTemplate" type="text/x-jquery-tmpl">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <a href="${LinkDetail}">
+                    <img src="${ImageLink}" class="img-responsive img-box img-thumbnail image-blog">
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-9">
+                <h4><a href="${LinkDetail}">${Title}</a></h4>
+                <p>{{html ContentBody}}</p>
+            </div>
+        </div>
+    </script>
+    <script type="text/javascript">
+        var AllBlog = function (pageindex) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DataBlog")',
+                data: { StartIndex: pageindex },
+                dataType: "json",
+                success: function (response) {
+                    if (response != null) {
+                        if (response.Data != null) {
+                            $("#listbog").html("");
+                            $("#BlogTemplate").tmpl(response.Data).appendTo("#listbog");
+                            var html = CreatePaging(pageindex, response.TotalItem, 5, 5, "AllBlog");
+                                $("#page").html(html);
+                        }
+                    }
+                },
+                complete: function () {
+                }
+            });
+        };
+        $(document).ready(function () {
+            AllBlog(1);
+        });
+    </script>
+}
