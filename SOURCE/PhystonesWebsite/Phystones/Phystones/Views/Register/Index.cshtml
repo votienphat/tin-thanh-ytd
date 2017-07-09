@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout_Web.cshtml";
 }
 <section class="section grid-12 center">
-    <form class="custom-form">
+    <form class="custom-form" method="post">
         <fieldset>
             <h2>Lấy Thông Tin</h2>
             <ul class=" clearfix">
@@ -24,7 +24,7 @@
                     </div>
                 </li>
                 <li class="grid-4 omega form-el">
-                    <a class="grid-4 center margin-top-standard" style="padding:7px 20px" onclick="Checkcompany()">Tìm</a>
+                    <button type="submit" class="grid-4 center margin-top-standard" style="padding:7px 20px" onclick="Checkcompany()">Tìm</button>
                 </li>
             </ul>
         </fieldset>
@@ -36,21 +36,24 @@
 @section scripts{
     <script>
         var Checkcompany = function () {
-            var name = $("#inputtext").val();
-            var type = $("#selecttype").val();
-            console.log(name);
-            console.log(type);
-            var urldata = 'http://www.hosocongty.vn/search.php?key=' + name + '&ot=' + type + '&p=0&d=0'
-            console.log(urldata);
-            $.get(urldata, {}, function (html) {
-                if (html.trim().length > 0) {
-                    console.log(html);
-                } else {
-
-                }
-            });
+             $.ajax({
+            type: "POST",
+            url: '@Url.Action("DataCompany")',
+            data: { Name: $("#inputtext").val(), Type: $("#selecttype").val() },
+            dataType: "json",
+            success: function (response) {
+                if (response != null) {
+                    if (response.Status == 1) {
+                        $("#MST").val(response.Data.MST);
+                        $("#CompanyName").val(response.Data.CompanyName);
+                        $("#Address").val(response.Data.Address);
+                    }
+                };
+            },
+            complete: function () {
+            }
+        });
         }
-       
     </script>
 
 }

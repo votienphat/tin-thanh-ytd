@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.IO;
 using System.Text;
+using HtmlAgilityPack;
 
 namespace Phystones.Controllers
 {
@@ -68,31 +69,11 @@ namespace Phystones.Controllers
         public JsonResult DataCompany(string Name, int Type)
         {
             string urlAddress = "http://www.hosocongty.vn/search.php?key=" + Name + "&ot=" + Type + "&p=0&d=0";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                Stream receiveStream = response.GetResponseStream();
-                StreamReader readStream = null;
-
-                if (response.CharacterSet == null)
-                {
-                    readStream = new StreamReader(receiveStream);
-                }
-                else
-                {
-                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-                }
-
-                string data = readStream.ReadToEnd();
-
-                response.Close();
-                readStream.Close();
-            }
+            HtmlWeb website = new HtmlWeb();
+            HtmlDocument rootDocument = website.Load(urlAddress);
 
 
-            return new JsonResult() { Data = 1, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult() { Data = rootDocument, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }
