@@ -18,6 +18,7 @@ namespace BusinessObject.WebModule
         private readonly ISloganRepository _sloganRepo;
         private readonly IWorkRepository _workRepo;
         private readonly IConfigRepository _configRepo;
+        private readonly IRegisterCompanyRepository _conregisterRepo;
 
         #endregion
 
@@ -152,7 +153,12 @@ namespace BusinessObject.WebModule
         public List<Out_Article_GetArticleBlog_Result> GetArticleBlog(int categoryId, int startIndex, int pageLength,
             out int total)
         {
-            return _articleRepo.GetArticleBlog(categoryId, startIndex, pageLength,out total);
+            return _articleRepo.GetArticleBlog(categoryId, startIndex, pageLength, out total);
+        }
+        public int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email,
+string ContactPreson, string ReceiveAddress)
+        {
+            return _conregisterRepo.RegisterCompany(MST, CompanyName, Address, CEO, PackedRegister, TypeRegister, Email, ContactPreson, ReceiveAddress);
         }
     }
 }

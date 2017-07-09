@@ -133,6 +133,15 @@ namespace Phystones.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tìm.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dự án.
         /// </summary>
         public static string Work {

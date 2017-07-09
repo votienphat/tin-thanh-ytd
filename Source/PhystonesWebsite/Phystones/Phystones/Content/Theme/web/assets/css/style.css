@@ -5218,10 +5218,12 @@ a:focus, a:hover {
 .blogdata h4, .blogdata p {
     text-align: left;
 }
+
 .image-blog {
-    width:150px;
-    height:150px;
+    width: 150px;
+    height: 150px;
 }
+
 .centerBike {
     position: absolute;
     top: 50%;
@@ -5237,6 +5239,7 @@ a:focus, a:hover {
     margin-top: -50px;
     margin-left: -50px;
 }
+
 #loading {
     position: fixed;
     background: rgba(0, 0, 0, 0.3);
@@ -5244,8 +5247,8 @@ a:focus, a:hover {
     height: 100%;
     top: 0;
     left: 0;
-    display:none;
-    cursor:pointer;
+    display: none;
+    cursor: pointer;
 }
 
 #loop {
@@ -5309,3 +5312,10 @@ a:focus, a:hover {
     }
 }
 
+.btn-search {
+    padding: 7px 20px;
+    background-color: #16a6b6;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: bold;
+}

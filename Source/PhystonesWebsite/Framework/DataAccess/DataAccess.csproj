@@ -63,6 +63,7 @@
     <Compile Include="Contract\Membership\IMemberPermissionRepository.cs" />
     <Compile Include="Contract\Membership\IPageFunctionRepository.cs" />
     <Compile Include="Contract\Web\IConfigRepository.cs" />
+    <Compile Include="Contract\Web\IRegisterCompanyRepository.cs" />
     <Compile Include="Contract\Web\IWorkRepository.cs" />
     <Compile Include="Contract\Web\ISloganRepository.cs" />
     <Compile Include="Contract\Web\IPortfolioRepository.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Repositories\Membership\MemberPermissionRepository.cs" />
     <Compile Include="Repositories\Membership\PageFunctionRepository.cs" />
     <Compile Include="Repositories\Web\ConfigRepository.cs" />
+    <Compile Include="Repositories\Web\RegisterCompanyRepository.cs" />
     <Compile Include="Repositories\Web\WorkRepository.cs" />
     <Compile Include="Repositories\Web\SloganRepository.cs" />
     <Compile Include="Repositories\Web\PortfolioRepository.cs" />

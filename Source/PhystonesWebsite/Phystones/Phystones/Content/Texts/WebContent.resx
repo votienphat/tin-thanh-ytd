@@ -141,6 +141,9 @@
   <data name="Phone" xml:space="preserve">
     <value>Điện thoại</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tìm</value>
+  </data>
   <data name="Work" xml:space="preserve">
     <value>Dự án</value>
   </data>

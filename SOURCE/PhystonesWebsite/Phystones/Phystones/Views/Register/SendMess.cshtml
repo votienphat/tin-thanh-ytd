@@ -3,6 +3,8 @@
 @using (Ajax.BeginForm("SendMess", "Register",
                             new AjaxOptions
                             {
+                                OnBegin = "return Loading.Show();",
+                                OnSuccess = "return Loading.Hide();",
                                 HttpMethod = "POST",
                                 UpdateTargetId = "saveContact"
                             }, new { @class = "form-horizontal form-groups-bordered" }))
@@ -21,10 +23,46 @@
                     @Html.ValidationMessageFor(x => x.CompanyName)
                 </div>
             </li>
-            <li class="grid-4 alpha margin-top-standard form-el">
+            <li class="grid-6 alpha margin-top-standard form-el">
                 <div class="text-wrap">
                     @Html.TextBoxFor(x => x.Address, new { @placeholder = "Address" })
                     @Html.ValidationMessageFor(x => x.Address)
+                </div>
+            </li>
+            <li class="grid-6 alpha margin-top-standard form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.CEO, new { @placeholder = "CEO" })
+                    @Html.ValidationMessageFor(x => x.CEO)
+                </div>
+            </li>
+            <li class="grid-6 alpha margin-top-standard form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email" })
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+            </li>
+            <li class="grid-6 alpha margin-top-standard form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.ContactPreson, new { @placeholder = "Contact Preson" })
+                    @Html.ValidationMessageFor(x => x.ContactPreson)
+                </div>
+            </li>
+            <li class="grid-6 alpha margin-top-standard form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.PackedRegister, new { @placeholder = "PackedRegister" })
+                    @Html.ValidationMessageFor(x => x.PackedRegister)
+                </div>
+            </li>
+            <li class="grid-6 alpha margin-top-standard form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.TypeRegister, new { @placeholder = "Type Register" })
+                    @Html.ValidationMessageFor(x => x.TypeRegister)
+                </div>
+            </li>
+            <li class="grid-12 alpha margin-top-standard form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.ReceiveAddress, new { @placeholder = "Receive Address" })
+                    @Html.ValidationMessageFor(x => x.ReceiveAddress)
                 </div>
             </li>
         </ul>

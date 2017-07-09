@@ -38,16 +38,13 @@ namespace Phystones.Controllers
         }
 
         [HttpPost]
-        public ActionResult SendMess(SendContact model)
+        public ActionResult SendMess(Register model)
         {
             if (ModelState.IsValid)
             {
-                _webBusiness.SaveDataContact(model.Name, model.Phone, model.Email, model.Messenger,
-                    MyConfiguration.Mail.SendingMail, MyConfiguration.Mail.SendingMail2,
-                    MyConfiguration.Mail.SendingMailName, MyConfiguration.Mail.SendingMailTitle,
-                    MyConfiguration.Mail.ReceiveMails, MyConfiguration.Mail.HostMail, MyConfiguration.Mail.Port);
+                _webBusiness.RegisterCompany(model.MST,model.CompanyName,model.Address,model.CEO,model.PackedRegister,model.TypeRegister,model.Email,model.ContactPreson,model.ReceiveAddress);
             }
-            return PartialView();
+            return PartialView(model);
         }
 
         public ActionResult SendMess()
@@ -72,14 +69,10 @@ namespace Phystones.Controllers
             return PartialView();
         }
 
-        public JsonResult DataCompany(string Name, int Type)
+        public JsonResult DataCompany(string Name)
         {
-            string urlAddress = "http://www.hosocongty.vn/search.php?key=" + Name + "&ot=" + Type + "&p=0&d=0";
-            HtmlWeb website = new HtmlWeb();
-            HtmlDocument rootDocument = website.Load(urlAddress);
-
-
-            return new JsonResult() { Data = rootDocument, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+           var info = GetCompanyInfo(Name);
+            return new JsonResult() { Data = new{MST = info.MST,CompanyName = info.CompanyName,Address = info.Address,CEO = info.CEO }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         private HoSoCongTyItem GetCompanyInfo(string mst)

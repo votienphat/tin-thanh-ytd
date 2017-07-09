@@ -89,13 +89,23 @@ namespace Phystones.Models.ContentData
     }
      public class Register
     {
+        [Required(ErrorMessage = "Please Enter MST")]
+         public string MST { get; set; }
         [Required(ErrorMessage = "Please Enter Company Name")]
         public string CompanyName { get; set; }
-        [Required(ErrorMessage = "Please Enter MST")]
-        public string MST { get; set; }
-        [Required(ErrorMessage = "Please Enter MST")]
+        [Required(ErrorMessage = "Please Enter Address")]
         public string Address { get; set; }
-        [Required(ErrorMessage = "Please Enter Giám Đốc")]
-        public string GiamDoc { get; set; }
+        [Required(ErrorMessage = "Please Enter CEO")]
+        public string CEO { get; set; }
+        [Required(ErrorMessage = "Please Enter Packed Register")]
+        public int PackedRegister { get; set; }
+        [Required(ErrorMessage = "Please Enter Type Register")]
+        public int TypeRegister { get; set; }
+        [Required(ErrorMessage = "Please Enter Email")]
+        public string Email { get; set; }
+        [Required(ErrorMessage = "Please Enter ContactPreson")]
+        public string ContactPreson { get; set; }
+        [Required(ErrorMessage = "Please Enter Receive Address")]
+        public string ReceiveAddress { get; set; }
     }
 }

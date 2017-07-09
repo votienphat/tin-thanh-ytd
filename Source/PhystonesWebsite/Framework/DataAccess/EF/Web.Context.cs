@@ -39,6 +39,7 @@ namespace DataAccess.EF
         public virtual DbSet<Config> Configs { get; set; }
         public virtual DbSet<Work> Works { get; set; }
         public virtual DbSet<CategoryWork> CategoryWorks { get; set; }
+        public virtual DbSet<RegisterCompany> RegisterCompanies { get; set; }
     
         public virtual int Out_Article_Save(Nullable<int> id, string title, string image, string contentBody, Nullable<int> categoryId)
         {
@@ -353,6 +354,47 @@ namespace DataAccess.EF
                 new ObjectParameter("PageLength", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetArticleBlog_Result>("Out_Article_GetArticleBlog", categoryIdParameter, startIndexParameter, pageLengthParameter, totalRow);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Out_RegisterCompany_Save(string mST, string companyName, string address, string cEO, Nullable<int> packedRegister, Nullable<int> typeRegister, string email, string contactPreson, string receiveAddress)
+        {
+            var mSTParameter = mST != null ?
+                new ObjectParameter("MST", mST) :
+                new ObjectParameter("MST", typeof(string));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("CompanyName", companyName) :
+                new ObjectParameter("CompanyName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var cEOParameter = cEO != null ?
+                new ObjectParameter("CEO", cEO) :
+                new ObjectParameter("CEO", typeof(string));
+    
+            var packedRegisterParameter = packedRegister.HasValue ?
+                new ObjectParameter("PackedRegister", packedRegister) :
+                new ObjectParameter("PackedRegister", typeof(int));
+    
+            var typeRegisterParameter = typeRegister.HasValue ?
+                new ObjectParameter("TypeRegister", typeRegister) :
+                new ObjectParameter("TypeRegister", typeof(int));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var contactPresonParameter = contactPreson != null ?
+                new ObjectParameter("ContactPreson", contactPreson) :
+                new ObjectParameter("ContactPreson", typeof(string));
+    
+            var receiveAddressParameter = receiveAddress != null ?
+                new ObjectParameter("ReceiveAddress", receiveAddress) :
+                new ObjectParameter("ReceiveAddress", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Out_RegisterCompany_Save", mSTParameter, companyNameParameter, addressParameter, cEOParameter, packedRegisterParameter, typeRegisterParameter, emailParameter, contactPresonParameter, receiveAddressParameter);
         }
     }
 }

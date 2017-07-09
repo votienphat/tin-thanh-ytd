@@ -222,6 +222,9 @@
     <Compile Include="Entities\WebEntities\Portfolio.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\WebEntities\RegisterCompany.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\WebEntities\Slogan.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>

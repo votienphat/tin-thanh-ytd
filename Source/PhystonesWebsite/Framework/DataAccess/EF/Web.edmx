@@ -91,6 +91,21 @@
           <Property Name="LinkProfile" Type="nvarchar" MaxLength="512" />
           <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="RegisterCompany">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MST" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="512" />
+          <Property Name="Address" Type="nvarchar" MaxLength="512" />
+          <Property Name="CEO" Type="nvarchar" MaxLength="512" />
+          <Property Name="PackedRegister" Type="int" />
+          <Property Name="TypeRegister" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="512" />
+          <Property Name="ContactPreson" Type="nvarchar" MaxLength="512" />
+          <Property Name="ReceiveAddress" Type="nvarchar" MaxLength="512" />
+        </EntityType>
         <EntityType Name="Slogan">
           <Key>
             <PropertyRef Name="Id" />
@@ -196,6 +211,17 @@
           <Parameter Name="LinkWeb" Type="nvarchar" Mode="In" />
           <Parameter Name="LinkProfile" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Out_RegisterCompany_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MST" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="CEO" Type="nvarchar" Mode="In" />
+          <Parameter Name="PackedRegister" Type="int" Mode="In" />
+          <Parameter Name="TypeRegister" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContactPreson" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiveAddress" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="Out_Slogan_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Out_Work_GetByCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryId" Type="int" Mode="In" />
@@ -229,6 +255,7 @@
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plain" EntityType="Self.Plain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Portfolio" EntityType="Self.Portfolio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterCompany" EntityType="Self.RegisterCompany" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slogan" EntityType="Self.Slogan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
@@ -344,6 +371,18 @@
             <Parameter Name="StartIndex" Mode="In" Type="Int32" />
             <Parameter Name="PageLength" Mode="In" Type="Int32" />
             <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="RegisterCompanies" EntityType="WebModel.RegisterCompany" />
+          <FunctionImport Name="Out_RegisterCompany_Save" ReturnType="Collection(Int32)">
+            <Parameter Name="MST" Mode="In" Type="String" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="CEO" Mode="In" Type="String" />
+            <Parameter Name="PackedRegister" Mode="In" Type="Int32" />
+            <Parameter Name="TypeRegister" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="ContactPreson" Mode="In" Type="String" />
+            <Parameter Name="ReceiveAddress" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Out_Article_GetListData_Result">
@@ -609,6 +648,21 @@
           <Property Type="String" Name="Language" Nullable="true" MaxLength="10" />
           <Property Type="Int32" Name="RowNumber" Nullable="true" />
         </ComplexType>
+        <EntityType Name="RegisterCompany">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MST" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="CEO" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="PackedRegister" Type="Int32" />
+          <Property Name="TypeRegister" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPreson" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiveAddress" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -965,6 +1019,23 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="RegisterCompanies">
+            <EntityTypeMapping TypeName="WebModel.RegisterCompany">
+              <MappingFragment StoreEntitySet="RegisterCompany">
+                <ScalarProperty Name="ReceiveAddress" ColumnName="ReceiveAddress" />
+                <ScalarProperty Name="ContactPreson" ColumnName="ContactPreson" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TypeRegister" ColumnName="TypeRegister" />
+                <ScalarProperty Name="PackedRegister" ColumnName="PackedRegister" />
+                <ScalarProperty Name="CEO" ColumnName="CEO" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="MST" ColumnName="MST" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Out_RegisterCompany_Save" FunctionName="WebModel.Store.Out_RegisterCompany_Save" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
