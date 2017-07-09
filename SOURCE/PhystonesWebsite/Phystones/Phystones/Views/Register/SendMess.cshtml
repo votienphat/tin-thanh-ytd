@@ -1,0 +1,35 @@
+﻿@using Phystones.Models.ContentData
+@model Register
+@using (Ajax.BeginForm("SendMess", "Register",
+                            new AjaxOptions
+                            {
+                                HttpMethod = "POST",
+                                UpdateTargetId = "saveContact"
+                            }, new { @class = "form-horizontal form-groups-bordered" }))
+{
+    <fieldset>
+        <ul class=" clearfix">
+            <li class="grid-6 alpha form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.MST, new { @placeholder = "MST" })
+                    @Html.ValidationMessageFor(x => x.MST)
+                </div>
+            </li>
+            <li class="grid-6 alpha form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.CompanyName, new { @placeholder = "Company Name" })
+                    @Html.ValidationMessageFor(x => x.CompanyName)
+                </div>
+            </li>
+            <li class="grid-4 alpha margin-top-standard form-el">
+                <div class="text-wrap">
+                    @Html.TextBoxFor(x => x.Address, new { @placeholder = "Address" })
+                    @Html.ValidationMessageFor(x => x.Address)
+                </div>
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset class="clearfix">
+        <button type="submit" class="grid-4 secondary center large margin-top-standard">Submit</button>
+    </fieldset>
+}

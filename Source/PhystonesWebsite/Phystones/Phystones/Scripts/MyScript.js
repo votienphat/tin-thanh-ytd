@@ -118,3 +118,11 @@ var CreatePaging = function (pageIndex, totalItem, itemInPage, countDisplayPage,
     ul += "</ul>";
     return ul;
 };
+var Loading = {
+    Show: function () {
+        $("#loading").show();
+    },
+    Hide: function () {
+        $("#loading").hide();
+    }
+};

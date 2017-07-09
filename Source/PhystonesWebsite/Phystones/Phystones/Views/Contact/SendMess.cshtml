@@ -3,6 +3,8 @@
 @using (Ajax.BeginForm("SendMess", "Contact",
                             new AjaxOptions
                             {
+                                OnBegin = "return Loading.Show();",
+                                OnSuccess = "return Loading.Hide();",
                                 HttpMethod = "POST",
                                 UpdateTargetId = "saveContact"
                             }, new { @class = "form-horizontal form-groups-bordered" }))

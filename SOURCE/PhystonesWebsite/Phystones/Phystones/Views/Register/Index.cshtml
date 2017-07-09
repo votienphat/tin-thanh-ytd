@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Web.cshtml";
+}
+<section class="section grid-12 center">
+    <form class="custom-form">
+        <fieldset>
+            <h2>Lấy Thông Tin</h2>
+            <ul class=" clearfix">
+                <li class="grid-4 alpha form-el">
+                    <div class="text-wrap">
+                        <input type="text" name="inputtext" id="inputtext" style="padding:7px">
+                    </div>
+                </li>
+                <li class="grid-4 alpha form-el">
+                    <div class="custom-select button" data-type="select">
+                        <select id="selecttype" >
+                            <option value="0" selected="selected">Mã Số Thuế</option>
+                            <option value="4">Tên Công Ty</option>
+                            <option value="5">Tên Quốc Tế</option>
+                            <option value="1">Tên Giám Đốc</option>
+                            <option value="2">Số Điện Thoại</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="grid-4 omega form-el">
+                    <a class="grid-4 center margin-top-standard" style="padding:7px 20px" onclick="Checkcompany()">Tìm</a>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+</section>
+<section class="section grid-12 center">
+    @Html.Partial("SendMess")
+</section>
+@section scripts{
+    <script>
+        var Checkcompany = function () {
+            var name = $("#inputtext").val();
+            var type = $("#selecttype").val();
+            console.log(name);
+            console.log(type);
+            var urldata = 'http://www.hosocongty.vn/search.php?key=' + name + '&ot=' + type + '&p=0&d=0'
+            console.log(urldata);
+            $.get(urldata, {}, function (html) {
+                if (html.trim().length > 0) {
+                    console.log(html);
+                } else {
+
+                }
+            });
+        }
+       
+    </script>
+
+}

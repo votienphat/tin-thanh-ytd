@@ -87,4 +87,15 @@ namespace Phystones.Models.ContentData
         public string LinkProfile { get; set; }
         public string ImgeString { get; set; }
     }
+     public class Register
+    {
+        [Required(ErrorMessage = "Please Enter Company Name")]
+        public string CompanyName { get; set; }
+        [Required(ErrorMessage = "Please Enter MST")]
+        public string MST { get; set; }
+        [Required(ErrorMessage = "Please Enter MST")]
+        public string Address { get; set; }
+        [Required(ErrorMessage = "Please Enter Giám Đốc")]
+        public string GiamDoc { get; set; }
+    }
 }

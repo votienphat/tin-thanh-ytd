@@ -3175,6 +3175,8 @@
     <Content Include="Views\Contact\ListData.cshtml" />
     <Content Include="Views\Config\Index.cshtml" />
     <Content Include="Views\Config\ConfigContact.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Register\SendMess.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Syntax\Index.cshtml" />
@@ -3216,6 +3218,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\WebBaseController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\JobController.cs" />
