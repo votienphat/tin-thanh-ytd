@@ -26,5 +26,9 @@ namespace Phystones.Models.Config
         public string FooterContent { get; set; }
 
         public string KeyConfig { get; set; }
+
+        public string GoogleAnalyticID { get; set; }
+
+        public string FacebookPixelCode { get; set; }
     }
 }

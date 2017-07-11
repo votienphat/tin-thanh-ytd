@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using BusinessObject.WebModule.Contract;
 using DataAccess.Contract.Web;
 using EntitiesObject.Entities.WebEntities;
+using EntitiesObject.Message.Content;
 using Logger;
 using MyUtility;
+using MyUtility.Extensions;
 
 namespace BusinessObject.WebModule
 {
@@ -155,10 +157,14 @@ namespace BusinessObject.WebModule
         {
             return _articleRepo.GetArticleBlog(categoryId, startIndex, pageLength, out total);
         }
-        public int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email,
-string ContactPreson, string ReceiveAddress)
+        public int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email, string ContactPreson, string ReceiveAddress)
         {
             return _conregisterRepo.RegisterCompany(MST, CompanyName, Address, CEO, PackedRegister, TypeRegister, Email, ContactPreson, ReceiveAddress);
+        }
+
+        public Out_Slogan_GetById_Result GetSlogan(SloganEnum id)
+        {
+            return _sloganRepo.Get(id.Value());
         }
     }
 }

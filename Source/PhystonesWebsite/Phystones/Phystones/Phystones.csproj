@@ -74,6 +74,12 @@
       <HintPath>..\..\Framework\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\Framework\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -3120,6 +3126,8 @@
     <Content Include="Content\Theme\web\assets\font\open-sans\OpenSans-Regular.ttf" />
     <Content Include="Content\Theme\web\assets\font\open-sans\OpenSans-Semibold.ttf" />
     <Content Include="Content\Theme\web\assets\font\open-sans\OpenSans-SemiboldItalic.ttf" />
+    <Content Include="Content\Upload\DigitalSignature\template.docx" />
+    <Content Include="Content\Upload\DigitalSignature\xxxx.docx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
@@ -3307,7 +3315,6 @@
     <Folder Include="Content\Theme\assets\js\aci-tree\php\tree\Item 7\Item 4\Item 3\" />
     <Folder Include="Content\Theme\assets\js\aci-tree\php\tree\Item 7\Item 4\Item 4\" />
     <Folder Include="Content\Theme\assets\js\selectboxit\css\" />
-    <Folder Include="Content\Upload\" />
     <Folder Include="Enums\Account\" />
     <Folder Include="Views\Mail\" />
   </ItemGroup>

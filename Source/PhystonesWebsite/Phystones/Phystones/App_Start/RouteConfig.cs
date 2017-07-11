@@ -64,13 +64,12 @@ namespace Phystones
             //    new RouteValueDictionary(new { controller = "Article", action = "ArticleDetail" }),
             //    new MvcRouteHandler()));
 
-            //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-            //    namespaces: new[] { "Phystones.Controllers" }
-
-            //);
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Phystones.Controllers" }
+            );
             //routes.MapRoute(
             //    name: "Article",
             //    url: "{controller}/{action}",
