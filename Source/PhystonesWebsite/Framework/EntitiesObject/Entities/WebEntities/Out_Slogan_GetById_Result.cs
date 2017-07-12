@@ -13,26 +13,17 @@ namespace EntitiesObject.Entities.WebEntities
 {
 
 using System;
-    using System.Collections.Generic;
     
-public partial class Article
+public partial class Out_Slogan_GetById_Result
 {
 
     public int Id { get; set; }
 
     public string Title { get; set; }
 
-    public string Image { get; set; }
-
     public string ContentBody { get; set; }
 
-    public Nullable<int> CategoryId { get; set; }
-
-    public bool IsActive { get; set; }
-
-    public string TextId { get; set; }
-
-    public string Language { get; set; }
+    public string Author { get; set; }
 
 }
 

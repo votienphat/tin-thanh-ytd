@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using BusinessObject.WebModule.Contract;
 using DataAccess.Contract.Web;
 using EntitiesObject.Entities.WebEntities;
+<<<<<<< HEAD
+=======
+using EntitiesObject.Message.Content;
+using EntitiesObject.Message.Enum;
+>>>>>>> 7c95c30dc45d72cd825a1900048f07bb52b4624c
 using Logger;
 using MyUtility;
 
@@ -19,6 +24,7 @@ namespace BusinessObject.WebModule
         private readonly IWorkRepository _workRepo;
         private readonly IConfigRepository _configRepo;
         private readonly IRegisterCompanyRepository _conregisterRepo;
+        private readonly IPlainRepository _plainRepo;
 
         #endregion
 
@@ -26,7 +32,7 @@ namespace BusinessObject.WebModule
 
         public WebBusiness(IArticleRepository articleRepo, IPortfolioRepository portfolioRepo,
             IContactRepository contactRepo, ISloganRepository sloganRepo, IWorkRepository workRepo,
-            IConfigRepository configRepo)
+            IConfigRepository configRepo, IPlainRepository plainRepo)
         {
             _articleRepo = articleRepo;
             _portfolioRepo = portfolioRepo;
@@ -34,6 +40,7 @@ namespace BusinessObject.WebModule
             _sloganRepo = sloganRepo;
             _workRepo = workRepo;
             _configRepo = configRepo;
+            _plainRepo = plainRepo;
         }
 
         #endregion
@@ -162,8 +169,28 @@ namespace BusinessObject.WebModule
         }
         public List<Out_RegisterCompany_GetListData_Result> ListDataRegisterCompany(string keyWord, int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow)
         {
+<<<<<<< HEAD
             return _conregisterRepo.GetListData(keyWord, rowStart, rowEnd, orderBy, isDescending, out totalRow);
         }
 
+=======
+            return _sloganRepo.Get(id.Value());
+        }
+
+        public List<Out_Plain_GetByType_Result> GetPlainByType(PlainEnum type)
+        {
+            return _plainRepo.GetByType(type.Value());
+        }
+
+        public List<Out_Slogan_GetListData_Result> ListDataSlogan(int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow)
+        {
+            return _sloganRepo.ListDataSlogan(rowStart, rowEnd, orderBy, isDescending, out totalRow);
+        }
+
+        public int SaveDataSlogan(int Id, string Title, string Author, string ContentBody, string Language, bool IsActive)
+        {
+            return _sloganRepo.SaveDataSlogan(Id, Title, Author, ContentBody, Language, IsActive);
+        }
+>>>>>>> 7c95c30dc45d72cd825a1900048f07bb52b4624c
     }
 }

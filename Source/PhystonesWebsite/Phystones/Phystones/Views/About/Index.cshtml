@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 @{
     ViewBag.Title = "Index";
@@ -185,4 +186,126 @@
         <div class="modal-content">
         </div>
     </div>
+=======
+﻿@using EntitiesObject.Entities.WebEntities
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Web.cshtml";
+    var i = 1;
+    var next = 0;
+    var pre = 0;
+    var content = ViewBag.Content as Out_Slogan_GetById_Result;
+    var WhatWeDo = ViewBag.WhatWeDo as List<Out_Plain_GetByType_Result>;
+    var ThePlayers = ViewBag.ThePlayers as List<Out_Plain_GetByType_Result>;
+    var ThePartners = ViewBag.ThePartners as List<Out_Plain_GetByType_Result>;
+}
+
+
+@if (content != null)
+{
+    <h1 id="tagline">@content.Title</h1>
+    <h2 class="grid-10 center">
+        @Html.Raw(content.ContentBody)
+    </h2>
+}
+
+@if (WhatWeDo != null)
+{
+    <section class="grid-14 center section">
+        <hr class="grid-2 center">
+        <h2 class="margin-bottom-small">What we do</h2>
+        <ul class="clearfix list-icon-items large-margins">
+            @foreach (var item in WhatWeDo)
+            {
+                <li class="grid-4">
+                    
+
+                    <!-- Strategy -->
+                    <a data-modal-link="" data-m-group="capabilities" data-modal="/modal/strategy">
+                        <i class="circ secondary ss-icon ss-standard">
+                            ◎
+                            <i class="circ pulse"></i>
+                        </i>
+                        <h6><span class="pseudo-link">@item.Name</span></h6>
+                        <p class="colour-body">@item.ContentBody</p>
+                    </a>
+                    <!-- UX -->
+                </li>
+            }
+        
+          
+        </ul>
+    </section>
+}
+@if (ThePlayers != null)
+{
+    <section class="section interactive" data-interactive="">
+        <hr class="grid-2 center">
+        <h2>The Players</h2>
+        <div class="list-hex-grid large clearfix">
+            @foreach (var item in ThePlayers)
+            {
+                <div class="hex grid-4 invert secondary" style="opacity: 1;">
+                    <a onclick="OpenPopupPortfolio(@item.Id)" style="background-image: url(@item.Image);">
+                        <div class="inner">
+                            <h3>@item.Name</h3>
+                            <hr class="grid-1 center">
+                            <p>@item.Title</p>
+                        </div>
+                        <div class="hex-1"><span class="after"></span></div>
+                        <div class="hex-2"><span class="after"></span></div>
+                        <span class="after"></span>
+                    </a>
+                </div>
+                if (i == 3 || i == 7 || i == 10 || i == 14 || i == 17 || i == 21 || i == 24 || i == 28)
+                {
+                    @Html.Raw("<br class=''>")
+                }
+                i++;
+            }
+            <div class="hex grid-4 invert" style="opacity: 1;"></div>
+            <div class="hex grid-4 invert" style="opacity: 1;"></div>
+            <div class="hex grid-4 invert" style="opacity: 1;"></div>
+        </div>
+    </section>
+}
+@if (ThePartners != null)
+{
+    <section class="section">
+        <hr class="grid-2 center">
+        <h2>The Partners</h2>
+        <div class="list-hex-grid with-labels clearfix small">
+            @foreach (var item in ThePartners)
+            {
+                <div class="hex grid-3 plain-bg inline-bg invert ">
+                    <a href="http://www.bytemark.co.uk/">
+                        <div class="inner">
+                            <h3>@item.Name</h3>
+                        </div>
+                        <img src="@item.Image" alt="Hosting">
+                        <div class="hex-1"><span class="after"></span></div>
+                        <div class="hex-2"><span class="after"></span></div>
+                        <span class="after"></span>
+                        <h6 class="below">
+                            <span class="pseudo-link">@item.Title</span>
+                        </h6>
+                    </a>
+                </div>
+            }
+        </div>
+    </section>
+}
+
+
+
+
+
+
+<div class="modal fade center" id="modalPortfolio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+>>>>>>> 7c95c30dc45d72cd825a1900048f07bb52b4624c
 </div>

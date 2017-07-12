@@ -16,8 +16,13 @@ using System.Threading;
 using System.IO;
 using System.Text;
 using HtmlAgilityPack;
+<<<<<<< HEAD
 using System.Web;
 
+=======
+using EntitiesObject.Message.Content;
+
+>>>>>>> 7c95c30dc45d72cd825a1900048f07bb52b4624c
 namespace Phystones.Controllers
 {
     public class RegisterController : Controller
@@ -34,7 +39,11 @@ namespace Phystones.Controllers
         // GET: Sample
         public ActionResult Index()
         {
+<<<<<<< HEAD
 
+=======
+            ViewBag.Register = _webBusiness.GetSlogan(SloganEnum.Register);
+>>>>>>> 7c95c30dc45d72cd825a1900048f07bb52b4624c
             return View();
         }
 
