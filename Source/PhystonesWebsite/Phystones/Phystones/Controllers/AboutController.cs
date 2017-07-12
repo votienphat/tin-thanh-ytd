@@ -11,6 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EntitiesObject.Message.Content;
+using EntitiesObject.Message.Enum;
 
 namespace Phystones.Controllers
 {
@@ -31,6 +32,10 @@ namespace Phystones.Controllers
             var portfolio = _webBusiness.GetList();
             ViewBag.Portfolio = portfolio;
             ViewBag.Content = _webBusiness.GetSlogan(SloganEnum.About);
+            ViewBag.WhatWeDo = _webBusiness.GetPlainByType(PlainEnum.WhatWedo);
+            ViewBag.ThePlayers = _webBusiness.GetPlainByType(PlainEnum.ThePlayers);
+            ViewBag.ThePartners = _webBusiness.GetPlainByType(PlainEnum.ThePartners);
+
             return View();
         }
         #region List Data

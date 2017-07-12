@@ -1,8 +1,18 @@
-﻿@{
+﻿
+@using EntitiesObject.Entities.WebEntities
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_Web.cshtml";
+    var Register = ViewBag.Register as Out_Slogan_GetById_Result;
 }
 @using Phystones.Content.Texts
+@if (Register != null)
+{
+    <h1 id="tagline">@Register.Title</h1>
+    <h2 class="grid-10 center">
+        @Html.Raw(Register.ContentBody)
+    </h2>
+}
 <section class="section grid-12 center">
     <form class="custom-form" method="post">
         <fieldset>

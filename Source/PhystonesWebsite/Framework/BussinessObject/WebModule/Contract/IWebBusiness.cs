@@ -1,6 +1,7 @@
 ﻿using EntitiesObject.Entities.WebEntities;
 using System.Collections.Generic;
 using EntitiesObject.Message.Content;
+using EntitiesObject.Message.Enum;
 
 namespace BusinessObject.WebModule.Contract
 {
@@ -35,5 +36,6 @@ namespace BusinessObject.WebModule.Contract
         int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email,string ContactPreson, string ReceiveAddress);
 
         Out_Slogan_GetById_Result GetSlogan(SloganEnum id);
+        List<Out_Plain_GetByType_Result> GetPlainByType(PlainEnum type);
     }
 }

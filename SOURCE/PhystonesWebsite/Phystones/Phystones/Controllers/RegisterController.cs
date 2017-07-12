@@ -16,6 +16,7 @@ using System.Threading;
 using System.IO;
 using System.Text;
 using HtmlAgilityPack;
+using EntitiesObject.Message.Content;
 
 namespace Phystones.Controllers
 {
@@ -33,7 +34,7 @@ namespace Phystones.Controllers
         // GET: Sample
         public ActionResult Index()
         {
-            
+            ViewBag.Register = _webBusiness.GetSlogan(SloganEnum.Register);
             return View();
         }
 

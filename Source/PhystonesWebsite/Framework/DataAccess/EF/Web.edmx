@@ -74,7 +74,11 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Image" Type="nvarchar" MaxLength="512" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContentBody" Type="ntext" />
           <Property Name="Title" Type="nvarchar" MaxLength="512" />
+          <Property Name="Type" Type="int" />
+          <Property Name="OrderNo" Type="int" />
           <Property Name="Link" Type="nvarchar" MaxLength="512" />
           <Property Name="Language" Type="varchar" MaxLength="10" />
         </EntityType>
@@ -190,6 +194,9 @@
           <Parameter Name="Email" Type="nvarchar" Mode="In" />
           <Parameter Name="Messenger" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Out_Plain_GetByType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="type" Type="int" Mode="In" />
+        </Function>
         <Function Name="Out_Portfolio_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
@@ -291,7 +298,6 @@
           <EntitySet Name="Articles" EntityType="WebModel.Article" />
           <EntitySet Name="CategoryArticles" EntityType="WebModel.CategoryArticle" />
           <EntitySet Name="Contacts" EntityType="WebModel.Contact" />
-          <EntitySet Name="Plains" EntityType="WebModel.Plain" />
           <EntitySet Name="Stats" EntityType="WebModel.Stat" />
           <EntitySet Name="CategoryPortfolios" EntityType="WebModel.CategoryPortfolio" />
           <FunctionImport Name="Out_Contact_GetListData" ReturnType="Collection(WebModel.Out_Contact_GetListData_Result)">
@@ -388,7 +394,11 @@
           </FunctionImport>
           <EntitySet Name="Slogans" EntityType="WebModel.Slogan" />
           <FunctionImport Name="Out_Slogan_GetById" ReturnType="Collection(WebModel.Out_Slogan_GetById_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Plains" EntityType="WebModel.Plain" />
+          <FunctionImport Name="Out_Plain_GetByType" ReturnType="Collection(WebModel.Out_Plain_GetByType_Result)">
+            <Parameter Name="type" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Out_Article_GetListData_Result">
@@ -434,16 +444,6 @@
           <Property Name="IsRead" Type="Boolean" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="ReadDate" Type="DateTime" Precision="3" />
-          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Plain">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Image" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-          <Property Name="Link" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Stat">
@@ -675,6 +675,31 @@
           <Property Type="String" Name="ContentBody" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="Author" Nullable="true" MaxLength="512" />
         </ComplexType>
+        <EntityType Name="Plain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContentBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="Link" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="Out_Plain_GetByType_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ContentBody" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="Int32" Name="Type" Nullable="true" />
+          <Property Type="Int32" Name="OrderNo" Nullable="true" />
+          <Property Type="String" Name="Link" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Language" Nullable="true" MaxLength="10" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -731,17 +756,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Plains">
-            <EntityTypeMapping TypeName="WebModel.Plain">
-              <MappingFragment StoreEntitySet="Plain">
-                <ScalarProperty Name="Language" ColumnName="Language" />
-                <ScalarProperty Name="Link" ColumnName="Link" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1055,6 +1069,36 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
                 <ScalarProperty Name="Author" ColumnName="Author" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Plains">
+            <EntityTypeMapping TypeName="WebModel.Plain">
+              <MappingFragment StoreEntitySet="Plain">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Out_Plain_GetByType" FunctionName="WebModel.Store.Out_Plain_GetByType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Plain_GetByType_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

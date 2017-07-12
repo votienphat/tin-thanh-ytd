@@ -4,6 +4,7 @@ using BusinessObject.WebModule.Contract;
 using DataAccess.Contract.Web;
 using EntitiesObject.Entities.WebEntities;
 using EntitiesObject.Message.Content;
+using EntitiesObject.Message.Enum;
 using Logger;
 using MyUtility;
 using MyUtility.Extensions;
@@ -21,6 +22,7 @@ namespace BusinessObject.WebModule
         private readonly IWorkRepository _workRepo;
         private readonly IConfigRepository _configRepo;
         private readonly IRegisterCompanyRepository _conregisterRepo;
+        private readonly IPlainRepository _plainRepo;
 
         #endregion
 
@@ -28,7 +30,7 @@ namespace BusinessObject.WebModule
 
         public WebBusiness(IArticleRepository articleRepo, IPortfolioRepository portfolioRepo,
             IContactRepository contactRepo, ISloganRepository sloganRepo, IWorkRepository workRepo,
-            IConfigRepository configRepo)
+            IConfigRepository configRepo, IPlainRepository plainRepo)
         {
             _articleRepo = articleRepo;
             _portfolioRepo = portfolioRepo;
@@ -36,6 +38,7 @@ namespace BusinessObject.WebModule
             _sloganRepo = sloganRepo;
             _workRepo = workRepo;
             _configRepo = configRepo;
+            _plainRepo = plainRepo;
         }
 
         #endregion
@@ -165,6 +168,11 @@ namespace BusinessObject.WebModule
         public Out_Slogan_GetById_Result GetSlogan(SloganEnum id)
         {
             return _sloganRepo.Get(id.Value());
+        }
+
+        public List<Out_Plain_GetByType_Result> GetPlainByType(PlainEnum type)
+        {
+            return _plainRepo.GetByType(type.Value());
         }
     }
 }

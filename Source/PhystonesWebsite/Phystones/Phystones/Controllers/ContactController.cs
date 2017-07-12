@@ -33,6 +33,7 @@ namespace Phystones.Controllers
             {
                 var json = configData.Value;
                 model = JsonConvert.DeserializeObject<ContactConfigModel>(json);
+                ViewBag.Content = _webBusiness.GetSlogan(EntitiesObject.Message.Content.SloganEnum.Register);
                 return View(model);
             }
             return View(model);
