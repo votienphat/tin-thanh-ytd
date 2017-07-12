@@ -547,6 +547,70 @@ public partial class WebEntities : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Plain_GetByType_Result>("Out_Plain_GetByType", typeParameter);
     }
 
+
+    public virtual ObjectResult<Out_Slogan_GetListData_Result> Out_Slogan_GetListData(Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
+    {
+
+        var rowStartParameter = rowStart.HasValue ?
+            new ObjectParameter("RowStart", rowStart) :
+            new ObjectParameter("RowStart", typeof(int));
+
+
+        var rowEndParameter = rowEnd.HasValue ?
+            new ObjectParameter("RowEnd", rowEnd) :
+            new ObjectParameter("RowEnd", typeof(int));
+
+
+        var orderByParameter = orderBy.HasValue ?
+            new ObjectParameter("OrderBy", orderBy) :
+            new ObjectParameter("OrderBy", typeof(int));
+
+
+        var isDescendingParameter = isDescending.HasValue ?
+            new ObjectParameter("IsDescending", isDescending) :
+            new ObjectParameter("IsDescending", typeof(bool));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Slogan_GetListData_Result>("Out_Slogan_GetListData", rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
+    }
+
+
+    public virtual int Out_Slogan_Save(Nullable<int> id, string title, string author, string contentBody, string language, Nullable<bool> isActive)
+    {
+
+        var idParameter = id.HasValue ?
+            new ObjectParameter("Id", id) :
+            new ObjectParameter("Id", typeof(int));
+
+
+        var titleParameter = title != null ?
+            new ObjectParameter("Title", title) :
+            new ObjectParameter("Title", typeof(string));
+
+
+        var authorParameter = author != null ?
+            new ObjectParameter("Author", author) :
+            new ObjectParameter("Author", typeof(string));
+
+
+        var contentBodyParameter = contentBody != null ?
+            new ObjectParameter("ContentBody", contentBody) :
+            new ObjectParameter("ContentBody", typeof(string));
+
+
+        var languageParameter = language != null ?
+            new ObjectParameter("Language", language) :
+            new ObjectParameter("Language", typeof(string));
+
+
+        var isActiveParameter = isActive.HasValue ?
+            new ObjectParameter("IsActive", isActive) :
+            new ObjectParameter("IsActive", typeof(bool));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Slogan_Save", idParameter, titleParameter, authorParameter, contentBodyParameter, languageParameter, isActiveParameter);
+    }
+
 }
 
 }

@@ -174,5 +174,15 @@ namespace BusinessObject.WebModule
         {
             return _plainRepo.GetByType(type.Value());
         }
+
+        public List<Out_Slogan_GetListData_Result> ListDataSlogan(int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow)
+        {
+            return _sloganRepo.ListDataSlogan(rowStart, rowEnd, orderBy, isDescending, out totalRow);
+        }
+
+        public int SaveDataSlogan(int Id, string Title, string Author, string ContentBody, string Language, bool IsActive)
+        {
+            return _sloganRepo.SaveDataSlogan(Id, Title, Author, ContentBody, Language, IsActive);
+        }
     }
 }

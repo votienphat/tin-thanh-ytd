@@ -37,5 +37,7 @@ namespace BusinessObject.WebModule.Contract
 
         Out_Slogan_GetById_Result GetSlogan(SloganEnum id);
         List<Out_Plain_GetByType_Result> GetPlainByType(PlainEnum type);
+        List<Out_Slogan_GetListData_Result>ListDataSlogan(int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow);
+        int SaveDataSlogan(int Id, string Title, string Author, string ContentBody, string Language, bool IsActive);
     }
 }

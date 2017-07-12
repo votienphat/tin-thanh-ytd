@@ -233,6 +233,21 @@
         <Function Name="Out_Slogan_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
+        <Function Name="Out_Slogan_GetListData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RowStart" Type="int" Mode="In" />
+          <Parameter Name="RowEnd" Type="int" Mode="In" />
+          <Parameter Name="OrderBy" Type="int" Mode="In" />
+          <Parameter Name="IsDescending" Type="bit" Mode="In" />
+          <Parameter Name="TotalRow" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="Out_Slogan_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="Author" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContentBody" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Language" Type="varchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
         <Function Name="Out_Work_GetByCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryId" Type="int" Mode="In" />
         </Function>
@@ -398,7 +413,22 @@
           </FunctionImport>
           <EntitySet Name="Plains" EntityType="WebModel.Plain" />
           <FunctionImport Name="Out_Plain_GetByType" ReturnType="Collection(WebModel.Out_Plain_GetByType_Result)">
-            <Parameter Name="type" Mode="In" Type="Int32" />
+          <Parameter Name="type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Slogan_GetListData" ReturnType="Collection(WebModel.Out_Slogan_GetListData_Result)">
+            <Parameter Name="RowStart" Mode="In" Type="Int32" />
+            <Parameter Name="RowEnd" Mode="In" Type="Int32" />
+            <Parameter Name="OrderBy" Mode="In" Type="Int32" />
+            <Parameter Name="IsDescending" Mode="In" Type="Boolean" />
+            <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_Slogan_Save">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Author" Mode="In" Type="String" />
+            <Parameter Name="ContentBody" Mode="In" Type="String" />
+            <Parameter Name="Language" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Out_Article_GetListData_Result">
@@ -698,6 +728,15 @@
           <Property Type="Int32" Name="Type" Nullable="true" />
           <Property Type="Int32" Name="OrderNo" Nullable="true" />
           <Property Type="String" Name="Link" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Language" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="Out_Slogan_GetListData_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="ContentBody" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Author" Nullable="true" MaxLength="512" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="String" Name="Language" Nullable="true" MaxLength="10" />
         </ComplexType>
       </Schema>
@@ -1102,6 +1141,20 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Slogan_GetListData" FunctionName="WebModel.Store.Out_Slogan_GetListData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebModel.Out_Slogan_GetListData_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ContentBody" ColumnName="ContentBody" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Out_Slogan_Save" FunctionName="WebModel.Store.Out_Slogan_Save" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
