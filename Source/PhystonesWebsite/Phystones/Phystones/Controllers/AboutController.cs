@@ -10,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EntitiesObject.Message.Content;
 
 namespace Phystones.Controllers
 {
@@ -30,7 +29,6 @@ namespace Phystones.Controllers
         {
             var portfolio = _webBusiness.GetList();
             ViewBag.Portfolio = portfolio;
-            ViewBag.Content = _webBusiness.GetSlogan(SloganEnum.About);
             return View();
         }
         #region List Data

@@ -201,7 +201,7 @@
     <Compile Include="Entities\WebEntities\Out_Portfolio_GetList_Result.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\WebEntities\Out_Slogan_GetById_Result.cs">
+    <Compile Include="Entities\WebEntities\Out_RegisterCompany_GetListData_Result.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\WebEntities\Out_Slogan_Get_Result.cs">
@@ -242,7 +242,6 @@
     <Compile Include="Entities\WebEntities\Work.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
-    <Compile Include="Message\Content\SloganEnum.cs" />
     <Compile Include="Message\Enum\OpenProviderEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

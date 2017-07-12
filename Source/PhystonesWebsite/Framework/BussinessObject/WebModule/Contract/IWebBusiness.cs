@@ -1,6 +1,5 @@
 ﻿using EntitiesObject.Entities.WebEntities;
 using System.Collections.Generic;
-using EntitiesObject.Message.Content;
 
 namespace BusinessObject.WebModule.Contract
 {
@@ -32,8 +31,7 @@ namespace BusinessObject.WebModule.Contract
         int SaveConfigKey(string key, string value);
         List<Out_Article_GetArticleBlog_Result> GetArticleBlog(int categoryId, int startIndex, int pageLength,
           out int total);
-        int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email,string ContactPreson, string ReceiveAddress);
-
-        Out_Slogan_GetById_Result GetSlogan(SloganEnum id);
+        int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email, string ContactPreson, string ReceiveAddress);
+        List<Out_RegisterCompany_GetListData_Result> ListDataRegisterCompany(string keyWord, int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow);
     }
 }

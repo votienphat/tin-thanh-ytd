@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using BusinessObject.WebModule.Contract;
 using DataAccess.Contract.Web;
 using EntitiesObject.Entities.WebEntities;
-using EntitiesObject.Message.Content;
 using Logger;
 using MyUtility;
-using MyUtility.Extensions;
 
 namespace BusinessObject.WebModule
 {
@@ -157,14 +155,15 @@ namespace BusinessObject.WebModule
         {
             return _articleRepo.GetArticleBlog(categoryId, startIndex, pageLength, out total);
         }
-        public int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email, string ContactPreson, string ReceiveAddress)
+        public int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email,
+        string ContactPreson, string ReceiveAddress)
         {
             return _conregisterRepo.RegisterCompany(MST, CompanyName, Address, CEO, PackedRegister, TypeRegister, Email, ContactPreson, ReceiveAddress);
         }
-
-        public Out_Slogan_GetById_Result GetSlogan(SloganEnum id)
+        public List<Out_RegisterCompany_GetListData_Result> ListDataRegisterCompany(string keyWord, int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow)
         {
-            return _sloganRepo.Get(id.Value());
+            return _conregisterRepo.GetListData(keyWord, rowStart, rowEnd, orderBy, isDescending, out totalRow);
         }
+
     }
 }

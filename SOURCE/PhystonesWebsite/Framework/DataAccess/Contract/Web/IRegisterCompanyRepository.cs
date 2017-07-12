@@ -12,5 +12,6 @@ namespace DataAccess.Contract.Web
     {
         int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email,
 string ContactPreson, string ReceiveAddress);
+        List<Out_RegisterCompany_GetListData_Result> GetListData(string keyWord,int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow);
     }
 }

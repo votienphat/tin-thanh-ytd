@@ -12,10 +12,10 @@ namespace DataAccess.EF
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using EntitiesObject.Entities.WebEntities;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using EntitiesObject.Entities.WebEntities;
+
     public partial class WebEntities : DbContext
     {
         public WebEntities()
@@ -32,6 +32,7 @@ namespace DataAccess.EF
         public virtual DbSet<CategoryArticle> CategoryArticles { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Plain> Plains { get; set; }
+        public virtual DbSet<Slogan> Slogans { get; set; }
         public virtual DbSet<Stat> Stats { get; set; }
         public virtual DbSet<CategoryPortfolio> CategoryPortfolios { get; set; }
         public virtual DbSet<Portfolio> Portfolios { get; set; }
@@ -39,7 +40,6 @@ namespace DataAccess.EF
         public virtual DbSet<Work> Works { get; set; }
         public virtual DbSet<CategoryWork> CategoryWorks { get; set; }
         public virtual DbSet<RegisterCompany> RegisterCompanies { get; set; }
-        public virtual DbSet<Slogan> Slogans { get; set; }
     
         public virtual int Out_Article_Save(Nullable<int> id, string title, string image, string contentBody, Nullable<int> categoryId)
         {
@@ -397,13 +397,29 @@ namespace DataAccess.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Out_RegisterCompany_Save", mSTParameter, companyNameParameter, addressParameter, cEOParameter, packedRegisterParameter, typeRegisterParameter, emailParameter, contactPresonParameter, receiveAddressParameter);
         }
     
-        public virtual ObjectResult<Out_Slogan_GetById_Result> Out_Slogan_GetById(Nullable<int> id)
+        public virtual ObjectResult<Out_RegisterCompany_GetListData_Result> Out_RegisterCompany_GetListData(string keySearch, Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
         {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+            var keySearchParameter = keySearch != null ?
+                new ObjectParameter("KeySearch", keySearch) :
+                new ObjectParameter("KeySearch", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Slogan_GetById_Result>("Out_Slogan_GetById", idParameter);
+            var rowStartParameter = rowStart.HasValue ?
+                new ObjectParameter("RowStart", rowStart) :
+                new ObjectParameter("RowStart", typeof(int));
+    
+            var rowEndParameter = rowEnd.HasValue ?
+                new ObjectParameter("RowEnd", rowEnd) :
+                new ObjectParameter("RowEnd", typeof(int));
+    
+            var orderByParameter = orderBy.HasValue ?
+                new ObjectParameter("OrderBy", orderBy) :
+                new ObjectParameter("OrderBy", typeof(int));
+    
+            var isDescendingParameter = isDescending.HasValue ?
+                new ObjectParameter("IsDescending", isDescending) :
+                new ObjectParameter("IsDescending", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_RegisterCompany_GetListData_Result>("Out_RegisterCompany_GetListData", keySearchParameter, rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
         }
     }
 }

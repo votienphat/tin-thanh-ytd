@@ -245,6 +245,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EntitiesObject\EntitiesObject.csproj">
+      <Project>{70248680-8ea1-42ed-b418-2880cbf774b0}</Project>
+      <Name>EntitiesObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="EF\MetroMembership.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MetroMembership.Context1.cs</LastGenOutput>
@@ -260,12 +266,6 @@
       <DependentUpon>Web.edmx</DependentUpon>
       <LastGenOutput>Web.Context.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EntitiesObject\EntitiesObject.csproj">
-      <Project>{70248680-8ea1-42ed-b418-2880cbf774b0}</Project>
-      <Name>EntitiesObject</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

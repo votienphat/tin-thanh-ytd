@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="WebModel.CategoryArticle" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="WebModel.Contact" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="WebModel.Plain" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="WebModel.Slogan" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="WebModel.Stat" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="WebModel.CategoryPortfolio" Width="1.5" PointX="2.75" PointY="6.75" />
         <EntityTypeShape EntityType="WebModel.Portfolio" Width="1.5" PointX="5.375" PointY="6.75" />
@@ -16,7 +17,6 @@
         <EntityTypeShape EntityType="WebModel.Work" Width="1.5" PointX="7.375" PointY="6.75" />
         <EntityTypeShape EntityType="WebModel.CategoryWork" Width="1.5" PointX="7.375" PointY="3.75" />
         <EntityTypeShape EntityType="WebModel.RegisterCompany" Width="1.5" PointX="0.75" PointY="9.75" />
-        <EntityTypeShape EntityType="WebModel.Slogan" Width="1.5" PointX="9.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
