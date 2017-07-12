@@ -75,8 +75,32 @@
     <Compile Include="EF\AdminConfigData.cs">
       <DependentUpon>MetroMembership.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\Article.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CategoryArticle.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CategoryPortfolio.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CategoryWork.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\Channel.cs">
       <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Company.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CompanyRegisterLog.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Config.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Contact.cs">
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\GroupMember.cs">
       <DependentUpon>MetroMembership.tt</DependentUpon>
@@ -182,18 +206,107 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MetroMembership.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EF\Out_Article_GetArticleBlog_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Article_GetByCategoryId_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Article_GetById_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Article_GetByTextId_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Article_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_CategoryArticle_GetList_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_CategoryWork_GetList_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Config_GetByKey_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Contact_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Plain_GetByType_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Portfolio_GetById_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Portfolio_GetListCategoryPortfolio_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Portfolio_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Portfolio_GetList_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_RegisterCompany_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Slogan_GetById_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Slogan_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Slogan_Get_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Work_GetByCategoryId_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Work_GetById_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Work_GetByTextId_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Out_Work_GetListData_Result.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\PageFunction.cs">
       <DependentUpon>MetroMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Plain.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Portfolio.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\RegisterCompany.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Slogan.cs">
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Stat.cs">
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Web.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Web.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\Web.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Web.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\Web.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Web.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Work.cs">
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Helper\DataConstants.cs" />
     <Compile Include="Helper\ContextExtension.cs" />
@@ -265,6 +378,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Web.edmx</DependentUpon>
       <LastGenOutput>Web.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\Web.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Web.edmx</DependentUpon>
+      <LastGenOutput>Web.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
