@@ -21,12 +21,12 @@
     <link rel="stylesheet" href="~/Content/Theme/assets/css/custom.css">
     <link rel="stylesheet" href="~/Content/Theme/assets/js/datatables/responsive/css/datatables.responsive.css">
     <link rel="stylesheet" href="~/Content/Theme/assets/js/select2/select2-bootstrap.css">
-    <link rel="stylesheet" href="~/Content/Theme/assets/js/select2/select2.css">
-    <link href="~/Content/Theme/assets/Codemirror/lib/codemirror.css" rel="stylesheet" />
+    <link rel="stylesheet" href="@Url.ContentVersion("~/Content/Theme/assets/js/select2/select2.css")">
+    @*<link href="~/Content/Theme/assets/Codemirror/lib/codemirror.css" rel="stylesheet" />
     <link href="~/Content/Theme/assets/Codemirror/lib/abcdef.css" rel="stylesheet" />
-    <link href="~/Content/Theme/assets/Codemirror/lib/docs.css" rel="stylesheet" />
+    <link href="~/Content/Theme/assets/Codemirror/lib/docs.css" rel="stylesheet" />*@
     <script src="~/Content/Theme/assets/js/jquery-1.11.0.min.js"></script>
-    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="~/Content/Theme/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -37,7 +37,7 @@
     
 </head>
 <body class="page-body page-fade">
-    <div class="page-container sidebar-collapsed">
+    <div class="page-container">
         @{Html.RenderPartial("_NavBar");}
 
         <div class="main-content">
@@ -98,6 +98,7 @@
     <!-- /#wrap -->
     <!-- /#footer -->
     @Html.Partial("Popup")
+
     <!-- Imported styles on this page -->
     <link rel="stylesheet" href="~/Content/Theme/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
     <link rel="stylesheet" href="~/Content/Theme/assets/js/rickshaw/rickshaw.min.css">
@@ -146,7 +147,9 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Content/Theme/assets/Codemirror/lib/codemirror.js"></script>
     <script src="~/Content/Theme/assets/js/fileinput.js"></script>
-    <script src="~/Scripts/MyScript.js"></script>
+
     @RenderSection("scripts", false)
+
+    <script src="~/Scripts/MyScript.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 ﻿@using EntitiesObject.Entities.WebEntities
 @{
-    ViewBag.Title = "ArticleDetail";
+    ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout_Web.cshtml";
 }
 @model Out_Article_GetByTextId_Result
@@ -10,9 +10,9 @@
     <div class="grid-10 center" id="terms">
         <h1 id="tagline">@Model.Title</h1>
     </div>
-        <section class="section text-left">
-            @Html.Raw(Model.ContentBody)
-        </section>
+    <section class="section text-left">
+        @Html.Raw(Model.ContentBody)
+    </section>
 
 }
 

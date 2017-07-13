@@ -1,5 +1,6 @@
 ﻿using EntitiesObject.Entities.WebEntities;
 using System.Collections.Generic;
+using BusinessObject.WebModule.Enums;
 using EntitiesObject.Message.Content;
 
 namespace BusinessObject.WebModule.Contract
@@ -28,8 +29,10 @@ namespace BusinessObject.WebModule.Contract
         Out_Work_GetById_Result WorkGetById(int Id);
         List<Out_Work_GetByCategoryId_Result> GetWorkByCategoryId(int CategoryId);
         Out_Work_GetByTextId_Result WorkGetByTextId(string textId);
-        Out_Config_GetByKey_Result ConfigGetByKey(string key);
+
+        T ConfigGetByKey<T>(ConfigKeyEnum key);
         int SaveConfigKey(string key, string value);
+
         List<Out_Article_GetArticleBlog_Result> GetArticleBlog(int categoryId, int startIndex, int pageLength,
           out int total);
         int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email,string ContactPreson, string ReceiveAddress);

@@ -89,6 +89,7 @@ namespace Phystones.Helper
 
             return Regex.Replace(strB.ToString(), @"-+", "-");
         }
+
         public static string ContentVersion(this UrlHelper urlHelper, string relativePath)
         {
             return urlHelper.Content(relativePath) + "?v=" + MyConfiguration.Default.ContentVersion;

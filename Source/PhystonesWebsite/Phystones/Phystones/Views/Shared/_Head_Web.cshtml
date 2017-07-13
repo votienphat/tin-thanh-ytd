@@ -1,12 +1,13 @@
 ﻿@using Phystones.Content.Texts
 @using Phystones.Helper
 @using Phystones.Models.Enum
+@model Phystones.Models.Config.GeneralConfigModel
 <header id="header" class="clearfix section">
     <nav id="nav" class="center grid-14">
         <div class="fonts-display clearfix">
             <p class="logo mq-mobile-i-block">
-                <a href="@Url.Action("Index","Home")" title="Phystones - We Build Solutions">
-                    <img src="~/Content/Theme/web/assets/img/logo-plain@2x.png" alt="Phystones - We Build Solutions" />
+                <a href="@Url.Action("Index","Home")" title="@Model.Website.Title">
+                    <img src="~/Content/Theme/web/assets/img/logo-plain@2x.png" alt="@Model.Website.Title" />
                 </a>
             </p>
             <br class="mq-mobile" />
@@ -14,12 +15,12 @@
             <p class="text-left"><a href="@Url.RouteUrl(GlobalHelper.GetRouteName(RouteName.Work))">@WebContent.Work</a>
             <p class="text-left"><a href="@Url.RouteUrl(GlobalHelper.GetRouteName(RouteName.About))">@WebContent.About</a>
             <p class="logo mq-wide-i-block mq-mid-i-block mq-small-i-block">
-                <a href="@Url.Action("Index","Home")" title="Phystones - We Build Solutions">
-                    <img class="logo-img" src="~/Content/Theme/web/assets/img/logo.png" alt="Phystones - We Build Solutions" />
+                <a href="@Url.Action("Index","Home")" title="@Model.Website.Title">
+                    <img class="logo-img" src="~/Content/Theme/web/assets/img/logo.png" alt="@Model.Website.Title" />
                 </a>
             <p class="text-right"><a href="@Url.RouteUrl(GlobalHelper.GetRouteName(RouteName.Article))">@WebContent.Blog</a>
-            <p class="text-right"><a href="@Url.RouteUrl(GlobalHelper.GetRouteName(RouteName.Register))">@WebContent.DigitalSignature</a>
-            <p class="text-right omega"><a href="@Url.RouteUrl(GlobalHelper.GetRouteName(RouteName.Contact))">@WebContent.Contact</a>
+            <p class="text-right"><a href="@Url.RouteUrl(GlobalHelper.GetRouteName(RouteName.Contact))">@WebContent.Contact</a>
+            <p class="text-right omega"><a href="@Url.RouteUrl(GlobalHelper.GetRouteName(RouteName.Register))">@WebContent.DigitalSignature</a>
         </div>
     </nav>
     <!-- /#nav -->

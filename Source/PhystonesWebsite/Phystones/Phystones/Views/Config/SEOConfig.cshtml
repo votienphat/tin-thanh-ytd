@@ -1,0 +1,46 @@
+﻿@model BusinessObject.WebModule.Models.Config.SEOConfigModel
+    
+
+<div class="panel-body" id="seoConfig">
+    @using (Ajax.BeginForm("SEOConfig", "Config", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "seoConfig"
+    }, new { @class = "" }))
+    {
+        <div class="form-group">
+            <label class="control-label">Google Analytic ID</label>
+            @Html.TextBoxFor(x => x.GoogleAnalyticID, new { @placeholder = "Google Analytic ID", @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.GoogleAnalyticID)
+        </div>
+        <div class="form-group">
+            <label class="control-label">Facebook Pixel Code</label>
+            @Html.TextBoxFor(x => x.FacebookPixelCode, new { @placeholder = "Facebook Pixel Code", @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.FacebookPixelCode)
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    }
+</div>
+@if (ViewBag.Success != null)
+{
+    <script>
+        var opts = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        toastr.success("Cập nhật thành công.", "Thông Báo", opts);
+    </script>    
+}
+

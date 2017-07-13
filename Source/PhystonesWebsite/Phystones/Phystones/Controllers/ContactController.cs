@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BusinessObject.WebModule.Contract;
+using BusinessObject.WebModule.Enums;
+using BusinessObject.WebModule.Models.Config;
 using EntitiesObject.Entities.WebEntities;
 using MyConfig;
 using Newtonsoft.Json;
 using Phystones.Enums;
 using Phystones.Helper.DataTables;
-using Phystones.Models.Config;
 using Phystones.Models.ContentData;
 
 namespace Phystones.Controllers
@@ -27,14 +28,7 @@ namespace Phystones.Controllers
         // GET: Sample
         public ActionResult Index()
         {
-            var model = new ContactConfigModel();
-            var configData = _webBusiness.ConfigGetByKey(ConfigKeyEnum.ContactKey.ToString());
-            if (configData != null)
-            {
-                var json = configData.Value;
-                model = JsonConvert.DeserializeObject<ContactConfigModel>(json);
-                return View(model);
-            }
+            var model = _webBusiness.ConfigGetByKey< ContactConfigModel>(ConfigKeyEnum.ContactKey);
             return View(model);
         }
         [HttpPost]

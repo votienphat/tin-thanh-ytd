@@ -1,4 +1,10 @@
-﻿<!doctype html>
+﻿@using BusinessObject.WebModule.Contract
+@using BusinessObject.WebModule.Enums
+@using BusinessObject.WebModule.Models.Config
+@using Phystones.Helper
+@using Phystones.Ioc
+@using Phystones.Models.Config
+<!doctype html>
 <!--[if lt IE 7]>
 <html class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 no-js" lang="en">
    <![endif]-->
@@ -15,9 +21,24 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+    @{
+        var webBusiness = IoC.Resolve<IWebBusiness>();
+
+        var contact = webBusiness.ConfigGetByKey<ContactConfigModel>(ConfigKeyEnum.ContactKey);
+        var seo = webBusiness.ConfigGetByKey<SEOConfigModel>(ConfigKeyEnum.SEOKey);
+        var website = webBusiness.ConfigGetByKey<WebsiteConfigModel>(ConfigKeyEnum.WebsiteKey);
+
+        var config = new GeneralConfigModel
+        {
+            Contact = contact,
+            SEO = seo,
+            Website = website
+        };
+    }
+
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title</title>
+    <title>@(config.Website.Title) @(string.IsNullOrEmpty(ViewBag.Title)? "": " | " + ViewBag.Title)</title>
     <link href="~/Content/Theme/web/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Theme/web/assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/Theme/web/assets/css/style.css" rel="stylesheet" />
@@ -33,17 +54,16 @@
     <script type="text/javascript" src="~/Content/Theme/web/assets/js/modernizr6cb0.js"></script>
     <script src="~/Content/Theme/web/assets/js/bootstrap.min.js"></script>
     <!-- Icons -->
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="@Url.ContentVersion("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
     <link href="~/Content/Theme/web/assets/css/Responsive.css" rel="stylesheet" />
     @RenderSection("styles", false)
 </head>
 <body class="">
     <div id="page-border">
         <div id="wrap" class="container">
-
-            @{Html.RenderPartial("_Head_Web");}
+            @{Html.RenderPartial("_Head_Web", config);}
             @RenderBody()
-            @{Html.RenderPartial("_Footer_Web");}
+            @{Html.RenderPartial("_Footer_Web", config);}
         </div>
         <!-- /#wrap -->
         <!-- Arrow to top -->
@@ -99,11 +119,43 @@
     <script src="~/Scripts/jquery.tmpl.min.js"></script>
  
     @RenderSection("scripts", false)
-    <div id="loading">
-        <div id="loop" class="centerlop"></div>
-        <div id="bike-wrapper" class="centerlop">
-            <div id="bike" class="centerBike"></div>
-        </div>
+<div id="loading">
+    <div id="loop" class="centerlop"></div>
+    <div id="bike-wrapper" class="centerlop">
+        <div id="bike" class="centerBike"></div>
     </div>
+</div>
+    
+    @if (!string.IsNullOrEmpty(config.SEO.GoogleAnalyticID))
+    {
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', '@config.SEO.GoogleAnalyticID', 'auto');
+          ga('send', 'pageview');
+        </script>
+    }
+    @if (!string.IsNullOrEmpty(config.SEO.FacebookPixelCode))
+    {
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '@config.SEO.FacebookPixelCode'); // Insert your pixel ID here.
+            fbq('track', 'PageView');
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=@config.SEO.FacebookPixelCode&ev=PageView&noscript=1" />
+        </noscript>
+        <!-- DO NOT MODIFY -->
+        <!-- End Facebook Pixel Code -->
+    }
 </body>
 </html>

@@ -1,4 +1,5 @@
-﻿@using Phystones.Content.Texts
+﻿@using Phystones.Helper
+@using Phystones.Models.Enum
 @{
     Layout = "~/Views/Shared/_Layout_Web.cshtml";
     var i = 1;
@@ -9,7 +10,7 @@
         @foreach (var item in ViewBag.Plain)
         {
             <div class="hex grid-3">
-                <a href="@Url.Action("ArticleDetail","Article",new { Id = item.Id })" style="background-image: url(@item.Image);" title="@item.Title">
+                <a href="@Url.RouteUrl(GlobalHelper.GetRouteName(RouteName.ArticleDetail),new { textid = item.Id })" style="background-image: url(@item.Image);" title="@item.Title">
                     <div class="hex-1"></div>
                     <div class="hex-2"></div>
                 </a>

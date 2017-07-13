@@ -3128,6 +3128,7 @@
     <Content Include="Content\Theme\web\assets\font\open-sans\OpenSans-SemiboldItalic.ttf" />
     <Content Include="Content\Upload\DigitalSignature\template.docx" />
     <Content Include="Content\Upload\DigitalSignature\xxxx.docx" />
+    <Content Include="Areas\Inside\Views\web.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
@@ -3188,6 +3189,8 @@
     <Content Include="Views\Config\ConfigContact.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Register\SendMess.cshtml" />
+    <Content Include="Views\Config\WebsiteConfig.cshtml" />
+    <Content Include="Views\Config\SEOConfig.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Syntax\Index.cshtml" />
@@ -3216,6 +3219,7 @@
     <Compile Include="App_Start\Ioc\IoC.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Inside\InsideAreaRegistration.cs" />
     <Compile Include="Content\Texts\WebContent.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3239,7 +3243,6 @@
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\WorkController.cs" />
-    <Compile Include="Enums\ConfigKeyEnum.cs" />
     <Compile Include="Enums\ResponseCode.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3263,7 +3266,6 @@
     <Compile Include="Helper\MyExtention.cs" />
     <Compile Include="Helper\SessionManager.cs" />
     <Compile Include="Helper\SimplePaletteQuantizerHelper.cs" />
-    <Compile Include="Models\Config\ContactConfigModel.cs" />
     <Compile Include="Models\Account\AdminAccount.cs" />
     <Compile Include="Models\Account\AdminMemberInfo.cs" />
     <Compile Include="Models\Account\AdminMenu.cs" />
@@ -3273,6 +3275,7 @@
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\BaseResponse.cs" />
     <Compile Include="Models\BaseSearchRequest.cs" />
+    <Compile Include="Models\Config\GeneralConfigModel.cs" />
     <Compile Include="Models\ContentData\ContentDataModel.cs" />
     <Compile Include="Models\Content\ArticleModel.cs" />
     <Compile Include="Models\Content\UploadFileResponse.cs" />
@@ -3304,6 +3307,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Inside\Controllers\" />
+    <Folder Include="Areas\Inside\Models\" />
+    <Folder Include="Areas\Inside\Views\Shared\" />
     <Folder Include="Content\Theme\assets\js\aci-tree\php\tree\Item 2\Item 2\" />
     <Folder Include="Content\Theme\assets\js\aci-tree\php\tree\Item 2\Item 4\" />
     <Folder Include="Content\Theme\assets\js\aci-tree\php\tree\Item 2\Item 5\" />

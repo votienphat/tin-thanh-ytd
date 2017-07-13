@@ -6,7 +6,6 @@ using MyUtility.Extensions;
 using System.Linq;
 using Microsoft.Office.Interop.Word;
 using Phystones.Models.Article;
-using Phystones.Models.Config;
 using Newtonsoft.Json;
 using Phystones.Enums;
 

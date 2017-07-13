@@ -1,51 +1,37 @@
-﻿@using BusinessObject.WebModule.Contract
-@using Newtonsoft.Json
-@using Phystones.Content.Texts
-@using Phystones.Enums
-@using Phystones.Ioc
-@using Phystones.Models.Config
-@{
-    var webBusiness = IoC.Resolve<IWebBusiness>();
-    var config = new ContactConfigModel();
-    var configData = webBusiness.ConfigGetByKey(ConfigKeyEnum.ContactKey.ToString());
-    if (configData != null)
-    {
-        var json = configData.Value;
-        config = JsonConvert.DeserializeObject<ContactConfigModel>(json);
-    }
-}
+﻿@using Phystones.Content.Texts
+@model Phystones.Models.Config.GeneralConfigModel
 <aside id="footer" class="grid-12 center section">
     <ul class="list-icon-items clearfix">
         <li class="grid-4 alpha subsection">
-            <a href="tel:@config.Phone">
+            <a href="tel:@Model.Contact.Phone">
                 <i class="circ secondary ss-icon ss-standard">&#x1F4AC;<i class="circ pulse"></i></i>
             </a>
             <ul class="list-plain list-regular">
-                <li><a class="has-border" href="tel:@config.Phone">@config.Phone</a></li>
+                <li><a class="has-border" href="tel:@Model.Contact.Phone">@Model.Contact.Phone</a></li>
             </ul>
         </li>
         <li class="grid-4 subsection">
-            <a href="@config.Twitter" target="_blank">
+            <a href="@Model.Contact.Facebook" target="_blank">
                 <i class="circ secondary ss-icon ss-social-circle ss-facebook"><i class="circ pulse"></i></i>
             </a>
             <ul class="list-plain list-regular">
-                <li><a href="@config.Twitter" class="has-border" target="_blank">@WebContent.FollowOnFacebook</a></li>
+                <li><a href="@Model.Contact.Facebook" class="has-border" target="_blank">@WebContent.FollowOnFacebook</a></li>
             </ul>
         </li>
         <li class="grid-4 omega subsection">
-            <a href="mailto:@config.Email">
+            <a href="mailto:@Model.Contact.Email">
                 <i class="circ secondary ss-icon ss-social-circle ss-mail"><i class="circ pulse"></i></i>
             </a>
             <ul class="list-plain list-regular">
                 <li>
-                    <a class="has-border" href="mailto:@config.Email">
-                        <span class="__cf_email__">@config.Email</span>
+                    <a class="has-border" href="mailto:@Model.Contact.Email">
+                        <span class="__cf_email__">@Model.Contact.Email</span>
                     </a>
                 </li>
             </ul>
         </li>
     </ul>
     <footer class="subsection">
-        @config.FooterContent
+        @Html.Raw(Model.Contact.FooterContent)
     </footer>
 </aside>

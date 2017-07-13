@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using BusinessObject.WebModule.Contract;
+using BusinessObject.WebModule.Enums;
+using BusinessObject.WebModule.Models.Config;
 using DataAccess.Contract.Web;
 using EntitiesObject.Entities.WebEntities;
 using EntitiesObject.Message.Content;
 using Logger;
 using MyUtility;
 using MyUtility.Extensions;
+using Newtonsoft.Json;
 
 namespace BusinessObject.WebModule
 {
@@ -144,14 +147,22 @@ namespace BusinessObject.WebModule
         {
             return _workRepo.WorkGetByTextId(textId);
         }
-        public Out_Config_GetByKey_Result ConfigGetByKey(string key)
+
+        public T ConfigGetByKey<T>(ConfigKeyEnum key)
         {
-            return _configRepo.ConfigGetByKey(key);
+            var item = _configRepo.ConfigGetByKey(key.Text());
+            if (item == null)
+            {
+                return (T)Activator.CreateInstance(typeof(T));
+            }
+
+            return JsonConvert.DeserializeObject<T>(item.Value);
         }
         public int SaveConfigKey(string key, string value)
         {
             return _configRepo.SaveConfigKey(key, value);
         }
+
         public List<Out_Article_GetArticleBlog_Result> GetArticleBlog(int categoryId, int startIndex, int pageLength,
             out int total)
         {

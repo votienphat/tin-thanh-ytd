@@ -7,8 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessObject.WebModule.Enums;
+using BusinessObject.WebModule.Models.Config;
 using MyUtility;
-using Phystones.Models.Config;
+using MyUtility.Extensions;
 using Newtonsoft.Json;
 using Phystones.Enums;
 
@@ -25,41 +27,52 @@ namespace Phystones.Controllers
         }
 
         #endregion
+
         // GET: Syntax
         public ActionResult Index()
         {
-            var model = new ContactConfigModel();
-            model.KeyConfig = ConfigKeyEnum.ContactKey.ToString();
-            var configData = _webBusiness.ConfigGetByKey(ConfigKeyEnum.ContactKey.ToString());
-            if (configData != null)
-            {
-                var json = configData.Value;
-                model = JsonConvert.DeserializeObject<ContactConfigModel>(json);
-                return View(model);
-            }
-            return View(model);
+            ViewBag.Contact = _webBusiness.ConfigGetByKey<ContactConfigModel>(ConfigKeyEnum.ContactKey);
+            ViewBag.SEO = _webBusiness.ConfigGetByKey<SEOConfigModel>(ConfigKeyEnum.SEOKey);
+            ViewBag.Website = _webBusiness.ConfigGetByKey<WebsiteConfigModel>(ConfigKeyEnum.WebsiteKey);
+
+            return View();
         }
-        public ActionResult ConfigContact()
-        {
-            var model = new ContactConfigModel();
-            model.KeyConfig = ConfigKeyEnum.ContactKey.ToString();
-            var configData = _webBusiness.ConfigGetByKey(ConfigKeyEnum.ContactKey.ToString());
-            if (configData != null)
-            {
-                var json = configData.Value;
-                model = JsonConvert.DeserializeObject<ContactConfigModel>(json);
-                return PartialView(model);
-            }
-            return PartialView(model);
-        }
+
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult ConfigContact(ContactConfigModel model)
         {
             if (ModelState.IsValid)
             {
-                var key = model.KeyConfig;
+                var key = ConfigKeyEnum.ContactKey;
                 var value = JsonConvert.SerializeObject(model);
-                var result = _webBusiness.SaveConfigKey(key, value);
+                _webBusiness.SaveConfigKey(key.Text(), value);
+                ViewBag.Success = true;
+            }
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult SEOConfig(SEOConfigModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var key = ConfigKeyEnum.SEOKey;
+                var value = JsonConvert.SerializeObject(model);
+                _webBusiness.SaveConfigKey(key.Text(), value);
+                ViewBag.Success = true;
+            }
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult WebsiteConfig(WebsiteConfigModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var key = ConfigKeyEnum.WebsiteKey;
+                var value = JsonConvert.SerializeObject(model);
+                _webBusiness.SaveConfigKey(key.Text(), value);
                 ViewBag.Success = true;
             }
             return PartialView(model);
