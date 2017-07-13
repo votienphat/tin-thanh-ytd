@@ -18,6 +18,13 @@ namespace Phystones
             routes.IgnoreRoute("assets/{*pathInfo}");
 
             routes.MapRoute(
+              name: RouteName.ArticleDetail.Text(),
+              url: "article/{textid}.html",
+              defaults:
+                  new { controller = "Article", action = "ArticleDetail", textid = UrlParameter.Optional }
+              );
+
+            routes.MapRoute(
               name: GlobalHelper.GetEnglishRouteName(RouteName.Work),
               url: "work",
               defaults:
@@ -57,13 +64,13 @@ namespace Phystones
               );
             routes.MapRoute(
               name: GlobalHelper.GetEnglishRouteName(RouteName.ArticleDetail),
-              url: "blog/{textid}.html",
+              url: "blog/{textid}",
               defaults:
                   new { controller = "Article", action = "ArticleDetail" }
               );
             routes.MapRoute(
               name: GlobalHelper.GetVietnameseRouteName(RouteName.ArticleDetail),
-              url: "bai-viet/{textid}.html",
+              url: "bai-viet/{textid}",
               defaults:
                   new { controller = "Article", action = "ArticleDetail" }
               );
@@ -98,8 +105,8 @@ namespace Phystones
             routes.MapRoute(
                 name: "LocalizedDefault",
                 url: "{lang}/{controller}/{action}/{id}",
-                defaults: new {controller = "Home", action = "Index", lang = "vi-VN", id = UrlParameter.Optional},
-                constraints: new {lang = "vi-vn|en-us"}
+                defaults: new { controller = "Home", action = "Index", lang = "vi-VN", id = UrlParameter.Optional },
+                constraints: new { lang = "vi-vn|en-us" }
             );
             routes.MapRoute(
                 name: "Default",

@@ -12,6 +12,7 @@ namespace DataAccess.EF
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using EntitiesObject.Entities.MetroMembershipEntities;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     

@@ -6,6 +6,7 @@ using BusinessObject.WebModule.Models.Config;
 using DataAccess.Contract.Web;
 using EntitiesObject.Entities.WebEntities;
 using EntitiesObject.Message.Content;
+using EntitiesObject.Message.Enum;
 using Logger;
 using MyUtility;
 using MyUtility.Extensions;
@@ -24,6 +25,7 @@ namespace BusinessObject.WebModule
         private readonly IWorkRepository _workRepo;
         private readonly IConfigRepository _configRepo;
         private readonly IRegisterCompanyRepository _conregisterRepo;
+        private readonly IPlainRepository _plainRepo;
 
         #endregion
 
@@ -31,7 +33,7 @@ namespace BusinessObject.WebModule
 
         public WebBusiness(IArticleRepository articleRepo, IPortfolioRepository portfolioRepo,
             IContactRepository contactRepo, ISloganRepository sloganRepo, IWorkRepository workRepo,
-            IConfigRepository configRepo)
+            IConfigRepository configRepo, IPlainRepository plainRepo)
         {
             _articleRepo = articleRepo;
             _portfolioRepo = portfolioRepo;
@@ -39,6 +41,7 @@ namespace BusinessObject.WebModule
             _sloganRepo = sloganRepo;
             _workRepo = workRepo;
             _configRepo = configRepo;
+            _plainRepo = plainRepo;
         }
 
         #endregion
@@ -168,7 +171,8 @@ namespace BusinessObject.WebModule
         {
             return _articleRepo.GetArticleBlog(categoryId, startIndex, pageLength, out total);
         }
-        public int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email, string ContactPreson, string ReceiveAddress)
+        public int RegisterCompany(string MST, string CompanyName, string Address, string CEO, int PackedRegister, int TypeRegister, string Email,
+        string ContactPreson, string ReceiveAddress)
         {
             return _conregisterRepo.RegisterCompany(MST, CompanyName, Address, CEO, PackedRegister, TypeRegister, Email, ContactPreson, ReceiveAddress);
         }
@@ -176,6 +180,25 @@ namespace BusinessObject.WebModule
         public Out_Slogan_GetById_Result GetSlogan(SloganEnum id)
         {
             return _sloganRepo.Get(id.Value());
+        }
+
+        public List<Out_RegisterCompany_GetListData_Result> ListDataRegisterCompany(string keyWord, int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow)
+        {
+            return _conregisterRepo.GetListData(keyWord, rowStart, rowEnd, orderBy, isDescending, out totalRow);
+        }
+        public List<Out_Plain_GetByType_Result> GetPlainByType(PlainEnum type)
+        {
+            return _plainRepo.GetByType(type.Value());
+        }
+
+        public List<Out_Slogan_GetListData_Result> ListDataSlogan(int rowStart, int rowEnd, int orderBy, bool isDescending, out int totalRow)
+        {
+            return _sloganRepo.ListDataSlogan(rowStart, rowEnd, orderBy, isDescending, out totalRow);
+        }
+
+        public int SaveDataSlogan(int Id, string Title, string Author, string ContentBody, string Language, bool IsActive)
+        {
+            return _sloganRepo.SaveDataSlogan(Id, Title, Author, ContentBody, Language, IsActive);
         }
     }
 }

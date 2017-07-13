@@ -28,7 +28,8 @@ namespace Phystones.Controllers
         // GET: Sample
         public ActionResult Index()
         {
-            var model = _webBusiness.ConfigGetByKey< ContactConfigModel>(ConfigKeyEnum.ContactKey);
+            var model = _webBusiness.ConfigGetByKey<ContactConfigModel>(ConfigKeyEnum.ContactKey);
+            ViewBag.Content = _webBusiness.GetSlogan(EntitiesObject.Message.Content.SloganEnum.Register);
             return View(model);
         }
         [HttpPost]
@@ -97,7 +98,7 @@ namespace Phystones.Controllers
                         orderColumn = 0;
                         break;
                 }
-                var orderDirection = dataTablesParam.IsAscOrdering ? true : false; 
+                var orderDirection = dataTablesParam.IsAscOrdering ? true : false;
                 items =
                     _webBusiness.ListDataContact(startIndex, pageSize, orderColumn, orderDirection, out totalRow);
             }
@@ -105,12 +106,12 @@ namespace Phystones.Controllers
             var list = items.Select(c => new
             {
                 c.Id,
-             CreateDate = c.CreateDate.GetValueOrDefault().ToString("dd/MM/yyyy HH:mm:ss"),
-             c.Email,
-             c.Phone,
-             c.RowNumber,
-             c.Messenger,
-             c.Name,
+                CreateDate = c.CreateDate.GetValueOrDefault().ToString("dd/MM/yyyy HH:mm:ss"),
+                c.Email,
+                c.Phone,
+                c.RowNumber,
+                c.Messenger,
+                c.Name,
             }).ToArray();
 
             response.sEcho = dataTablesParam.Draw;

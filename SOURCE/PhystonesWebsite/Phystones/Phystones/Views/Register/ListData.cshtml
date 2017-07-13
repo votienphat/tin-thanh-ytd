@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "ListData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table class="table table-bordered datatable" id="myTable">
+    <tbody></tbody>
+</table>
+@section scripts{
+    <script type="text/javascript">
+        var oTable;
+        var oTableId = '#myTable';
+
+        var search = function () {
+            if ($.fn.dataTable.isDataTable(oTableId)) {
+                oTable.destroy();
+            }
+            oTable = $('#myTable').DataTable({
+                "serverSide": true,
+                "processing": true,
+                "filter": false,
+                "lengthMenu": [10, 25, 50, 75, 100],
+                "pageLength": 20,
+                "ajax": {
+                    "url": '@Url.Action("List")',
+                    //"data": function (d) {
+                    //    d.DateTimeFrom = $('#datetimeBegin').val();
+                    //    d.DateTimeTo = $("#datetimeEnd").val();
+                    //    d.SearchUserName = $("#mtkornickname").val();
+                    //    d.PinOrSerial = $("#PinOrSeri").val();
+                    //    d.Status = $("#lctstatus").val();
+                    //    d.Amount = $("#Amount").val();
+                    //    d.CardType = $("#CardType").val();
+                    //},
+                    "type": "POST",
+                    "dataSrc": function (json) {
+                        //console.log(json);
+                        //if (!checkRight(json)) {
+                        //    json = { iTotalRecords: 0, iTotalDisplayRecords: 0, sEcho: 1, aaData: [] };
+                        //}
+                        return json.aaData;
+                    }
+                },
+                "drawCallback": function () {
+                    $.each($('.make-switch'), function () {
+                        $(this).bootstrapSwitch({
+                            onText: $(this).data('onText'),
+                            offText: $(this).data('offText'),
+                            onColor: $(this).data('onColor'),
+                            offColor: $(this).data('offColor'),
+                            size: $(this).data('size'),
+                            labelText: $(this).data('labelText')
+                        });
+                    });
+                },
+                "columns": [
+                    {
+                        "data": "RowNumber",
+                        "title": "STT",
+                        "orderable": false,
+                        "width":20
+                    }, {
+                        "data": "MST",
+                        "title": "Mã Số Thuế",
+                        "orderable": false
+
+                    }, {
+                        "data": "CompanyName",
+                        "title": "Tên Công Ty",
+                        "orderable": false
+
+                    }, {
+                        "data": "Address",
+                        "title": "Địa chỉ",
+                        "orderable": false
+
+                    }, {
+                        "data": "CEO",
+                        "title": "Giám Đốc",
+                        "orderable": false
+
+                    }, {
+                        "data": "PackedRegister",
+                        "title": "Gói Đăng Ký",
+                        "orderable": false
+
+                    }, {
+                        "data": "TypeRegister",
+                        "title": "TLoại Đăng Ký",
+                        "orderable": false
+
+                    }, {
+                        "data": "Email",
+                        "title": "Email",
+                        "orderable": false
+
+                    }, {
+                        "data": "ContactPreson",
+                        "title": "Liên hệ",
+                        "orderable": false
+
+                    }, {
+                        "data": "ReceiveAddress",
+                        "title": "Địa chỉ nhận",
+                        "orderable": false
+
+                    },
+                    {
+                        "data": "Id",
+                        "title": "Action",
+                        "orderable": false,
+                        "render": function (datatemp, type, row, meta) {
+                            var html = '<button style="margin-right:15px" type="button" onclick="OpenEdit('+row.Id+')" class="btn btn-green btn-icon icon-left">DownLoad<i class="entypo-brush"></i>' +
+                                '</button >';
+                            return html;
+                        }
+
+                    }
+                ],
+                "order":
+                [
+                    [1, "desc"]
+                ]
+            });
+        }
+        $(document).ready(function () {
+            search();
+        });
+        var OpenEdit = function (index) {
+            OpenPopupFull('@Url.Action("SaveData")?Id=' + index + '', 'Quản Lý Bài Viết');
+        };
+    </script>
+}
+
+

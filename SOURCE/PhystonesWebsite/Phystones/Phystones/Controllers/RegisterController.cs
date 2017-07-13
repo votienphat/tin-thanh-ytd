@@ -15,6 +15,8 @@ using System.Threading;
 using System.IO;
 using System.Text;
 using HtmlAgilityPack;
+using System.Web;
+using EntitiesObject.Message.Content;
 
 namespace Phystones.Controllers
 {
@@ -32,7 +34,7 @@ namespace Phystones.Controllers
         // GET: Sample
         public ActionResult Index()
         {
-            
+            ViewBag.Register = _webBusiness.GetSlogan(SloganEnum.Register);
             return View();
         }
 
@@ -41,7 +43,7 @@ namespace Phystones.Controllers
         {
             if (ModelState.IsValid)
             {
-                _webBusiness.RegisterCompany(model.MST,model.CompanyName,model.Address,model.CEO,model.PackedRegister,model.TypeRegister,model.Email,model.ContactPreson,model.ReceiveAddress);
+                _webBusiness.RegisterCompany(model.MST, model.CompanyName, model.Address, model.CEO, model.PackedRegister, model.TypeRegister, model.Email, model.ContactPreson, model.ReceiveAddress);
             }
             return PartialView(model);
         }
@@ -70,8 +72,8 @@ namespace Phystones.Controllers
 
         public JsonResult DataCompany(string Name)
         {
-           var info = GetCompanyInfo(Name);
-            return new JsonResult() { Data = new{MST = info.MST,CompanyName = info.CompanyName,Address = info.Address,CEO = info.CEO }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            var info = GetCompanyInfo(Name);
+            return new JsonResult() { Data = new { MST = info.MST, CompanyName = info.CompanyName, Address = info.Address, CEO = info.CEO }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         private HoSoCongTyItem GetCompanyInfo(string mst)
@@ -138,7 +140,115 @@ namespace Phystones.Controllers
 
             return result;
         }
+        public ActionResult SaveUploadedFile(int idCustommer)
+        {
+            bool isSavedSuccessfully = true;
+            string fName = "";
+            try
+            {
+                foreach (string fileName in Request.Files)
+                {
+                    HttpPostedFileBase file = Request.Files[fileName];
+                    //Save file content goes here
+                    fName = file.FileName;
+                    if (file != null && file.ContentLength > 0)
+                    {
+
+                        var originalDirectory = new DirectoryInfo(string.Format("{0}Customers", Server.MapPath(@"\")));
+
+                        string pathString = System.IO.Path.Combine(originalDirectory.ToString(), idCustommer.ToString());
+
+                        var fileName1 = Path.GetFileName(file.FileName);
+
+                        bool isExists = System.IO.Directory.Exists(pathString);
+
+                        if (!isExists)
+                            System.IO.Directory.CreateDirectory(pathString);
+
+                        var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                        file.SaveAs(path);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                isSavedSuccessfully = false;
+            }
+
+
+            if (isSavedSuccessfully)
+            {
+                return Json(new { Message = fName });
+            }
+            else
+            {
+                return Json(new { Message = "Error in saving file" });
+            }
+        }
+
+        #region List Data
+        public ActionResult ListData()
+        {
+            return View();
+        }
+        public JsonResult List(DataTablesParam dataTablesParam,string keyWord)
+        {
+            var response = new DataTablesData
+            {
+                aaData = new object[0],
+                sEcho = dataTablesParam.Draw,
+                iTotalRecords = 0,
+                iTotalDisplayRecords = 0
+            };
+
+            var pageSize = dataTablesParam.Length;
+            if (pageSize <= 0)
+            {
+                pageSize = MyConfiguration.Default.PageSize;
+            }
+
+            var totalRow = 0;
+            var items = new List<Out_RegisterCompany_GetListData_Result>();
+
+            if (pageSize > 0)
+            {
+                var startIndex = (dataTablesParam.Start < 0 ? 0 : dataTablesParam.Start);
+                var orderColumn = 0;
+                switch (dataTablesParam.OrderColumn)
+                {
+                    case 1:
+                        orderColumn = 0;
+                        break;
+                }
+                var orderDirection = dataTablesParam.IsAscOrdering ? true : false;
+                items =
+                    _webBusiness.ListDataRegisterCompany(keyWord ?? string.Empty,startIndex, pageSize, orderColumn, orderDirection, out totalRow);
+            }
+
+            var list = items.Select(c => new
+            {
+                 c.id
+                ,c.MST
+                ,c.CompanyName
+                ,c.Address
+                ,c.CEO
+                ,c.PackedRegister
+                ,c.TypeRegister
+                ,c.Email
+                ,c.ContactPreson
+                ,c.ReceiveAddress
+                ,Action = c.id
+            }).ToArray();
+            response.sEcho = dataTablesParam.Draw;
+            response.aaData = list.Cast<Object>().ToArray();
+            response.iTotalRecords = totalRow;
+            response.iTotalDisplayRecords = totalRow;
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
     }
+
 
     public class HoSoCongTyItem
     {

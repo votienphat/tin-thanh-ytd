@@ -1,14 +1,20 @@
-﻿@{
+﻿@using EntitiesObject.Entities.WebEntities
+@{
     ViewBag.Title = WebContent.Contact;
     Layout = "~/Views/Shared/_Layout_Web.cshtml";
+    var content = ViewBag.Content as Out_Slogan_GetById_Result;
 }
 @using Phystones.Content.Texts
 @using Phystones.Models.ContentData
 @model BusinessObject.WebModule.Models.Config.ContactConfigModel
+@if (content != null)
+{
+    <h1 id="tagline">@content.Title</h1>
+    <h2 class="grid-10 center">
+        @Html.Raw(content.ContentBody)
+    </h2>
+}
 
-<hr class="grid-2 center mq-mobile">
-<h1 id="tagline">Contact Buffalo</h1>
-<h2 class="grid-10 center">Get in touch with us to get the ball rolling</h2>
 <section class="section grid-12 center" id="saveContact">
     @Html.Partial("SendMess",new SendContact())
 </section>

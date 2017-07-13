@@ -30,16 +30,83 @@ namespace DataAccess.EF
     
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<CategoryArticle> CategoryArticles { get; set; }
+        public virtual DbSet<CategoryPortfolio> CategoryPortfolios { get; set; }
+        public virtual DbSet<CategoryWork> CategoryWorks { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<CompanyRegisterLog> CompanyRegisterLogs { get; set; }
+        public virtual DbSet<Config> Configs { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Plain> Plains { get; set; }
-        public virtual DbSet<Stat> Stats { get; set; }
-        public virtual DbSet<CategoryPortfolio> CategoryPortfolios { get; set; }
         public virtual DbSet<Portfolio> Portfolios { get; set; }
-        public virtual DbSet<Config> Configs { get; set; }
-        public virtual DbSet<Work> Works { get; set; }
-        public virtual DbSet<CategoryWork> CategoryWorks { get; set; }
         public virtual DbSet<RegisterCompany> RegisterCompanies { get; set; }
         public virtual DbSet<Slogan> Slogans { get; set; }
+        public virtual DbSet<Stat> Stats { get; set; }
+        public virtual DbSet<Work> Works { get; set; }
+    
+        public virtual ObjectResult<Out_Article_GetArticleBlog_Result> Out_Article_GetArticleBlog(Nullable<int> categoryId, Nullable<int> startIndex, Nullable<int> pageLength, ObjectParameter totalRow)
+        {
+            var categoryIdParameter = categoryId.HasValue ?
+                new ObjectParameter("CategoryId", categoryId) :
+                new ObjectParameter("CategoryId", typeof(int));
+    
+            var startIndexParameter = startIndex.HasValue ?
+                new ObjectParameter("StartIndex", startIndex) :
+                new ObjectParameter("StartIndex", typeof(int));
+    
+            var pageLengthParameter = pageLength.HasValue ?
+                new ObjectParameter("PageLength", pageLength) :
+                new ObjectParameter("PageLength", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetArticleBlog_Result>("Out_Article_GetArticleBlog", categoryIdParameter, startIndexParameter, pageLengthParameter, totalRow);
+        }
+    
+        public virtual ObjectResult<Out_Article_GetByCategoryId_Result> Out_Article_GetByCategoryId(Nullable<int> categoryId)
+        {
+            var categoryIdParameter = categoryId.HasValue ?
+                new ObjectParameter("CategoryId", categoryId) :
+                new ObjectParameter("CategoryId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetByCategoryId_Result>("Out_Article_GetByCategoryId", categoryIdParameter);
+        }
+    
+        public virtual ObjectResult<Out_Article_GetById_Result> Out_Article_GetById(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetById_Result>("Out_Article_GetById", idParameter);
+        }
+    
+        public virtual ObjectResult<Out_Article_GetByTextId_Result> Out_Article_GetByTextId(string textId)
+        {
+            var textIdParameter = textId != null ?
+                new ObjectParameter("textId", textId) :
+                new ObjectParameter("textId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetByTextId_Result>("Out_Article_GetByTextId", textIdParameter);
+        }
+    
+        public virtual ObjectResult<Out_Article_GetListData_Result> Out_Article_GetListData(Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
+        {
+            var rowStartParameter = rowStart.HasValue ?
+                new ObjectParameter("RowStart", rowStart) :
+                new ObjectParameter("RowStart", typeof(int));
+    
+            var rowEndParameter = rowEnd.HasValue ?
+                new ObjectParameter("RowEnd", rowEnd) :
+                new ObjectParameter("RowEnd", typeof(int));
+    
+            var orderByParameter = orderBy.HasValue ?
+                new ObjectParameter("OrderBy", orderBy) :
+                new ObjectParameter("OrderBy", typeof(int));
+    
+            var isDescendingParameter = isDescending.HasValue ?
+                new ObjectParameter("IsDescending", isDescending) :
+                new ObjectParameter("IsDescending", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetListData_Result>("Out_Article_GetListData", rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
+        }
     
         public virtual int Out_Article_Save(Nullable<int> id, string title, string image, string contentBody, Nullable<int> categoryId)
         {
@@ -66,46 +133,36 @@ namespace DataAccess.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Article_Save", idParameter, titleParameter, imageParameter, contentBodyParameter, categoryIdParameter);
         }
     
-        public virtual int Out_Contact_Save(string name, string phone, string email, string messenger)
+        public virtual ObjectResult<Out_CategoryArticle_GetList_Result> Out_CategoryArticle_GetList()
         {
-            var nameParameter = name != null ?
-                new ObjectParameter("Name", name) :
-                new ObjectParameter("Name", typeof(string));
-    
-            var phoneParameter = phone != null ?
-                new ObjectParameter("Phone", phone) :
-                new ObjectParameter("Phone", typeof(string));
-    
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
-    
-            var messengerParameter = messenger != null ?
-                new ObjectParameter("Messenger", messenger) :
-                new ObjectParameter("Messenger", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Contact_Save", nameParameter, phoneParameter, emailParameter, messengerParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_CategoryArticle_GetList_Result>("Out_CategoryArticle_GetList");
         }
     
-        public virtual ObjectResult<Out_Article_GetListData_Result> Out_Article_GetListData(Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
+        public virtual ObjectResult<Out_CategoryWork_GetList_Result> Out_CategoryWork_GetList()
         {
-            var rowStartParameter = rowStart.HasValue ?
-                new ObjectParameter("RowStart", rowStart) :
-                new ObjectParameter("RowStart", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_CategoryWork_GetList_Result>("Out_CategoryWork_GetList");
+        }
     
-            var rowEndParameter = rowEnd.HasValue ?
-                new ObjectParameter("RowEnd", rowEnd) :
-                new ObjectParameter("RowEnd", typeof(int));
+        public virtual ObjectResult<Out_Config_GetByKey_Result> Out_Config_GetByKey(string keyConfig)
+        {
+            var keyConfigParameter = keyConfig != null ?
+                new ObjectParameter("KeyConfig", keyConfig) :
+                new ObjectParameter("KeyConfig", typeof(string));
     
-            var orderByParameter = orderBy.HasValue ?
-                new ObjectParameter("OrderBy", orderBy) :
-                new ObjectParameter("OrderBy", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Config_GetByKey_Result>("Out_Config_GetByKey", keyConfigParameter);
+        }
     
-            var isDescendingParameter = isDescending.HasValue ?
-                new ObjectParameter("IsDescending", isDescending) :
-                new ObjectParameter("IsDescending", typeof(bool));
+        public virtual int Out_Config_SaveByKey(string key, string value)
+        {
+            var keyParameter = key != null ?
+                new ObjectParameter("Key", key) :
+                new ObjectParameter("Key", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetListData_Result>("Out_Article_GetListData", rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
+            var valueParameter = value != null ?
+                new ObjectParameter("Value", value) :
+                new ObjectParameter("Value", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Config_SaveByKey", keyParameter, valueParameter);
         }
     
         public virtual ObjectResult<Out_Contact_GetListData_Result> Out_Contact_GetListData(Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
@@ -129,32 +186,74 @@ namespace DataAccess.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Contact_GetListData_Result>("Out_Contact_GetListData", rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
         }
     
-        public virtual ObjectResult<Out_CategoryArticle_GetList_Result> Out_CategoryArticle_GetList()
+        public virtual int Out_Contact_Save(string name, string phone, string email, string messenger)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_CategoryArticle_GetList_Result>("Out_CategoryArticle_GetList");
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("Phone", phone) :
+                new ObjectParameter("Phone", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var messengerParameter = messenger != null ?
+                new ObjectParameter("Messenger", messenger) :
+                new ObjectParameter("Messenger", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Contact_Save", nameParameter, phoneParameter, emailParameter, messengerParameter);
         }
     
-        public virtual ObjectResult<Out_Article_GetById_Result> Out_Article_GetById(Nullable<int> id)
+        public virtual ObjectResult<Out_Plain_GetByType_Result> Out_Plain_GetByType(Nullable<int> type)
+        {
+            var typeParameter = type.HasValue ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Plain_GetByType_Result>("Out_Plain_GetByType", typeParameter);
+        }
+    
+        public virtual ObjectResult<Out_Portfolio_GetById_Result> Out_Portfolio_GetById(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("Id", id) :
                 new ObjectParameter("Id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetById_Result>("Out_Article_GetById", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Portfolio_GetById_Result>("Out_Portfolio_GetById", idParameter);
         }
     
-        public virtual ObjectResult<Out_Slogan_Get_Result> Out_Slogan_Get()
+        public virtual ObjectResult<Out_Portfolio_GetList_Result> Out_Portfolio_GetList()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Slogan_Get_Result>("Out_Slogan_Get");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Portfolio_GetList_Result>("Out_Portfolio_GetList");
         }
     
-        public virtual ObjectResult<Out_Article_GetByTextId_Result> Out_Article_GetByTextId(string textId)
+        public virtual ObjectResult<Out_Portfolio_GetListCategoryPortfolio_Result> Out_Portfolio_GetListCategoryPortfolio()
         {
-            var textIdParameter = textId != null ?
-                new ObjectParameter("textId", textId) :
-                new ObjectParameter("textId", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Portfolio_GetListCategoryPortfolio_Result>("Out_Portfolio_GetListCategoryPortfolio");
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetByTextId_Result>("Out_Article_GetByTextId", textIdParameter);
+        public virtual ObjectResult<Out_Portfolio_GetListData_Result> Out_Portfolio_GetListData(Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
+        {
+            var rowStartParameter = rowStart.HasValue ?
+                new ObjectParameter("RowStart", rowStart) :
+                new ObjectParameter("RowStart", typeof(int));
+    
+            var rowEndParameter = rowEnd.HasValue ?
+                new ObjectParameter("RowEnd", rowEnd) :
+                new ObjectParameter("RowEnd", typeof(int));
+    
+            var orderByParameter = orderBy.HasValue ?
+                new ObjectParameter("OrderBy", orderBy) :
+                new ObjectParameter("OrderBy", typeof(int));
+    
+            var isDescendingParameter = isDescending.HasValue ?
+                new ObjectParameter("IsDescending", isDescending) :
+                new ObjectParameter("IsDescending", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Portfolio_GetListData_Result>("Out_Portfolio_GetListData", rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
         }
     
         public virtual int Out_Portfolio_Save(Nullable<int> id, string name, string avatar, string about, Nullable<int> categoryId, string linkWeb, string linkProfile)
@@ -190,21 +289,87 @@ namespace DataAccess.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Portfolio_Save", idParameter, nameParameter, avatarParameter, aboutParameter, categoryIdParameter, linkWebParameter, linkProfileParameter);
         }
     
-        public virtual ObjectResult<Out_Portfolio_GetById_Result> Out_Portfolio_GetById(Nullable<int> id)
+        public virtual ObjectResult<Out_RegisterCompany_GetListData_Result> Out_RegisterCompany_GetListData(string keySearch, Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
+        {
+            var keySearchParameter = keySearch != null ?
+                new ObjectParameter("KeySearch", keySearch) :
+                new ObjectParameter("KeySearch", typeof(string));
+    
+            var rowStartParameter = rowStart.HasValue ?
+                new ObjectParameter("RowStart", rowStart) :
+                new ObjectParameter("RowStart", typeof(int));
+    
+            var rowEndParameter = rowEnd.HasValue ?
+                new ObjectParameter("RowEnd", rowEnd) :
+                new ObjectParameter("RowEnd", typeof(int));
+    
+            var orderByParameter = orderBy.HasValue ?
+                new ObjectParameter("OrderBy", orderBy) :
+                new ObjectParameter("OrderBy", typeof(int));
+    
+            var isDescendingParameter = isDescending.HasValue ?
+                new ObjectParameter("IsDescending", isDescending) :
+                new ObjectParameter("IsDescending", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_RegisterCompany_GetListData_Result>("Out_RegisterCompany_GetListData", keySearchParameter, rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Out_RegisterCompany_Save(string mST, string companyName, string address, string cEO, Nullable<int> packedRegister, Nullable<int> typeRegister, string email, string contactPreson, string receiveAddress)
+        {
+            var mSTParameter = mST != null ?
+                new ObjectParameter("MST", mST) :
+                new ObjectParameter("MST", typeof(string));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("CompanyName", companyName) :
+                new ObjectParameter("CompanyName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var cEOParameter = cEO != null ?
+                new ObjectParameter("CEO", cEO) :
+                new ObjectParameter("CEO", typeof(string));
+    
+            var packedRegisterParameter = packedRegister.HasValue ?
+                new ObjectParameter("PackedRegister", packedRegister) :
+                new ObjectParameter("PackedRegister", typeof(int));
+    
+            var typeRegisterParameter = typeRegister.HasValue ?
+                new ObjectParameter("TypeRegister", typeRegister) :
+                new ObjectParameter("TypeRegister", typeof(int));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var contactPresonParameter = contactPreson != null ?
+                new ObjectParameter("ContactPreson", contactPreson) :
+                new ObjectParameter("ContactPreson", typeof(string));
+    
+            var receiveAddressParameter = receiveAddress != null ?
+                new ObjectParameter("ReceiveAddress", receiveAddress) :
+                new ObjectParameter("ReceiveAddress", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Out_RegisterCompany_Save", mSTParameter, companyNameParameter, addressParameter, cEOParameter, packedRegisterParameter, typeRegisterParameter, emailParameter, contactPresonParameter, receiveAddressParameter);
+        }
+    
+        public virtual ObjectResult<Out_Slogan_Get_Result> Out_Slogan_Get()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Slogan_Get_Result>("Out_Slogan_Get");
+        }
+    
+        public virtual ObjectResult<Out_Slogan_GetById_Result> Out_Slogan_GetById(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("Id", id) :
                 new ObjectParameter("Id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Portfolio_GetById_Result>("Out_Portfolio_GetById", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Slogan_GetById_Result>("Out_Slogan_GetById", idParameter);
         }
     
-        public virtual ObjectResult<Out_Portfolio_GetList_Result> Out_Portfolio_GetList()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Portfolio_GetList_Result>("Out_Portfolio_GetList");
-        }
-    
-        public virtual ObjectResult<Out_Portfolio_GetListData_Result> Out_Portfolio_GetListData(Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
+        public virtual ObjectResult<Out_Slogan_GetListData_Result> Out_Slogan_GetListData(Nullable<int> rowStart, Nullable<int> rowEnd, Nullable<int> orderBy, Nullable<bool> isDescending, ObjectParameter totalRow)
         {
             var rowStartParameter = rowStart.HasValue ?
                 new ObjectParameter("RowStart", rowStart) :
@@ -222,21 +387,45 @@ namespace DataAccess.EF
                 new ObjectParameter("IsDescending", isDescending) :
                 new ObjectParameter("IsDescending", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Portfolio_GetListData_Result>("Out_Portfolio_GetListData", rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Slogan_GetListData_Result>("Out_Slogan_GetListData", rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
         }
     
-        public virtual ObjectResult<Out_Portfolio_GetListCategoryPortfolio_Result> Out_Portfolio_GetListCategoryPortfolio()
+        public virtual int Out_Slogan_Save(Nullable<int> id, string title, string author, string contentBody, string language, Nullable<bool> isActive)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Portfolio_GetListCategoryPortfolio_Result>("Out_Portfolio_GetListCategoryPortfolio");
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var authorParameter = author != null ?
+                new ObjectParameter("Author", author) :
+                new ObjectParameter("Author", typeof(string));
+    
+            var contentBodyParameter = contentBody != null ?
+                new ObjectParameter("ContentBody", contentBody) :
+                new ObjectParameter("ContentBody", typeof(string));
+    
+            var languageParameter = language != null ?
+                new ObjectParameter("Language", language) :
+                new ObjectParameter("Language", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Slogan_Save", idParameter, titleParameter, authorParameter, contentBodyParameter, languageParameter, isActiveParameter);
         }
     
-        public virtual ObjectResult<Out_Article_GetByCategoryId_Result> Out_Article_GetByCategoryId(Nullable<int> categoryId)
+        public virtual ObjectResult<Out_Work_GetByCategoryId_Result> Out_Work_GetByCategoryId(Nullable<int> categoryId)
         {
             var categoryIdParameter = categoryId.HasValue ?
                 new ObjectParameter("CategoryId", categoryId) :
                 new ObjectParameter("CategoryId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetByCategoryId_Result>("Out_Article_GetByCategoryId", categoryIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Work_GetByCategoryId_Result>("Out_Work_GetByCategoryId", categoryIdParameter);
         }
     
         public virtual ObjectResult<Out_Work_GetById_Result> Out_Work_GetById(Nullable<int> id)
@@ -301,109 +490,6 @@ namespace DataAccess.EF
                 new ObjectParameter("CategoryId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Work_Save", idParameter, titleParameter, imageParameter, contentBodyParameter, categoryIdParameter);
-        }
-    
-        public virtual ObjectResult<Out_CategoryWork_GetList_Result> Out_CategoryWork_GetList()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_CategoryWork_GetList_Result>("Out_CategoryWork_GetList");
-        }
-    
-        public virtual ObjectResult<Out_Config_GetByKey_Result> Out_Config_GetByKey(string keyConfig)
-        {
-            var keyConfigParameter = keyConfig != null ?
-                new ObjectParameter("KeyConfig", keyConfig) :
-                new ObjectParameter("KeyConfig", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Config_GetByKey_Result>("Out_Config_GetByKey", keyConfigParameter);
-        }
-    
-        public virtual int Out_Config_SaveByKey(string key, string value)
-        {
-            var keyParameter = key != null ?
-                new ObjectParameter("Key", key) :
-                new ObjectParameter("Key", typeof(string));
-    
-            var valueParameter = value != null ?
-                new ObjectParameter("Value", value) :
-                new ObjectParameter("Value", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Config_SaveByKey", keyParameter, valueParameter);
-        }
-    
-        public virtual ObjectResult<Out_Work_GetByCategoryId_Result> Out_Work_GetByCategoryId(Nullable<int> categoryId)
-        {
-            var categoryIdParameter = categoryId.HasValue ?
-                new ObjectParameter("CategoryId", categoryId) :
-                new ObjectParameter("CategoryId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Work_GetByCategoryId_Result>("Out_Work_GetByCategoryId", categoryIdParameter);
-        }
-    
-        public virtual ObjectResult<Out_Article_GetArticleBlog_Result> Out_Article_GetArticleBlog(Nullable<int> categoryId, Nullable<int> startIndex, Nullable<int> pageLength, ObjectParameter totalRow)
-        {
-            var categoryIdParameter = categoryId.HasValue ?
-                new ObjectParameter("CategoryId", categoryId) :
-                new ObjectParameter("CategoryId", typeof(int));
-    
-            var startIndexParameter = startIndex.HasValue ?
-                new ObjectParameter("StartIndex", startIndex) :
-                new ObjectParameter("StartIndex", typeof(int));
-    
-            var pageLengthParameter = pageLength.HasValue ?
-                new ObjectParameter("PageLength", pageLength) :
-                new ObjectParameter("PageLength", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Article_GetArticleBlog_Result>("Out_Article_GetArticleBlog", categoryIdParameter, startIndexParameter, pageLengthParameter, totalRow);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> Out_RegisterCompany_Save(string mST, string companyName, string address, string cEO, Nullable<int> packedRegister, Nullable<int> typeRegister, string email, string contactPreson, string receiveAddress)
-        {
-            var mSTParameter = mST != null ?
-                new ObjectParameter("MST", mST) :
-                new ObjectParameter("MST", typeof(string));
-    
-            var companyNameParameter = companyName != null ?
-                new ObjectParameter("CompanyName", companyName) :
-                new ObjectParameter("CompanyName", typeof(string));
-    
-            var addressParameter = address != null ?
-                new ObjectParameter("Address", address) :
-                new ObjectParameter("Address", typeof(string));
-    
-            var cEOParameter = cEO != null ?
-                new ObjectParameter("CEO", cEO) :
-                new ObjectParameter("CEO", typeof(string));
-    
-            var packedRegisterParameter = packedRegister.HasValue ?
-                new ObjectParameter("PackedRegister", packedRegister) :
-                new ObjectParameter("PackedRegister", typeof(int));
-    
-            var typeRegisterParameter = typeRegister.HasValue ?
-                new ObjectParameter("TypeRegister", typeRegister) :
-                new ObjectParameter("TypeRegister", typeof(int));
-    
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
-    
-            var contactPresonParameter = contactPreson != null ?
-                new ObjectParameter("ContactPreson", contactPreson) :
-                new ObjectParameter("ContactPreson", typeof(string));
-    
-            var receiveAddressParameter = receiveAddress != null ?
-                new ObjectParameter("ReceiveAddress", receiveAddress) :
-                new ObjectParameter("ReceiveAddress", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Out_RegisterCompany_Save", mSTParameter, companyNameParameter, addressParameter, cEOParameter, packedRegisterParameter, typeRegisterParameter, emailParameter, contactPresonParameter, receiveAddressParameter);
-        }
-    
-        public virtual ObjectResult<Out_Slogan_GetById_Result> Out_Slogan_GetById(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Slogan_GetById_Result>("Out_Slogan_GetById", idParameter);
         }
     }
 }

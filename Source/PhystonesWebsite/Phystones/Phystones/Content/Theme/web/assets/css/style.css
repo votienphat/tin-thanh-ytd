@@ -70,14 +70,6 @@
     font-style: normal
 }
 
-@font-face {
-    font-family: "opensans_bold";
-    src: url(../font/open-sans/OpenSans-Bold.eot?1353517794);
-    src: url(../font/open-sans/OpenSans-Bold.eot?&amp;1353517794#iefix) format("embedded-opentype"), url(../font/open-sans/OpenSans-Bold.woff?1353517794) format("woff"), url(../font/open-sans/OpenSans-Bold.ttf?1353517794) format("truetype"), url(../font/open-sans/OpenSans-Bold.svg?1353517794) format("svg");
-    font-weight: 300;
-    font-style: normal
-}
-
 .ss-icon, [class^="ss-"]:before, [class*=" ss-"]:before {
     display: inline-block;
     vertical-align: middle;
@@ -3571,7 +3563,7 @@ html.touch .custom-checkbox .info {
     font-size: 84px;
     word-spacing: 1px;
     line-height: 90px;
-    font-family: "opensans_bold", sans-serif;
+    font-family: "neuzeitgrobold", sans-serif;
     text-transform: none;
     letter-spacing: -3px;
     color: #181818;
@@ -3652,7 +3644,7 @@ html.touch .custom-checkbox .info {
     }
 
     #work-projects h2 {
-        font-family: "opensans_bold", sans-serif;
+        font-family: "neuzeitgrobold", sans-serif;
         text-transform: none;
         letter-spacing: -3px;
         font-size: 36px;
@@ -4831,13 +4823,13 @@ html body .mq-wide-i-block {
 }
 
 .fonts-display-secondary {
-    font-family: "opensans_bold", sans-serif;
+    font-family: "neuzeitgrobold", sans-serif;
     text-transform: none;
     letter-spacing: -3px
 }
 
 .fonts-display-cnd {
-    font-family: "opensans_bold", sans-serif;
+    font-family: "neuzeitgroextblack", sans-serif;
     text-transform: none;
     letter-spacing: 0
 }
@@ -4982,7 +4974,7 @@ html body .mq-wide-i-block {
 }
 
     .stat dt {
-        font-family: "opensans_bold", sans-serif;
+        font-family: "neuzeitgrobold", sans-serif;
         text-transform: none;
         letter-spacing: -3px;
         font-size: 36px;

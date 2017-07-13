@@ -29,22 +29,22 @@ namespace Phystones.Controllers
         {
             return View();
         }
-        public JsonResult DataBlog(int StartIndex)
+          public JsonResult DataBlog(int StartIndex)
         {
             var pageSize = 5;
             int total;
             var rs = _webBusiness.GetArticleBlog((int)CategoryArticleEnum.Blog,
                 (StartIndex - 1) * pageSize, pageSize, out total);
-            var ListItem = rs.Select(c => new
+             var ListItem = rs.Select(c => new
             {
-                ContentBody = StringExtension.CutNick(c.ContentBody, 200, "..."),
-                ImageLink = c.Image,
-                c.Title,
+               ContentBody = StringExtension.CutNick(c.ContentBody,200,"..."),
+               ImageLink = c.Image,
+               c.Title,
                 c.RowNumber,
-                LinkDetail = MyExtention.GetUrlHelper().RouteUrl(GlobalHelper.GetRouteName(RouteName.ArticleDetail), new { textid = c.TextId })
+                LinkDetail = MyExtention.GetUrlHelper().RouteUrl(RouteName.ArticleDetail.Text(), new { textid = c.TextId })
             });
             var TotalItem = total;
-            return Json(new { Data = ListItem, TotalItem = TotalItem }, JsonRequestBehavior.AllowGet);
+            return Json(new{ Data = ListItem,TotalItem =TotalItem}, JsonRequestBehavior.AllowGet);
         }
     }
 }

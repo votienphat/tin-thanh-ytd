@@ -1,13 +1,12 @@
-﻿using DataAccess.Repositories.Infrastructure;
-using DataAccess.EF;
-using DataAccess.Contract.Web;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
+using DataAccess.Contract.Web;
+using DataAccess.EF;
+using DataAccess.Repositories.Infrastructure;
 using EntitiesObject.Entities.WebEntities;
-using System;
 
-namespace DataAccess.Repositories.Membership
+namespace DataAccess.Repositories.Web
 {
     public class ArticleRepository : DaoRepository<WebEntities, Article>, IArticleRepository
     {

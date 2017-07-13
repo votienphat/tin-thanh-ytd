@@ -1,7 +1,4 @@
-﻿using MyUtility.Extensions;
-using Phystones.Helper;
-
-namespace Phystones.Models.Enum
+﻿namespace Phystones.Models.Enum
 {
     public enum RouteName
     {

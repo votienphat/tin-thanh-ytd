@@ -4,19 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a9e5433572b94a48b446b83ac18f6a6e" Name="Diagram1">
-        <EntityTypeShape EntityType="WebModel.Article" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="WebModel.CategoryArticle" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="WebModel.Contact" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="WebModel.Plain" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="WebModel.Stat" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="WebModel.CategoryPortfolio" Width="1.5" PointX="2.75" PointY="6.75" />
-        <EntityTypeShape EntityType="WebModel.Portfolio" Width="1.5" PointX="5.375" PointY="6.75" />
-        <EntityTypeShape EntityType="WebModel.Config" Width="1.5" PointX="9.375" PointY="0.75" />
-        <EntityTypeShape EntityType="WebModel.Work" Width="1.5" PointX="7.375" PointY="6.75" />
-        <EntityTypeShape EntityType="WebModel.CategoryWork" Width="1.5" PointX="7.375" PointY="3.75" />
-        <EntityTypeShape EntityType="WebModel.RegisterCompany" Width="1.5" PointX="0.75" PointY="9.75" />
-        <EntityTypeShape EntityType="WebModel.Slogan" Width="1.5" PointX="9.375" PointY="3.75" />
+      <Diagram DiagramId="b9eee886ae5445a6854062b51ad1c500" Name="Diagram1">
+        <EntityTypeShape EntityType="PhystonesModel.Article" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.CategoryArticle" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.CategoryPortfolio" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.CategoryWork" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.Company" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.CompanyRegisterLog" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.Config" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.Contact" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.Plain" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.Portfolio" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.RegisterCompany" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.Slogan" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.Stat" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhystonesModel.Work" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
