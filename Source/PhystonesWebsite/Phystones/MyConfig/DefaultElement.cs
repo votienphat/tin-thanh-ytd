@@ -94,5 +94,10 @@ namespace MyConfig
         {
             get { return (int)this["TotalMinutesAllowUpdateBoss"]; }
         }
+         [ConfigurationProperty("ShowUpload", DefaultValue = true)]
+        public bool ShowUpload
+        {
+            get { return (bool)this["ShowUpload"]; }
+        }
     }
 }

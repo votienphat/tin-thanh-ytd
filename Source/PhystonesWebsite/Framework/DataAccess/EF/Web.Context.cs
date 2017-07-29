@@ -314,47 +314,6 @@ namespace DataAccess.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_RegisterCompany_GetListData_Result>("Out_RegisterCompany_GetListData", keySearchParameter, rowStartParameter, rowEndParameter, orderByParameter, isDescendingParameter, totalRow);
         }
     
-        public virtual ObjectResult<Nullable<int>> Out_RegisterCompany_Save(string mST, string companyName, string address, string cEO, Nullable<int> packedRegister, Nullable<int> typeRegister, string email, string contactPreson, string receiveAddress)
-        {
-            var mSTParameter = mST != null ?
-                new ObjectParameter("MST", mST) :
-                new ObjectParameter("MST", typeof(string));
-    
-            var companyNameParameter = companyName != null ?
-                new ObjectParameter("CompanyName", companyName) :
-                new ObjectParameter("CompanyName", typeof(string));
-    
-            var addressParameter = address != null ?
-                new ObjectParameter("Address", address) :
-                new ObjectParameter("Address", typeof(string));
-    
-            var cEOParameter = cEO != null ?
-                new ObjectParameter("CEO", cEO) :
-                new ObjectParameter("CEO", typeof(string));
-    
-            var packedRegisterParameter = packedRegister.HasValue ?
-                new ObjectParameter("PackedRegister", packedRegister) :
-                new ObjectParameter("PackedRegister", typeof(int));
-    
-            var typeRegisterParameter = typeRegister.HasValue ?
-                new ObjectParameter("TypeRegister", typeRegister) :
-                new ObjectParameter("TypeRegister", typeof(int));
-    
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
-    
-            var contactPresonParameter = contactPreson != null ?
-                new ObjectParameter("ContactPreson", contactPreson) :
-                new ObjectParameter("ContactPreson", typeof(string));
-    
-            var receiveAddressParameter = receiveAddress != null ?
-                new ObjectParameter("ReceiveAddress", receiveAddress) :
-                new ObjectParameter("ReceiveAddress", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Out_RegisterCompany_Save", mSTParameter, companyNameParameter, addressParameter, cEOParameter, packedRegisterParameter, typeRegisterParameter, emailParameter, contactPresonParameter, receiveAddressParameter);
-        }
-    
         public virtual ObjectResult<Out_Slogan_Get_Result> Out_Slogan_Get()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Out_Slogan_Get_Result>("Out_Slogan_Get");
@@ -490,6 +449,47 @@ namespace DataAccess.EF
                 new ObjectParameter("CategoryId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Out_Work_Save", idParameter, titleParameter, imageParameter, contentBodyParameter, categoryIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Out_RegisterCompany_Save(string mST, string companyName, string address, string cEO, Nullable<int> packedRegister, Nullable<int> typeRegister, string email, string contactPreson, string receiveAddress)
+        {
+            var mSTParameter = mST != null ?
+                new ObjectParameter("MST", mST) :
+                new ObjectParameter("MST", typeof(string));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("CompanyName", companyName) :
+                new ObjectParameter("CompanyName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var cEOParameter = cEO != null ?
+                new ObjectParameter("CEO", cEO) :
+                new ObjectParameter("CEO", typeof(string));
+    
+            var packedRegisterParameter = packedRegister.HasValue ?
+                new ObjectParameter("PackedRegister", packedRegister) :
+                new ObjectParameter("PackedRegister", typeof(int));
+    
+            var typeRegisterParameter = typeRegister.HasValue ?
+                new ObjectParameter("TypeRegister", typeRegister) :
+                new ObjectParameter("TypeRegister", typeof(int));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var contactPresonParameter = contactPreson != null ?
+                new ObjectParameter("ContactPreson", contactPreson) :
+                new ObjectParameter("ContactPreson", typeof(string));
+    
+            var receiveAddressParameter = receiveAddress != null ?
+                new ObjectParameter("ReceiveAddress", receiveAddress) :
+                new ObjectParameter("ReceiveAddress", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Out_RegisterCompany_Save", mSTParameter, companyNameParameter, addressParameter, cEOParameter, packedRegisterParameter, typeRegisterParameter, emailParameter, contactPresonParameter, receiveAddressParameter);
         }
     }
 }

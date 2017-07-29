@@ -71,3 +71,18 @@
         <button type="submit" class="grid-4 secondary center large margin-top-standard">Submit</button>
     </fieldset>
 }
+@if (ViewBag.Success != null)
+{
+    <script>
+        $("#MST").val("");
+        $("#CompanyName").val("");
+        $("#Address").val("");
+        $("#CEO").val("");
+        $("#Email").val("");
+        $("#ContactPreson").val("");
+        $("#PackedRegister").val("");
+        $("#TypeRegister").val("");
+        $("#ReceiveAddress").val("");
+        $.toaster({ priority : 'success', title : 'Notice', message : 'Thank for contact'});
+    </script>
+}

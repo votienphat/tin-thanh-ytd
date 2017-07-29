@@ -5319,3 +5319,9 @@ a:focus, a:hover {
     color: #ffffff;
     font-weight: bold;
 }
+.dropzone {
+    border: none !important;
+    padding: 0 !important;
+    background:none !important;
+    min-height:180px !important;
+}

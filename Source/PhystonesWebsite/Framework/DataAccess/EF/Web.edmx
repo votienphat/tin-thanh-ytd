@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PhystonesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PhystonesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="Id" />
@@ -320,8 +320,7 @@
           <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PhystonesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -510,13 +509,13 @@
             <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_Article_GetByCategoryId" ReturnType="Collection(PhystonesModel.Out_Article_GetByCategoryId_Result)">
-            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          <Parameter Name="CategoryId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_Article_GetById" ReturnType="Collection(PhystonesModel.Out_Article_GetById_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_Article_GetByTextId" ReturnType="Collection(PhystonesModel.Out_Article_GetByTextId_Result)">
-            <Parameter Name="textId" Mode="In" Type="String" />
+          <Parameter Name="textId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Out_Article_GetListData" ReturnType="Collection(PhystonesModel.Out_Article_GetListData_Result)">
             <Parameter Name="RowStart" Mode="In" Type="Int32" />
@@ -535,7 +534,7 @@
           <FunctionImport Name="Out_CategoryArticle_GetList" ReturnType="Collection(PhystonesModel.Out_CategoryArticle_GetList_Result)" />
           <FunctionImport Name="Out_CategoryWork_GetList" ReturnType="Collection(PhystonesModel.Out_CategoryWork_GetList_Result)" />
           <FunctionImport Name="Out_Config_GetByKey" ReturnType="Collection(PhystonesModel.Out_Config_GetByKey_Result)">
-            <Parameter Name="KeyConfig" Mode="In" Type="String" />
+          <Parameter Name="KeyConfig" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Out_Config_SaveByKey">
             <Parameter Name="Key" Mode="In" Type="String" />
@@ -555,10 +554,10 @@
             <Parameter Name="Messenger" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Out_Plain_GetByType" ReturnType="Collection(PhystonesModel.Out_Plain_GetByType_Result)">
-            <Parameter Name="type" Mode="In" Type="Int32" />
+          <Parameter Name="type" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_Portfolio_GetById" ReturnType="Collection(PhystonesModel.Out_Portfolio_GetById_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_Portfolio_GetList" ReturnType="Collection(PhystonesModel.Out_Portfolio_GetList_Result)" />
           <FunctionImport Name="Out_Portfolio_GetListCategoryPortfolio" ReturnType="Collection(PhystonesModel.Out_Portfolio_GetListCategoryPortfolio_Result)" />
@@ -586,20 +585,9 @@
             <Parameter Name="IsDescending" Mode="In" Type="Boolean" />
             <Parameter Name="TotalRow" Mode="InOut" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Out_RegisterCompany_Save" ReturnType="Collection(Int32)">
-            <Parameter Name="MST" Mode="In" Type="String" />
-            <Parameter Name="CompanyName" Mode="In" Type="String" />
-            <Parameter Name="Address" Mode="In" Type="String" />
-            <Parameter Name="CEO" Mode="In" Type="String" />
-            <Parameter Name="PackedRegister" Mode="In" Type="Int32" />
-            <Parameter Name="TypeRegister" Mode="In" Type="Int32" />
-            <Parameter Name="Email" Mode="In" Type="String" />
-            <Parameter Name="ContactPreson" Mode="In" Type="String" />
-            <Parameter Name="ReceiveAddress" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="Out_Slogan_Get" ReturnType="Collection(PhystonesModel.Out_Slogan_Get_Result)" />
           <FunctionImport Name="Out_Slogan_GetById" ReturnType="Collection(PhystonesModel.Out_Slogan_GetById_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_Slogan_GetListData" ReturnType="Collection(PhystonesModel.Out_Slogan_GetListData_Result)">
             <Parameter Name="RowStart" Mode="In" Type="Int32" />
@@ -617,13 +605,13 @@
             <Parameter Name="IsActive" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="Out_Work_GetByCategoryId" ReturnType="Collection(PhystonesModel.Out_Work_GetByCategoryId_Result)">
-            <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          <Parameter Name="CategoryId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_Work_GetById" ReturnType="Collection(PhystonesModel.Out_Work_GetById_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Out_Work_GetByTextId" ReturnType="Collection(PhystonesModel.Out_Work_GetByTextId_Result)">
-            <Parameter Name="textId" Mode="In" Type="String" />
+          <Parameter Name="textId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Out_Work_GetListData" ReturnType="Collection(PhystonesModel.Out_Work_GetListData_Result)">
             <Parameter Name="RowStart" Mode="In" Type="Int32" />
@@ -638,6 +626,17 @@
             <Parameter Name="Image" Mode="In" Type="String" />
             <Parameter Name="ContentBody" Mode="In" Type="String" />
             <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Out_RegisterCompany_Save" ReturnType="Collection(Int32)">
+            <Parameter Name="MST" Mode="In" Type="String" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="CEO" Mode="In" Type="String" />
+            <Parameter Name="PackedRegister" Mode="In" Type="Int32" />
+            <Parameter Name="TypeRegister" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="ContactPreson" Mode="In" Type="String" />
+            <Parameter Name="ReceiveAddress" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Out_Article_GetArticleBlog_Result">
@@ -1196,7 +1195,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Out_RegisterCompany_Save" FunctionName="PhystonesModel.Store.Out_RegisterCompany_Save" />
           <FunctionImportMapping FunctionImportName="Out_Slogan_Get" FunctionName="PhystonesModel.Store.Out_Slogan_Get">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PhystonesModel.Out_Slogan_Get_Result">
@@ -1283,6 +1281,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Out_Work_Save" FunctionName="PhystonesModel.Store.Out_Work_Save" />
+          <FunctionImportMapping FunctionImportName="Out_RegisterCompany_Save" FunctionName="PhystonesModel.Store.Out_RegisterCompany_Save" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

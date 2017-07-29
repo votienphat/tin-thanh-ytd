@@ -27,13 +27,14 @@ namespace BusinessObject.WebModule
         private readonly IRegisterCompanyRepository _conregisterRepo;
         private readonly IPlainRepository _plainRepo;
 
+
         #endregion
 
         #region Constructor
 
         public WebBusiness(IArticleRepository articleRepo, IPortfolioRepository portfolioRepo,
             IContactRepository contactRepo, ISloganRepository sloganRepo, IWorkRepository workRepo,
-            IConfigRepository configRepo, IPlainRepository plainRepo)
+            IConfigRepository configRepo, IPlainRepository plainRepo,IRegisterCompanyRepository conregisterRepo)
         {
             _articleRepo = articleRepo;
             _portfolioRepo = portfolioRepo;
@@ -42,6 +43,7 @@ namespace BusinessObject.WebModule
             _workRepo = workRepo;
             _configRepo = configRepo;
             _plainRepo = plainRepo;
+            _conregisterRepo = conregisterRepo;
         }
 
         #endregion

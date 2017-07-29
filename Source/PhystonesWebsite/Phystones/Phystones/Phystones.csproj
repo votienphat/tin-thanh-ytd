@@ -2563,6 +2563,7 @@
     <Content Include="Content\Theme\web\assets\js\feed6cb0.js" />
     <Content Include="Content\Theme\web\assets\js\infographics6cb0.js" />
     <Content Include="Content\Theme\web\assets\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\Theme\web\assets\js\jquery.toaster.js" />
     <Content Include="Content\Theme\web\assets\js\main6cb0.js" />
     <Content Include="Content\Theme\web\assets\js\map6cb0.js" />
     <Content Include="Content\Theme\web\assets\js\modernizr6cb0.js" />

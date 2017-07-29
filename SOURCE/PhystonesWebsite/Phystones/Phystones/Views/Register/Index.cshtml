@@ -1,4 +1,4 @@
-﻿
+﻿@using MyConfig
 @using EntitiesObject.Entities.WebEntities
 @{
     ViewBag.Title = WebContent.DigitalSignature;
@@ -32,8 +32,20 @@
 </section>
 <section class="section grid-12 center" id="saveContact">
     @Html.Partial("SendMess")
+    @if (MyConfiguration.Default.ShowUpload)
+    {
+        <div class="dropzone">
+            <div class="fallback">
+                <input name="file" type="file" multiple />
+            </div>
+        </div>
+    }
 </section>
+@section styles{
+    <link href="~/Content/Theme/assets/js/dropzone/dropzone.css" rel="stylesheet" />
+}
 @section scripts{
+    <script src="~/Content/Theme/assets/js/dropzone/dropzone.js"></script>
     <script>
         var Checkcompany = function () {
             Loading.Show();
@@ -47,7 +59,7 @@
                     $("#MST").val(response.MST);
                     $("#CompanyName").val(response.CompanyName);
                     $("#Address").val(response.Address);
-                    $("#CEO").val(response.CEO); 
+                    $("#CEO").val(response.CEO);
                 };
             },
             complete: function () {
@@ -56,5 +68,43 @@
         });
         }
     </script>
+    @(MyConfiguration.Default.ShowUpload){
+    <script>
+        Dropzone.autoDiscover = false;
+        jQuery(document).ready(function () {
+            var myDropzone = new Dropzone(".dropzone", {
+                url: "/Register/SaveUploadedFile",
+                maxFiles: 5,
+                autoProcessQueue: false,
+                addRemoveLinks: true,
+                init: function () {
+                    var drop = this; // Closure
+                    this.on('error', function (file, errorMessage) {
+                        if (errorMessage.indexOf('Error 404') !== -1) {
+                            var errorDisplay = document.querySelectorAll('[data-dz-errormessage]');
+                            errorDisplay[errorDisplay.length - 1].innerHTML = 'Error 404: The upload page was not found on the server';
+                        }
+                        if (errorMessage.indexOf('File is too big') !== -1) {
+                            alert('i remove current file');
+                            drop.removeFile(file);
+                        }
+                    });
+                },
+                init: function () {
+                    var submitButton = document.querySelector("#subupload");
+                    var myDropzone = this;
 
+                    this.on("sending", function (file, xhr, formData) {
+                        formData.append("CusId", $("#CusId").val());
+                    });
+
+                    submitButton.addEventListener("click", function () {
+                        myDropzone.processQueue();
+                    });
+
+                }
+            });
+        });
+    </script>
+    }
 }
